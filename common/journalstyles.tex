@@ -1,0 +1,159 @@
+\newcommand{\prestyleEEJET}{
+%\setcounter{goststyle}{2006}
+}
+
+\newcommand{\styleEEJET}{
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\linespread{1.0}
+}
+
+\newcommand{\prefixEEJET}{
+{\bf\setlength{\parindent}{0cm}
+УДК \articleUDK
+\par\bigskip\MakeUppercase\articleTitleUkr
+\par\bigskip\authorNameUkr
+\par\bigskip\MakeUppercase\articleTitleRus
+\par\bigskip\authorNameRus
+\par\bigskip\MakeUppercase\articleTitleEng
+\par\bigskip\authorNameEng
+}
+{\it
+\par\bigskip\annotationUkr
+\par\titleKeywordsUkr: \keywordsUkr
+\par\bigskip\annotationRus
+\par\titleKeywordsRus: \keywordsRus
+}
+}
+
+\newcommand{\postfixEEJET}{
+
+\insertbibliofull
+
+\insertbiblioapa
+
+{\it
+\par\bigskip\annotationEng
+\par\titleKeywordsEng: \keywordsEng
+}
+
+\bigskip
+\par\authorFullNameUkr
+\par\authorPositionUkr
+\par\authorDepartmentUkr
+\par\authorInstitutionUkr
+\par\authorInstitutionAddressUkr
+\par\titleAuthorEmail: \authorEmail
+\par\titleAuthorTelUkr: \authorTel
+\par\titleAuthorLocArtCountUkr: \authorLocArtCount
+\par\titleAuthorORCIDUkr: \authorORCID
+
+\bigskip
+\par\authorFullNameRus
+\par\authorPositionRus
+\par\authorDepartmentRus
+\par\authorInstitutionRus
+\par\authorInstitutionAddressRus
+\par\titleAuthorEmail: \authorEmail
+\par\titleAuthorTelRus: \authorTel
+\par\titleAuthorLocArtCountRus: \authorLocArtCount
+\par\titleAuthorORCIDRus: \authorORCID
+
+\bigskip
+\par\authorFullNameEng
+\par\authorPositionEng
+\par\authorDepartmentEng
+\par\authorInstitutionEng
+\par\authorInstitutionAddressEng
+\par\titleAuthorEmail: \authorEmail
+\par\titleAuthorTelEng: \authorTel
+\par\titleAuthorLocArtCountEng: \authorLocArtCount
+\par\titleAuthorORCIDEng: \authorORCID
+
+\bigskip
+\par\titleAuthorPostAddres:
+\par\textbf\authorFullNameUkr
+\par\authorPostAddress
+\par\titleAuthorTelUkr: \authorTel
+}
+
+
+
+\newcommand{\styleFITThesis}{
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\linespread{0.95}
+\renewcommand{\bibitemsep}{0pt}
+}
+
+\newcommand{\prefixFITThesis}{
+{\setlength{\parindent}{0cm}
+УДК \articleUDK
+\par\textbf{${}^{1}$\authorNameUkr}
+\par\authorPositionUkr
+\par\textit{${}^{1}$\authorInstitutionUkr}
+\begin{center}
+\textbf{\MakeUppercase\articleTitleUkr}
+\end{center}
+}
+}
+
+\newcommand{\postfixFITThesis}{
+\insertbibliofull[Список використаних джерел]
+}
+
+
+\newcommand{\styleKNUBAThesis}{
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\linespread{1.45}
+\renewcommand{\bibitemsep}{0pt}
+}
+
+\newcommand{\prefixKNUBAThesis}{
+{\setlength{\parindent}{0cm}
+\textbf{УДК \articleUDK}
+\par\textbf\authorNameUkr
+\par\textit\authorInstitutionUkr
+\begin{center}
+\textbf{\MakeUppercase\articleTitleUkr}
+\end{center}
+}
+}
+
+\newcommand{\postfixKNUBAThesis}{
+\insertbibliofull[Перелік посилань]
+}
+
+
+\newcommand{\styleChDTU}{
+\usepackage{multicol}
+\geometry{a4paper,top=2.5cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\linespread{1.0}
+}
+
+\newcommand{\prefixChDTU}{
+\noindent\textbf{УДК \articleUDK}
+\par\bigskip\noindent\textbf\authorNameUkr, \authorPositionUkr, \authorInstitutionUkr, \authorInstitutionAddressUkr, \authorEmail
+\begin{center}
+\textbf{\MakeUppercase\articleTitleUkr}
+\end{center}
+
+{\it
+\par\annotationUkr
+\par\titleKeywordsUkr: \keywordsUkr
+}
+
+\par\bigskip\noindent\textbf\authorNameEng, \authorPositionEng, \authorInstitutionEng, \authorInstitutionAddressEng, \authorEmail
+\begin{center}
+\textbf{\MakeUppercase\articleTitleEng}
+\end{center}
+\begin{multicols}{2}
+}
+
+\newcommand{\postfixChDTU}{
+\end{multicols}
+\insertbibliofull[Список літератури]
+\insertbiblioapa
+{\it
+\par\bigskip\annotationEng
+\par\titleKeywordsEng: \keywordsEng
+}
+}

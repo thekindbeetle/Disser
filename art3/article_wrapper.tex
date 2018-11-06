@@ -1,0 +1,50 @@
+\documentclass{article}
+\input{../common/packages}
+\input{setup}
+\input{data}
+\input{../common/styles}
+\input{../biblio/bibliopreamble}
+\hypersetup{
+    pdftitle={\articleTitleUkr},    % Заголовок
+    pdfauthor={\authorFullNameUkr},  % Автор
+    pdfkeywords={\keywordsUkr},    % Ключевые слова
+    pdflang={ua},
+}
+%\usepackage{pdfpages}
+
+\begin{document}
+
+%  \csdef{blx@theheading}{bibliography}%
+%  \csdef{blx@theenv}{bibliography}%
+%  \csletcs{blx@theprenote}{@empty}
+%  \csletcs{blx@thepostnote}{@empty}
+%  \csletcs{blx@thetitle}{@empty}
+%  \def\ifgiveninits{\iftoggle{blx@giveninits}}
+%  \def\adddot{\csuse{blx@imc@adddot}}
+%  \def\adddot{\csuse{blx@imc@isdot}}
+%    \def\bibnamedelimd{ }
+%\csuse{blx@getdata}{conf7}
+%\csuse{abx@field@title}
+%\par\csuse{blx@imc@printfield}{title}
+%\par\csuse{blx@imc@printnames}[byauthor]{author}
+%\par\csuse{abx@name@author}
+
+\pagenumbering{gobble}
+%\begin{center}\bf
+%\par\MakeUppercase\articleTitleUkr
+%\par\authorFullNameUkr
+%\end{center}
+%
+%\par\bigskip\textit{Послатися на цю роботу:}
+%\par\fullcite{art1,art2,conf6,conf7}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+
+\nocite{O0396} 
+\printbibliography[title=Перелік публікацій]
+%\insertbiblioapa
+%\includepdf[pages=1-2]{article}
+
+\end{document}

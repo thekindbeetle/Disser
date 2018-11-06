@@ -1,0 +1,29 @@
+%\RequirePackage[l2tabu,orthodox]{nag} % Раскомментировав, можно в логе получать рекомендации относительно правильного использования пакетов и предупреждения об устаревших и нерекомендуемых пакетах
+% Формат А4, 14pt (ГОСТ Р 7.0.11-2011, 5.3.6)
+\documentclass[a4paper,14pt]{extarticle}
+
+\input{../common/packages}  % Пакеты общие для диссертации и автореферата
+\input{../common/articlepackages}         % Пакеты для диссертации
+
+\input{setup}               % Упрощённые настройки шаблона
+
+\input{../common/newnames}  % Новые переменные, которые могут использоваться во всём проекте
+\input{../common/data}      % Основные сведения
+\input{data}      
+
+\input{../common/journalstyles}
+\csuse{prestyle\journalStyle}
+\input{../common/styles}    % Стили общие для диссертации и автореферата
+\input{../common/articlestyles}           % Стили для диссертации
+\input{../biblio/bibliopreamble}% Настройки библиографии из внешнего файла (там же выбор: встроенная или на основе biblatex)
+\csuse{style\journalStyle}
+
+\begin{document}
+
+\input{../common/renames}                   % Переопределение именований
+
+
+\csuse{prefix\journalStyle}
+\input{content}
+\csuse{postfix\journalStyle}
+\end{document}

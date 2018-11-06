@@ -8,14 +8,19 @@
 backend=biber,% движок
 bibencoding=utf8,% кодировка bib файла
 sorting=none,% настройка сортировки списка литературы
+%style=apa,% стиль цитирования и библиографии (по ГОСТ)
 style=gost-numeric,% стиль цитирования и библиографии (по ГОСТ)
 language=autobib,% получение языка из babel/polyglossia, default: autobib % если ставить autocite или auto, то цитаты в тексте с указанием страницы, получат указание страницы на языке оригинала
 autolang=other,% многоязычная библиография
 clearlang=true,% внутренний сброс поля language, если он совпадает с языком из babel/polyglossia
 defernumbers=true,% нумерация проставляется после двух компиляций, зато позволяет выцеплять библиографию по ключевым словам и нумеровать не из большего списка
 sortcites=true,% сортировать номера затекстовых ссылок при цитировании (если в квадратных скобках несколько ссылок, то отображаться будут отсортированно, а не абы как)
-doi=false,% Показывать или нет ссылки на DOI
+%doi=false,% Показывать или нет ссылки на DOI
 isbn=false,% Показывать или нет ISBN, ISSN, ISRN
+%movenames=false,
+maxnames=4,
+minnames=3,
+%datamodel=ukrainian-gost,
 ]{biblatex}[2016/09/17]
 \ltx@iffilelater{biblatex-gost.def}{2017/05/03}%
 {\toggletrue{bbx:gostbibliography}%
@@ -54,11 +59,11 @@ sorting=none,% настройка сортировки списка литера
 }{}
 
 %%% Подключение файлов bib %%%
-\addbibresource[label=other]{biblio/othercites.bib}
-\addbibresource[label=vak]{biblio/authorpapersVAK.bib}
-\addbibresource[label=papers]{biblio/authorpapers.bib}
-\addbibresource[label=conf]{biblio/authorconferences.bib}
-
+\addbibresource[label=other]{../biblio/othercites.bib}
+\addbibresource[label=vak]{../biblio/authorpapersVAK.bib}
+\addbibresource[label=papers]{../biblio/authorpapers.bib}
+\addbibresource[label=conf]{../biblio/authorconferences.bib}
+\addbibresource[label=patents]{../biblio/authorpatents.bib}
 
 %http://tex.stackexchange.com/a/141831/79756
 %There is a way to automatically map the language field to the langid field. The following lines in the preamble should be enough to do that.
@@ -94,6 +99,15 @@ sorting=none,% настройка сортировки списка литера
             final]
             \step[fieldset=media, fieldvalue=eresource]
         }
+        \map{% 
+            \pertype{online}
+            \step[fieldset=media, fieldvalue=eresource]
+        }
+        \ifthenelse{\equal{\thegoststyle}{2006}}
+        	{\map{% 
+        	    \step[fieldset=media, fieldvalue=text]
+        	}}
+        	{}
         \map[overwrite]{% стираем значения всех полей issn
             \step[fieldset=issn, null]
         }
@@ -108,20 +122,24 @@ sorting=none,% настройка сортировки списка литера
             final]
         }
         \map[overwrite]{ % добавляем ключевые слова, чтобы различать источники
-            \perdatasource{biblio/othercites.bib}
+            \perdatasource{../biblio/othercites.bib}
             \step[fieldset=keywords, fieldvalue={biblioother,bibliofull}]
         }
         \map[overwrite]{ % добавляем ключевые слова, чтобы различать источники
-            \perdatasource{biblio/authorpapersVAK.bib}
+            \perdatasource{../biblio/authorpapersVAK.bib}
             \step[fieldset=keywords, fieldvalue={biblioauthorvak,biblioauthor,bibliofull}]
         }
         \map[overwrite]{ % добавляем ключевые слова, чтобы различать источники
-            \perdatasource{biblio/authorpapers.bib}
+            \perdatasource{../biblio/authorpapers.bib}
             \step[fieldset=keywords, fieldvalue={biblioauthornotvak,biblioauthor,bibliofull}]
         }
         \map[overwrite]{ % добавляем ключевые слова, чтобы различать источники
-            \perdatasource{biblio/authorconferences.bib}
+            \perdatasource{../biblio/authorconferences.bib}
             \step[fieldset=keywords, fieldvalue={biblioauthorconf,biblioauthor,bibliofull}]
+        }
+        \map[overwrite]{ % добавляем ключевые слова, чтобы различать источники
+            \perdatasource{../biblio/authorpatents.bib}
+            \step[fieldset=keywords, fieldvalue={biblioauthorpatents,biblioauthor,bibliofull}]
         }
 %        \map[overwrite]{% стираем значения всех полей series
 %            \step[fieldset=series, null]
@@ -138,6 +156,14 @@ sorting=none,% настройка сортировки списка литера
 %            final]
 %            \step[fieldset=media, null]
 %        }
+\map{
+	\step[fieldsource=year, final]
+	\step[fieldset=pubstate, null]
+}
+\map{
+	\step[fieldsource=date, final]
+	\step[fieldset=pubstate, null]
+}                        
     }
 }
 
@@ -197,10 +223,10 @@ sorting=none,% настройка сортировки списка литера
 %\newbibmacro{string+doi}[1]{% новая макрокоманда на простановку ссылки на doi
 %    \iffieldundef{doi}{#1}{\href{http://dx.doi.org/\thefield{doi}}{#1}}}
 
-%\ifnumequal{\value{draft}}{0}{% Чистовик
+\ifnumequal{\value{draft}}{0}{% Чистовик
 %\renewcommand*{\mkgostheading}[1]{\usebibmacro{string+doi}{#1}} % ссылка на doi с авторов. стоящих впереди записи
-%\renewcommand*{\mkgostheading}[1]{#1} % только лишь убираем курсив с авторов
-%}{}
+\renewcommand*{\mkgostheading}[1]{#1} % только лишь убираем курсив с авторов
+}{}
 %\DeclareFieldFormat{title}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия работы
 %\DeclareFieldFormat{journaltitle}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия журнала
 %%% Тире как разделитель в библиографии традиционной руской длины:
@@ -210,10 +236,19 @@ sorting=none,% настройка сортировки списка литера
 %    \addperiod\space\bibsentence}%block punct.,\bibsentence is for vol,etc.
 
 %%% Возвращаем запись «Режим доступа» %%%
-%\DefineBibliographyStrings{english}{%
-%    urlfrom = {Mode of access}
-%}
-%\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\space\url{#1}}
+\DefineBibliographyStrings{english}{%
+    urlfrom = {Mode of access}
+}
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\space\url{#1}}
+
+\DefineBibliographyStrings{english}{%
+    mediatext = {text},
+    mediaeresource = {electronic resource}
+}
+\NewBibliographyString{fromukrainian}
+\DefineBibliographyStrings{russian}{%
+	fromukrainian = {{с\addabbrvspace укр\adddot}},
+}
 
 %%% В списке литературы обозначение одной буквой диапазона страниц англоязычного источника %%%
 \DefineBibliographyStrings{english}{%
@@ -238,6 +273,112 @@ sorting=none,% настройка сортировки списка литера
   \protected\def\bibdaterangesep{\bibrangedash}%тире для дат
 }
 
+%% Убрать "и др." из заголовка, сократить до единственной фамилии
+\DeclareNameFormat{heading}{%
+  \nameparts{#1}%
+  \ifnumequal{\value{listcount}}{1}
+    {\ifgiveninits
+      {\usebibmacro{headingname:family-given}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffix}}
+      {\usebibmacro{headingname:family-given}
+        {\namepartfamily}
+        {\namepartgiven}
+        {\namepartprefix}
+        {\namepartsuffix}}}
+    {}}
+
+%% Повторять авторов из заголовка в области ответственности
+\renewbibmacro*{byauthor}{%
+	\setrespdelim\printnames[byauthor]{author}}
+
+%% Ставить запятую после фамилии в заголовке, если стандарт 2006
+\newcommand{\patchheadingname}{
+\xpatchbibmacro{headingname:family-given}%
+    {\isdot\ifdefvoid}
+    {\isdot\addcomma\ifdefvoid}%
+    {\typeout{patching heading addcomma succeded}}%
+    {\typeout{patching heading addcomma failed}}%
+}
+\ifthenelse{\equal{\thegoststyle}{2006}}{\patchheadingname\patchheadingname}{}
+
+
+\DeclareNumChars*{)(S}
+
+%% Всегда писть № в поле number
+%\DeclareFieldFormat{number}{%
+%  \bibsstring{number}\addabbrvspace#1}
+  
+%% Всегда писть issue в поле issue
+%\DeclareFieldFormat{issue}{%
+%  \bibsstring{issue}\addabbrvspace#1}
+
+%% Использовать патент в варианте под заголовком
+\xpatchbibdriver{patent}%
+    {\usebibmacro{heading}%
+     \newunit
+     \usebibmacro{title}%
+     \setunit*{\subtitlepunct}%
+     \printfield{type}%
+     \setunit*{\addspace}%
+     \printfield{number}%
+     \iflistundef{location}
+       {}
+       {\setunit*{\addspace}%
+        \printlist[][-\value{listtotal}]{location}}%
+     \setunit{\addcolondelim}%
+     \printfield{ipc}}
+    {\mkgostheading{
+       \printfield{type}%
+       \setunit*{\addspace}%
+       \printfield{number}%
+       \iflistundef{location}{}
+         {\setunit*{\addspace}%
+          \printlist[][-\value{listtotal}]{location}}%
+       \setunit{\addcolondelim}%
+       \printfield{ipc}}
+   	 \newunit
+     \usebibmacro{title}}
+    {\typeout{patching patent for subtitle to heading succeded}}%
+    {\typeout{patching patent for subtitle to heading failed}}
+    
+\renewcommand*{\subtitlepunct}{\addcolondelim}
+
+% Использовать тире как разделитель в fullcite
+%\renewcommand*{\newunitpunct}{\addperiod\addnbspace\textemdash\space\bibsentence}
+%\renewcommand*{\newblockpunct}{}
+
+% Отображать части в журналах
+\xpatchbibmacro{jour:volume+parts+issuetitle}
+	{\printfield{number}}%
+	{\printfield{number}%
+	 \setunit*{\addcomma\space}%
+	 \printfield{part}}%
+	{\typeout{patching article for parts succeded}}%
+	{\typeout{patching article for parts failed}}
+	
+% Двоеточие после подзаголовка в диссертациях
+\xpatchbibmacro{thesistitle}
+{\printfield[titlecase]{subtitle}}%
+{\printfield[titlecase]{subtitle}%
+ \setunit*{\addcolondelim}}%
+{\typeout{patching thesis for colondelim after subtitle succeded}}%
+{\typeout{patching thesis for colondelim after subtitle failed}}
+	
+% Отображать организацию в дисертациях
+\xpatchbibdriver{thesis}%
+	{\printnames[family-given:full]{author}}%
+	{\printnames[family-given:full]{author}\setunit{\resppunct}\printlist{organization}}%
+	{\typeout{patching thesis for organization succeded}}%
+	{\typeout{patching thesis for organization failed}}
+	
+
+%% Set low penalties for breaks at uppercase letters and lowercase letters
+\setcounter{biburllcpenalty}{500} %управляет разрывами ссылок после маленьких букв RTFM biburllcpenalty
+\setcounter{biburlucpenalty}{3000} %управляет разрывами ссылок после больших букв, RTFM biburlucpenalty
+
 %Set higher penalty for breaking in number, dates and pages ranges
 \setcounter{abbrvpenalty}{10000} % default is \hyphenpenalty which is 12
 
@@ -246,29 +387,29 @@ sorting=none,% настройка сортировки списка литера
 \setcounter{lownamepenalty}{10000}
 
 %%% Set low penalties for breaks at uppercase letters and lowercase letters
-%\setcounter{biburllcpenalty}{500} %управляет разрывами ссылок после маленьких букв RTFM biburllcpenalty
-%\setcounter{biburlucpenalty}{3000} %управляет разрывами ссылок после больших букв, RTFM biburlucpenalty
+\setcounter{biburllcpenalty}{500} %управляет разрывами ссылок после маленьких букв RTFM biburllcpenalty
+\setcounter{biburlucpenalty}{3000} %управляет разрывами ссылок после больших букв, RTFM biburlucpenalty
 
 %%% Список литературы с красной строки (без висячего отступа) %%%
-%\defbibenvironment{bibliography} % переопределяем окружение библиографии из gost-numeric.bbx пакета biblatex-gost
-%  {\list
-%     {\printtext[labelnumberwidth]{%
-%	\printfield{prefixnumber}%
-%	\printfield{labelnumber}}}
-%     {%
-%      \setlength{\labelwidth}{\labelnumberwidth}%
-%      \setlength{\leftmargin}{0pt}% default is \labelwidth
-%      \setlength{\labelsep}{\widthof{\ }}% Управляет длиной отступа после точки % default is \biblabelsep
-%      \setlength{\itemsep}{\bibitemsep}% Управление дополнительным вертикальным разрывом между записями. \bibitemsep по умолчанию соответствует \itemsep списков в документе.
-%      \setlength{\itemindent}{\bibhang}% Пользуемся тем, что \bibhang по умолчанию принимает значение \parindent (абзацного отступа), который переназначен в styles.tex
-%      \addtolength{\itemindent}{\labelwidth}% Сдвигаем правее на величину номера с точкой
-%      \addtolength{\itemindent}{\labelsep}% Сдвигаем ещё правее на отступ после точки
-%      \setlength{\parsep}{\bibparsep}%
-%     }%
-%      \renewcommand*{\makelabel}[1]{\hss##1}%
-%  }
-%  {\endlist}
-%  {\item}
+\defbibenvironment{bibliography} % переопределяем окружение библиографии из gost-numeric.bbx пакета biblatex-gost
+  {\list
+     {\printtext[labelnumberwidth]{%
+	\printfield{prefixnumber}%
+	\printfield{labelnumber}}}
+     {%
+      \setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{0pt}% default is \labelwidth
+      \setlength{\labelsep}{\widthof{\ }}% Управляет длиной отступа после точки % default is \biblabelsep
+      \setlength{\itemsep}{\bibitemsep}% Управление дополнительным вертикальным разрывом между записями. \bibitemsep по умолчанию соответствует \itemsep списков в документе.
+      \setlength{\itemindent}{\parindent}% Пользуемся тем, что \bibhang по умолчанию принимает значение \parindent (абзацного отступа), который переназначен в styles.tex
+      \addtolength{\itemindent}{\labelwidth}% Сдвигаем правее на величину номера с точкой
+      \addtolength{\itemindent}{\labelsep}% Сдвигаем ещё правее на отступ после точки
+      \setlength{\parsep}{\bibparsep}%
+     }%
+      \renewcommand*{\makelabel}[1]{\hss##1}%
+  }
+  {\endlist}
+  {\item}
 
 %% Счётчик использованных ссылок на литературу, обрабатывающий с учётом неоднократных ссылок
 %http://tex.stackexchange.com/a/66851/79756
@@ -336,8 +477,8 @@ sorting=none,% настройка сортировки списка литера
 
 
 %%% Создание команд для вывода списка литературы %%%
-\newcommand*{\insertbibliofull}{
-\printbibliography[keyword=bibliofull,section=0,title=\fullbibtitle]
+\newcommand*{\insertbibliofull}[1][]{
+\printbibliography[keyword=bibliofull,section=0,title=\ifstrempty{#1}{\fullbibtitle}{#1}]
 \printbibliography[heading=counter,env=counter,keyword=bibliofull,section=0]
 }
 
@@ -361,3 +502,4 @@ sorting=none,% настройка сортировки списка литера
 \printbibliography[heading=otherpublications,keyword=biblioother]
 }
 
+%\input{../biblio/apa}

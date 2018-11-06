@@ -486,18 +486,26 @@ indent:
 	latexindent -l=$(INDENT_SETTINGS) -s -w $(file);)
 
 clean:
-	#	$(MAKE) clean -C Dissertation
-	latexmk -C dissertation
-	rm -f dissertation.bbl
-	#	$(MAKE) clean -C Synopsis
-	latexmk -C synopsis
-	rm -f synopsis.bbl
+	$(MAKE) clean -C Dissertation
+	$(MAKE) clean -C Synopsis
 	$(MAKE) clean -C Presentation
+	$(MAKE) clean -C Article1
 
 distclean:
 	$(MAKE) distclean -C Dissertation
 	$(MAKE) distclean -C Synopsis
 	$(MAKE) distclean -C Presentation
+	$(MAKE) distclean -C art1
+	$(MAKE) distclean -C art2
+	$(MAKE) distclean -C art3
+	$(MAKE) distclean -C conf1
+	$(MAKE) distclean -C conf2
+	$(MAKE) distclean -C conf3
+	$(MAKE) distclean -C conf4
+	$(MAKE) distclean -C conf5
+	$(MAKE) distclean -C conf6
+	$(MAKE) distclean -C conf7
+	$(MAKE) distclean -C conf8
 	## Core latex/pdflatex auxiliary files:
 	rm -f *.aux
 	rm -f *.lof

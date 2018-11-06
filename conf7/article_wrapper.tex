@@ -1,0 +1,36 @@
+\documentclass[a4paper,14pt]{extarticle}
+\input{../common/packages}
+\input{../Dissertation/setup}
+%\input{data}
+\input{../common/styles}
+\input{../biblio/bibliopreamble}
+\usepackage{pdfpages}
+
+
+\newcommand{\articleTitleUkr}{
+Psychological Resources and Risks of Internet Using by Teenagers during War}
+\newcommand{\authorFullNameUkr}{Mykhaylo Naydonov, Lyubov A. Naydonova, Lyubov M. Naydonova, Ivan Naydonov}
+
+
+\hypersetup{
+    pdftitle={\articleTitleUkr},    % Заголовок
+    pdfauthor={\authorFullNameUkr},  % Автор
+%    pdfkeywords={\keywordsUkr},    % Ключевые слова
+    pdflang={en},
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\begin{center}\bf
+\par\MakeUppercase\articleTitleUkr
+\par\authorFullNameUkr
+\end{center}
+
+\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+\par\fullcite{conf7}
+\par\bigskip\textit{Cite this work (using APA):}
+\par\fullciteapa{conf7}
+\includepdf[pages=10]{2016-International_Journal_of_Psychology}
+
+\end{document}

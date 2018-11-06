@@ -1,0 +1,105 @@
+; TECkit mapping for TeX input conventions <-> Unicode characters
+
+LHSName "Cyrillic-to-Latin"
+RHSName "UNICODE"
+
+pass(Unicode)
+
+; ligatures from Knuth's original CMR fonts
+U+002D U+002D           <>  U+2013  ; -- -> en dash
+U+002D U+002D U+002D    <>  U+2014  ; --- -> em dash
+
+U+0027          <>  U+2019  ; ' -> right single quote
+U+0027 U+0027   <>  U+201D  ; '' -> right double quote
+U+0022           >  U+201D  ; " -> right double quote
+
+U+0060          <>  U+2018  ; ` -> left single quote
+U+0060 U+0060   <>  U+201C  ; `` -> left double quote
+
+U+0021 U+0060   <>  U+00A1  ; !` -> inverted exclam
+U+003F U+0060   <>  U+00BF  ; ?` -> inverted question
+
+; additions supported in T1 encoding
+U+002C U+002C   <>  U+201E  ; ,, -> DOUBLE LOW-9 QUOTATION MARK
+U+003C U+003C   <>  U+00AB  ; << -> LEFT POINTING GUILLEMET
+U+003E U+003E   <>  U+00BB  ; >> -> RIGHT POINTING GUILLEMET
+
+; Naydonov
+U+041d U+0430 U+0439 U+0434 <> U+004e U+0061 U+0079 U+0064  ; Найд - Nayd
+
+; http://zakon2.rada.gov.ua/laws/show/55-2010-%D0%BF
+U+0410 <> U+0041  ; А - A
+U+0430 <> U+0061  ; а - a
+U+0411 <> U+0042  ; Б - B
+U+0431 <> U+0062  ; б - b
+U+0412 <> U+0056  ; В - V
+U+0432 <> U+0076  ; в - v
+U+0413 <> U+0048  ; Г - H
+U+0433 <> U+0068  ; г - h
+U+0490 <> U+0047  ; Ґ - G
+U+0491 <> U+0067  ; ґ - g
+U+0414 <> U+0044  ; Д - D
+U+0434 <> U+0064  ; д - d
+U+0415 <> U+0045  ; Е - E
+U+0435 <> U+0065  ; е - e
+U+0404 <> U+0059 U+0065  ; Є - Ye
+U+0020 U+0454 <> U+0020 U+0079 U+0065  ; [ є] - [ ye]
+U+0454 <> U+0069 U+0065  ; є - ie
+U+0416 <> U+005a U+0068  ; Ж - Zh
+U+0436 <> U+007a U+0068  ; ж - zh
+U+0417 <> U+005a  ; З - Z
+U+0437 <> U+007a  ; з - z
+U+0418 <> U+0059  ; И - Y
+U+0438 <> U+0079  ; и - y
+U+0406 <> U+0049  ; І - I
+U+0456 <> U+0069  ; і - i
+U+0407 <> U+0059 U+0069  ; Ї - Yi
+U+0020 U+0457 <> U+0020 U+0079 U+0069  ; [ ї] - [ yi]
+U+0457 <> U+0069  ; ї - i
+U+0419 <> U+0059  ; Й - Y
+U+0020 U+0439 <> U+0020 U+0079  ; [ й] - [ y]
+U+0439 <> U+0069  ; й - i
+U+041a <> U+004b  ; К - K
+U+043a <> U+006b  ; к - k
+U+041b <> U+004c  ; Л - L
+U+043b <> U+006c  ; л - l
+U+041c <> U+004d  ; М - M
+U+043c <> U+006d  ; м - m
+U+041d <> U+004e  ; Н - N
+U+043d <> U+006e  ; н - n
+U+041e <> U+004f  ; О - O
+U+043e <> U+006f  ; о - o
+U+041f <> U+0050  ; П - P
+U+043f <> U+0070  ; п - p
+U+0420 <> U+0052  ; Р - R
+U+0440 <> U+0072  ; р - r
+U+0421 <> U+0053  ; С - S
+U+0441 <> U+0073  ; с - s
+U+0422 <> U+0054  ; Т - T
+U+0442 <> U+0074  ; т - t
+U+0423 <> U+0055  ; У - U
+U+0443 <> U+0075  ; у - u
+U+0424 <> U+0046  ; Ф - F
+U+0444 <> U+0066  ; ф - f
+U+0425 <> U+004b U+0068  ; Х - Kh
+U+0445 <> U+006b U+0068  ; х - kh
+U+0426 <> U+0054 U+0073  ; Ц - Ts
+U+0446 <> U+0074 U+0073  ; ц - ts
+U+0427 <> U+0043 U+0068  ; Ч - Ch
+U+0447 <> U+0063 U+0068  ; ч - ch
+U+0428 <> U+0053 U+0068  ; Ш - Sh
+U+0448 <> U+0073 U+0068  ; ш - sh
+U+0429 <> U+0053 U+0068 U+0063 U+0068  ; Щ - Shch
+U+0449 <> U+0073 U+0068 U+0063 U+0068  ; щ - shch
+U+042e <> U+0059 U+0075  ; Ю - Yu
+U+0020 U+044e <> U+0020 U+0079 U+0075  ; [ ю] - [ yu]
+U+044e <> U+0069 U+0075  ; ю - iu
+U+042f <> U+0059 U+0061  ; Я - Ya
+U+0020 U+044f <> U+0020 U+0079 U+0061  ; [ я] - [ ya]
+U+044f <> U+0069 U+0061  ; я - ia
+U+042c <> U+200B  ; Ь - 
+U+044c <> U+200B  ; ь - 
+U+2019 <> U+200B  ; ’ - 
+U+0027 <> U+200B  ; ' - 
+U+0417 U+0433 <> U+005a U+0067 U+0068  ; Зг - Zgh
+U+0437 U+0433 <> U+007a U+0067 U+0068  ; зг - zgh

@@ -1,0 +1,37 @@
+\documentclass[a4paper,14pt]{extarticle}
+\input{../common/packages}
+\input{../Dissertation/setup}
+%\input{data}
+\input{../common/styles}
+\input{../biblio/bibliopreamble}
+\usepackage{pdfpages}
+
+
+\newcommand{\articleTitleUkr}{
+Топологічна евристика в розв’язанні проблеми маршрутизації транспортних засобів (VRP)}
+\newcommand{\authorFullNameUkr}{Найдьонов Іван Михайлович}
+\newcommand{\keywordsUkr}{маршрутизація, VRP, кластерна маршрутизація, CluVRP, задача комівояжера, евристики, топологія, теорія графів, «ядра і хвости»}
+
+
+\hypersetup{
+    pdftitle={\articleTitleUkr},    % Заголовок
+    pdfauthor={\authorFullNameUkr},  % Автор
+    pdfkeywords={\keywordsUkr},    % Ключевые слова
+    pdflang={ua},
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\begin{center}\bf
+\par\MakeUppercase\articleTitleUkr
+\par\authorFullNameUkr
+\end{center}
+
+\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+\par\fullcite{art1}
+\par\bigskip\textit{Cite this work (using APA):}
+\par\fullciteapa{art1eng}
+\includepdf[pages=-6]{topologichna-evristika-v-rozvyazanni-problemi-marshrutizatsiyi-transportnih-zasobiv-vrp}
+
+\end{document}

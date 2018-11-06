@@ -1,23 +1,24 @@
-%%% Переопределение именований, если иначе не сработает %%%
-%\gappto\captionsrussian{
-%    \renewcommand{\chaptername}{Глава}
-%    \renewcommand{\appendixname}{Приложение} % (ГОСТ Р 7.0.11-2011, 5.7)
-%}
+%% Переопределение именований, если иначе не сработает %%%
+\gappto\captionsrussian{
+	\renewcommand{\chaptername}{РОЗДІЛ}
+	\renewcommand{\appendixname}{ДОДАТОК} % (ГОСТ Р 7.0.11-2011, 5.7)
+}
 
 %%% Изображения %%%
-\graphicspath{{images/}{Dissertation/images/}}         % Пути к изображениям
+\graphicspath{{images/}{../images/}}         % Пути к изображениям
 
 %%% Интервалы %%%
 %% По ГОСТ Р 7.0.11-2011, пункту 5.3.6 требуется полуторный интервал
 %% Реализация средствами класса (на основе setspace) ближе к типографской классике.
 %% И правит сразу и в таблицах (если со звёздочкой)
 %\DoubleSpacing*     % Двойной интервал
-\OnehalfSpacing*    % Полуторный интервал
+%\OnehalfSpacing*    % Полуторный интервал
 %\setSpacing{1.42}   % Полуторный интервал, подобный Ворду (возможно, стоит включать вместе с предыдущей строкой)
+\setSpacing{1.5}
 
 %%% Макет страницы %%%
 % Выставляем значения полей (ГОСТ 7.0.11-2011, 5.3.7)
-\geometry{a4paper, top=2cm, bottom=2cm, left=2.5cm, right=1cm, nofoot, nomarginpar} %, heightrounded, showframe
+\geometry{a4paper, top=2cm, bottom=2cm, left=3cm, right=1.5cm, nofoot, nomarginpar} %, heightrounded, showframe
 \setlength{\topskip}{0pt}   %размер дополнительного верхнего поля
 \setlength{\footskip}{12.3pt} % снимет warning, согласно https://tex.stackexchange.com/a/334346
 
@@ -48,6 +49,21 @@
 } % В обоих случаях вроде бы без переноса, как и надо (ГОСТ Р 7.0.11-2011, 5.3.5)
 
 %%% Оглавление %%%
+
+
+\makeatletter
+\patchcmd{\l@chapapp}{#1}{\MakeUppercase{#1}}{}{} %% SMGT Отображать разделы в оглавлении в ВЕРХНЕМ РЕГИСТРЕ
+\patchcmd{\l@chapapp}{addtolength}{setlength}{}{} %% SMGT Убрать выравнивание на ширину \chaptername / \appendixname
+\makeatother
+
+\setlength{\cftbeforechapterskip}{0pt}
+\cftsetindents{chapter}{0pt}{0pt}
+\cftsetindents{section}{0pt}{0pt}
+\cftsetindents{subsection}{0pt}{0pt}
+\cftsetindents{subsubsection}{0pt}{0pt}
+\renewcommand\chapternumberlinebox[2]{#2}
+\renewcommand\numberlinebox[2]{#2}
+
 \renewcommand{\cftchapterdotsep}{\cftdotsep}                % отбивка точками до номера страницы начала главы/раздела
 
 %% Переносить слова в заголовке не допускается (ГОСТ Р 7.0.11-2011, 5.3.5). Заголовки в оглавлении должны точно повторять заголовки в тексте (ГОСТ Р 7.0.11-2011, 5.2.3). Прямого указания на запрет переносов в оглавлении нет, но по той же логике невнесения искажений в смысл, лучше в оглавлении не переносить:
@@ -89,7 +105,7 @@
 \newcommand*{\tocheader}{
 \ifnumequal{\value{pgnum}}{1}{%
     \ifendTOC\else\hbox to \linewidth%
-      {\noindent{}~\hfill{Стр.}}\par%
+      {\noindent{}~\hfill{Стор.}}\par%
       \ifnumless{\value{page}}{3}{}{%
         \vspace{0.5\onelineskip}
       }
@@ -107,7 +123,7 @@
     \chapterstyle{default}
     \setlength{\beforechapskip}{0pt}
     \setlength{\midchapskip}{0pt}
-    \setlength{\afterchapskip}{\theintvl\curtextsize}
+    \setlength{\afterchapskip}{\theintvla\curtextsize}
     \renewcommand*{\chapnamefont}{\basegostsectionfont}
     \renewcommand*{\chapnumfont}{\basegostsectionfont}
     \renewcommand*{\chaptitlefont}{\basegostsectionfont}
@@ -117,28 +133,30 @@
     }{%
         \renewcommand*{\afterchapternum}{\quad}     % добавляет \quad после номера раздела
     }
+    \renewcommand*{\afterchapternum}{\break}   % добавляет разрыв строки после номера раздела
     \renewcommand*{\printchapternum}{\hdngaligni\hdngalign\chapnumfont \thechapter}
     \renewcommand*{\printchaptername}{}
     \renewcommand*{\printchapternonum}{\hdngaligni\hdngalign}
+    \renewcommand{\printchaptertitle}[1]{\textbf{\MakeUppercase{##1}}} % SMGT заголовки разделов жирным капсом
 }
 
 \makeatletter
 \makechapterstyle{thesisgostchapname}{%
     \chapterstyle{thesisgost}
     \renewcommand*{\printchapternum}{\chapnumfont \thechapter}
-    \renewcommand*{\printchaptername}{\hdngaligni\hdngalign\chapnamefont \@chapapp} %
+    \renewcommand*{\printchaptername}{\hdngaligni\hdngalign\chapnamefont \@chapapp}
 }
 \makeatother
 
 \chapterstyle{thesisgost}
 
-\setsecheadstyle{\basegostsectionfont\hdngalign}
+\setsecheadstyle{\basegostsectionfont} % SMGT без \hdngalign всегда по левому краю
 \setsecindent{\otstuplen}
 
-\setsubsecheadstyle{\basegostsectionfont\hdngalign}
+\setsubsecheadstyle{\basegostsectionfont} % SMGT без \hdngalign всегда по левому краю
 \setsubsecindent{\otstuplen}
 
-\setsubsubsecheadstyle{\basegostsectionfont\hdngalign}
+\setsubsubsecheadstyle{\basegostsectionfont} % SMGT без \hdngalign всегда по левому краю
 \setsubsubsecindent{\otstuplen}
 
 \sethangfrom{\noindent #1} %все заголовки подразделов центрируются с учетом номера, как block
@@ -149,12 +167,12 @@
 }{}%
 
 %%% Интервалы между заголовками
-\setbeforesecskip{\theintvl\curtextsize}% Заголовки отделяют от текста сверху и снизу тремя интервалами (ГОСТ Р 7.0.11-2011, 5.3.5).
-\setaftersecskip{\theintvl\curtextsize}
-\setbeforesubsecskip{\theintvl\curtextsize}
-\setaftersubsecskip{\theintvl\curtextsize}
-\setbeforesubsubsecskip{\theintvl\curtextsize}
-\setaftersubsubsecskip{\theintvl\curtextsize}
+\setbeforesecskip{\theintvlb\curtextsize}% Заголовки отделяют от текста сверху и снизу тремя интервалами (ГОСТ Р 7.0.11-2011, 5.3.5).
+\setaftersecskip{\theintvla\curtextsize}
+\setbeforesubsecskip{\theintvlb\curtextsize}
+\setaftersubsecskip{\theintvla\curtextsize}
+\setbeforesubsubsecskip{\theintvlb\curtextsize}
+\setaftersubsubsecskip{\theintvla\curtextsize}
 
 %%% Блок дополнительного управления размерами заголовков
 \ifnumequal{\value{headingsize}}{1}{% Пропорциональные заголовки и базовый шрифт 14 пт

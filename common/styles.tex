@@ -47,6 +47,26 @@
 \captionstyle[\tabtitalign]{\tabtitalign}
 \captiontitlefont{\normalfont\normalsize} % Шрифт с текстом подписи
 
+\newcommand{\longtableheader}[3]{
+	\caption{#1}\label{#2}\\
+	\hline
+	#3 \\
+	\hline
+	\endfirsthead
+	
+	\caption*{Продовження таблиці \ref{#2}}\\
+	\hline
+	#3 \\
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	\hline
+	\endlastfoot
+}
+
 %%% Рисунки %%%
 \setfloatadjustment{figure}{%
     \setlength{\abovecaptionskip}{0pt}   % Отбивка над подписью
@@ -58,6 +78,10 @@
     \captiontitlefont{\normalfont\normalsize} % Шрифт с текстом подписи
     \postcaption{} % всегда идет после подписи или \legend, и с новой строки
 }
+
+% SMGT настройка локаций floatов
+\setFloatBlockFor{section}
+\setfloatlocations{figure}{htb}
 
 %%% Подписи подрисунков %%%
 \newsubfloat{figure} % Включает возможность использовать подрисунки у окружений figure

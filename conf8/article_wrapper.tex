@@ -1,0 +1,29 @@
+\documentclass[a4paper,14pt]{extarticle}
+\input{../common/packages}
+\input{setup}
+\input{data}
+\input{../common/styles}
+\input{../biblio/bibliopreamble}
+\hypersetup{
+    pdftitle={\articleTitleUkr},    % Заголовок
+    pdfauthor={\authorFullNameUkr},  % Автор
+    pdfkeywords={\keywordsUkr},    % Ключевые слова
+    pdflang={ua},
+}
+\usepackage{pdfpages}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\begin{center}\bf
+\par\MakeUppercase\articleTitleUkr
+\par\authorFullNameUkr
+\end{center}
+
+\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+\par\fullcite{conf8}
+\par\bigskip\textit{Cite this work (using APA):}
+\par\fullciteapa{conf8eng} 
+\includepdf[pages=244-245]{IT_I}
+
+\end{document}
