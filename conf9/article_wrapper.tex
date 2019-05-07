@@ -1,0 +1,25 @@
+\documentclass[a4paper,14pt,article]{memoir}
+\input{../common/wrapper}
+\input{data}
+
+\hypersetup{
+	pdftitle={\articleTitleEng},    % Заголовок
+	pdfauthor={\authorFullNameEng},  % Автор
+%	pdfkeywords={\keywordsEng},    % Ключевые слова
+	pdflang={ua},
+}
+
+\begin{document}
+	
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleEng}
+		\par\textbf{\authorFullNameEng}
+	\end{center}
+	
+	\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+	\par\fullcite{conf9}
+	\par\bigskip\textit{Cite this work (using APA):}
+	\par\fullciteapa{conf9} 
+	\includepdf[pages=1-3]{article}
+	
+\end{document}

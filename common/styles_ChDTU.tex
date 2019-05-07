@@ -1,0 +1,52 @@
+\usepackage{multicol}
+\geometry{a4paper,top=2.5cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\linespread{0.95}
+\renewcommand*{\thesection}{\arabic{section}}
+
+\setbeforesecskip{1\curtextsize}
+\setbeforesubsecskip{1\curtextsize}
+\setaftersecskip{1pt}
+\setaftersubsecskip{1pt}
+\setsecheadstyle{\normalfont\bfseries}
+\setsubsecheadstyle{\normalfont\bfseries}
+\sethangfrom{\setlength{\leftskip}{\parindent}\setlength{\rightskip}{ 0pt plus \hsize}\noindent #1}
+
+\setlength{\parskip}{0pt plus 0pt}
+
+\fussy
+\emergencystretch 1.0em
+\tolerance 200
+\clubpenalty=1000
+\widowpenalty=1000
+\brokenpenalty=1000
+
+\setFloatBlockFor{}
+
+\newcommand{\articlePrefix}{
+	\noindent\textbf{УДК \articleUDK}
+	\par\bigskip\noindent\textbf\authorNameUkr, \authorPositionUkr, \authorInstitutionUkr, \authorInstitutionAddressUkr, \authorEmail
+	\begin{center}
+		\textbf{\MakeUppercase\articleTitleUkr}
+	\end{center}
+	
+	\par\textit{\annotationUkr}
+	\par\textit{\titleKeywordsUkr: \keywordsUkr}
+	
+	\par\bigskip\noindent\textbf\authorNameEng, \authorPositionEng, \authorInstitutionEng, \authorInstitutionAddressEng, \authorEmail
+	\begin{center}
+		\textbf{\MakeUppercase\articleTitleEng}
+	\end{center}
+	\begin{multicols}{2}
+}
+
+%\EnableTranslatedBibCategory
+
+\newcommand{\articlePostfix}{
+	\end{multicols}
+%	\printbibliography[category=orig,heading=subbibliography,title={Список літератури}]
+%	\printbibliographyapa[category=eng,resetnumbers=true,heading=subbibliography,title={Reference}]
+	\insertbibliofull[Список літератури]
+	\insertbiblioapa
+	\par\textit{\bigskip\annotationEng}
+	\par\textit{\titleKeywordsEng: \keywordsEng}
+}

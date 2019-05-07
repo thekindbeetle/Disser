@@ -15,6 +15,7 @@
 
 \RequirePackage{etoolbox}[2015/08/02]               % Для продвинутой проверки разных условий
 \usepackage{xpatch}
+\usepackage{silence}
 
 %%% Поля и разметка страницы %%%
 \usepackage{pdflscape}                              % Для включения альбомных страниц
@@ -39,7 +40,7 @@
 
 %%% Кодировки и шрифты %%%
 \ifxetexorluatex
-    \usepackage{polyglossia}[2014/05/21]            % Поддержка многоязычности (fontspec подгружается автоматически)
+    \usepackage{polyglossia}[2018/04/07]            % Поддержка многоязычности (fontspec подгружается автоматически)
 \else
    %%% Решение проблемы копирования текста в буфер кракозябрами
     \ifnumequal{\value{usealtfont}}{0}{}{
@@ -127,3 +128,5 @@
 %%% Цитата, не приводимая в автореферате:
 % возможно, актуальна только для biblatex
 %\newcommand{\citeinsynopsis}[1]{\ifsynopsis\else ~\cite{#1} \fi}
+
+\usepackage{pbox}

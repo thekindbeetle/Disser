@@ -1,6 +1,9 @@
 %%% Реализация библиографии пакетами biblatex и biblatex-gost с использованием движка biber %%%
 
-\usepackage{csquotes} % biblatex рекомендует его подключать. Пакет для оформления сложных блоков цитирования.
+
+\WarningFilter{biblatex-gost}{You set maxbibnames or maxcitenames}
+
+\usepackage[autostyle=try]{csquotes} % biblatex рекомендует его подключать. Пакет для оформления сложных блоков цитирования.
 %%% Загрузка пакета с основными настройками %%%
 \makeatletter
 \ifnumequal{\value{draft}}{0}{% Чистовик
@@ -14,7 +17,7 @@ language=autobib,% получение языка из babel/polyglossia, default
 autolang=other,% многоязычная библиография
 clearlang=true,% внутренний сброс поля language, если он совпадает с языком из babel/polyglossia
 defernumbers=true,% нумерация проставляется после двух компиляций, зато позволяет выцеплять библиографию по ключевым словам и нумеровать не из большего списка
-sortcites=true,% сортировать номера затекстовых ссылок при цитировании (если в квадратных скобках несколько ссылок, то отображаться будут отсортированно, а не абы как)
+%sortcites=true,% сортировать номера затекстовых ссылок при цитировании (если в квадратных скобках несколько ссылок, то отображаться будут отсортированно, а не абы как)
 %doi=false,% Показывать или нет ссылки на DOI
 isbn=false,% Показывать или нет ISBN, ISSN, ISRN
 %movenames=false,
@@ -33,6 +36,8 @@ sorting=none,% настройка сортировки списка литера
 ]{biblatex}[2016/09/17]%
 }
 \makeatother
+
+\DeclareLanguageMapping{ukrainian}{../biblio/ukrainian}
 
 \ifnumgreater{\value{usefootcite}}{0}{
     \ExecuteBibliographyOptions{autocite=footnote}
@@ -156,14 +161,18 @@ sorting=none,% настройка сортировки списка литера
 %            final]
 %            \step[fieldset=media, null]
 %        }
-\map{
-	\step[fieldsource=year, final]
-	\step[fieldset=pubstate, null]
-}
-\map{
-	\step[fieldsource=date, final]
-	\step[fieldset=pubstate, null]
-}                        
+		\map{
+			\step[fieldsource=year, final]
+			\step[fieldset=pubstate, null]
+		}
+		\map{
+			\step[fieldsource=date, final]
+			\step[fieldset=pubstate, null]
+		}     
+		\map{% стираем значения полей url если есть doi
+			\step[fieldsource=doi, final]
+			\step[fieldset=url, null]
+		}                       
     }
 }
 
@@ -239,7 +248,7 @@ sorting=none,% настройка сортировки списка литера
 \DefineBibliographyStrings{english}{%
     urlfrom = {Mode of access}
 }
-\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\space\url{#1}}
+\DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\space\href{#1}{\nolinkurl{\thefield{urlraw}}}}
 
 \DefineBibliographyStrings{english}{%
     mediatext = {text},
@@ -449,6 +458,18 @@ sorting=none,% настройка сортировки списка литера
 \makeatother
 \defbibheading{countauthornotvak}{}
 
+\DeclareBibliographyCategory{biblioauthoreng}
+\newtotcounter{citeauthoreng}
+\makeatletter
+\defbibenvironment{countauthoreng} %Env of bibliography
+{\setcounter{citeauthoreng}{0}%
+	\renewcommand{\blx@driver}[1]{}%
+} %what is doing at the beginining of bibliography. In your case it's : a. Reset counter b. Say to print nothing when a entry is tested.
+{} %Здесь то, что будет выводиться командой \printbibliography. Обойдёмся без \theciteauthoreng в нашей реализации
+{\stepcounter{citeauthoreng}} %What is printing / executed at each entry.
+\makeatother
+\defbibheading{countauthoreng}{}
+
 \newtotcounter{citeauthorconf}
 \makeatletter
 \defbibenvironment{countauthorconf} %Env of bibliography
@@ -472,7 +493,7 @@ sorting=none,% настройка сортировки списка литера
 \defbibheading{countauthor}{}
 
 \defbibheading{authorpublications}[\authorbibtitle]{\section*{#1}}
-\defbibheading{pubsubgroup}{\noindent\textbf{#1}}
+\defbibheading{pubsubgroup}{\centering\textit{#1}}
 \defbibheading{otherpublications}{\section*{#1}}
 
 
@@ -486,20 +507,40 @@ sorting=none,% настройка сортировки списка литера
 \printbibliography[heading=authorpublications,keyword=biblioauthor,section=0,title=\authorbibtitle]
 }
 \newcommand*{\insertbiblioauthor}{
-\printbibliography[heading=authorpublications,keyword=biblioauthor,section=1,title=\authorbibtitle]
+\printbibliography[heading=authorpublications,section=1,title=\authorbibtitle]
 }
 \newcommand*{\insertbiblioauthorimportant}{
 \printbibliography[heading=authorpublications,keyword=biblioauthor,section=2,title={Наиболее значимые \MakeLowercase{\protect\authorbibtitle{}}}]
 }
 \newcommand*{\insertbiblioauthorgrouped}{% Заготовка для вывода сгруппированных печатных работ автора. Порядок нумерации определяется в соответствующих счетчиках внутри окружения refsection в файле common/characteristic.tex
 \section*{\authorbibtitle}
-\printbibliography[heading=pubsubgroup, keyword=biblioauthorvak, section=1,title=\vakbibtitle]%
+\printbibliography[heading=pubsubgroup, category=biblioauthoreng, section=1,title=\engbibtitle]%
+\printbibliography[heading=pubsubgroup, keyword=biblioauthorvak, notcategory=biblioauthoreng, section=1,title=\vakbibtitle]%
+\printbibliography[heading=pubsubgroup, keyword=biblioauthornotvak, notcategory=biblioauthoreng, section=1,title=\notvakbibtitle]%
 \printbibliography[heading=pubsubgroup, keyword=biblioauthorconf, section=1,title=\confbibtitle]%
-\printbibliography[heading=pubsubgroup, keyword=biblioauthornotvak, section=1,title=\notvakbibtitle]%
 }
 
 \newcommand*{\insertbiblioother}{
 \printbibliography[heading=otherpublications,keyword=biblioother]
 }
 
-%\input{../biblio/apa}
+\makeatletter
+\newcommand{\EnableTranslatedBibCategory}{
+	\WarningFilter{biblatex}{The following entry could not be found}
+	\WarningFilter{biblatex}{citation 'eng_}
+	\DeclareBibliographyCategory{orig}
+	\DeclareBibliographyCategory{eng}
+	\AtEveryCitekey{%
+		\addtocategory{orig}{\thefield{entrykey}}%
+		\nocite{eng_\thefield{entrykey}}%
+		\blx@ifdata{eng_\thefield{entrykey}}%
+		{\addtocategory{eng}{eng_\thefield{entrykey}}}%
+		{\addtocategory{eng}{\thefield{entrykey}}}}}
+\makeatother
+
+\input{../biblio/apa}
+
+
+
+%\renewcommand{\printbibliography}[1][]{}
+%\renewcommand{\fullcite}[1]{}

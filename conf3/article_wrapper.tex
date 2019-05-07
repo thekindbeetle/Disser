@@ -1,36 +1,27 @@
-\documentclass[a4paper,14pt]{extarticle}
-\input{../common/packages}
-\input{../Dissertation/setup}
-%\input{data}
-\input{../common/styles}
-\input{../biblio/bibliopreamble}
-\usepackage{pdfpages}
-
+\documentclass[a4paper,14pt,article]{memoir}
+\input{../common/wrapper}
 
 \newcommand{\articleTitleUkr}{
-Попередня оцiнка корисностi ознак в задачах моделювання при великих розмiрностях}
-\newcommand{\authorFullNameUkr}{Найдьонов Іван Михайлович}
-
+	Попередня оцiнка корисностi ознак в задачах моделювання при великих розмiрностях}
 
 \hypersetup{
-    pdftitle={\articleTitleUkr},    % Заголовок
-    pdfauthor={\authorFullNameUkr},  % Автор
-%    pdfkeywords={\keywordsUkr},    % Ключевые слова
-    pdflang={ua},
+	pdftitle={\articleTitleUkr},    % Заголовок
+	pdfauthor={\authorFullNameUkr},  % Автор
+	%	pdfkeywords={\keywordsUkr},    % Ключевые слова
+	pdflang={ua},
 }
 
 \begin{document}
-
-\pagenumbering{gobble}
-\begin{center}\bf
-\par\MakeUppercase\articleTitleUkr
-\par\authorFullNameUkr
-\end{center}
-
-\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
-\par\fullcite{conf3}
-\par\bigskip\textit{Cite this work (using APA):}
-\par\fullciteapa{conf3eng}
-\includepdf[pages=469]{sait2013ebook}
-
+	
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleUkr}
+		\par\textbf{\authorFullNameUkr}
+	\end{center}
+	
+	\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+	\par\fullcite{conf3}
+	\par\bigskip\textit{Cite this work (using APA):}
+	\par\fullciteapa{eng_conf3}
+	\includepdf[pages=469]{sait2013ebook}
+	
 \end{document}

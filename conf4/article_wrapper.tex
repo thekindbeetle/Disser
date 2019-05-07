@@ -1,36 +1,27 @@
-\documentclass[a4paper,14pt]{extarticle}
-\input{../common/packages}
-\input{../Dissertation/setup}
-%\input{data}
-\input{../common/styles}
-\input{../biblio/bibliopreamble}
-\usepackage{pdfpages}
-
+\documentclass[a4paper,14pt,article]{memoir}
+\input{../common/wrapper}
 
 \newcommand{\articleTitleUkr}{
-Пiдтримка процесу запам’ятовування за допомогою програми для електронної книги}
-\newcommand{\authorFullNameUkr}{Найдьонов Іван Михайлович}
-
+	Пiдтримка процесу запам’ятовування за допомогою програми для електронної книги}
 
 \hypersetup{
-    pdftitle={\articleTitleUkr},    % Заголовок
-    pdfauthor={\authorFullNameUkr},  % Автор
-%    pdfkeywords={\keywordsUkr},    % Ключевые слова
-    pdflang={ua},
+	pdftitle={\articleTitleUkr},    % Заголовок
+	pdfauthor={\authorFullNameUkr},  % Автор
+	%	pdfkeywords={\keywordsUkr},    % Ключевые слова
+	pdflang={ua},
 }
 
 \begin{document}
-
-\pagenumbering{gobble}
-\begin{center}\bf
-\par\MakeUppercase\articleTitleUkr
-\par\authorFullNameUkr
-\end{center}
-
-\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
-\par\fullcite{conf4}
-\par\bigskip\textit{Cite this work (using APA):}
-\par\fullciteapa{conf4eng}
-\includepdf[pages=470]{sait2013ebook}
-
+	
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleUkr}
+		\par\textbf{\authorFullNameUkr}
+	\end{center}
+	
+	\par\bigskip\textit{Послатися на цю роботу (за вимогами ВАК --- ДСТУ ГОСТ 7.1:2006):}
+	\par\fullcite{conf4}
+	\par\bigskip\textit{Cite this work (using APA):}
+	\par\fullciteapa{eng_conf4}
+	\includepdf[pages=470]{sait2013ebook}
+	
 \end{document}

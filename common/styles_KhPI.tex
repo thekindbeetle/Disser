@@ -1,0 +1,61 @@
+\geometry{a4paper,top=3cm,bottom=2.5cm,left=2cm,right=2cm}
+\linespread{0.97}
+\setlength{\parindent}{1cm}
+\renewcommand*{\thesection}{\arabic{section}}
+
+\newcommand{\articlePrefix}{
+	\begin{large}
+		\noindent\textbf{УДК \articleUDK}
+		\bigskip\par\nopagebreak\centering\textbf{\MakeUppercase\articleTitleUkr}
+		\par\ignorespacesafterend\bigskip\fontsize{11pt}{12pt}\textbf{\MakeUppercase\authorNameUkr}\textsuperscript{1*}
+	\end{large}
+	\bigskip
+	\begin{small}
+		\itshape
+		\par\textsuperscript{1} \authorDepartmentUkr, \authorInstitutionUkr, \authorInstitutionCityUkr, \MakeUppercase\authorInstitutionCountryUkr
+		\par\textsuperscript{*}email: \authorEmail
+		\bigskip
+		\par\noindent\textbf{\MakeUppercase\titleAnnotationUkr} \annotationUkr
+		\par\noindent\textbf\titleKeywordsUkr: \keywordsUkr
+	\end{small}
+	\begin{large}
+		\bigskip\par\nopagebreak\centering\textbf{\MakeUppercase\articleTitleEng}
+		\bigskip\par\indent\ignorespacesafterend\fontsize{11pt}{12pt}\textbf{\MakeUppercase\authorNameEng}\textsuperscript{1}
+	\end{large}
+	\bigskip
+	\begin{small}
+		\itshape
+		\par\textsuperscript{1} \authorDepartmentEng, \authorInstitutionEng, \authorInstitutionCityEng, \MakeUppercase\authorInstitutionCountryEng
+		\bigskip
+		\par\noindent\textbf{\MakeUppercase\titleAnnotationEng} \annotationEng
+		\par\noindent\textbf\titleKeywordsEng: \keywordsEng
+	\end{small}
+	\bigskip
+	\twocolumn
+}
+
+\newcommand{\articlePostfix}{
+	\small
+	\insertbibliofull[Список літератури]
+	\insertbiblioapa
+	\onecolumn
+	\begin{small}
+		\begin{center}
+			\textbf{Сведения об авторах (About authors)}
+		\end{center}
+		\par\textbf{\authorFullNameUkr} -- \authorInstitutionUkr, \authorPositionUkr, \authorDepartmentUkr; \authorInstitutionCityUkr, \authorInstitutionCountryUkr; ORCID: \authorORCID; e-mail: \authorEmail
+		\par\textbf{\authorFullNameEng} -- \authorInstitutionEng, \authorPositionEng, \authorDepartmentEng; \authorInstitutionCityEng, \authorInstitutionCountryEng; ORCID: \authorORCID; e-mail: \authorEmail
+		\bigskip
+		\par\textit{Будь ласка, посилайтесь на цю статтю наступним чином:}
+		\par\textbf{\authorLastNameUkr, \authorInitialsUkr} \articleTitleUkr / \textbf{\authorNameUkr} // \textit{Вісник НТУ «ХПІ», Серія: Нові рішення в сучасних технологіях.} – Харків: НТУ «ХПІ». – 2018. – \todo{№ 42 (1214). – С. хх-хх. – doi:10.20998/2413-4295.2018.12.01.}
+		\bigskip
+		\par\textit{Please cite this article as:}
+		\par\textbf{\authorLastNameEng, \authorInitialsEng} \articleTitleEng. \textit{Bulletin of NTU "KhPI". Series: New solutions in modern technologies.} – Kharkiv: NTU "KhPI", 2018, \todo{42 (1214), xx–xx, doi:10.20998/2413-4295.2018.12.01.}
+		\bigskip
+		\par\textit{Пожалуйста, ссылайтесь на эту статью следующим образом:}
+		\par\textbf{\authorLastNameRus, \authorInitialsRus} \articleTitleRus / \textbf{\authorNameRus} // \textit{Вестник НТУ «ХПИ», Серия: Новые решения в современных технологиях.} – Харьков: НТУ «ХПИ». – 2018. – \todo{№ 44 (1214). – С. хх-хх.  – doi:10.20998/2413-4295.2018.12.01. }
+		\bigskip
+		\par\noindent\textbf{\MakeUppercase\titleAnnotationRus} \annotationRus
+		\par\noindent\textbf\titleKeywordsRus: \keywordsRus
+	\end{small}
+}

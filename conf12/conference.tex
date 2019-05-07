@@ -1,0 +1,168 @@
+\documentclass[conference]{IEEEtran}
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{filecontents}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\bibliographystyle{IEEEtran}
+\begin{filecontents}{cites.bib}
+@book{b1, author = {Ulrich Beck and Anthony Giddens and Scott Lash}, title = {Reflexive Modernization: Politics, Tradition and Aesthetics in the Modern Social Order}, year = {1994}, numpages = {228}}
+@book{b2, author = {A. Giddens}, title = {Central problems in social theory: Action structure and contradiction in social analysis}, year = {1979}, address = {L.}, publisher = {Macmillan press}, numpages = {294}}
+@article{b3, author = {N. Hatton and D. Smith}, title = {Reflection in teacher education : towards definition and implementation}, journal = {Teaching and teacher education}, year = {1995}, volume = {11}, number = {1}, pages = {33--49}}
+@inproceedings{b4, author = {L. Naidenova and M. Naidenov}, title = {Category ”group reflexion” and group reflexion approach}, booktitle = {Medical psychology and psychological correction: Actual problems of modern psychology. Materials. II International readings}, year = {1995}, pages = {126--127}, url = {http://iris-psy.org.ua/publ/tz\_0121\_a.pdf}, address = {Kharkiv}, publisher = {Interior Affairs University}}
+@incollection{b5, author = {M. I. Naydonov and L. A. Naydonova}, title = {Conceptualizing the levels of reflection on reality in line with the professional qualifications framework: group-reflexive approach}, booktitle = {Psychology of the personality of a professional: a collection of articles}, year = {2017}, pages = {33--44}, url = {http://iris-psy.org.ua/publ/st\_0143.pdf}, address = {K.}, publisher = {Pedagogical thought}, note = {in ukrainian}}
+@book{b6, author = {Mykhaylo Naydonov}, title = {Group reflection in creative tasks solving on condition of varying degrees of readiness for intellectual work : PhD dissertation : 19.00.01, 19.00.03}, year = {1989}, address = {K.}, publisher = {NAES of Ukraine, Institute of Psychology by G. S. Kostiuk}, numpages = {239}, url = {http://iris-psy.org.ua/publ/000-163.pdf}, note = {in ukrainian}}
+@book{b7, author = {Mykhaylo Naydonov}, title = {Formation of reflexive management in organizations : dissertation of the doctor of psychological science : 19.00.05}, year = {2010}, address = {K.}, publisher = {NAES of Ukraine, Institute of Psychology by G. S. Kostiuk}, numpages = {434}, url = {http://iris-psy.org.ua/publ/DDM.pdf}, note = {in ukrainian}}
+@book{b8, author = {Mykhaylo І. Naydonov}, title = {Formation of reflexive management in organizations}, year = {2008}, address = {K.}, publisher = {Millennium}, numpages = {484}, url = {http://iris-psy.org.ua/publ/fruo.pdf}, note = {in ukrainian}}
+@incollection{b9, author = {Mykhaylo I. Naydonov}, title = {Reflective interview as a means of monitoring and expertise of  the conflict states of participants in mass protests}, booktitle = {Conflict expertise: theory and methods / Institute of Pedagogy and Psychology of Vocational Education of APS of Ukraine, Society of Conflictologists of Ukraine; Issue 4, Current Problems of Conflict Expertises}, year = {2005}, pages = {133--137}, url = {http://iris-psy.org.ua/publ/st\_0061.pdf}, note = {in ukrainian}}
+@book{b10, author = {M. I. Naydonov and L. V. Hryhorovska and L. A. Naydonova}, title = {Socio-psychological factors of the prestige of professions: preparing young people for active self-realization on the modern labor market : e-learning handbook with applications for students of higher educational establishments}, year = {2014}, address = {K., Kirovograd}, publisher = {Imex-LTD}, numpages = {515}, url = {http: //iris-psy.org.ua/publ/spfop\&appendix.pdf}, note = {in ukrainian}}
+@book{b11, author = {M. I. Naydonov}, title = {The conception of group reflexion}, year = {1996}, address = {Zaporizhzhia}, publisher = {IRIS}, numpages = {140}, url = {http://iris-psy.org.ua/publ/KGR.pdf}, note = {in ukrainian}}
+@inproceedings{b12, author = {M. Naydonov and L. Grygorovska and L. Naydonova}, title = {The vision of economic and political realities in group-reflexive approach}, booktitle = {Political and Economic Self-Constitution: Citizenship Identity and Education : Proceedings of the V international scientific and practical seminar, Corinth, May 26th, 2017}, year = {2017}, pages = {73--78}, url = {http://www.epia.ro/files/proceedings_corinth_2017.pdf#page=74}, address = {Kyiv}, publisher = {Tipogr. ”Advance”}}
+@book{b13, author = {M.I. Naydonov and L.V. Grygorovska}, title = {Monitoring of factors of professional self-realization in conditions of introduction of the National qualification framework: Dynamic reference bulletin}, year = {2015}, address = {K.}, publisher = {ISPP NAEN of Ukraine}, numpages = {126}, url = {http://profprestige.org.ua/publ/Inf\_bul\_2015.pdf}, note = {in ukrainian}}
+@book{b14, author = {Lyubov M. Naydonova}, title = {Group reflection as a mechanism for the reconstruction of social attitudes : PhD dissertation : 19.00.05}, year = {2014}, address = {K.}, publisher = {NAES of Ukraine, Institute of Psychology by G. S. Kostiuk}, numpages = {245}, note = {in ukrainian}}
+@article{b15, author = {M. I. Naydonov and L. A. Naydonova}, title = {Conscious and Systematic Self-regulation of the Subjects of Socialization: Groupreflexive Approach}, journal = {International Journal of Education \& Development}, year = {2017}, volume = {3}, pages = {25--38}, url = {http://www.uaped.com/files/International-Journal-of-Education---Development.--2017-----3------.pdf\#page=25}, note = {in ukrainian}}
+@book{b16, author = {Donald A. Schon}, title = {The reflective practitioner: how professionals think in action}, year = {1983}, publisher = {Basic Books}, numpages = {374}}
+@article{b17, author = {S. Yu. Stepanov and I. N. Semenov}, title = {Modern Problems of Creative Reflection and Designingproach}, journal = {Questions of psychology}, year = {1983}, number = {5}, pages = {162--164}, note = {in ukrainian}}
+@online{b18, title = {The Law of Ukraine on Education (Adoption on 05.09.2017. Entry into force on 28.09.2017)}, url = {http://osvita.ua/legislation/law/2231}, note = {in ukrainian}}
+@online{b19, title = {Classifier of occupations DK 003 : 2005}, url = {http://www.ukrstat.gov.ua}, note = {in ukrainian}}
+@online{b20, title = {European Qualifications Framework (EQF)}, url = {https://ec.europa.eu/ploteus/content/descriptors-page}}
+@online{b21, title = {Approval of the National Qualifications Framework. Resolution of the Cabinet of Ministers of Ukraine dated November 23, 2011 № 1341}, url = {http://zakon0.rada.gov.ua/laws/show/1341-2011-\%D0\%BF}, note = {in ukrainian}}
+@patent{b22, author = {Ivan Naydonov and Mykhaylo Naydonov and Lyubov A. Naydonova and Liubov Grygorovska}, title = {Electronic Bulletin <<Monitoring of Professional Self-Execution in the Implementation of the National Qualifications Framework>> (Bulletin Generation, NQF): computer program}, number = {64077}, date = {2016-02-12}, location = {ukraine}, type = {copyright certificate}, note = {in ukrainian}}
+@patent{b23, author = {Ivan Naydonov and Mykhaylo Naydonov and Liubov Grygorovska}, title = {Performance management of the survey task specification: computer program}, number = {64080}, date = {2016-02-12}, location = {ukraine}, type = {copyright certificate}, note = {in ukrainian}}
+@book{b24, author = {Gerard Egan and Michael Cowan}, title = {People in Systems: A Model for Development in the Human-service Proffesions and Education}, year = {1980}, address = {Monterey, CA}, publisher = {Brooks/Cole}}
+@article{b25, author = {Gottfredson, L. S.}, title = {Circumscription and compromise: A developmental theory of occupational aspirations}, journal = {Journal of Counseling Psychology}, year = {1981}, number = {28}, pages = {545--579}}
+@incollection{b26, author = {Super, D. E.}, title = {A life-span, life-space approach to career development}, booktitle = {Career choice and development: Applying contemporary theories to practice (2nd ed.)}, year = {1990}, pages = {197--262}}
+@article{b27, author = {Robert G. L. Pryor and Jim Bright}, title = {The Chaos Theory of Careers}, journal = {Australian Journal of Career Development}, year = {2003}, volume = {12}, issue = {3}, pages = {12--20}, doi = {10.1177/103841620301200304}}
+@article{b28, author = {Robert G. L. Pryor and Jim Bright}, title = {The Chaos Theory of Careers (CTC): Ten years on and only just begun}, journal = {Australian Journal of Career Development}, year = {2014}, volume = {23}, issue = {4}, pages = {4--12}, doi = {10.1177/1038416213518506}}
+\end{filecontents}
+\begin{document}
+
+\title{Reflexive competitiveness as a principle of professional engineering education}
+
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Mykhaylo Naydonov}
+	\IEEEauthorblockA{\textit{Institute of Reflective Investigations and Specialization} \\
+		Kyiv, Ukraine \\
+		iris\_psy@ukr.net}
+	\and
+	\IEEEauthorblockN{2\textsuperscript{nd} Lyubov A. Naydonova}
+	\IEEEauthorblockA{\textit{Institute of Social and Political Psychology} \\
+		\textit{National Academy of Educational Sciences}\\
+		Kyiv, Ukraine \\
+		mediasicolo@gmail.com}
+	\and
+	\IEEEauthorblockN{3\textsuperscript{rd} Ivan Naydonov}
+	\IEEEauthorblockA{\textit{The Department of Technology Management} \\
+		\textit{Taras Shevchenko National University of Kyiv}\\
+		Kyiv, Ukraine \\
+		samogot@gmail.com}
+	\and
+	\IEEEauthorblockN{4\textsuperscript{th} Liubov Grygorovska}
+	\IEEEauthorblockA{\textit{Institute of Social and Political Psychology} \\
+		\textit{National Academy of Educational Sciences}\\
+		Kyiv, Ukraine \\
+		grigorovskaya\_lv@ukr.net}
+	\and
+	\IEEEauthorblockN{5\textsuperscript{th} Lyubov M. Naydonova}
+	\IEEEauthorblockA{\textit{Institute of Gifted Child} \\
+		\textit{National Academy of Educational Sciences}\\
+		Kyiv, Ukraine \\
+		lyunster@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+The competitiveness of an engineer in the system of professional education and self-education is considered as providing professional opportunities to reflect the system of their own competences on different scales of their comparison: in group, strata, society. In these scales, the principle of reflexive competitive performance is presented as social and technical technology provided with regulatory and programmatic. At the level of society, the basis for comparing competences can be the public opinion that can be prepared at the rational and emotional levels. It is shown that reflection differentiates direct and indirect indicators of competitiveness. The subjective result of the accumulation of competence of the market participant through the implementation of the value of openness to assessing himself as a resource from different positions on the scale of accumulated novelty at alienation becomes objective competitiveness.
+\end{abstract}
+
+\begin{IEEEkeywords}
+group reflection,
+competencies,
+monitoring of public opinion,
+national qualifications framework,
+prestige of professions,
+professional education,
+self-education,
+career guidance
+\end{IEEEkeywords}
+
+\section{Introduction}
+The technological progress of the last decades and the rapid development of robotic science are making and will continue to make the labor market more and more competitive. Determined by the noticeable shifts in the structure of professions that took place during one human generation, the predicted decrease in the economy’s demand for human resources designates new factors of success of man’s professional self-constitution: an ability to respond quickly and creatively to changes, to act in uncertain situations, and an ability to develop oneself and keep learning throughout the entire course of one’s life. The promotion of competitiveness becomes the main assignment of man’s professional training. However, competitiveness and preparedness must be civilized, i.e. balanced by preparedness for matched cooperation, realization of commonality, and the promotion of sustainable development for the entire labor market system.
+
+The requirements of the Law of Ukraine on Education \cite{b18} and the Resolution of the Cabinet of Ministers of Ukraine on the National Framework of Qualifications \cite{b21,b19} in accordance with world standards of qualifications \cite{b20}, emphasize the need for each person to have reflexive competence, which accompanies other competencies as the state and progress of the accumulation of components and as a perspective. Thus, the experience of a professional engineer must move from the semantic construct to the status of an advantage "for himself" in a comparable, accountable construct for alienation at every stage of career growth in competitive advancement. So from the perspective of self-education, the subject of learning should have a field of competency comparisons, which indicates the \textbf{actuality} of software development for using public opinion as a resource for self-education of the social strata of engineers by establishing their own place in a range of self-assessed qualities.
+
+For the self-education of engineers a model is proposed which is confirmed on the pre-professional audience. At the same time, there is a reasonable assumption, based on the use of flexible development methodologies (Agile, Scrum) by software engineers, that this profesional strata can quickly enter into the comparative space.
+
+In this case, the resource of self-education through the field of comparisons is supported by a number of software systems \cite{b22,b23}, which provide both the process of accumulating information on the components of competencies and parts of experience, and management of the comparison system by the organizer (teacher). Thus, a number of software systems represent a complex of information and education services and access to it.
+
+That is why in psychological science and the practical training of a successful professional, a clear trend of intensification of the reflexive component is observed from the beginning of the 1980s \cite{b16,b3,b17}. The principle of reflexivity can be considered as the principle of constant development, reflexive modernization \cite{b1,b2}, which generally corresponds with the contemporary state of the labor market and the growth prospects of its competitiveness. However, in the general process of providing the successful professional self-constitution of a person, a sphere of its realization shall not only be in the stage of professional training in relation to which it’s mostly used, but also other stages of the process of professional self-constitution – more early stage of prevocational training (the stage of selecting one’s first profession) and the stage of career development and occupation for the entire course of one’s life. 
+
+\section{The problem}
+
+The problem lies in the non-conformance of traditional approaches in man’s training for professional self-constitution to the demands and challenges of the contemporary labor market and contemporary trends in a specialist’s training. In the increasingly widespread paradigm of “personal human-profession relevance”, or “input relevance (fit)”, stress is traditionally placed on promoting occupational guidance for senior pupils, mostly on the earlier stages of developing a professional career and creating integrated network tools of professional diagnostics to help in selecting a profession. It does not correspond with the contemporary self-regulatory mechanisms of the labor market, so it cannot serve the function of ensuring the successful professional development of an individual. 
+
+\section{Objectives}
+Taking into account what was said above, we can state that there is a need to implement new principles in a person’s training for successful professional self-constitution. In combining the two aforesaid theses (the growing competitiveness of the labor market imposing new demands for man’s competitiveness and the dominating trend of strengthening the reflexive component in professional training), we can speak of reflexive competitiveness as a key condition for successful professional self-constitution. Thus, the \textbf{purpose} of this notification is to specify the \textbf{principle of reflexive competitiveness} as the new principle of man’s training for successful professional self-constitution in the contemporary labor market. 
+
+\section{Results and Discussion}
+
+\textit{Reflexive competitiveness} – it’s quality of the labor market’s subject which is determined by such a subject’s having the benefits of one who bears reflexive competence – the capability to act in new unusual problematic situations in which there is conflictness (with a varying degree and volume of uncertainty), the ability to rethink and discover methods of changing the situation that are relevant for the new conditions. While making decisions aimed at competition in a certain situation, the Subject simultaneously reflects the role of his/her own limitations and resources, mirrors and creates new narratives of changes in him/herself and in the situation, and predicts development trends of the entire system of different subjects’ interaction.
+
+At the level of mechanism, the reflexive competence corresponds with maximum levels of self-mobilization of conceptual indicators \cite{b6,b11,b12,b7,b8,b5} characterizing the involvement of different types of reflection. From the practical procedure-oriented point of view – it is determined (grasped) by the sum of the intermediate uppermost levels of demonstrating the positions of competence in the reflexive circle of discussion \cite{b8}.
+
+\textit{The principle of reflexive competitiveness} in man’s training for professional self-constitution means the subordination of this process to some assignments: man’s gaining the capability to realize and knowingly underline his own qualities to transform them into an advantage; to stand against demotivating views of him/herself as being incapable, based on the possibility, provided by the frame of qualifications, to gain the necessary level of qualification at another time (in this way, the problem of capabilities arises – the basis of the paradigm of “input relevance” in professional orientation and professional training); to stand against evaluations by accumulating competences which, at the time, haven’t reached the criterion level of development; to plan points (stages) of their victories: recognition of benefits while recruiting, entering into agreements on zones of professional development and professional accomplishments, agreeing upon criteria of labor efficiency etc.
+
+Practical realization of the principle bases on the vision that the competence exists in the group of reflexive training workshop \cite{b12} where competences acquire “materiality” and become obvious and widened due to the need to correspond with a challenge of one level or another all the time. Movements in a group according to a shown competence with a physical change of location in the circle of discussion, acquiring preferences in this circle give a human possibility to visualize and materialize one’s own manner of competences by comparing oneself with others. The openness of the individual for an evaluation determining his/her level of competence, for acceptance of a task of using the results of the evaluation to accumulate the qualities which turned out to be diminished at the moment of evaluation and so forth are directions of such a practical realization of the principle. A system of representative reflection \cite{b12}  provides the individual with the possibility to compare him/herself with others at the state level (level of communities and national level) and to conduct a comparison of grouped subjects with each other.
+
+We described the operation of the principle of reflexive competitiveness from positions of internal assessment by an individual him/herself as a labor resource. From the side of the external evaluator (recruiter, manager), this principle also widens the system of thinking with due account of one’s own place in the system: guides towards the evaluation of not only the present state of competence of a potential (applicant) or real employee, but also a perspective on its accumulation at a particular time, making a decision about a definite applicant not on the basis of absolute values of his/her benefits, but benefits in relation to the capabilities and special characteristics of the employer company (present state and prospects of development for providing career progress, the demand (or its absence) for team work, distinctions of management style, etc.); creates a sense of one’s own activity in the context of the development of the labor market in general.
+
+Thus, on the basis of the principle of reflexive competitiveness, a new approach in providing professional self-constitution may be developed – the approach of “cumulative relevance in a reflexive environment”.
+
+Stages of the principle implementation.
+
+\begin{enumerate}
+	\item \textit{Theoretical analysis of professional selection concepts}. The suggestion of the principle of reflexive competitiveness bases itself upon dynamics of changes in approaches to man’s training for professional development and career growth, which has been observed in foreign scientific thought since the 1960s. The theories of “personal human-profession relevance” which were popular until then were replaced with \textbf{system} theories of \textbf{career development} that took into account social environment \cite{b24,b25}, with cyclical theory of professional selection that considered complicacies in career development \cite{b26}, and finally, with theories of \textbf{chaos} in career development that attracted attention to small factors in bifurcation points (“butterfly effect”, \cite{b27,b28}).
+	
+	The theory of occupational prestige by Donald J. Treiman (1976) may be considered a noticeable event in the development of career growth theories and approaches to providing professional development. It marked a shift away from linear determinism and individualisticity (personal relevance to a profession).
+	
+	However, in the former Soviet states, a vain and simplified comprehension of prestige value was formed as some halo: it has a noticeable influence on a subject in selecting a profession but is in fact not important and its real meaning is not realized. And we are promoting the idea that the social mechanism of occupational prestige with an orientation on the hierarchy of its social meaning at its base not only helps in deriving power, credentials and acquiring self-esteem, but also influences the professional development of the individual throughout his/her entire professional life.
+	
+	\item \textit{Operationalization of the principle on the basis of \textbf{the group reflexivity theory}}. \cite{b4,b6,b11,b10,b7,b9,b15}. Group reflection is defined by us as a multilevel intra- and inter-psychic system of rethinking of contents, senses, and resources. The levels of reflexivity – reflecting (separating), understanding (realizing) and converting (constructing) – are specialized means of penetration into a problem and its transformation and dismantling, each of which has its relevance in a discourse. And interaction of means of penetration into the problem and its dismantling precisely provides the most integral penetration into the essence of the phenomenon.
+
+	\item \textit{Empirical studies at the local level}. The empirical grounds of the group reflexivity theory were formed by empirical studies of discursive thinking conducted in the format of solving small creative quick-wittedness tasks by groups of test subjects consisting of 3-4 persons each. The second level of the reflexivity study is a practical realization of theory provisions in technology developed on its basis of reflexive creative training practicum, which created the possibility to increase the number of persons who simultaneously take part in a reflexive event (both subjects and testees at the same time) to up to 50.
+	 
+	\item \textit{Empirical studies at the national level}. The third level is a study of reflexivity in large groups (thousands of people). For this purpose, a corresponding tool was created – a specialized interrogatory (diagnostic) module in which an idea of public welfare as a collaboration of researchers, respondents and direct performers (interviewers) was procedurally and technologically realized. The tool is secured by mechanisms which guarantee its reliability and the validity of data and allows both the rational and emotional component of thought to be explored. (It was used in monitoring public opinion in the last stages of the study where work with a web tool was organized through network of 60 schools in all 26 regions of Ukraine in cities, towns and villages for the representation of Ukrainian youth and the adult population (N = 2439). Free usage of the web resource is possible for future comparison with a random on-line survey (N > 12000)).
+
+	On the initial stages of the monitoring, a statement was revised that the perception of the labor market’s participants of the world of professions through the evaluation of their prestige value (found in the market economies) are a psychological component of regulating the labor market. A criterion of general and special was applied according to which the perception of the connection between the prestige value, competition and labor shortage is different in market and planned regulation.
+	
+	The received data demonstrate, firstly, that in Ukrainian sampling, there is at present a part of market participants who possess nonmarket beliefs about the hierarchy of qualification levels in the world of professions that they have inherited from a previous historical stage. Secondly, the monitoring data show that an orientation on professional self-constitution in youth is somehow different from the orientation of the adult population, i.e. previous generations, and correspond with market mechanisms to a greater extent: to a greater extent than adults, youth orientate themselves in profession selection orientated towards prestige value, revenue, career, and have better developed professional plans. At the same time, they continue to be a carrier of constrained stereotypes – regulators of the planned economy (such as, for example, “it’s necessary to select a profession once and for the entire life”), that carries a threat of noncompliance with the mechanism of professional selection, for the acquisition of dynamics of changes in the world of professions. The youth has a low awareness of the National Framework of Qualifications being implemented in Ukraine, inappropriate beliefs about requirements on different levels of qualifications, and show a trend of avoiding self-evaluation as a labor resource. Such phenomena require reflexive rethinking.
+	
+	To evaluate the development of the reflexive component of the environment, an index of the reflexive capacity of the environment of communication (RCEC) is created \cite{b10,b14,b9,b15,b13}. It is calculated as a sum of points according to two scales, each of which contains 4 questions (8 items in general) (compared to presentation – there are 5 and 10 respectively): \textit{How often do you discuss with your family members}: 1) feelings, 2) relationships, 3) knowledge, 4) experience; and \textit{Does it happen that you note in your reflections and talks new}: 1) feelings, 2) relationships, 3) knowledge, 4) experience. Each question is evaluated subjectively with 1 to 5 points: never – 1, seldom – 2, sometimes – 3, often – 4, very often – 5. Thus, the range of values of the RCEC index is – minimum 8, maximum 40 points.
+	
+	In general, the empirical data confirm that the level of the reflexive environment of communication correlates with positive market trends of professional self-constitution. Positive significant correlations of the values of the capacity of the reflexive environment with competitiveness and an understanding of qualifications demonstrate that: a correlation exists between how often children discuss reflexive topics in the closest environment with a large understanding and acceptance of levels of qualifications and readiness for competition. The reflexive environment is also related to progressive factors of evaluation of the prestige value of professions and the depth of professional development planning.
+	
+	\item \textit{Technologization of the principle of reflexive competitiveness}. The principle of reflexive competitiveness is taken as a basis of the representative reflexivity technology \cite{b12} It is based on a comparison of personal data with data of representative selection \cite{b12}. Its approbation (8 groups of pupils of senior school both from city/town and village schools in 5 regions of Ukraine with a total number of over 150 persons) demonstrated its efficacy with regard to launching a reflexive process of comprehension by study participants of their beliefs in the sphere of professional self-constitution. The questions of participants in the representative reflexive procedure concerning identified distinctions in data (“Why? (data are different)”, “Which data are “right”?, etc.) with further question contents going beyond the frames of their list suggested in the study serve as indicators of spreading the reflection.
+
+\end{enumerate}
+
+\section{Conclusion}
+
+Therefore, the proposed model of reflection in the pre-professional audience of self-education of the subject of learning, including in the engineering field, through the field of comparisons of their competences among its strata is possible, which allows conclusions to be drawn.
+
+\begin{enumerate}
+	\item Reflection differentiates direct indicators of competitiveness and indirect indicators. This implies the necessity to introduce the monitoring of direct indicators of competitiveness.
+	\item The application of the principle of reflexive competitiveness in the format whereby it is used in mass studies and the transformation of the approach to occupational guidance on the basis of the representative reflection theory provide positive results and thus reasons to evaluate the suggested principle of reflexive competitiveness as a promising one for promoting successful self-constitution in the contemporary labor market.
+	\item Efforts in the sphere of a person’s training for successful professional self-constitution shall be directed towards: the development of professional education as a reflexive process aimed at promoting the competitiveness of the individual; development of the reflexive environment of communication; implementation in the professional education of the group reflexive technologies according to the principle of reflexive competitiveness (accumulation of competence of the market participant as openness of oneself as a resource from different positions on the scale of accumulated newness), development of resource recommendations concerning evaluation; creation of the professional orientation system taking into account the condition and forecast of the regional labor market on the basis of psychological measurements for evaluating the prestige value of the world of professions.
+\end{enumerate}
+
+\bibliography{cites}
+
+\end{document}

@@ -590,7 +590,7 @@
 %\renewapao{abx@ffd@article@volume}{abx@ffd@*@volume}{\mkbibemph{\apanum{#1}}}
 %\renewapao{abx@ffd@article@number}{abx@ffd@*@number}{\mkbibparens{\apanum{#1}}}
 
-\DeclareFieldFormat[article]{journaltitle}{\iftoggle{bbx:apastyle}{\mkbibemph{#1}}{#1}}
+%\DeclareFieldFormat[article]{journaltitle}{\iftoggle{bbx:apastyle}{\mkbibemph{#1}}{#1}}
 \DeclareFieldFormat[article]{volume}{\iftoggle{bbx:apastyle}{\mkbibemph{\apanum{#1}}}{%
   \ifbibstring{volume}
 {\bibstring{jourvol}\addabbrvspace#1}
@@ -616,7 +616,11 @@
 % (APA 6.30) Commas between title and volume for articles
 
 \newbibmacro*{journal+issuetitle}{%
-  \usebibmacro{journal}%
+  \mkbibemph{\iffieldundef{origjournal}
+  {\usebibmacro{journal}}
+  {\printfield{origjournal}%
+  	\setunit{\addspace}%
+  	\printtext[brackets]{\usebibmacro{journal}}}}%
   \setunit*{\addcomma\addspace}%
   \iffieldundef{series}
     {}
@@ -959,10 +963,17 @@
 \newbibmacro*{apa__booktitle}{%
   \ifthenelse{\iffieldundef{booktitle}\AND\iffieldundef{booksubtitle}}
     {}
-    {\printtext[booktitle]{%
-       \printfield[apacase]{booktitle}%
-       \setunit{\subtitlepunct}%
-       \printfield[apacase]{booksubtitle}}%
+    {\iffieldundef{origtitle}
+   	  {\printtext[booktitle]{%
+		\printfield[apacase]{booktitle}%
+		\setunit{\subtitlepunct}%
+		\printfield[apacase]{booksubtitle}}}
+   	  {\printfield{origbooktitle}%
+   		\setunit{\addspace}%
+   		\printtext[brackets]{%
+  		  \printfield[apacase]{booktitle}%
+  		  \setunit{\subtitlepunct}%
+  		  \printfield[apacase]{booksubtitle}}}%
      \setunit{\addspace}}%
   \printfield{booktitleaddon}}
 
@@ -2254,7 +2265,7 @@
   \protected\def\mkbibdateapalongextra#1#2#3{%
     \iffieldundef{#1}%
       {}%
-      {\iffieldbibstring{#1}{\biblcstring{\thefield{#1}}}{\thefield{#1}}\printfield{extrayear}}%
+      {\iffieldbibstring{#1}{\biblcstring{\thefield{#1}}}{\thefield{#1}}\printfield{extradate}}%
     \iffieldundef{#2}%
       {}%
       {\iffieldundef{#1}%
@@ -2319,6 +2330,23 @@
 \csdef{blx@endlangbib}{}
 \begin{otherlanguage}{english}
 \printbibliography[keyword=bibliofull,section=0,title=\ifstrempty{#1}{References}{#1}]
+\end{otherlanguage}
+\csletcs{blx@beglangcite}{blx@beglang}
+\csletcs{blx@beglangbib}{blx@beglang}
+\csletcs{blx@endlangcite}{blx@endlang}
+\csletcs{blx@endlangbib}{blx@endlang}
+\global\settoggle{bbx:apastyle}{false}
+}
+
+\newcommand{\printbibliographyapa}[1][]{
+\normalfont
+\global\settoggle{bbx:apastyle}{true}
+\csdef{blx@beglangcite}{}
+\csdef{blx@beglangbib}{}
+\csdef{blx@endlangcite}{}
+\csdef{blx@endlangbib}{}
+\begin{otherlanguage}{english}
+	\printbibliography[#1]
 \end{otherlanguage}
 \csletcs{blx@beglangcite}{blx@beglang}
 \csletcs{blx@beglangbib}{blx@beglang}

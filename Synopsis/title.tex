@@ -1,96 +1,113 @@
 \thispagestyle{empty}
+\begin{center}%
+	\thesisOrganizationDone\\
+	\thesisOrganizationMinistryDone\\
+\end{center}%
 
-\noindent%
-\begin{tabularx}{\textwidth}{@{}lXr@{}}%
-    & & \large{На правах рукописи}\\
-    \IfFileExists{images/logo.pdf}{\includegraphics[height=2.5cm]{logo}}{\rule[0pt]{0pt}{2.5cm}}  & &
-    \ifnumequal{\value{showperssign}}{0}{%
-        \rule[0pt]{0pt}{1.5cm}
-    }{
-        \includegraphics[height=1.5cm]{personal-signature.png}
-    }\\
-\end{tabularx}
+\vspace{0pt plus1fill}
+\begin{flushright}
+	На правах рукопису
+\end{flushright}
 
-\vspace{0pt plus1fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus0.25fill}
+\begin{center}%
+\textbf{\MakeUppercase{\thesisAuthor}}
+\ifnumequal{\value{showperssign}}{0}{}{%
+\begin{picture}(0,0)
+\put(25,-20){\includegraphics[height=1.5cm]{personal-signature.png}}
+\end{picture}
+}
+\end{center}%
+
+
+\vspace{0pt plus0.25fill}
+\begin{flushright}%
+	УДК \thesisUdk
+\end{flushright}%
+
+
+
+\vspace{0pt plus2fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
 \begin{center}
-\textbf {\large \thesisAuthor}
+\textbf{\MakeUppercase{\thesisTitle}}
+
+\vspace{0pt plus2fill}
+Спеціальність \thesisSpecialtyNumber\ "--- \thesisSpecialtyTitle
+
+\vspace{0pt plus2fill}
+\textbf{Автореферат}
+
+дисертації на здобуття наукового ступеня
+
+\thesisDegree
 \end{center}
 
-\vspace{0pt plus3fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-\begin{center}
-\textbf {\Large %\MakeUppercase
-\thesisTitle}
-
-\vspace{0pt plus3fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-{\large Специальность \thesisSpecialtyNumber\ "---\par <<\thesisSpecialtyTitle>>}
-
-\vspace{0pt plus1.5fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-\Large{Автореферат}\par
-\large{диссертации на соискание учёной степени\par \thesisDegree}
-\end{center}
-
-\vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+\vspace{0pt plus6fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
 {\centering\thesisCity~--- \thesisYear\par}
 
 \newpage
 % оборотная сторона обложки
 \thispagestyle{empty}
-\noindent Работа выполнена в {\thesisInOrganization}.
+Дисертацією є рукопис.
+
+Роботу виконано  на {\thesisInOrganization}.
 
 \vspace{0.008\paperheight plus1fill}
 \noindent%
 \begin{tabularx}{\textwidth}{@{}lX@{}}
-    Научный руководитель:   & \supervisorRegalia\par
-                              \textbf{\supervisorFio}
+    \textbf{Науковий керівник} --   & \supervisorRegalia\par
+                              \textbf{\supervisorFio},\par
+                              \supervisorJobPlace,\par
+                              \supervisorJobPost\ (\supervisorJobCity)\par
     \vspace{0.013\paperheight}\\
-    Официальные оппоненты:  &
+    \textbf{Офіційні опоненти}:  &
     \ifnumequal{\value{showopplead}}{0}{\vspace{13\onelineskip plus1fill}}{%
-        \textbf{\opponentOneFio,}\par
+        \textbf{\opponentOneFio},\par
         \opponentOneRegalia,\par
         \opponentOneJobPlace,\par
-        \opponentOneJobPost\par
+        \opponentOneJobPost\ (\opponentOneJobCity)\par
             \vspace{0.01\paperheight}
-        \textbf{\opponentTwoFio,}\par
+        \textbf{\opponentTwoFio},\par
         \opponentTwoRegalia,\par
         \opponentTwoJobPlace,\par
-        \opponentTwoJobPost
+        \opponentTwoJobPost\ (\opponentTwoJobCity)
     }%
-    \vspace{0.013\paperheight} \\
-    Ведущая организация:    &
-    \ifnumequal{\value{showopplead}}{0}{\vspace{6\onelineskip plus1fill}}{%
-        \leadingOrganizationTitle
-    }%
+%    \vspace{0.013\paperheight} \\
+%    Ведущая организация:    &
+%    \ifnumequal{\value{showopplead}}{0}{\vspace{6\onelineskip plus1fill}}{%
+%        \leadingOrganizationTitle
+%    }%
 \end{tabularx}
 \vspace{0.008\paperheight plus1fill}
 
-\noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~при \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
+Захист відбудеться \defenseDate~на~засіданні спеціалізованої вченої ради \defenseCouncilNumber~в \defenseCouncilTitle~за адресою: \defenseCouncilAddress.
 
 \vspace{0.008\paperheight plus1fill}
-\noindent С диссертацией можно ознакомиться в библиотеке \synopsisLibrary.
+З дисертацією можна ознайомитись у бібліотеці \synopsisLibraryTitle~за адресою: \synopsisLibraryAddress.
+
+%\vspace{0.008\paperheight plus1fill}
+%\noindent Отзывы на автореферат в двух экземплярах, заверенные печатью учреждения, просьба направлять по адресу: \defenseCouncilAddress, ученому секретарю диссертационного совета~\defenseCouncilNumber.
 
 \vspace{0.008\paperheight plus1fill}
-\noindent Отзывы на автореферат в двух экземплярах, заверенные печатью учреждения, просьба направлять по адресу: \defenseCouncilAddress, ученому секретарю диссертационного совета~\defenseCouncilNumber.
+Автореферат розіслано \synopsisDate.
 
-\vspace{0.008\paperheight plus1fill}
-\noindent{Автореферат разослан \synopsisDate.}
+%\noindent Телефон для справок: \defenseCouncilPhone.
 
-\noindent Телефон для справок: \defenseCouncilPhone.
-
+\makeatletter
 \vspace{0.008\paperheight plus1fill}
 \noindent%
 \begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}b{18em}@{}
+>{\raggedright\arraybackslash}b{21em}@{}
 >{\centering\arraybackslash}X
 r
 @{}}
-    Ученый секретарь\par
-    диссертационного совета\par
-    \defenseCouncilNumber,\par
+    Вчений секретар спеціалізованої вченої ради\par
     \defenseSecretaryRegalia
     &
     \ifnumequal{\value{showsecrsign}}{0}{}{%
-        \includegraphics[width=2cm]{secretary-signature.png}%
+        \parbox[c]{\hsize}{\includegraphics[width=2cm]{secretary-signature.png}}%
     }%
     &
     \defenseSecretaryFio
 \end{tabularx}
+\makeatother

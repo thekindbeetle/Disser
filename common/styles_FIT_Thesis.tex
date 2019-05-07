@@ -1,0 +1,37 @@
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\linespread{0.9}
+\renewcommand{\bibitemsep}{0pt}
+\renewcommand*{\thesection}{\arabic{section}}
+
+
+\chapterstyle{section}
+\setlength{\beforechapskip}{0pt}
+\setlength{\midchapskip}{0pt}
+\setlength{\afterchapskip}{0pt}
+\renewcommand*{\chapnamefont}{\normalfont\bfseries}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\chaptitlefont}{\normalfont\bfseries}
+\renewcommand*{\printchapternonum}{\centering}
+
+
+\newenvironment{nscenter}
+{\parskip=0pt\par\nopagebreak\centering}
+{\par\noindent\ignorespacesafterend}
+
+\newcommand{\articlePrefix}{
+	\par\noindent{}УДК \articleUDK
+	\par\noindent\textbf{\textsuperscript{1}\authorNameUkr}
+	\par\noindent\authorPositionUkr
+	\par\noindent\textit{\textsuperscript{1}\authorInstitutionUkr}
+	\begin{nscenter}
+		\smallskip
+		\textbf{\MakeUppercase\articleTitleUkr}
+		\smallskip
+	\end{nscenter}
+}
+
+\newcommand{\articlePostfix}{
+	\small
+	\linespread{0.85}
+	\insertbibliofull[Список використаних джерел]
+}

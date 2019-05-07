@@ -1,0 +1,29 @@
+\geometry{a4paper, top=2cm, bottom=2cm, left=3cm, right=1.5cm, nofoot, nomarginpar}
+
+\newcommand{\articlePrefix}{
+	\noindent\textbf{УДК \articleUDK}
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleUkr}
+		\par\authorFullNameUkr
+	\end{center}
+	\par\annotationUkr
+	\par\textbf\titleKeywordsUkr: \keywordsUkr
+	
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleRus}
+		\par\authorFullNameRus
+	\end{center}
+	\par\annotationRus
+	\par\textbf\titleKeywordsRus: \keywordsRus
+	
+	\begin{center}
+		\par\textbf{\MakeUppercase\articleTitleEng}
+		\par\authorFullNameEng
+	\end{center}
+	\par\annotationEng
+	\par\textbf\titleKeywordsEng: \keywordsEng
+}
+
+\newcommand{\articlePostfix}{
+\insertbiblioapa
+}

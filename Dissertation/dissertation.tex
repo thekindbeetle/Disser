@@ -32,7 +32,7 @@
 % Затем, для вывода отдельных частей можно воспользоваться командой \includeonly
 % Ниже примеры использования команды:
 %
-%\includeonly{part2}
+%\includeonly{title,contents,introduction,part4}
 %\includeonly{contents,appendix,conclusion}
 %
 % Если все команды закомментированы, то документ будет выведен в PDF файл полностью
@@ -43,6 +43,9 @@
 
 % Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
 \include{title}           % Титульный лист
+%\include{annotation}      % Аннотація
+\input{../biblio/related}
+\include{self_references} % Список власної літературы
 \include{contents}        % Оглавление
 \include{introduction}    % Введение
 \include{part1}           % Глава 1
@@ -53,7 +56,7 @@
 %%\include{acronyms}        % Список сокращений и условных обозначений
 %%\include{dictionary}      % Словарь терминов
 \include{references}      % Список литературы
-\include{lists}           % Списки таблиц и изображений (иллюстративный материал)
+%\include{lists}           % Списки таблиц и изображений (иллюстративный материал)
 
 %%% Настройки для приложений
 \appendix
@@ -62,6 +65,8 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
 \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
-\include{appendix}        % Приложения
+%\include{appendix}        % Приложения
+
+%\include{fig_pages}
 
 \end{document}

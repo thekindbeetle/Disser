@@ -4,9 +4,28 @@
     \setlength{\parindent}{2.5em}                   % Абзацный отступ. Должен быть одинаковым по всему тексту и равен пяти знакам (ГОСТ Р 7.0.11-2011, 5.3.7).
 }
 
+
+%%% Выравнивание и переносы %%%
+%% http://tex.stackexchange.com/questions/241343/what-is-the-meaning-of-fussy-sloppy-emergencystretch-tolerance-hbadness
+%% http://www.latex-community.org/forum/viewtopic.php?p=70342#p70342
+\tolerance 1414
+\hbadness 9999
+\emergencystretch 1.5em % В случае проблем регулировать в первую очередь
+\hfuzz 0.3pt
+\vfuzz \hfuzz
+%\raggedbottom
+%\sloppy                 % Избавляемся от переполнений
+\clubpenalty=10000      % Запрещаем разрыв страницы после первой строки абзаца
+\widowpenalty=10000     % Запрещаем разрыв страницы после последней строки абзаца
+\brokenpenalty=4991     % Ограничение на разрыв страницы, если строка заканчивается переносом
+
+%%% Изображения %%%
+\graphicspath{{images/}{../images/}}         % Пути к изображениям
+
 %%% Подписи %%%
-\setlength{\abovecaptionskip}{0pt}   % Отбивка над подписью
-\setlength{\belowcaptionskip}{0pt}   % Отбивка под подписью
+\setlength{\abovecaptionskip}{7pt}   % Отбивка над подписью
+\setlength{\belowcaptionskip}{7pt}   % Отбивка под подписью
+%\setlength{\baselineskip}{0pt}   % Отбивка под подписью
 \captionwidth{\linewidth}
 \normalcaptionwidth
 
@@ -45,16 +64,16 @@
 \captionnamefont{\normalfont\normalsize} % Шрифт надписи «Таблица #»; также определяет шрифт у \legend
 \captiondelim{\tablabelsep} % разделитель идентификатора с номером от наименования
 \captionstyle[\tabtitalign]{\tabtitalign}
-\captiontitlefont{\normalfont\normalsize} % Шрифт с текстом подписи
+\captiontitlefont{\normalfont\normalsize\linespread{1.6}\selectfont{}} % Шрифт с текстом подписи
 
 \newcommand{\longtableheader}[3]{
-	\caption{#1}\label{#2}\\
+	\caption{#1}#2\\
 	\hline
 	#3 \\
 	\hline
 	\endfirsthead
 	
-	\caption*{Продовження таблиці \ref{#2}}\\
+	\caption*{Продовження таблиці \thetable{}}\\
 	\hline
 	#3 \\
 	\hline
@@ -66,6 +85,22 @@
 	\hline
 	\endlastfoot
 }
+
+\newenvironment{mytable*}[5][]
+{\begin{longtable}[c]{#2}\longtableheader{#3}{#4}{#5}}
+	{\end{longtable}}
+
+\newenvironment{mytable}[5][ht]
+{\begin{table}[#1]\caption{#3}#4\centering\renewcommand{\arraystretch}{1.2}\begin{tabular}{#2}\hline#5\\\hline}
+		{\hline\end{tabular}\end{table}}
+
+\newcommand{\specialcell}[3][c]{%
+	\pbox[#1]{#2}{\strut\linespread{1}\selectfont{}#3\strut}}
+
+\newcommand{\specialcellrot}[3][c]{%
+	\rotatebox[origin=c]{90}{\pbox[#1]{#2}{\strut\selectfont{}#3\strut}}}
+
+\setlength{\floatsep}{2\bigskipamount}
 
 %%% Рисунки %%%
 \setfloatadjustment{figure}{%
@@ -80,7 +115,6 @@
 }
 
 % SMGT настройка локаций floatов
-\setFloatBlockFor{section}
 \setfloatlocations{figure}{htb}
 
 %%% Подписи подрисунков %%%
@@ -145,3 +179,26 @@
 \setlist{nosep,%                                    % Единый стиль для всех списков (пакет enumitem), без дополнительных интервалов.
     labelindent=\parindent,leftmargin=*%            % Каждый пункт, подпункт и перечисление записывают с абзацного отступа (ГОСТ 2.105-95, 4.1.8)
 }
+
+
+%%http://www.linux.org.ru/forum/general/6993203#comment-6994589 (используется totcount)
+\makeatletter
+\def\formbytotal#1#2#3#4#5{%
+	\newcount\@c
+	\@c\totvalue{#1}\relax
+	\newcount\@last
+	\newcount\@pnul
+	\@last\@c\relax
+	\divide\@last 10
+	\@pnul\@last\relax
+	\divide\@pnul 10
+	\multiply\@pnul-10
+	\advance\@pnul\@last
+	\multiply\@last-10
+	\advance\@last\@c
+	\total{#1}~#2%
+	\ifnum\@pnul=1#5\else%
+	\ifcase\@last#5\or#3\or#4\or#4\or#4\else#5\fi
+	\fi
+}
+\makeatother
