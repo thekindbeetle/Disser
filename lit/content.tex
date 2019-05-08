@@ -1,0 +1,967 @@
+\chapter{Слайд}
+\setlength{\leftskip}{-3em}\cyrillicfontsf
+
+\begin{enumerate}
+	\setlength{\leftskip}{-3em}\cyrillicfontsf
+	\item запис фрази вимовленої водієм: $A_i=\langle a_1,a_2,...,a_n\rangle; t=\frac{n}{s}; s=16 \text{ (kHz)};$
+	\item перетворення записаної фрази на фонетичний текст, за допомогою фонемного стенографа: \\ $P_i=S(A_i); P=\langle p_1,p_2,...,p_k\rangle; p_i \in F;$
+	\item класифікація фонемної репрезентації голосової команди: $y_i=C_c(P_i);$
+	\begin{enumerate}
+		\item розбиття фонетичного тексту на N-грами фонем різної довжини;
+		\item розрахунок інтроформаційного впливу кожного N-граму фонем на можливі команди в вибраному контексті;
+		\item вибір команди з найбільшою ймовірністю;
+	\end{enumerate}
+	\item виконання відповідної реакції (озвучення відповіді, виконання команди та/або відправка структурованих даних диспетчеру);
+	\item переключення контексту на новий, відповідний до вибраної реакції: $c_{i+1} = f(c_i, y_i);$
+	\item очікування та запис наступної фрази.
+\end{enumerate}
+
+
+Де: $A_i$ --- цифровий аудіозапис команди водія довжиною $t$ секунд,
+
+{\settowidth{\leftskip}{Де:\ }
+	
+	$n$ --- кількість семплів аудіо сигналу,
+	
+	$s$ --- частота дискретизації аудіо сигналу,
+	
+	$P_i$ --- представлення команди водія у вигляді фонемного тексту --- кортежу фонем довжини $k$,
+	
+	$F$ --- множина фонем української мови,
+	
+	$S$ --- фонемний стенограф,
+	
+	$y_i$ --- реакція з моделі голосової взаємодії субʼєктів дистрибуції що відповідає вимовленій команді,
+	
+	$C_c$ --- класифікатор фонемної репрезентації голосових команд відповідно до поточного контексту $c_i$
+	
+	$f$ --- функція визначення наступного контексту в залежності від поточного контексту $c_i$ та вибраної реакції $y_i$
+	
+}
+
+\begin{enumerate}
+	\setlength{\leftskip}{-3em}\cyrillicfontsf
+	\item Розрахунок визначеності для інтелектуальної системи відносно всіх вхідних N-грам фонем і можливих голосових команд:
+	
+	\begin{align}
+		D_A&=\pm0.5(P_{A}\oslash(J_{1,p}-P_{A}) + (J_{1,p}-P_{A})\oslash P_{A} -2J_{1,p})^{\circ \frac{1}{2}}; \nonumber \\
+		D_{AB}&=\pm0.5(P_{AB}\oslash(J_{p,q}-P_{AB}) + (J_{p,q}-P_{AB})\oslash P_{AB}-2J_{p,q})^{\circ \frac{1}{2}}; \nonumber \\
+		I_A&=(D_A^{\circ 2}+J_{1,p})^{\circ \frac{1}{2}};\quad I_{AB}=(D_{AB}^{\circ 2}+J_{p,q})^{\circ \frac{1}{2}}, \nonumber
+	\end{align}
+	
+	\item Отримання додаткової визначеності, що є у N-грамів фонем відносно голосових команд:
+	
+	\[
+	D_\Delta=D_{AB} \circ (J_{p,1}I_A)-I_{AB} \circ (J_{p,1}D_A),
+	\]
+	
+	\item Розрахунок сумарного впливу на голосову команду, реакцію інтелектуальної системи всіх наявних N-грамів фонем:
+	
+	\[
+	D_\Sigma = XD_\Delta;\quad I_\Sigma=(D_\Sigma^{\circ 2}+J_{n,q})^{\circ \frac{1}{2}},
+	\]
+	
+	\item Обчислення нової інформованості та визначеності голосової команди:
+	
+	\[
+	D_Y=D_\Sigma \circ (J_{n,1}I_A) - I_\Sigma \circ (J_{n,1}D_A);\quad I_Y=(D_Y^{\circ 2}+J_{n,q})^{\circ \frac{1}{2}},
+	\]
+	
+	\item Обчислення сумісної умовної ймовірності команди $A_i$ (при наявності всіх N-грамів фонем $B_j \in B$):
+	
+	\[
+	Y=P_Y=0.5J_{n,p}+D_Y \oslash 2I_Y,
+	\]
+	
+\end{enumerate}
+
+\chapter{Текст}
+
+\paragraph{Розпізнавання мови}
+
+Класичні дослідження по розпізнанню мовлення показують необхідність великих контекстно-залежних словників а також великих корпусів для навчання системи \cite{Pylypenko_2008,Pylypenko_2009,Pylypenko_2010,Lydovyk_2011,Vasilyeva_2012,Womack_1999,Zirneeva_2008,Gladunov_2005}, однак акустичну модель навчену на великому корпусі можна використовувати для розпізнання фонем у інших задачах, що не потребує словника \cite{Pylypenko_2008,Robeyko_2012,Abdel_2012,Zhang_2017,Sharma_2018,Yermolenko_2008}. 
+
+\paragraph{Speech classification}
+
+У класифікації звуку можна виділити наступні основні категорії: класифікація емоційного забарвлення \cite{Ververidis_2004,Ververidis_2004_2,Ververidis_2006,Kaya_2017,Deb_2016,Bhaskar_2015,Devillers_2015,Weisskirchen_2017,Sharma_2018,Ozseven_2018}, визначення диктора \cite{Rabotyagov_2006} чи його особливостей (вік, стать) \cite{Kaya_2017}, виділення проміжків мовлення \cite{Hussain_2018,Khonglah_2016,Benatan_2015,Priya_2012} або інших класів звукового змісту (музика, фонових шумів, тощо) \cite{Hussain_2018,Boddapati_2017} у аудіозаписах, класифікація мовленевих актів за метою вислову \cite{Ko_2015,Choi_1999,Grosz_1995,En_2005,Kang_2013,Kim_2012,Lee_2002,Sridhar_2008,Webb_2005,Kang_2010,Hellbernd_2016,Su_2017}.
+
+В деяких роботах аналіз може відбуватись за попередьньо отриманим текстом \cite{Ko_2015,Choi_1999,Grosz_1995,En_2005,Kang_2013,Kim_2012,Lee_2002,Webb_2005,Kang_2010}, в деяких виключно за звуковими характеристиками \cite{Ververidis_2004,Ververidis_2004_2,Ververidis_2006,Kaya_2017,Deb_2016,Devillers_2015,Weisskirchen_2017,Sharma_2018,Hussain_2018,Khonglah_2016,Benatan_2015,Priya_2012,Boddapati_2017,Hellbernd_2016}, а в деяких звук і текст використовуются разом \cite{Bhaskar_2015,Sridhar_2008,Chowdhury_2018}.
+
+Важливе значення виділення мовлення з фонового шуму проявляєтся у задачі підсилення голосу для людей з погіршеним слухом. Зокрема це може бути реалізовано у дадатку на смартфоні \cite{Vashkevich_2018}.
+
+\paragraph{Control instruction}
+
+Більшість систем розпізнання та розуміння управляючих команд зосереджені в сфері робототехніки. У переважній більшісті підходів, розпізнання керуючих команд відбуваєтся за текстовим їх представленням, наприклад після автоматичного розпізнання голосу. Деякі підходи зосереджені на спробах побудувати достатньо складну але чітку граматику команд \cite{Misra_2016,Fasola_2013,Eppe_2016}, деякі гнучко класифікують заздалегідь заданий перелік команд \cite{Yongda_2018}, а найпростіші просто шукають задіні ключові слова в тексті \cite{Shwe_2003,Shulika_2018}. Існують роботи в яких віжбуваєтся класифікація голосових команд без переводу в текст, але перелік команд лише обмежуєтся декількома пунктами \cite{Shulika_2018,Gryshchuk_2006}.
+
+\paragraph{Text processing}
+
+Як можна бачити з прикладів задач класифікації мовленнєвих актів та розпізнання керуючих команд, аналіз змісту сказаного голосом, в переважній більшості випадків частково чи повністю відбуваєтся через аналіз вже розпізнаного тексту сказаного, а значить переходить із задачі аналізу голосу, в сферу обробки та розуміння природної мови. Існує велике різноманіття методів обробки та класифікації природно-мовних текстів \cite{Mironczuk_2018,Altinel_2018,Hartmann_2018,Kim_2014,Britz_2015_2,Britz_2015,Marchenko_2005}.
+
+\paragraph{Phoneme usage}
+
+Використання фонемного тексту заміть лексичного для роботи зі звуком було добре досліджено у задачі пошуку по звуковим файлам \cite{Ng_C_2000,Ng_K_2000,Witbrock_1997}. Результати показали що попри незначне зменшення якості пошуку, воно дає переваги в вирішені проблеми слів поза словником та може мати переваги в використанні на мобільних пристроях. Крім того були дослідження по автомоатичному визначенню та класифікації одиниць мовлення \cite{Sharma_2018}.
+
+Підходи роботи з текстовими даними посимвольно \cite{Kim_2016,Zhang_2015_2,Zhang_2015,Santos_2014} можуть бути використані для пофонемної робои з фонетичним текстом.
+
+\paragraph{CNN direct}
+
+В деяких роботах ЗНН використовувалися для роботи зі звуком напряму чи зі спектрограмою звуку, в задачах класифікації емоційного забарвлення \cite{Weisskirchen_2017}, класифікації звуків навколишнього середовища \cite{Boddapati_2017}, Визначення мети одночасного мовлення \cite{Chowdhury_2018}, розпізнання послідовності фонем \cite{Abdel_2012,Zhang_2017}, та інших.
+
+\paragraph{Spoken dialogue systems}
+
+Окремо розглядаюся методи побудови голосових діалогових систем \cite{Iosif_2018}. Можна виділити голосові діалогові системи на основі правил \cite{Herbert_2018,Lopes_2015} та на основі сценаріїв \cite{Lopez_2016,Khouzaimi_2018}. Існують спіціальні метеди опису та синхронізації багатомодальних діалогових систем з використанням голосових даних \cite{Katsurada_2003,Karpov_2012}. 
+
+\paragraph{Distribution}
+
+Проблема управління ланцюгом поставок є надзвичайно актуальною в дистрибуції та логістиці \cite{Speranza_2018}, особливо питання стійкості \cite{Koberg_2018,Jia_2018,Bastas_2019,Wen_2018,Sullet_2018} та екологічності \cite{Tseng_2019,Papetti_2019,Hoehne_2017}. Особливо важливим є етап «останньої милі» \cite{Baldi_2018,Gdowska_2018,Boysen_2018,Hoehne_2017,Pronello_2017,Cook_2017} та вплив інтернет магазинів на ці процеси \cite{Allen_2018,Cardenas_2017}.
+
+Для покращення процесів доставки використовується велика кількість різноманітних технологій, таких як RFID\cite{Prasanna_2012}, GPS \cite{Stopher_2018,Prasanna_2012} та GSM \cite{Prasanna_2012} трекери, принципи «інтернету речей» \cite{Liu_2018} та «big data» \cite{Govindan_2018}, використання додатків на смартфонах \cite{Stopher_2018}, web-системи управління ланцюгом поставок \cite{Papetti_2019} та інщі.
+
+
+\chapter{Розпізнавання мови}
+
+
+\section{Other}
+
+\subsection{N-channel hidden Markov models for combined stressed speech classification and recognition}
+
+Тут мабуть більше про розпізнання а не про класифікацію
+
+\url{Womack_1999.pdf}\cite{Womack_1999}
+
+\subsection{Sparse coding based features for speech units classification}
+
+0. Phoneme classification, consonant-vowel classification
+
+1. Корпус та/або предметна область
+
+2. raw speech samples and mel frequency cepstral coefficients (MFCC)
+
+3. continuous density hidden Markov model
+(CDHMM)
+
+4. Выделение speech units из речи, по сути может рассмытриватся как фонемний стенограф
+
+In recent years sparse coding based signal processing has been applied to various speech processing applications
+such as audio classification (Zubair et al., 2013), speaker verification (Haris and Sinha, 2012), speech
+enhancement (Abrol et al., 2013; Low et al., 2013), speech recognition (Sivaram et al., 2010), speech
+separation (Xu et al., 2013), speaker tracking (Barnard et al., 2014) and speech coding (Giacobello et al., 2010).
+In sparse representations (SR) of speech signal, a speech frame is written as a linear combination of atoms of a
+resource, known as dictionary. The sparse vector obtained for each speech frame, given a dictionary, is used as
+a feature. The behavior of sparse vector is very much influenced by the choice of dictionary, which could be
+either analytical or learnt. Analytical dictionaries are easy to implement and have fast transform properties. The
+learnt dictionaries are derived from the data itself and thus adapt to the variations in data effectively (Tosic and
+Frossard, 2011).
+
+\url{Sharma_2018.pdf}\cite{Sharma_2018}
+
+\subsection{Інформаційна технологія обробки та аналізу характеристик мовленнєвої інформації}
+
+\url{Zirneeva_2008.pdf}\cite{Zirneeva_2008}
+
+\subsection{Застосування вейвлет-аналізу для попередньої обробки мовних голосових сигналів в задачах сегментації, класифікації та пофонемного розпізнавання}
+
+\url{Yermolenko_2008.pdf}\cite{Yermolenko_2008}
+
+\subsection{Апаратно-програмні засоби роздільної локалізації фонем в системах мовної взаємодії людини з ЕОМ}
+
+\url{Gladunov_2005.pdf}\cite{Gladunov_2005}
+
+\section{Пилипенко і ко.}
+
+\subsection{Автоматизированный стенограф украинской речи}
+
+\url{Pylypenko_2008.pdf}\cite{Pylypenko_2008}
+
+\subsection{Распознавание ключевых слов в потоке речи при помощи фонетического стенографа}
+
+\url{Pylypenko_2009.pdf}\cite{Pylypenko_2009}
+
+\subsection{Аннотация и учет речевых сбоев в задаче автоматического распознавания спонтанной украинской речи}
+
+\url{Pylypenko_2010.pdf}\cite{Pylypenko_2010}
+
+\subsection{Автоматическое распознавание спонтанной украинской речи (на материале акустического корпуса украинской эфирной речи)}
+
+\url{Lydovyk_2011.pdf}\cite{Lydovyk_2011}
+
+\subsection{Корпус украинской эфирной речи}
+
+\url{Speech_technology_2_2012.pdf#page=12}\cite{Vasilyeva_2012}
+
+\subsection{Преобразование между орфографическим и фонемным текстами для моделирования спонтанного произношения}
+
+\url{Speech_technology_2_2012.pdf#page=33}\cite{Robeyko_2012}
+
+\subsection{Див. також:}
+
+\url{http://speechtechnology.ru}
+
+\url{https://scholar.google.com.ua/citations?user=LOfEszUAAAAJ&hl=ru}
+
+\url{http://dspace.nbuv.gov.ua/browse?value=Пилипенко, В.В.&type=author}
+
+\section{CNN}
+
+\subsection{Applying convolutional neural networks concepts to hybrid NN-HMM model for speech recognition}
+
+0. Розпізнання звуку (послідовності фонем)
+
+1. TIMIT
+
+2. Частоти звуку
+
+3. CNN + HMM (одна пара згортка+агрегація, 3 повнозвязних шари, ПММ для фінального розпізнання фонем)
+
+\url{Abdel_2012.pdf}\cite{Abdel_2012}
+
+\subsection{Towards end-to-end speech recognition with deep convolutional neural networks}
+
+0. Розпізнання звуку (послідовності фонем)
+
+1. TIMIT
+
+2. Частоти звуку
+
+3. Глибока CNN (згортка, агрегація, 3 згортки, 9 повнозвязних)
+
+Кращий результат ніж в \cite{Abdel_2012}
+
+\url{Zhang_2017.pdf}\cite{Zhang_2017}
+
+\chapter{Speech classification}
+
+\section{Emotional}
+
+\subsection{Automatic emotional speech classification}
+
+0. Emotional speech classification
+
+1. Danish Emotional Speech database. five emotional states such as anger, happiness, neutral, sadness, and surprise
+
+2.  Features only. 87 features has been calculated. Sequential Forward Selection
+method (SFS) has been used in order to discover a set of 5
+to 10 features which are able to classify the utterances in the best
+way
+
+3. nearest mean
+and Bayes classifier
+
+\url{Ververidis_2004.pdf}\cite{Ververidis_2004}
+
+\textbf{Automatic speech classification to five emotional states based on gender information}
+
+\url{Ververidis_2004_2.pdf}\cite{Ververidis_2004_2}
+
+\subsection{Emotional speech recognition: Resources, features, and methods}
+
+0. Emotional speech classification
+
+1. багото різних
+
+2. Features only.  Typical features are the pitch, the
+formants, the vocal tract cross-section areas, the mel-frequency cepstral coefficients, the Teager energy operator-based features,
+the intensity of the speech signal, and the speech rate. 
+
+3.  hidden Markov models, artificial neural networks, linear discriminant
+analysis, k-nearest neighbors, support vector machines
+
+\url{Ververidis_2006.pdf}\cite{Ververidis_2006}
+
+\subsection{Emotion, age, and gender classification in children’s speech by humans and machines}
+
+0. Emotional speech classification, age and gender recognition
+
+1. first child emotional speech corpus in Russian, called “EmoChildRu”, 3-class
+
+2. Features only. openSMILE feature set
+
+3. least squares regression based classifiers, 
+
+While in age estimation, the acoustics-based automatic systems show higher performance, they do not reach human perception levels in comfort state and gender classification
+
+\url{Kaya_2017.pdf}\cite{Kaya_2017}
+
+\subsection{Classification of speech under stress using harmonic peak to energy ratio}
+
+0. Emotional speech classification
+
+1. simulated stressed speech database (angry, Lombard, neutral, happy and sad)
+
+2. Features only. new feature, harmonic peak to energy ratio
+
+3. Support Vector Machine
+
+\url{Deb_2016.pdf}\cite{Deb_2016}
+
+\subsection{Hybrid approach for emotion classification of audio conversation based on text and speech mining}
+
+0. Emotional speech classification
+
+1. audio-visual emotion database named eNTERFACE'05 EMOTION
+
+2. Sound seatures + word-level text features. sound:  formants, zero crossing rate, sound intensity, fundamental frequency (F0) and  energy; text: emotional tag of each word by WordNet Affect
+
+3. Support Vector Machine
+
+Звук и текст на вход вместе
+
+\url{Bhaskar_2015.pdf}\cite{Bhaskar_2015}
+
+\subsection{Inference of human beings’ emotional states from speech in human--robot interactions}
+
+0. Emotional speech classification
+
+1. Robots. JEMO, ARMEN, IDV-HR (Anger Joy Sad. Neut.)
+
+2. Audio Features only
+
+3. Support Vector Machines
+
+\url{Devillers_2015.pdf}\cite{Devillers_2015}
+
+\subsection{Recognition of emotional speech with convolutional neural networks by means of spectral estimates}
+
+0. Розпізнання емоцій
+
+1. emoDB, eNTERFACE, SUSAS
+
+2. Спектрограма як картинка
+
+3. CNN
+
+\url{Weisskirchen_2017.pdf}\cite{Weisskirchen_2017}
+
+\subsection{SPeech ACoustic (SPAC): A novel tool for speech feature extraction and classification}
+
+0. Розпізнання емоцій
+
+1. EMO-DB, EMOVA, eNTERFACE05 and SAVEE
+
+2. Audio features
+
+3.  SVM, k-NN and MLP
+
+\url{Ozseven_2018.pdf}\cite{Ozseven_2018}
+
+\section{мова/не-мова}
+
+\subsection{SwishNet: A Fast Convolutional Neural Network for Speech, Music and Noise Classification and Segmentation}
+
+0. Speech, Music and Noise classification/segmentation
+
+1. MUSAN
+
+2. Audio Features and Stectrogram. MFCC, (Mel Filter Banks) spectrum
+
+3. CNN
+
+мовлення/музика/шум
+
+\url{Hussain_2018.pdf}\cite{Hussain_2018}
+
+\subsection{Speech/music classification using speech-specific features}
+
+0. Speech/Music classification
+
+1. Корпус та/або предметна область
+
+2. Audio Features. spectral flux, spectral centroid, spectral rolloff, zero crossing rate (ZCR), and percentage of low energy frames
+
+3. non-linear mapping, Gaussian Mixture Models (GMM), Support Vector Machines (SVM)
+
+speech/non-speech
+
+\url{Khonglah_2016.pdf}\cite{Khonglah_2016}
+
+\subsection{Cross-covariance-based features for speech classification in film audio}
+
+0. Speech/non-speech classification
+
+1. film audio
+
+2. Audio Features.  Mel Frequency Cepstral Coefficient
+
+3. random forest classifier
+
+\url{Benatan_2015.pdf}\cite{Benatan_2015}
+
+\subsection{Speech and non-speech identification and classification using KNN algorithm}
+
+0. Speech/non-speech classification
+
+1. 
+
+2. Audio Features
+
+3. K-Nearest Neighbor
+
+\url{Priya_2012.pdf}\cite{Priya_2012}
+
+\subsection{Classifying environmental sounds using image recognition networks}
+
+0. Environmental sounds classification
+
+1. ESC-50, ESC-10 and UrbanSound8K
+
+2. Direct sound. Spectrogram, MFCC, and CRP
+
+3. CNN (AlexNet and GoogLeNet)
+
+\url{Boddapati_2017.pdf}\cite{Boddapati_2017}
+
+\section{speech-act}
+
+Класифікація між функціями мови в діалозі!
+
+\subsection{New feature weighting approaches for speech-act classification}
+
+0. speech-act classification
+
+1. Korean. Reservations (RES) and schedule management (SM-11)
+
+2. No audio. Text features only. Word level, TF/IDF+
+
+3. SVM and k-NN
+
+\url{Ko_2015.pdf}\cite{Ko_2015}
+
+\subsection{Analysis system of speech acts and discourse structures using maximum entropy model}
+
+0. speech-act classification
+
+1. Korean. RES
+
+2. No audio. Text features only. 
+
+3. Maximum Entropy Model
+
+\url{Choi_1999.pdf}\cite{Choi_1999}
+
+\subsection{Discourse and dialogue}
+
+\url{Grosz_1995.pdf#page=216}\cite{Grosz_1995}
+
+\subsection{An analysis of Speech Acts for Korean Using Support Vector Machines}
+
+0. speech-act classification
+
+1. Korean
+
+2. No audio. Text features only. лексична форма слова, відмітки частин мови у біграмах, контекст попередьнього висловлювання
+
+3. Support Vector Machines
+
+\url{En_2005.pdf}\cite{En_2005}
+
+\subsection{Hierarchical speech-act classification for discourse analysis}
+
+0. speech-act classification
+
+1. Korean. Reservations (RES) and schedule management (SM-11)
+
+2. No audio. Text features only. лексична форма слова, відмітки частин мови у біграмах, контекст попередьнього висловлювання
+
+3. Support Vector Machine
+
+4. Дворівнева (іерархічна) класифікація
+
+\url{Kang_2013.pdf}\cite{Kang_2013}
+
+\subsection{An effective application of contextual information using adjacency pairs and a discourse stack for speech-act classification}
+
+0. speech-act classification
+
+1. Korean. Reservations (RES) and schedule management (SM-11)
+
+2. No audio. Text features only. лексична форма слова, відмітки частин мови у біграмах, контекст попередьнього висловлювання
+
+3. Support Vector Machine
+
+\url{Kim_2012.pdf}\cite{Kim_2012}
+
+\subsection{Korean speech act analysis system using hidden markov model with decision trees}
+
+0. speech-act classification
+
+1. Korean
+
+2. No audio. Text features only. 
+
+3. HMM
+
+\url{Lee_2002.pdf}\cite{Lee_2002}
+
+\subsection{Modeling the intonation of discourse segments for improved online dialog act tagging}
+
+0. speech-act classification
+
+1. Switchboard-DAMSL
+
+2. Audio features and ASR text features. Audio: pitch (f0) and the RMS energy
+
+3. Метод класифікації
+
+Використання акустично-просодичних ознак замысть контексту попередьного значення акту
+
+\url{Sridhar_2008.pdf}\cite{Sridhar_2008}
+
+\subsection{Error analysis of dialogue act classification}
+
+0. speech-act classification
+
+1. Switchboard-DAMSL
+
+2. Text features only.
+
+3. 
+
+\url{Webb_2005.pdf}\cite{Webb_2005}
+
+\subsection{A reliable multidomain model for speech act classification}
+
+0. Задача
+
+1. favorite foods, views on love, and favorite music
+
+2. No audio. Text features only. 
+
+3. 
+
+Два етапу - спочатку класифікуємо предметну область, а потім класифікуємо мовленнєвий акт моделлю для предметної області
+
+Без звуку взагалі, тільки текст.
+
+\url{Kang_2010.pdf}\cite{Kang_2010}
+
+\subsection{Local grammars of speech acts: An exploratory study}
+
+Теоретична стаття про мовленеві акти та їх аналіз. Багато посилань на підґрунтя теорій. Можна взяти трохи опису.
+
+\url{Su_2017.pdf}\cite{Su_2017}
+
+\subsection{Prosody conveys speaker’s intentions: Acoustic cues for speech act perception}
+
+0. Задача
+
+1. однослівні та безслівні виразів
+
+2. Audio features. mean intensity, harmonics-to-noise
+ratio (HNR), mean fundamental frequency (f0) as well as
+pitch rise
+
+3. Discriminant analyses
+
+The term prosody refers to variations in pitch, loudness, timing, or voice quality over the course of an utterance (Warren, 1999) that can modify the communicative content of a message, both linguistically and paralinguistically (Bolinger, 1986)
+
+Опис чому просодія важлива з посиланнями
+
+Дослідження: класифікація однакових однослівних та безслівних виразів з різною інтонацією що б визначити один з 6 намірів. 3 експерименти: моделювання з просодичних показників, опитування слухачей людей і моделювання реакції слухачей-людей.
+
+\url{Hellbernd_2016.pdf}\cite{Hellbernd_2016}
+
+
+\section{Speech enhancement}
+
+\subsection{Speech enhancement in a smartphone-based hearing aid}
+
+Усиление речи на смартфоне
+
+\url{Speech_technology_2_2018.pdf#page=64}\cite{Vashkevich_2018}
+
+\section{other}
+
+\subsection{Метод ідентифікації людини на основі індивідуального мовного коду}
+
+\url{Rabotyagov_2006.pdf}\cite{Rabotyagov_2006}
+
+\subsection{Automatic Classification of Speech Overlaps: Feature Representation and Algorithms}
+
+0. Класифікація одночасного мовлення на кооперативне та конкурентне.
+
+1. 
+
+2. Порівняння декількох типів ознак як акустичних так і лексичних (вкладення слів, мішок н-грам слів) та методів їх комбінації (лінійна та прихована)
+
+3. Порівняння декількох методів (SVM, FFNN, CNN, RNN (LSTM))
+
+\url{Chowdhury_2018.pdf}\cite{Chowdhury_2018}
+
+\section{Control instruction}
+
+\subsection{Метод розпізнавання команд голосового управління комп’ютерною системою}
+
+Класифікація команд з голосу по узагальненим ознакам звукозипису. Насправді неправда.
+
+Після первинної обробки сигналу формуються
+набір векторів ознак, які містять в собі спектральні характеристики: мелчастотні
+кепстральні коефіцієнти MFCC, а вони в свою чергу містять
+інформацію на який ділянках сигналу присутня мова, та перетворюється в
+коефіцієнти, які в подальшому надходять в блок розпізнавання. Далі
+відбувається перетворення сигналу у вектори особливостей. На етапі
+розпізнавання відбувається зіставлення вхідних з образів з уже наявними
+шаблонами. Інши кажучи вектори ознак, порівнюються з моделями, в
+результаті чого обчислюється правдоподібність для кожної моделі. 
+
+0. Класифікація команд
+
+1. 4 однослівні команди управління компьютером
+
+2. MFCC зі звуку
+
+3. Порівняння зі зразками методом динамічного програмування
+
+\url{Shulika_2018.pdf}\cite{Shulika_2018}
+
+\subsection{Research on multimodal human-robot interaction based on speech and gesture}
+
+0. Класифікація команд
+
+1. multimodal human-robot interaction
+
+2. Speech->Text Microsoft speech SDK. TF-IDF
+
+3. maximum entropy classification
+
+Похоже на то что нужно
+
+класификация через текст
+
+можно взять теории про составление Control instruction corpus
+
+взаимодействие(!) с роботом
+
+дополнительно используются жесты
+
+traditional natural language understanding used the keyword to match method
+
+\url{Yongda_2018.pdf}\cite{Yongda_2018}
+
+\subsection{Method and apparatus for multiple tiered matching of natural language queries to positions in a text corpus}
+
+keyword to match method
+
+\url{Shwe_2003.pdf}\cite{Shwe_2003}
+
+\subsection{Tell me dave: Context-sensitive grounding of natural language to manipulation instructions}
+
+0. Парсинг команд
+
+1. human-robot interaction
+
+2. Text only
+
+3. Recently, learning methods based on combinatory categorial
+grammar (CCG) (Steedman, 1996, 2000) have been
+used with success for different applications (Zettlemoyer
+and Collins, 2007). Matuszek et al. (2012b) use probabilistic
+CCG parsers to convert natural language commands to
+a Robot Control Language (subset of typed-lambda calculi)
+such as given below.
+
+Выделение простых известных глаголов и объектов из текста и превращение их в функциональные команды
+
+\url{Misra_2016.pdf}\cite{Misra_2016}
+
+\subsection{Modeling dynamic spatial relations with global properties for natural language-based human-robot interaction}
+
+0. Парсинг команд
+
+1. human-robot interaction
+
+2. Text only
+
+
+
+\url{Fasola_2013.pdf}\cite{Fasola_2013}
+
+\subsection{Exploiting deep semantics and compositionality of natural language for Human-Robot-Interaction}
+
+0. Парсинг команд
+
+1. human-robot interaction
+
+2. Text only
+
+3. Embodied
+Construction Grammar
+
+\url{Eppe_2016.pdf}\cite{Eppe_2016}
+
+\subsection{Моделювання процесу аналізу і класифікації голосових команд}
+
+\url{Gryshchuk_2006.pdf}\cite{Gryshchuk_2006}
+
+\chapter{Text processing}
+
+\subsection{A recent overview of the state-of-the-art elements of text classification}
+
+\url{Mironczuk_2018.pdf}\cite{Mironczuk_2018}
+
+\subsection{Semantic text classification: A survey of past and recent advances}
+
+\url{Altinel_2018.pdf}\cite{Altinel_2018} 
+
+\subsection{Comparing automated text classification methods}
+
+\url{Hartmann_2018.pdf}\cite{Hartmann_2018}
+
+\subsection{Character-Aware neural language models}
+
+0. Передбачення наступного слова
+
+1. Порівняння 7 мов з різню морфологією
+
+2. Символи одного слова
+
+3. CNN + HighwayNetwork + LSTM + Softmax
+
+\url{Kim_2016.pdf}\cite{Kim_2016}
+
+\subsection{Text understanding from scratch}
+
+0. topic classification and Sentiment Analysis
+
+1. News Categorization, Yahoo! Answers Topic Classification, Amazon Review Sentiment Analysis, DBpedia Ontology Classification
+
+2. Символи всього тексту (заголовок і аннотація)
+
+3. Deep CNN
+
+\url{Zhang_2015_2.pdf}\cite{Zhang_2015_2}
+
+\textbf{Character-level Convolutional Networks for Text Classification}
+
+\url{Zhang_2015.pdf}\cite{Zhang_2015}
+
+\subsection{Learning character-level representations for part-of-speech tagging}
+
+0. part-of-speech tagging
+
+1. Wall Street Journal (WSJ) portion of the Penn Treebank
+
+2. для кожного слова Word level embeddings and character level embeddings
+
+3. CNN
+
+\url{Santos_2014.pdf}\cite{Santos_2014}
+
+\subsection{Convolutional Neural Networks for Sentence Classification}
+
+Основа моєї роботи
+
+0. Sentiment Analysis
+
+1. IMDB Review
+
+2. Ревю за словами
+
+3. CNN
+
+\url{Kim_2014.pdf}\cite{Kim_2014} 
+
+\textbf{Implementing a CNN for Text Classification in TensorFlow}
+
+Навчальна стаття за роботою
+
+\url{http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow}\cite{Britz_2015_2}
+
+\textbf{Understanding Convolutional Neural Networks for NLP}
+
+Підготовча навчальна стаття
+
+\url{http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp}\cite{Britz_2015}
+
+\subsection{Алгоритми семантичного аналізу природномовних текстів}
+
+\url{Marchenko_2005.pdf}\cite{Marchenko_2005}
+
+\chapter{Phoneme usage}
+
+\section{Document retrival}
+
+\subsection{Experiments in spoken document retrieval using phoneme n-grams}
+
+In this work, different methods for extracting overlapping phonesequence
+indexing features for SCR are explored in detail. This article
+arrives at the general conclusion that phone-based retrieval is not
+as effective as word-based retrieval, but there are certain situations
+where it is appropriate. Specifically, phone-based retrieval is effective
+for addressing the OOV problem. Further, if speech recognition must
+be performed on a platform with limited capacity (i.e., a hand-held
+device), then a small language model, such as a phoneme bigram model,
+makes the ASR system lightweight and compact. The authors
+find that in terms of phone-sequence-based indexing features, a combination
+of phone 3-grams and 4-grams proved most effective.
+Further, this work shows that ignoring word boundaries when extracting
+phone-based features does not affect retrieval performance significantly.
+
+\url{Ng_C_2000.pdf}\cite{Ng_C_2000}
+
+\subsection{Subword-based approaches for spoken document retrieval}
+
+\url{Ng_K_2000.pdf}\cite{Ng_K_2000}
+
+\subsection{Using Words and Phonetic Strings for Efficient Information Retrieval from Imperfectly Transcribed Spoken Documents}
+
+phone-based features derived from
+word-level transcripts are able to help compensate for word-level error
+
+\url{Witbrock_1997.pdf}\cite{Witbrock_1997}
+
+\chapter{Distribution}
+
+\section{supply chain management}
+
+\subsection{A systematic review of sustainable supply chain management in global supply chains}
+
+\url{Koberg_2018.pdf}\cite{Koberg_2018}
+
+\subsection{Multi-tier sustainable supply chain management: The role of supply chain leadership}
+
+\url{Jia_2018.pdf}\cite{Jia_2018}
+
+\subsection{Integrated quality and supply chain management business diagnostics for organizational sustainability improvement}
+
+\url{Bastas_2019.pdf}\cite{Bastas_2019}
+
+\subsection{Web-based platform for eco-sustainable supply chain management}
+
+\url{Papetti_2019.pdf}\cite{Papetti_2019}
+
+\subsection{A literature review on green supply chain management: Trends and future challenges}
+
+\url{Tseng_2019.pdf}\cite{Tseng_2019}
+
+\subsection{Fashion Retail Supply Chain Management: A Review of Operational Models}
+
+\url{Wen_2018.pdf}\cite{Wen_2018}
+
+\subsection{Sustainable Logistics and mobility in cities: Paris South-East Area}
+
+\url{Sullet_2018.pdf}\cite{Sullet_2018}
+
+\subsection{Trends in transportation and logistics}
+
+\url{Speranza_2018.pdf}\cite{Speranza_2018}
+
+\section{IoT, GPS}
+
+
+\subsection{IoT-enabled Dynamic Optimisation for Sustainable Reverse Logistics}
+
+\url{Liu_2018.pdf}\cite{Liu_2018}
+
+\subsection{Big data analytics and application for logistics and supply chain management}
+
+\url{Govindan_2018.pdf}\cite{Govindan_2018}
+
+\subsection{Smartphone app versus GPS Logger: A comparative study}
+
+\url{Stopher_2018.pdf}\cite{Stopher_2018}
+
+\subsection{RFID GPS and GSM based logistics vehicle load balancing and tracking mechanism}
+
+\url{Prasanna_2012.pdf}\cite{Prasanna_2012}
+
+\section{last-mile}
+
+\subsection{A Generalized Bin Packing Problem for parcel delivery in last-mile logistics}
+
+\url{Baldi_2018.pdf}\cite{Baldi_2018}
+
+\subsection{Stochastic last-mile delivery with crowdshipping}
+
+\url{Gdowska_2018.pdf}\cite{Gdowska_2018}
+
+\subsection{Scheduling last-mile deliveries with truck-based autonomous robots}
+
+\url{Boysen_2018.pdf}\cite{Boysen_2018}
+
+\subsection{Understanding the impact of e-commerce on last-mile light goods vehicle activity in urban areas: The case of London}
+
+\url{Allen_2018.pdf}\cite{Allen_2018}
+
+\subsection{E-commerce last-mile in Belgium: Developing an external cost delivery index}
+
+\url{Cardenas_2017.pdf}\cite{Cardenas_2017}
+
+\subsection{Greenhouse gas and air quality effects of auto first-last mile use with transit}
+
+\url{Hoehne_2017.pdf}\cite{Hoehne_2017}
+
+\subsection{Last mile freight distribution and transport operators’ needs: which targets and challenges?}
+
+\url{Pronello_2017.pdf}\cite{Pronello_2017}
+
+\subsection{Dispatching policies for last-mile distribution with stochastic supply and demand}
+
+\url{Cook_2017.pdf}\cite{Cook_2017}
+
+
+\chapter{spoken dialogue systems}
+
+\subsection{Intelligent Conversation System Using Multiple Classification Ripple down Rules and Conversational Context}
+
+\url{Herbert_2018.pdf}\cite{Herbert_2018}
+
+\subsection{Speech understanding for spoken dialogue systems: From corpus harvesting to grammar rule induction}
+
+\url{Iosif_2018.pdf}\cite{Iosif_2018}
+
+\subsection{A methodology for turn-taking capabilities enhancement in Spoken Dialogue Systems using Reinforcement Learning}
+
+\url{Khouzaimi_2018.pdf}\cite{Khouzaimi_2018} 
+
+\subsection{Automatic creation of scenarios for evaluating spoken dialogue systems via user-simulation}
+
+\url{Lopez_2016.pdf}\cite{Lopez_2016}
+
+\subsection{From rule-based to data-driven lexical entrainment models in spoken dialog systems}
+
+\url{Lopes_2015.pdf}\cite{Lopes_2015}
+
+\subsection{XISL: a language for describing multimodal interaction scenarios}
+
+Мова для опису мультимодальної діалогової комунікації. Передбачена для використання у веб додатках. Дозволяє синхронізувати етапи голосового вводу та текстовго/іншого. Голосовий ввод розпізнаєтся в текст.
+
+\url{Katsurada_2003.pdf}\cite{Katsurada_2003} 
+
+\subsection{Когнитивные исследования ассистивного многомодального интерфейса для бесконтактного человеко-машинного взаимодействия}
+
+Система мультимодального управління компьютером голосом і жестами для інвалідів. Голос розпізнається в текст.
+
+В ассистивном интерфейсе ICanDo, которому
+посвящена данная статья, реализованы и применены
+программные средства компьютерного зрения
+для обнаружения лица человека в оптическом
+потоке на основе характерных органов/черт лица
+(нос, глаза, губы) без использования искусственных
+маркеров/мишеней и специализированных, носимых
+человеком, устройств, что выгодно отличает
+его от имеющихся аналогов. Программная система
+взаимодействия не накладывает дополнительных
+ограничений на пользователя и обеспечивает
+естественность и комфорт при бесконтактной работе
+с компьютером. Применяемые в интерфейсе
+голосовые команды, распознаваемые автоматической
+системой, являются прекрасной альтернативой
+стандартным органам ввода информации (клавиатура)
+как для инвалидов без рук или пальцев
+рук, так и для обычных пользователей.
+
+\url{Karpov_2012.pdf}\cite{Karpov_2012}
+
+\chapter{характеристики роботи}
+
+0. Задача
+
+1. Корпус та/або предметна область
+
+2. Вхідні ознаки, методи їх отримання, звук/текст
+
+3. Метод класифікації
+
+4. Особливості/інновації
+
+\printbibliography
