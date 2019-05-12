@@ -496,10 +496,11 @@
 
 \chapter{Список публікацій здобувача за темою дисертації та відомості про апробацію результатів дисертації}
 
-\printbibliography[heading=pubsubgroup, category=biblioauthoreng, section=1,title=\engbibtitle]%
 \printbibliography[heading=pubsubgroup, keyword=biblioauthorvak, notcategory=biblioauthoreng, section=1,title=\vakbibtitle]%
+\printbibliography[heading=pubsubgroup, keyword=biblioauthorvak, category=biblioauthoreng, section=1,title=\vakindexedbibtitle]%
+\printbibliography[heading=pubsubgroup, notkeyword=biblioauthorvak, category=biblioauthoreng, section=1,title=\engbibtitle]%
 \printbibliography[heading=pubsubgroup, keyword=biblioauthornotvak, notcategory=biblioauthoreng, section=1,title=\notvakbibtitle]%
-\printbibliography[heading=pubsubgroup, keyword=biblioauthorconf, section=1,title=\confbibtitle]
+\printbibliography[heading=pubsubgroup, keyword=biblioauthorconf, section=1,title=\confbibtitle]%
 
 \begin{center}
 	\textit{Основні положення дисертаційної роботи були апробовані у насткпних міжнародних науково-практичних конференціях}
