@@ -23,6 +23,7 @@ isbn=false,% Показывать или нет ISBN, ISSN, ISRN
 %movenames=false,
 maxnames=4,
 minnames=3,
+%mincitenames=1, maxcitenames=1, uniquelist=true,
 %datamodel=ukrainian-gost,
 ]{biblatex}[2016/09/17]
 \ltx@iffilelater{biblatex-gost.def}{2017/05/03}%
@@ -299,19 +300,28 @@ sorting=none,% настройка сортировки списка литера
         {\namepartsuffix}}}
     {}}
 
+
+\DeclareNameFormat{citea}{%
+	\usebibmacro{name:family-given}
+	{\namepartfamily}
+	{\namepartgiveni}
+	{\namepartprefix}
+	{\namepartsuffix}}
+
+\DeclareCiteCommand{\citea}
+{\usebibmacro{prenote}}%
+{\printnames[citea][1-1]{labelname}}
+{\addcomma\addspace}
+{\usebibmacro{postnote}} 
+
 %% Повторять авторов из заголовка в области ответственности
 \renewbibmacro*{byauthor}{%
 	\setrespdelim\printnames[byauthor]{author}}
 
 %% Ставить запятую после фамилии в заголовке, если стандарт 2006
-\newcommand{\patchheadingname}{
-\xpatchbibmacro{headingname:family-given}%
-    {\isdot\ifdefvoid}
-    {\isdot\addcomma\ifdefvoid}%
-    {\typeout{patching heading addcomma succeded}}%
-    {\typeout{patching heading addcomma failed}}%
-}
-\ifthenelse{\equal{\thegoststyle}{2006}}{\patchheadingname\patchheadingname}{}
+\ifthenelse{\equal{\thegoststyle}{2006}}
+{\renewcommand*{\revsdnamepunct}{\addcomma\addspace}}
+{\renewcommand*{\revsdnamepunct}{\addspace}}
 
 
 \DeclareNumChars*{)(S}
@@ -515,7 +525,7 @@ sorting=none,% настройка сортировки списка литера
 \defbibheading{countauthor}{}
 
 \defbibheading{authorpublications}[\authorbibtitle]{\section*{#1}}
-\defbibheading{pubsubgroup}{\centering\textit{#1}}
+\defbibheading{pubsubgroup}{\needspace{3em}\centering\textit{#1}}
 \defbibheading{otherpublications}{\section*{#1}}
 
 
