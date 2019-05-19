@@ -158,3 +158,5 @@ Thumbs.db
 # latexindent backups
 *.bak
 *.bak[0-9]
+
+.idea
