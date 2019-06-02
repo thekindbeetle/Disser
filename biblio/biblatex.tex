@@ -246,10 +246,20 @@ sorting=none,% настройка сортировки списка литера
 %\DeclareFieldFormat{title}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия работы
 %\DeclareFieldFormat{journaltitle}{\usebibmacro{string+doi}{#1}} % ссылка на doi с названия журнала
 %%% Тире как разделитель в библиографии традиционной руской длины:
-\renewcommand*{\newblockpunct}{\addperiod\addnbspace\cyrdash\space\bibsentence}
+%\renewcommand*{\newblockpunct}{\addperiod\addnbspace\cyrdash\space\bibsentence}
 %%% Убрать тире из разделителей элементов в библиографии:
 %\renewcommand*{\newblockpunct}{%
 %    \addperiod\space\bibsentence}%block punct.,\bibsentence is for vol,etc.
+%%% Короткое тире как разделитель в библиографии:
+\renewcommand*{\newblockpunct}{\addperiod\addnbspace\textendash\space\bibsentence}
+
+%\protected\def\bibrangedash{-}
+%\renewrobustcmd*{\bibrangedash}{-}
+
+\DeclareFieldFormat{pages}{\mkpageprefix[bookpagination][\mknormrange]{#1}}
+%\DeclareFieldFormat{pages}{#1}
+
+%\renewcommand{\bibrangedash}{\textendash\penalty\hyphenpenalty}
 
 %%% Возвращаем запись «Режим доступа» %%%
 \DefineBibliographyStrings{english}{%
@@ -577,7 +587,7 @@ sorting=none,% настройка сортировки списка литера
 		{\addtocategory{eng}{\thefield{entrykey}}}}}
 \makeatother
 
-\input{../biblio/apa}
+%\input{../biblio/apa}
 
 
 
