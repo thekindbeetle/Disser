@@ -1,643 +1,550 @@
-\chapter{Оформление различных элементов}\label{ch:ch1}
+\chapter{Анализ асимптотических свойств периодического решения уравнения Мэки--Гласса}\label{ch:ch1}
 
-\section{Форматирование текста}\label{sec:ch1/sec1}
+В данной главе исследуются релаксационные автоколебания уравнения Мэки--Гласса в предположении, что показатель степени в знаменателе нелинейности --- большой параметр. Рассматривается случай, в котором предельное релейное уравнение, возникающее при устремлении большого параметра к бесконечности, имеет периодическое решение с наименьшим числом переключений на периоде. Для данного случая доказывается существование периодического решения уравнения Мэки--Гласса, асимптотически близкого периодическому решению предельного уравнения.
 
-Мы можем сделать \textbf{жирный текст} и \textit{курсив}.
+В первой части главы явно описывается решение предельного уравнения и ограничения на его параметры. Во второй части доказывается асимптотическая (при $\gamma \to +\infty$) сходимость решения уравнения Мэки--Гласса к решению предельного уравнения.
 
-\section{Ссылки}\label{sec:ch1/sec2}
+\section{Предельное уравнение Мэки--Гласса}\label{sec:ch1/sec1}
 
-Сошлёмся на библиографию.
-Одна ссылка: \cite[с.~54]{Sokolov}\cite[с.~36]{Gaidaenko}.
-Две ссылки: \cite{Sokolov,Gaidaenko}.
-Ссылка на собственные работы: \cite{vakbib1, confbib2}.
-Много ссылок: %\cite[с.~54]{Lermontov,Management,Borozda} % такой «фокус»
-%вызывает biblatex warning относительно опции sortcites, потому что неясно, к
-%какому источнику относится уточнение о страницах, а bibtex об этой проблеме
-%даже не предупреждает
-\cite{Lermontov, Management, Borozda, Marketing, Constitution, FamilyCode,
-    Gost.7.0.53, Razumovski, Lagkueva, Pokrovski, Methodology, Berestova,
-    Kriger}%
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-    \cite{Sirotko, Lukina, Encyclopedia, Nasirova}%
-}{% Примеры для biblatex через движок biber
-    \cite{Sirotko2, Lukina2, Encyclopedia2, Nasirova2}%
-}%
-.
-И~ещё немного ссылок:~\cite{Article,Book,Booklet,Conference,Inbook,Incollection,Manual,Mastersthesis,
-    Misc,Phdthesis,Proceedings,Techreport,Unpublished}
-% Следует обратить внимание, что пробел после запятой внутри \cite{}
-% обрабатывается ожидаемо, а пробел перед запятой, может вызывать проблемы при
-% обработке ссылок.
-\cite{medvedev2006jelektronnye, CEAT:CEAT581, doi:10.1080/01932691.2010.513279,
-    Gosele1999161,Li2007StressAnalysis, Shoji199895, test:eisner-sample,
-    test:eisner-sample-shorted, AB_patent_Pomerantz_1968, iofis_patent1960}%
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-}{% Примеры для biblatex через движок biber
-    \cite{patent2h, patent3h, patent2}%
-}%
-.
+\subsection{Постановка задачи}
 
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-Попытка реализовать несколько ссылок на конкретные страницы
-для \texttt{bibtex} реализации библиографии:
-[\citenum{Sokolov}, с.~54; \citenum{Gaidaenko}, с.~36].
-}{% Примеры для biblatex через движок biber
-Несколько источников (мультицитата):
-% Тут специально написано по-разному тире, для демонстрации, что
-% применение специальных тире в настоящий момент в biblatex приводит к непоказу
-% "с.".
-\cites[vii--x, 5, 7]{Sokolov}[v"--~x, 25, 526]{Gaidaenko}[vii--x, 5, 7]{Techreport},
-работает только в \texttt{biblatex} реализации библиографии.
-}%
-
-Ссылки на собственные работы:~\cite{vakbib1, confbib1}.
-
-Сошлёмся на приложения: Приложение~\cref{app:A}, Приложение~\cref{app:B2}.
-
-Сошлёмся на формулу: формула~\cref{eq:equation1}.
-
-Сошлёмся на изображение: рисунок~\cref{fig:knuth}.
-
-Стандартной практикой является добавление к ссылкам префикса, характеризующего тип элемента.
-Это не является строгим требованием, но~позволяет лучше ориентироваться в документах большого размера.
-Например, для ссылок на~рисунки используется префикс \textit{fig},
-для ссылки на~таблицу "--- \textit{tab}.
-
-В таблице \cref{tab:tab_pref} приложения~\cref{app:B4} приведён список рекомендуемых
-к использованию стандартных префиксов.
-
-В некоторых ситуациях возникает необходимость отойти от требований ГОСТ по оформлению ссылок на
-литературу.
-В таком случае можно воспользоваться дополнительными опциями пакета \verb+biblatex+.
-
-Например, в ссылке на книгу~\cite{sobenin_kdv} использование опции \verb+maxnames=4+ позволяет
-вывести имена всех четырёх авторов.
-По ГОСТ имена последних трёх авторов опускаются.
-
-Кроме того, часто возникают проблемы с транслитерованными инициалами. Некоторые буквы русского
-алфавита по правилам транслитерации записываются двумя буквами латинского алфавита (ю-yu, ё-yo и
-т.д.).
-Такие инициалы \verb+biblatex+ будет сокращать до одной буквы, что неверно.
-Поправить его работу можно использовав опцию \verb+giveninits=false+.
-Пример использования этой опции можно видеть в ссылке~\cite{initials}.
-
-\section{Формулы}\label{sec:ch1/sec3}
-
-Благодаря пакету \textit{icomma}, \LaTeX~одинаково хорошо воспринимает
-в~качестве десятичного разделителя и запятую (\(3,1415\)), и точку (\(3.1415\)).
-
-\subsection{Ненумерованные одиночные формулы}\label{subsec:ch1/sec3/sub1}
-
-Вот так может выглядеть формула, которую необходимо вставить в~строку
-по~тексту: \(x \approx \sin x\) при \(x \to 0\).
-
-А вот так выглядит ненумерованная отдельностоящая формула c подстрочными
-и надстрочными индексами:
-\[
-    (x_1+x_2)^2 = x_1^2 + 2 x_1 x_2 + x_2^2
-\]
-
-Формула с неопределенным интегралом:
-\[
-    \int f(\alpha+x)=\sum\beta
-\]
-
-При использовании дробей формулы могут получаться очень высокие:
-\[
-    \frac{1}{\sqrt{2}+
-        \displaystyle\frac{1}{\sqrt{2}+
-            \displaystyle\frac{1}{\sqrt{2}+\cdots}}}
-\]
-
-В формулах можно использовать греческие буквы:
-%Все \original... команды заранее, ради этого примера, определены в Dissertation\userstyles.tex
-\[
-    \alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta\theta%
-    \vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho\varrho%
-    \sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma\Delta%
-    \Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
-\]
-\[%https://texfaq.org/FAQ-boldgreek
-    \boldsymbol{\alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta%
-        \theta\vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho%
-        \varrho\sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma%
-        \Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega}
-\]
-
-Для добавления формул можно использовать пары \verb+$+\dots\verb+$+ и \verb+$$+\dots\verb+$$+,
-но~они считаются устаревшими.
-Лучше использовать их функциональные аналоги \verb+\(+\dots\verb+\)+ и \verb+\[+\dots\verb+\]+.
-
-\subsection{Ненумерованные многострочные формулы}\label{subsec:ch1/sec3/sub2}
-
-Вот так можно написать две формулы, не нумеруя их, чтобы знаки <<равно>> были
-строго друг под другом:
-\begin{align}
-    f_W & =  \min \left( 1, \max \left( 0, \frac{W_{soil} / W_{max}}{W_{crit}} \right)  \right), \nonumber \\
-    f_T & =  \min \left( 1, \max \left( 0, \frac{T_s / T_{melt}}{T_{crit}} \right)  \right), \nonumber
-\end{align}
-
-Выровнять систему ещё и по переменной \( x \) можно, используя окружение
-\verb|alignedat| из пакета \verb|amsmath|. Вот так:
-\[
-|x| = \left\{
-\begin{alignedat}{2}
-    &&x, \quad &\text{eсли } x\geqslant 0 \\
-    &-&x, \quad & \text{eсли } x<0
-\end{alignedat}
-\right.
-\]
-Здесь первый амперсанд (в исходном \LaTeX\ описании формулы) означает
-выравнивание по~левому краю, второй "--- по~\( x \), а~третий "--- по~слову
-<<если>>. Команда \verb|\quad| делает большой горизонтальный пробел.
-
-Ещё вариант:
-\[
-    |x|=
-    \begin{cases}
-        \phantom{-}x, \text{если } x \geqslant 0 \\
-        -x, \text{если } x<0
-    \end{cases}
-\]
-
-Кроме того, для  нумерованных формул \verb|alignedat| делает вертикальное
-выравнивание номера формулы по центру формулы. Например, выравнивание
-компонент вектора:
+Объектом исследования будет уравнение Мэки--Гласса 
+\cite{Mackey1977, Glass1988}
 \begin{equation}
-    \label{eq:2p3}
-    \begin{alignedat}{2}
-        {\mathbf{N}}_{o1n}^{(j)} = \,{\sin} \phi\,n\!\left(n+1\right)
-        {\sin}\theta\,
-        \pi_n\!\left({\cos} \theta\right)
-        \frac{
-        z_n^{(j)}\!\left( \rho \right)
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{r}\,+   \\
-        +\,
-        {\sin} \phi\,
-        \tau_n\!\left({\cos} \theta\right)
-        \frac{
-        \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{\theta}\,+   \\
-        +\,
-        {\cos} \phi\,
-        \pi_n\!\left({\cos} \theta\right)
-        \frac{
-        \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{\phi}\:.
-    \end{alignedat}
+\label{eq:MG}
+\dot{v}=-b v+\frac{a \theta^{\gamma} v(t-\tau)}{\theta^{\gamma}+v^{\gamma}(t-\tau)}.
+\end{equation}
+Здесь $v=v(t) > 0$ --- скалярная функция, $a, b, \theta, \tau, \gamma$ --- положительные параметры. Параметр $\tau$ --- запаздывание по времени, параметр $\gamma$ определяет форму нелинейности.
+
+После перенормировки параметров и времени
+\begin{equation}
+\label{eq:substitutions_v}
+v(t) = \theta u\Big(\frac{t}{\tau}\Big),\, \beta = b\tau,\, \alpha=a\tau, \, t \mapsto \frac{t}{\tau}
+\end{equation}
+уравнение \eqref{eq:MG} примет форму
+\begin{equation}
+\label{eq:MG_norm}
+    \dot{u}=-\beta u+\frac{\alpha u(t-1)}{1+(u(t-1))^\gamma}, \text{ где } \alpha > 0, \beta > 0.
 \end{equation}
 
-Ещё об отступах. Иногда для лучшей <<читаемости>> формул полезно
-немного исправить стандартные интервалы \LaTeX\ с учётом логической
-структуры самой формулы. Например в формуле~\cref{eq:2p3} добавлен
-небольшой отступ \verb+\,+ между основными сомножителями, ниже
-результат применения всех вариантов отступа:
-\begin{align*}
-    \backslash!             & \quad f(x) = x^2\! +3x\! +2         \\
-    \mbox{по-умолчанию}     & \quad f(x) = x^2+3x+2               \\
-    \backslash,             & \quad f(x) = x^2\, +3x\, +2         \\
-    \backslash{:}           & \quad f(x) = x^2\: +3x\: +2         \\
-    \backslash;             & \quad f(x) = x^2\; +3x\; +2         \\
-    \backslash \mbox{space} & \quad f(x) = x^2\ +3x\ +2           \\
-    \backslash \mbox{quad}  & \quad f(x) = x^2\quad +3x\quad +2   \\
-    \backslash \mbox{qquad} & \quad f(x) = x^2\qquad +3x\qquad +2
-\end{align*}
+Докажем, что при $\beta \geq \alpha$ положительных периодических решений уравнения \eqref{eq:MG_norm} не существует. Воспользуемся результатом, доказанным в \cite[Proposition 3.1]{Roest2007}.
 
-Можно использовать разные математические алфавиты:
-\begin{align}
-    \mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber  \\
-    \mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-    \mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber
-\end{align}
+\begin{definition}
+Функцию $f$ назовём унимодальной, если $f(\xi) \geq 0$ при всех $\xi \geq 0$, $f(0) = 0$, и существует единственная точка $\xi_0 > 0$ такая, что $f'(\xi) > 0$ при $0 \leq \xi < \xi_0$ и $f'(\xi) < 0$ при $\xi > \xi_0$, более того, $f''(\xi) < 0$ при $0 \leq \xi \leq \xi_0$ и $\lim\limits_{\xi \to +\infty} f(\xi) = 0$.
+\end{definition}
 
-Посмотрим на систему уравнений на примере аттрактора Лоренца:
+\begin{proposition}
+\label{prop:unimodal}
+Уравнение $\dot{u}(t) = -\mu u(t) + f(u(t - \tau))$, $\mu > 0$, где функция обратной связи $f$ унимодальна и $f'(0) \leq \mu$, для любого $\tau > 0$ имеет глобально притягивающую неподвижную точку $u^* \equiv 0$ \cite{Roest2007}.
+\end{proposition}
+% \begin{proof}
+% Из условия унимодальности и $f'(0) \leq \mu$ следует, что $\mu \xi_0 > f(\xi_0) \geq f(\xi)$ для всех $\xi \geq 0$.
+% 
+% Пусть $u(t)$ --- решение, и $u(t_0) \leq \xi_0$ для некоторого $t_0 > 0$, тогда $u(t) \leq \xi_0$ при всех $t > t_0$. Действительно, если это не так, то найдётся момент $t_1 > t_0$ такой, что $u(t_1) = \xi_0$ и $\dot{u(t_1)} \geq 0$. Но $\dot{u(t_1)} = -\mu \xi_0 + f(x(t_1 - \tau)) < 0$, противоречие. Следовательно, множество $[0, \xi_0]$ положительно инвариантно.
+% 
+% Докажем, что любое положительное решение попадёт в интервал $[0, \xi_0]$. Предположим противное: пусть найдётся момент $t_2$ такой, что при $t > t_2$ верно $u(t) > \xi_0$. Пусть $\Delta_0 = \mu \xi_0 - f(\xi_0) > 0$. Тогда при $t > t_2 + \tau$ верно $\dot{x}(t) < -\Delta_0$ и, следовательно, $x(t) \to -\infty$ при $t \to +\infty$. Противоречие.
+% 
+% %% РАЗОБРАТЬСЯ И ДОПИСАТЬ.
+% \end{proof}
 
+Функция $f(\xi) = \dfrac{\alpha \xi}{1 + \xi^{\gamma}}$ унимодальна, что устанавливается элементарной проверкой. Поскольку $f'(0) = \alpha$, по утверждению \eqref{prop:unimodal} при $\beta \geq \alpha$ функция $u^* \equiv 0$ является глобально притягивающей неподвижной точкой уравнения \eqref{eq:MG_norm}, следовательно, решение уравнения не является периодическим.
+
+В дальнейшем будем считать, что $\alpha > \beta$.
+
+Будем исследовать уравнение \eqref{eq:MG_norm} при больших значениях параметра $\gamma$. Для удобства последующего анализа перейдём к логарифмической шкале. Дальнейший план характерен для уравнений с большим параметром (см., например, \cite{Kolesov2010}): мы рассмотрим предельное при $\gamma\to+\infty$ уравнение и найдём его периодическое решение. Затем будем доказывать наличие периодического режима, близкого к предельному. С этой целью найдём асимптотические формулы решения и докажем теорему о существовании цикла исходного уравнения.
+
+Сделаем в \eqref{eq:MG_norm} экспоненциальную замену $u=e^x$. Данная замена корректна, поскольку $u(t) > 0$. Получим уравнение относительно новой неизвестной $x$:
+\begin{equation}
+    \label{eq:MG_x}
+    \dot{x}=-\beta+\alpha\frac{e^{x(t-1)-x}}{1+e^{\gamma x(t-1)}}.
+\end{equation}
+
+\subsection{Предельное релейное уравнение}
+При устремлении параметра $\gamma$ к бесконечности получаем следующий предельный для \eqref{eq:MG_x} объект:
+\begin{equation}
+    \label{eq:MG_rele}
+    \dot{x}=-\beta + \alpha \exp({x(t-1)-x})H(\exp({x(t-1)})).
+\end{equation}
+В правой части релейная функция $H(u)$, которая является предельной для сигмоиды:
+\begin{equation}
+    \label{eq:H}
+    H(u)=\lim\limits_{\gamma\to +\infty}\frac{1}{1+u^{\gamma}}=
+    \begin{cases}
+        0, & u > 1,\\
+        \frac{1}{2}, & u = 1,\\
+        1, & u < 1.
+    \end{cases}
+\end{equation}
+
+\subsection{Множество начальных функций}
+Зафиксируем положительные параметры $x_0, p, q$ такие, что $p < q$. В качестве множества начальных функций для уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} возьмем множество
+\begin{equation}
+    \label{eq:init_set}
+    S=\{\varphi\in С[-1,0]: 0 < p \leqslant \varphi(t)\leqslant q \text{ при } t\in[-1,0],\ \varphi(0)=x_0\}.
+\end{equation}
+Это множество непрерывных положительных ограниченных функций на отрезке длины запаздывания, имеющих фиксированное значение $x_0$ в нуле.
+
+\subsection{Решение релейного уравнения}
+Введём обозначения:
+\begin{equation}
+    \label{eq:t0:ch1}
+    t_0 = \frac{x_0}{\beta} + 1,
+\end{equation}
+\begin{equation}
+    \label{eq:T}
+    T = \frac{1}{\beta} \ln\left(\frac{1}{2}\alpha^2e^{2\beta}(t_1 - t_0 - 1)^2 + \alpha e^{\beta}(t_1 - t_0) + 1\right),
+\end{equation}
+где $t_1$ --- корень уравнения 
+\begin{equation}
+    \label{eq:t1_cond_exp}
+    e^{\beta (t - t_0)} - \alpha e^{\beta} (t - t_0 - 1) - 1 = 0,
+\end{equation}
+\begin{equation}
+    \label{eq:t2_period}
+    t_2 = t_0 + T.
+\end{equation}
+
+Справедливо следующее утверждение.
+
+\begin{theorem}[О решении релейного уравнения]\label{thm:relay}
+Пусть параметры $\alpha,\beta>0$ удовлетворяют условиям
+%
+\begin{equation}
+    \label{eq:cond_alpha1}
+	\begin{cases}
+    \alpha > -\dfrac{\beta e^{-\beta}}{W(-e^{-\beta - 1})} & \text{ при } \beta \geq \tilde{\beta},\\
+	\alpha > e^{\beta} - e^{-\beta} & \text{ при } 0 < \beta < \tilde{\beta},
+	\end{cases}
+\end{equation}
+где $\tilde{\beta} = 1 + \frac{1}{2} W(-2 e^{-2})$, $W$ --- функция Ламберта, т.~е. обратная к функции $t \mapsto te^t$, рассматриваемой при $t \in [-1; +\infty)$,
+\begin{equation}
+    \label{eq:cond_alpha2}
+    \alpha > \dfrac{e^{\beta(t_1 - t_0 + 1)} - 1}{e^{\beta}(t_1 - t_0)}.
+\end{equation}
+%
+Тогда уравнение \eqref{eq:MG_rele} с начальной функцией из множества \eqref{eq:init_set} имеет $T$~--~периодическое решение
+\small
+\begin{equation}
+    \label{eq:sol_x*}
+x^*(t)= 
+\begin{cases}
+    x_0-\beta t, & t\in[0,t_0],\\
+    x_0-\beta t +\ln(\alpha e^{\beta}(t-t_0)+1), & t\in[t_0,t_0+1],\\
+    x_0-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t-t_0-1)^2+\alpha e^{\beta}(t-t_0)+1), & t\in[t_0+1,t_1],\\
+    x_0-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1), & t\in[t_1,t_2].
+\end{cases}
+\end{equation}
+\normalsize
+\end{theorem}
+
+Изображение цикла \eqref{eq:sol_x*} приведено на рисунке \ref{fig:x_star}.
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.7\textwidth]{x_star.eps}
+  \captionof{figure}{Периодическое решение $x^{*}(t)$ уравнения \eqref{eq:MG_rele}.}
+  \label{fig:x_star}
+\end{figure}
+
+
+\subsection{Доказательство теоремы о решении релейного уравнения}
+
+Решение уравнения \eqref{eq:MG_rele} строится методом шагов.
+
+Если $t \in [0, 1]$, то $x(t - 1) = \phi(t - 1) > 0$, следовательно $x(t)$ отыскивается из начальной задачи Коши
+\begin{equation}
+    \dot{x} = -\beta, \quad x|_{t = 0} = x_0,
+\end{equation}
+откуда $x(t) = x_0 - \beta t$. Аналитический вид решения сохраняется до точки $t_0$, поскольку в этой точке величина $x(t - 1)$ меняет знак.
+
+На промежутке $t \in [t_0, t_0 + 1]$ величина $x(t - 1)$ отрицательна, поэтому решение отыскивается из задачи Коши
+
+\begin{equation}
+    \dot{x} = -\beta + \alpha\exp(x_0 - \beta(t - 1) - x), \quad x|_{t = t_0} = -\beta,
+\end{equation}
+откуда находим
+\begin{equation}
+    x(t) = x_0-\beta t +\ln(\alpha e^{\beta}(t-t_0)+1).
+\end{equation}
+
+Следующее изменение аналитического вида решения происходит либо при $t = t_0 + 2$ (в этот момент аргумент функции $x(t - 1)$ выходит из отрезка $[t_0, t_0 + 1]$), либо в точке, где $x(t - 1) = 0$, и величина $x(t - 1)$ второй раз меняет знак.
+
+Проверим, что при ограничении \eqref{eq:cond_alpha1} выполнен второй случай, т.е. корень уравнения
+\begin{equation}
+\label{eq:t1_eq}
+    x_0-\beta (t - 1) +\ln(\alpha e^{\beta}(t - t_0 - 1) + 1) = 0
+\end{equation}
+существует и лежит на промежутке $(t_0 + 1, t_0 + 2)$.
+
+В \eqref{eq:t1_eq} обозначим $s = t - t_0$ и заменим $x_0 = \beta(t_0 - 1)$, получим
+$$-\beta s + \ln(\alpha e^{\beta} (s - 1) + 1) = 0$$
+%
+или, эквивалентно,
+%
+\begin{equation}
+\label{eq:t1_eq2}
+e^{\beta s} - \alpha e^{\beta} (s - 1) - 1 = 0.
+\end{equation}
+Нужно показать, что при условии \eqref{eq:cond_alpha1} существует корень этого уравнения на промежутке $(1, 2)$.
+
+Обозначим левую часть равенства \eqref{eq:t1_eq2} как $F(s) = e^{\beta s} - \alpha e^{\beta} (s - 1) - 1$. Исследуем функцию $F$:
+%
 \[
-\left\{
-\begin{array}{rl}
-    \dot x = & \sigma (y-x)  \\
-    \dot y = & x (r - z) - y \\
-    \dot z = & xy - bz
+F'(s) = \beta e^{\beta s} - \alpha e^{\beta}, \quad F''(s) = \beta^2 e^{\beta s}.
+\]
+%
+Поскольку $F''(s) > 0$, функция $F$ выпукла. Найдём точку минимума $s_{\min}$ из уравнения $F'(s) = 0$.
+\[
+\beta e^{\beta s} - \alpha e^{\beta} = 0 \Leftrightarrow s = 1 + \frac{1}{\beta}\ln\frac{\alpha}{\beta}.
+\]
+%
+Поскольку при $\alpha > \beta$ верно $s_{\min} > 1$ и $F(1) = e^{\beta} - 1 > 0$, корень $s = s_* > 1$ существует тогда и только тогда, когда $F(s_{\min}) \leqslant 0$. Выразим $\alpha$ из этого условия.
+%
+\[
+F(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\frac{\alpha}{\beta} - 1 \leq 0 \Leftrightarrow \frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1.
+\]
+
+% Обозначим левую часть равенства \eqref{eq:t1_eq2} как $F(s)$; $F''(s) > 0$, поэтому $F(s)$ выпукла. Минимум $F(s)$ достигается в точке $s_{\min} = 1 + \frac{1}{\beta}\ln\frac{\alpha}{\beta}$. Поскольку $s_{\min} > 1$ и $F(1) = e^{\beta} - 1 > 0$, корень $s = s_* > 1$ существует тогда и только тогда, когда $F(s_{\min}) \leqslant 0$; это эквивалентно условию
+% $$\alpha \geqslant \dfrac{-\beta e^{-\beta}}{W(-e^{-\beta - 1})}.$$
+
+Условие $s_* < 2$ выполняется, если $F(2) < 0$ или $s_{\min} < 2$, что эквивалентно (в первом случае) $\alpha > e^{\beta} - e^{-\beta}$ или (во втором случае) $\alpha < \beta e^{\beta}$.
+
+Совокупность приведённых условий (с точностью до замены нестрогих неравенств на строгие) эквивалентна \eqref{eq:cond_alpha1}, что показывает следующая лемма.
+
+\begin{lemma}
+\label{lm:parameter_constraints:ch1}
+Совокупность неравенств 
+\[
+\begin{cases}
+\left[
+\begin{array}{ll}
+	\alpha > e^{\beta} - e^{-\beta},\\
+    \alpha < \beta e^{\beta},
+\end{array}
+\right.\\
+\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1
+\end{cases}
+\]
+эквивалентна условиям \eqref{eq:cond_alpha1}.
+\end{lemma}
+\begin{proof}
+Элементарными преобразованиями получаем: 
+\[
+e^{\beta} - e^{-\beta} = \beta e^{\beta} \Leftrightarrow (2\beta - 2) e^{2\beta - 2} = -2e^{-2}.
+\]
+Для отображения $t \mapsto te^t$ каждая точка из интервала $(-1, 0)$ имеет ровно два прообраза, следовательно, возможны две ситуации: $2\beta - 2 = -2$, откуда $\beta = 0$, и $2\beta - 2 = W(-2e^{-2})$, откуда $\beta = \tilde{\beta}$.
+
+Также заметим, что $(e^{\beta} - e^{-\beta})'|_{\beta = 0} > (\beta e^{\beta})'|_{\beta = 0}$, поэтому на промежутке $(0, \tilde{\beta})$ верно неравенство $e^{\beta} - e^{-\beta} > \beta e^{\beta}$. На промежутке $(\tilde{\beta}, +\infty)$ верно обратное неравенство из асимптотических соображений при $\beta \to +\infty$.
+
+Теперь явно выразим $\alpha$ из третьего неравенства в условии леммы.
+\begin{equation*}
+\frac{\alpha}{\beta}e^{\beta}\left(\ln\frac{\beta}{\alpha} + 1\right) < 1\ \Leftrightarrow\ 1 + \ln\dfrac{\beta}{\alpha} < \dfrac{\beta e^{-\beta}}{\alpha}.
+\end{equation*}
+
+Возьмём экспоненту от обеих частей:
+\begin{equation*}
+\dfrac{e\beta}{\alpha} < \exp\dfrac{\beta e^{-\beta}}{\alpha}\ \Leftrightarrow\ \dfrac{-\beta e^{-\beta}}{\alpha}\exp \dfrac{-\beta e^{-\beta}}{\alpha} > -e^{-\beta - 1}\ \Leftrightarrow
+\end{equation*}
+
+\begin{align}
+\label{eq:step3_cond1_expanded:ch1}
+\left[
+\begin{array}{ll}
+    -\frac{\beta e^{-\beta}}{\alpha} > W(-e^{-\beta - 1}),\\
+    -\frac{\beta e^{-\beta}}{\alpha} < W_{-1}(-e^{-\beta - 1}).
 \end{array}
 \right.
-\]
+\end{align}
+%
+где $W_{-1}(x)$ --- ветвь функции Ламберта, принимающая значения из промежутка $(-\infty; -1]$.
 
-А для вёрстки матриц удобно использовать многоточия:
+Однако, второе неравенство соответствует случаю $\dfrac{-\beta e^{-\beta}}{\alpha} < -1$, поскольку $W_{-1}(x) < -1$. Тогда
 \[
-    \left(
-        \begin{array}{ccc}
-            a_{11} & \ldots & a_{1n} \\
-            \vdots & \ddots & \vdots \\
-            a_{n1} & \ldots & a_{nn} \\
-        \end{array}
-    \right)
+\alpha < \beta e^{-\beta} < \beta,
 \]
+что противоречит условию $\alpha > \beta$.
 
-\subsection{Нумерованные формулы}\label{subsec:ch1/sec3/sub3}
+Значит, совокупность неравенств \eqref{eq:step3_cond1_expanded:ch1} заменяется на единственное неравенство
+\[
+    -\frac{\beta e^{-\beta}}{\alpha} > W(-e^{-\beta - 1}) \Leftrightarrow \alpha > -\dfrac{\beta e^{\beta}}{W(-e^{-\beta - 1})}.
+\]
+%
+Знак неравенства меняется, поскольку $W(-e^{-\beta - 1}) < 0$.
 
-А вот так пишется нумерованная формула:
+Докажем, что $-\dfrac{\beta e^{-\beta}}{W(-e^{-\beta - 1})} > \beta e^{\beta}$ тогда и только тогда, когда $0 < \beta < \tilde{\beta}$.
+%
+\[
+-\dfrac{\beta e^{\beta}}{W(-e^{-\beta - 1})} > \beta e^{\beta} \Leftrightarrow W(-e^{-\beta - 1}) > -e^{-2\beta} \Leftrightarrow -e^{-\beta - 1} > -e^{-2\beta} \exp(-e^{-2\beta}) \Leftrightarrow
+\]
+%
+\[
+\Leftrightarrow e^{\beta - 1} < \exp(-e^{-2\beta}) \Leftrightarrow \beta - 1 < -e^{-2\beta} \Leftrightarrow \beta e^{\beta} < e^{\beta} - e^{-\beta}.
+\]
+Последнее неравенство верно при $0 < \beta < \tilde{\beta}$, как было доказано выше.
+
+Докажем, что $-\dfrac{\beta e^{-\beta}}{W(-e^{-\beta - 1})} \leqslant e^{\beta} - e^{-\beta}$.
+
+%% !!TODO: завершить доказательство!
+\textbf{Здесь будет завершение доказательства. Оно есть во второй части в более общем случае, может можно сослаться или привести в виде леммы здесь.}
+
+\end{proof}
+
+На отрезке $t \in [t_0 + 1, t_1]$ решение отыскивается из задачи Коши 
+%
+\begin{multline}
+    \dot{x} = -\beta + \alpha\exp\bigg(x_0 - \beta(t - 1) + \ln(\alpha e^{\beta}(t - t_0 - 1) + 1) - x\bigg),\\
+    x|_{t = t_0 + 1} = x_0 - \beta (t_0 + 1) +\ln(\alpha e^{\beta} + 1),
+\end{multline}
+%
+откуда находим
 \begin{equation}
-    \label{eq:equation1}
-    e = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right) ^n
+    x(t) = x_0-\beta t+\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t-t_0-1)^2+\alpha e^{\beta}(t-t_0)+1\right).
 \end{equation}
-
-Нумерованных формул может быть несколько:
+%
+При $t > t_1$ величина $x(t - 1)$ становится положительной, поэтому уравнение \eqref{eq:MG_rele} вновь принимает вид $\dot{x} = -\beta$. Пусть $t_2$ --- следующий корень уравнения $x(t - 1) = 0$, а именно
 \begin{equation}
-    \label{eq:equation2}
-    \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}
+\label{eq:t2}
+t_2 = 1 + \dfrac{1}{\beta}\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t-t_0-1)^2+\alpha e^{\beta}(t-t_0)+1\right).
 \end{equation}
 
-Впоследствии на формулы~\cref{eq:equation1, eq:equation2} можно ссылаться.
-
-Сделать так, чтобы номер формулы стоял напротив средней строки, можно,
-используя окружение \verb|multlined| (пакет \verb|mathtools|) вместо
-\verb|multline| внутри окружения \verb|equation|. Вот так:
-\begin{equation} % \tag{S} % tag - вписывает свой текст
-    \label{eq:equation3}
-    \begin{multlined}
-        1+ 2+3+4+5+6+7+\dots + \\
-        + 50+51+52+53+54+55+56+57 + \dots + \\
-        + 96+97+98+99+100=5050
-    \end{multlined}
+С учётом начальных условий в точке $t_1$, на промежутке $[t_1, t_2]$
+\begin{equation}
+\label{eq:sol_rele_3}
+    x(t) = x_0-\beta t+\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1\right).
 \end{equation}
 
-Уравнения~\cref{eq:subeq_1,eq:subeq_2} демонстрируют возможности
-окружения \verb|\subequations|.
-\begin{subequations}
-    \label{eq:subeq_1}
-    \begin{gather}
-        y = x^2 + 1 \label{eq:subeq_1-1} \\
-        y = 2 x^2 - x + 1 \label{eq:subeq_1-2}
-    \end{gather}
-\end{subequations}
-Ссылки на отдельные уравнения~\cref{eq:subeq_1-1,eq:subeq_1-2,eq:subeq_2-1}.
-\begin{subequations}
-    \label{eq:subeq_2}
-    \begin{align}
-        y & = x^3 + x^2 + x + 1 \label{eq:subeq_2-1} \\
-        y & = x^2
-    \end{align}
-\end{subequations}
+Отбросим в \eqref{eq:sol_rele_3} квадратичное слагаемое, получим выпуклую вверх функцию $\tilde{x}(t) = -\beta(t - t_0 + 1) + \ln(\alpha e^{\beta} (t - t_0) + 1)$, равную нулю в точке $t_1 - 1$. Тогда $\tilde{x}(t) > 0$ на промежутке $(t_1 - 1, t_1]$, если $\tilde{x}(t_1) > 0$. Выражая из этого неравенства $\alpha$, с учётом $x(t) \geqslant \tilde{x}(t)$ получим условие \eqref{eq:cond_alpha2}.
 
-\subsection{Форматирование чисел и размерностей величин}\label{sec:units}
+Пусть $t_2$ --- корень уравнения $x(t - 1) = 0$, больший $t_1$. Поскольку $x(t) > 0$ на промежутке длины не меньше единицы, последующие шаги построения решения будут совпадать с приведёнными выше, и решение $x(t)$ будет периодическим с периодом $T = t_2 - t_0$. Подставляя соответствующие значения из \eqref{eq:t0:ch1} и \eqref{eq:t2}, получаем явное значение периода \eqref{eq:T}.
 
-Числа форматируются при помощи команды \verb|\num|:
-\num{5,3};
-\num{2,3e8};
-\num{12345,67890};
-\num{2,6 d4};
-\num{1+-2i};
-\num{.3e45};
-\num[exponent-base=2]{5 e64};
-\num[exponent-base=2,exponent-to-prefix]{5 e64};
-\num{1.654 x 2.34 x 3.430}
-\num{1 2 x 3 / 4}.
-Для написания последовательности чисел можно использовать команды \verb|\numlist| и \verb|\numrange|:
-\numlist{10;30;50;70}; \numrange{10}{30}.
-Значения углов можно форматировать при помощи команды \verb|\ang|:
-\ang{2.67};
-\ang{30,3};
-\ang{-1;;};
-\ang{;-2;};
-\ang{;;-3};
-\ang{300;10;1}.
+% Отметим, что при $\alpha > \exp(\beta + e^{-\beta})$ условия теоремы выполняются (в этом можно убедиться явной проверкой условий).
+% Расписать подробнее
 
-Обратите внимание, что ГОСТ запрещает использование знака <<->> для обозначения отрицательных чисел
-за исключением формул, таблиц и~рисунков.
-Вместо него следует использовать слово <<минус>>.
+\subsection{Явные ограничения на параметры уравнения}
 
-Размерности можно записывать при помощи команд \verb|\si| и \verb|\SI|:
-\si{\farad\squared\lumen\candela};
-\si{\joule\per\mole\per\kelvin};
-\si[per-mode = symbol-or-fraction]{\joule\per\mole\per\kelvin};
-\si{\metre\per\second\squared};
-\SI{0.10(5)}{\neper};
-\SI{1.2-3i e5}{\joule\per\mole\per\kelvin};
-\SIlist{1;2;3;4}{\tesla};
-\SIrange{50}{100}{\volt}.
-Список единиц измерений приведён в таблицах~\cref{tab:unit:base,
-    tab:unit:derived,tab:unit:accepted,tab:unit:physical,tab:unit:other}.
-Приставки единиц приведены в~таблице~\cref{tab:unit:prefix}.
+Одновременное выполнение условий \eqref{eq:cond_alpha1} и \eqref{eq:cond_alpha2} затруднительно для проверки. Сформулируем достаточное условие, позволяющее легко находить подходящие наборы параметров $\alpha$ и $\beta$.
 
-С дополнительными опциями форматирования можно ознакомиться в~описании пакета \texttt{siunitx};
-изменить или добавить единицы измерений можно в~файле \texttt{siunitx.cfg}.
+\begin{theorem}
+Пусть параметры $\alpha$, $\beta$ таковы, что $\beta > 0$, $\alpha > \exp(\beta + e^{-\beta})$. Тогда $\alpha$ и $\beta$ удовлетворяют условиям \eqref{eq:cond_alpha1} и \eqref{eq:cond_alpha2}.
+\end{theorem}
+\begin{proof}
+	Поскольку, очевидно, $\exp(\beta + e^{-\beta}) > e^{\beta} - e^{-\beta}$, условие \eqref{eq:cond_alpha1} выполнено.	
+	
+	%% !!TODO: завершить доказательство!
+	\textbf{Здесь будет завершение доказательства. Оно есть во второй части в более общем случае, может можно сослаться или привести в виде леммы здесь.}
+	
+	
+\end{proof}
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering} % выравнивание подписи по-центру
-    \caption{Основные величины СИ}\label{tab:unit:base}
-    \begin{tabular}{llc}
-        \toprule
-        Название  & Команда                 & Символ         \\
-        \midrule
-        Ампер     & \verb|\ampere| & \si{\ampere}   \\
-        Кандела   & \verb|\candela| & \si{\candela}  \\
-        Кельвин   & \verb|\kelvin| & \si{\kelvin}   \\
-        Килограмм & \verb|\kilogram| & \si{\kilogram} \\
-        Метр      & \verb|\metre| & \si{\metre}    \\
-        Моль      & \verb|\mole| & \si{\mole}     \\
-        Секунда   & \verb|\second| & \si{\second}   \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+%%%%%%
+%%% ОСНОВНОЙ РАЗДЕЛ ПРО АСИМПТОТИКИ
+%%%%%%
+\section{Асимптотика уравнения Мэки--Гласса}
 
-\begin{table}
-    \small
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Производные единицы СИ}\label{tab:unit:derived}
-        \begin{tabular}{llc|llc}
-            \toprule
-            Название       & Команда                 & Символ              & Название & Команда & Символ \\
-            \midrule
-            Беккерель      & \verb|\becquerel| & \si{\becquerel}     &
-            Ньютон         & \verb|\newton| & \si{\newton}                                      \\
-            Градус Цельсия & \verb|\degreeCelsius| & \si{\degreeCelsius} &
-            Ом             & \verb|\ohm| & \si{\ohm}                                         \\
-            Кулон          & \verb|\coulomb| & \si{\coulomb}       &
-            Паскаль        & \verb|\pascal| & \si{\pascal}                                      \\
-            Фарад          & \verb|\farad| & \si{\farad}         &
-            Радиан         & \verb|\radian| & \si{\radian}                                      \\
-            Грей           & \verb|\gray| & \si{\gray}          &
-            Сименс         & \verb|\siemens| & \si{\siemens}                                     \\
-            Герц           & \verb|\hertz| & \si{\hertz}         &
-            Зиверт         & \verb|\sievert| & \si{\sievert}                                     \\
-            Генри          & \verb|\henry| & \si{\henry}         &
-            Стерадиан      & \verb|\steradian| & \si{\steradian}                                   \\
-            Джоуль         & \verb|\joule| & \si{\joule}         &
-            Тесла          & \verb|\tesla| & \si{\tesla}                                       \\
-            Катал          & \verb|\katal| & \si{\katal}         &
-            Вольт          & \verb|\volt| & \si{\volt}                                        \\
-            Люмен          & \verb|\lumen| & \si{\lumen}         &
-            Ватт           & \verb|\watt| & \si{\watt}                                        \\
-            Люкс           & \verb|\lux| & \si{\lux}           &
-            Вебер          & \verb|\weber| & \si{\weber}                                       \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
 
-\begin{table}
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Внесистемные единицы}\label{tab:unit:accepted}
+%% !!TODO: Здесь пока нет единтвенности. Для доказательства единственности надо написать производную Фреше.
+\begin{theorem}
+    \label{thm:existence}
+Пусть параметры $\alpha > \beta > 0$ удовлетворяют условиям \eqref{eq:cond_alpha1}, \eqref{eq:cond_alpha2}. Тогда существуют такие значения параметров $x_0, p, q$ и такое достаточно большое $\gamma_0$, что при всех $\gamma > \gamma_0$ уравнение \eqref{eq:MG_x} с начальной функцией из множества \eqref{eq:init_set} обладает периодическим решением $x^*_\gamma(t)$ периода $T_\gamma$, которое удовлетворяет предельным равенствам 
+\begin{equation}
+\label{eq:lim_x*}
+	\lim_{\gamma\to+\infty}\max_{0\leqslant t\leqslant T_\gamma}|x_{\gamma}^*(t)-x^*(t)|=0,\quad \lim_{\gamma\to+\infty}T_{\gamma} = T.
+\end{equation}
+\end{theorem}
 
-        \begin{tabular}{llc}
-            \toprule
-            Название        & Команда                 & Символ          \\
-            \midrule
-            День            & \verb|\day| & \si{\day}       \\
-            Градус          & \verb|\degree| & \si{\degree}    \\
-            Гектар          & \verb|\hectare| & \si{\hectare}   \\
-            Час             & \verb|\hour| & \si{\hour}      \\
-            Литр            & \verb|\litre| & \si{\litre}     \\
-            Угловая минута  & \verb|\arcminute| & \si{\arcminute} \\
-            Угловая секунда & \verb|\arcsecond| & \si{\arcsecond} \\ %
-            Минута          & \verb|\minute| & \si{\minute}    \\
-            Тонна           & \verb|\tonne| & \si{\tonne}     \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
+\subsection{Общая схема доказательства}
+Будем последовательно находить асимптотические формулы решения $x_{\gamma}^*(t)$ уравнения \eqref{eq:MG_x} методом шагов, опираясь на решение $x^*(t)$ релейного уравнения \eqref{eq:MG_rele}. Техника построения асимптотики сходна с описанной в работах \cite{Kolesov2010, Glyzin2013}.
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering}
-    \caption{Внесистемные единицы, получаемые из эксперимента}\label{tab:unit:physical}
-    \begin{tabular}{llc}
-        \toprule
-        Название                & Команда                 & Символ                 \\
-        \midrule
-        Астрономическая единица & \verb|\astronomicalunit| & \si{\astronomicalunit} \\
-        Атомная единица массы   & \verb|\atomicmassunit| & \si{\atomicmassunit}   \\
-        Боровский радиус        & \verb|\bohr| & \si{\bohr}             \\
-        Скорость света          & \verb|\clight| & \si{\clight}           \\
-        Дальтон                 & \verb|\dalton| & \si{\dalton}           \\
-        Масса электрона         & \verb|\electronmass| & \si{\electronmass}     \\
-        Электрон Вольт          & \verb|\electronvolt| & \si{\electronvolt}     \\
-        Элементарный заряд      & \verb|\elementarycharge| & \si{\elementarycharge} \\
-        Энергия Хартри          & \verb|\hartree| & \si{\hartree}          \\
-        Постоянная Планка       & \verb|\planckbar| & \si{\planckbar}        \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+Назовем \textit{точкой излома} функции $x^*(t)$ точку, в которой она имеет разные односторонние производные. Точки излома следует искать среди точек, в которых функция $x^*(t)$ меняет аналитический вид, то есть среди точек $t_0$, $t_0+1$, $t_1$. Однако, в точке $t_0+1$ производные справа и слева совпадают и равны $-\beta+\frac{\alpha e^{\beta}}{\alpha e^{\beta}+1}$, то есть $t_0+1$ не является точкой излома функции $x^*(t)$. Производные в точке $t_0$ справа и слева равны соответственно $-\beta$ и $-\beta+\alpha e^\beta$, в точке $t_1$ они равны $$-\beta+\frac{\alpha^2e^{2\beta}(t_1-t_0-1)+\alpha e^\beta}{\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1}$$ слева и $-\beta$ справа. 
+Таким образом, функция $x^*(t)$ имеет две точки излома: $t_0$ и $t_1$.
 
-\begin{table}
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Другие внесистемные единицы}\label{tab:unit:other}
-        \begin{tabular}{llc}
-            \toprule
-            Название                  & Команда                 & Символ             \\
-            \midrule
-            Ангстрем                  & \verb|\angstrom| & \si{\angstrom}     \\
-            Бар                       & \verb|\bar| & \si{\bar}          \\
-            Барн                      & \verb|\barn| & \si{\barn}         \\
-            Бел                       & \verb|\bel| & \si{\bel}          \\
-            Децибел                   & \verb|\decibel| & \si{\decibel}      \\
-            Узел                      & \verb|\knot| & \si{\knot}         \\
-            Миллиметр ртутного столба & \verb|\mmHg| & \si{\mmHg}         \\
-            Морская миля              & \verb|\nauticalmile| & \si{\nauticalmile} \\
-            Непер                     & \verb|\neper| & \si{\neper}        \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
+Зафиксируем параметр $\nu\in(\frac{1}{2}, 1)$ и введем малый параметр $\sigma$, который следующим образом связан с большим параметром $\gamma$:  
+%
+\[\sigma=\gamma^{-\nu}.\]
+%
+Параметр $\sigma$ имеет смысл радиуса малой окрестности точки излома.
 
-\begin{table}
-    \small
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Приставки СИ}\label{tab:unit:prefix}
-        \begin{tabular}{llcc|llcc}
-            \toprule
-            Приставка & Команда                  & Символ      & Степень &
-            Приставка & Команда                  & Символ      & Степень   \\
-            \midrule
-            Иокто     & \verb|\yocto|  & \si{\yocto} & -24     &
-            Дека      & \verb|\deca|  & \si{\deca}  & 1         \\
-            Зепто     & \verb|\zepto|  & \si{\zepto} & -21     &
-            Гекто     & \verb|\hecto|  & \si{\hecto} & 2         \\
-            Атто      & \verb|\atto|  & \si{\atto}  & -18     &
-            Кило      & \verb|\kilo|  & \si{\kilo}  & 3         \\
-            Фемто     & \verb|\femto|  & \si{\femto} & -15     &
-            Мега      & \verb|\mega|  & \si{\mega}  & 6         \\
-            Пико      & \verb|\pico|  & \si{\pico}  & -12     &
-            Гига      & \verb|\giga|  & \si{\giga}  & 9         \\
-            Нано      & \verb|\nano|  & \si{\nano}  & -9      &
-            Терра     & \verb|\tera|  & \si{\tera}  & 12        \\
-            Микро     & \verb|\micro|  & \si{\micro} & -6      &
-            Пета      & \verb|\peta|  & \si{\peta}  & 15        \\
-            Милли     & \verb|\milli|  & \si{\milli} & -3      &
-            Екса      & \verb|\exa|  & \si{\exa}   & 18        \\
-            Санти     & \verb|\centi|  & \si{\centi} & -2      &
-            Зетта     & \verb|\zetta|  & \si{\zetta} & 21        \\
-            Деци      & \verb|\deci| & \si{\deci}  & -1      &
-            Иотта     & \verb|\yotta| & \si{\yotta} & 24        \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
+На отрезках 
+$[0,t_0-\sigma],$ 
+$[t_0+\sigma, t_0+1-\sigma],$ 
+$[t_0+1-\sigma,t_0+1+\sigma],$ 
+$[t_0+1+\sigma,t_1-\sigma],$ 
+$[t_1+\sigma,t_2-\sigma]$ 
+будем искать решение в виде
+%
+\begin{equation}
+    \label{eq:x*gamma_1}
+    x^*_\gamma(t) = x^*(t) + \Delta
+\end{equation}
+и доказывать малость остатка $\Delta$. Для этого найдем задачу Коши, которой удовлетворяет остаток $\Delta$. С этой целью подставим \eqref{eq:x*gamma_1} в \eqref{eq:MG_x}, в результате чего получим уравнение
+%
+\begin{equation*}
+    \dot{\Delta} = -\beta + \frac{\alpha\exp(x_{\gamma}^*(t - 1) - x^*(t))}{1 + \exp(\gamma x_{\gamma}^*(t - 1))}e^{-\Delta}-\dot{x}^*.
+\end{equation*}
+%
+Обозначим начало рассматриваемого отрезка через $\tilde{t}$, а значение функции $\Delta$ в этой точке --- через $\tilde{\Delta}$. Для того чтобы найти начальное значение, приравняем значение в точке $\tilde{t}$ функции $x_{\gamma}^*(t)$ на предыдущем и текущем шагах:
+%
+\[x_{\gamma}^*(\tilde{t}-0)=x^*(\tilde{t}+0)+\Delta|_{t=\tilde{t}}.\]
+%
+Таким образом, $\Delta$ удовлетворяет задаче Коши
+\begin{equation}
+        \label{eq:task_DeltaAB}
+        \dot{\Delta}=A e^{-\Delta} + B,\quad \Delta|_{t=\tilde{t}}=\tilde{\Delta},
+\end{equation}
+%
+\begin{equation}
+    \label{AB_eq:x*gamma_1}
+\text{где } A = \frac{\alpha\exp(x_{\gamma}^*(t - 1) - x^*(t))}{1+\exp(\gamma x_{\gamma}^*(t - 1))},\, 
+B = -\beta-\dot{x}^*,\, 
+\tilde{\Delta}=x_{\gamma}^*(\tilde{t} - 0) - x^*(\tilde{t} + 0).
+\end{equation}
 
-\subsection{Заголовки с формулами: \texorpdfstring{\(a^2 + b^2 = c^2\)}{%
-        a\texttwosuperior\ + b\texttwosuperior\ = c\texttwosuperior},
-    \texorpdfstring{\(\left\vert\textrm{{Im}}\Sigma\left(
-            \protect\varepsilon\right)\right\vert\approx const\)}{|ImΣ (ε)| ≈ const},
-    \texorpdfstring{\(\sigma_{xx}^{(1)}\)}{σ\_\{xx\}\textasciicircum\{(1)\}}
-}\label{subsec:with_math}
+На отрезках $[t_i - \sigma, t_i + \sigma],$ $i=0, 1,$ будем предполагать, что решение имеет вид
+%
+\begin{equation}
+    \label{eq:x*gamma_2}
+    x^*_\gamma(t)=x^*(t_i)+\frac{1}{\gamma}w_i(\tau)|_{\tau=(t-t_i)\gamma}+\Delta.
+\end{equation}
+%
+Здесь $w_i(\tau)$ --- известные, специальным образом выбранные нами функции. Подробнее о них будет написано в следующем пункте. Параметр $\Delta$ --- предстоящий определению остаток, малость которого требуется доказать. Для определения задачи Коши, которой он удовлетворяет, подставим \eqref{eq:x*gamma_2} в \eqref{eq:MG_x} и найдем начальное значение. Получим задачу \eqref{eq:task_DeltaAB} при
+\begin{equation}
+    \label{AB_eq:x*gamma_2}
+    A=\frac{\alpha\exp\big(x_{\gamma}^*(t-1)-x^*(t_i)-\frac{1}{\gamma}w_i(\tau)|_{\tau=(t-t_i)\gamma}\big)}{1+\exp(\gamma x_{\gamma}^*(t-1))},
+    \,
+    B=-\beta-\frac{dw_i}{d\tau}\Big|_{\tau=(t-t_i)\gamma},
+\end{equation}
+%
+\begin{equation}\label{tilde_eq:x*gamma_2}
+    \tilde{t} = t_i - \sigma = t_i - \gamma^{-\nu},\quad \tilde{\Delta}=x_{\gamma}^*(\tilde{t} - 0) - x^*(t_i) -\frac{1}{\gamma} w_i(\tau)|_{\tau = -\gamma^{1 - \nu}}.
+\end{equation}
+%% !!DONE: проверено.
 
-Пакет \texttt{hyperref} берёт текст для закладок в pdf-файле из~аргументов
-команд типа \verb|\section|, которые могут содержать математические формулы,
-а~также изменения цвета текста или шрифта, которые не отображаются в~закладках.
-Чтобы использование формул в заголовках не вызывало в~логе компиляции появление
-предупреждений типа <<\texttt{Token not allowed in~a~PDF string
-    (Unicode):(hyperref) removing...}>>, следует использовать конструкцию
-\verb|\texorpdfstring{}{}|, где в~первых фигурных скобках указывается
-формула, а~во~вторых "--- запись формулы для закладок.
+Получаем, что на каждом из рассматриваемых отрезков, остаток $\Delta$ находится из задачи Коши \eqref{eq:task_DeltaAB}. Докажем вспомогательное утверждение.
 
-\section{Рецензирование текста}\label{sec:markup}
-
-В шаблоне для диссертации и автореферата заданы команды рецензирования.
-Они видны при компиляции шаблона в режиме черновика или при установке
-соответствующей настройки (\verb+showmarkup+) в~файле \verb+common/setup.tex+.
-
-Команда \verb+\todo+ отмечает текст красным цветом.
-\todo{Например, так.}
-
-Команда \verb+\note+ позволяет выбрать цвет текста.
-\note{Чёрный, } \note[red]{красный, } \note[green]{зелёный, }
-\note[blue]{синий.} \note[orange]{Обратите внимание на ширину и расстановку
-    формирующихся пробелов, в~результате приведённой записи (зависит также
-    от~применяемого компилятора).}
-
-Окружение \verb+commentbox+ также позволяет выбрать цвет.
-
-\begin{commentbox}[red]
-    Красный текст.
-
-    Несколько параграфов красного текста.
-\end{commentbox}
-
-\begin{commentbox}[blue]
-    Синяя формула.
-
-    \begin{equation}
-        \alpha + \beta = \gamma
+\begin{lemma}\label{lm:DeltaAB}
+Пусть $\tilde{t} \geqslant 0$, $\tilde{\Delta}$ --- известные вещественные числа, $A = A(t),$ $B = B(t)$ --- непрерывные при $t \geq \tilde{t}$ функции, $A(t) > 0$. Тогда решение задачи Коши \eqref{eq:task_DeltaAB} выражается формулой
+	\begin{equation}\label{sol_DeltaAB}
+	\Delta = J + \ln\Big(1 + \int\limits_{\tilde{t}}^{t} A(s) e^{-J}\,ds \Big),
+	\text{ где } J = \tilde{\Delta} + \int\limits_{\tilde{t}}^{t} B(s)\,ds.
+	\end{equation}
+\end{lemma}
+\begin{proof}
+    Замена $e^{\Delta}=\theta$ преобразует задачу \eqref{eq:task_DeltaAB} к виду
+	%
+    \begin{equation}\label{task_theta}
+		\dot{\theta}=A+B\theta,\quad\theta|_{t=\tilde{t}}=e^{\tilde{\Delta}}.
     \end{equation}
-\end{commentbox}
+	%
+    Решение соответствующей однородной задачи $\dot{\theta}=B\theta$, $\theta|_{t=\tilde{t}}=e^{\tilde{\Delta}}$ --- это функция $\theta_*(t)=\exp(\tilde{\Delta}+\int\limits_{\tilde{t}}^{t}B(s)ds).$ Тогда решение задачи \eqref{task_theta} --- это $\theta=\theta_* y$, где $y$ удовлетворяет задаче $\dot{y} = A \theta^{-1}$, $y|_{t=\tilde{t}} = 1$. Отсюда $y = 1 + \int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds$, следовательно $\theta=\theta_*(1+\int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds)$.
+    Тогда $\Delta=\ln\theta=\ln\theta_*+\ln(1+\int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds),$ откуда следует формула \eqref{sol_DeltaAB}.
+\end{proof}
+%%!! DONE: проверено.
 
-\verb+commentbox+ позволяет закомментировать участок кода в~режиме чистовика.
-Чтобы убрать кусок кода для всех режимов, можно использовать окружение
-\verb+comment+.
-
-\begin{comment}
-Этот текст всегда скрыт.
-\end{comment}
-
-\section{Работа со списком сокращений и~условных обозначений}\label{sec:acronyms}
-
-С помощью пакета \texttt{nomencl} можно создавать удобный сортированный список
-сокращений и условных обозначений во время написания текста. Вызов
-\verb+\nomenclature+ добавляет нужный символ или сокращение с~описанием
-в~список, который затем печатается вызовом \verb+\printnomenclature+
-в~соответствующем разделе.
-Для того, чтобы эти операции прошли, потребуется дополнительный вызов
-\verb+makeindex -s nomencl.ist -o %.nls %.nlo+ в~командной строке, где вместо
-\verb+%+ следует подставить имя главного файла проекта (\verb+dissertation+
-для этого шаблона).
-Затем потребуется один или два дополнительных вызова компилятора проекта.
+Из леммы \eqref{lm:DeltaAB} и формул \eqref{AB_eq:x*gamma_1}, \eqref{AB_eq:x*gamma_2}, \eqref{tilde_eq:x*gamma_2} получаем следствия.
+\begin{corollary}\label{corol_Delta_long}
+На отрезках $[0, t_0-\sigma],$ $[t_0+\sigma, t_0+1-\sigma],$ $[t_0+1-\sigma, t_0+1+\sigma],$ $[t_0+1+\sigma, t_1-\sigma],$ $[t_1+\sigma,t_2-\sigma],$ где решение имеет вид \eqref{eq:x*gamma_1}, остаток $\Delta$ определяется формулой
 \begin{equation}
-    \omega = c k,
+    \label{Delta}
+    \Delta = J + \ln(1 + I),
 \end{equation}
-где \( \omega \) "--- частота света, \( c \) "--- скорость света, \( k \) "---
-модуль волнового вектора.
-\nomenclature{\(\omega\)}{частота света\nomrefeq}
-\nomenclature{\(c\)}{скорость света\nomrefpage}
-\nomenclature{\(k\)}{модуль волнового вектора\nomrefeqpage}
-Использование
-\begin{verbatim}
-\nomenclature{\(\omega\)}{частота света\nomrefeq}
-\nomenclature{\(c\)}{скорость света\nomrefpage}
-\nomenclature{\(k\)}{модуль волнового вектора\nomrefeqpage}
-\end{verbatim}
-после уравнения добавит в список условных обозначений три записи.
-Ссылки \verb+\nomrefeq+ на последнее уравнение, \verb+\nomrefpage+ "--- на
-страницу, \verb+\nomrefeqpage+ "--- сразу на~последнее уравнение и~на~страницу,
-можно опускать и~не~использовать.
+где 
+\begin{equation}
+    \label{I_long}
+    I = \int\limits_{\tilde{t}}^{t}\frac{\alpha\exp(x_{\gamma}^*(s-1)+\beta(s-\tilde{t})-x_{\gamma}^*(\tilde{t}))}{1 + \exp(\gamma x_{\gamma}^*(s-1))} ds,
+\end{equation}
+%
+\begin{equation}\label{J_long}
+    J = x_{\gamma}^*(\tilde{t}) - x^*(t) - \beta(t - \tilde{t}),
+\end{equation}
+%
+$\tilde{t}$ --- начальная точка рассматриваемого отрезка.
+\end{corollary}
+%
+\begin{proof}
+	Подставим в формулу \eqref{sol_DeltaAB} значения $A$ и $B$ из \eqref{AB_eq:x*gamma_1}. Получим $\Delta = J + \ln(1 + I)$, где
+\begin{multline*}
+	J = \tilde{\Delta} + \int\limits_{\tilde{t}}^{t}(-\beta - \dot{x}^*(s))ds = x_{\gamma}^*(\tilde{t}) - x^*(\tilde{t}) - \beta(t - \tilde{t}) - x^*(t) + x^*(\tilde{t}) =\\= x_{\gamma}^*(\tilde{t}) - x^*(t) - \beta(t - \tilde{t}),
+\end{multline*}
+\[
+	I = \int\limits_{\tilde{t}}^{t} A e^{-J} \, ds = \int\limits_{\tilde{t}}^{t}\frac{\alpha\exp(x_{\gamma}^*(s-1)+\beta(s-\tilde{t})-x_{\gamma}^*(\tilde{t}))}{1 + \exp(\gamma x_{\gamma}^*(s-1))} ds.
+\]
+\end{proof}
+%
+\begin{corollary}\label{corol_Delta_short}
+На отрезках $[t_i-\sigma,t_i+\sigma]$, $i=0, 1$, где решение имеет вид \eqref{eq:x*gamma_2}, остаток $\Delta$ определяется формулой \eqref{Delta} при
+ \begin{equation}
+    \label{I_point}
+   I=\int\limits_{t_i-\sigma}^{t}\frac{\alpha\exp\big(x_{\gamma}^*(s-1)+\beta(s-t_i+\sigma)-x_{\gamma}^*(t_i-\sigma)\big)}{1+\exp(\gamma x_{\gamma}^*(s-1))}ds,
+\end{equation}
+%
+\begin{equation}
+    \label{J_point}
+    J=x_{\gamma}^*(t_i - \sigma) - x^*(t_i) - \beta(t-t_i+\sigma) - \frac{1}{\gamma} w_i(\tau)|_{\tau=(t-t_i)\gamma}.
+\end{equation}
+\end{corollary}
+%
+\begin{proof}
+	Выражая $\tilde{\Delta} = \Delta|_{t = t_i - \sigma}$ из \eqref{eq:x*gamma_2}, получаем
+\[
+	\tilde{\Delta} = x^*_{\gamma}(t_i - \sigma) - x^*(t_i) - \frac{1}{\gamma} w_i(\tau)|_{\tau = -\gamma^{1-\nu}}.
+\]
+Пусть $\tilde{t} = t_i - \sigma$. Учитывая $\frac{d}{d\tau} w_i(\tau)|_{\tau = \gamma(t - t_i)} = \frac{d}{dt} \left(\frac{1}{\gamma}w_i(\tau)\right)\big|_{\tau = \gamma(t - t_i)}$, в формуле \eqref{sol_DeltaAB} получаем
+\begin{multline*}
+	J = \tilde{\Delta} + \int\limits_{\tilde{t}}^{t} B(s)\,ds = \tilde{\Delta} + \int\limits_{\tilde{t}}^{t} -\beta - \frac{d}{ds} \left(\frac{1}{\gamma}w_i(\tau)\right)\big|_{\tau = \gamma(s - t_i)} \,ds =\\= x^*_{\gamma}(t_i - \sigma) - x^*(t_i) - \frac{1}{\gamma} w_i(\tau)|_{\tau = -\gamma^{1-\nu}} - \frac{1}{\gamma}w_i(\tau)|_{\tau = \gamma(t - t_i)} + \frac{1}{\gamma}w_i(\tau)_{\tau = -\gamma^{1 - \nu}} = \\
+	= x^*_{\gamma}(t_i - \sigma) - x^*(t_i) - \beta(t - t_i - \sigma) - \frac{1}{\gamma} w_i(\tau)|_{\tau = \gamma(t - t_i)}.
+\end{multline*}
+%
+По лемме \ref{lm:DeltaAB} получаем, что остаток имеет вид $\Delta = J + \ln(1 + I)$, где 
+\[
+I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\sigma}^{t}\frac{\alpha\exp\big(x_{\gamma}^*(s-1)+\beta(s-t_i+\sigma)-x_{\gamma}^*(t_i-\sigma)\big)}{1+\exp(\gamma x_{\gamma}^*(s-1))}ds.
+\]
+\end{proof}
+%% !!DONE: проверено.
+%% !!TODO: добавить развёрнутые выкладки.
+%
+Отметим, что $x_{\gamma}^*(\tilde{t})$ и $x_{\gamma}^*(t_i-\sigma)$ в следствиях \ref{corol_Delta_long} и \ref{corol_Delta_short} определяются формулами, полученными на предыдущих шагах.
 
-Группировкой и сортировкой пунктов в списке можно управлять с~помощью указания
-дополнительных аргументов к команде \verb+nomenclature+.
-Например, при вызове
-\begin{verbatim}
-\nomenclature[03]{\( \hbar \)}{постоянная Планка}
-\nomenclature[01]{\( G \)}{гравитационная постоянная}
-\end{verbatim}
-\( G \) будет стоять в списке выше, чем \( \hbar \).
-Для корректных вертикальных отступов между строками в описании лучше
-не~использовать многострочные формулы в~списке обозначений.
 
-\nomenclature{%
-    \( \begin{rcases}
-        a_n \\
-        b_n
-    \end{rcases} \)%
-}{коэффициенты разложения Ми в дальнем поле соответствующие электрическим и
-    магнитным мультиполям}
-\nomenclature[a\( e \)]{\( {\boldsymbol{\hat{\mathrm e}}} \)}{единичный вектор}
-\nomenclature{\( E_0 \)}{амплитуда падающего поля}
-\nomenclature{\( j \)}{тип функции Бесселя}
-\nomenclature{\( k \)}{волновой вектор падающей волны}
-\nomenclature{%
-    \( \begin{rcases}
-        a_n \\
-        b_n
-    \end{rcases} \)%
-}{и снова коэффициенты разложения Ми в дальнем поле соответствующие
-    электрическим и магнитным мультиполям. Добавлено много текста, так что
-    описание группы условных обозначений значительно превысило высоту этой
-    группы...}
-\nomenclature{\( L \)}{общее число слоёв}
-\nomenclature{\( l \)}{номер слоя внутри стратифицированной сферы}
-\nomenclature{\( \lambda \)}{длина волны электромагнитного излучения в вакууме}
-\nomenclature{\( n \)}{порядок мультиполя}
-\nomenclature{%
-    \( \begin{rcases}
-        {\mathbf{N}}_{e1n}^{(j)} & {\mathbf{N}}_{o1n}^{(j)} \\
-        {\mathbf{M}_{o1n}^{(j)}} & {\mathbf{M}_{e1n}^{(j)}}
-    \end{rcases} \)%
-}{сферические векторные гармоники}
-\nomenclature{\( \mu \)}{магнитная проницаемость в вакууме}
-\nomenclature{\( r, \theta, \phi \)}{полярные координаты}
-\nomenclature{\( \omega \)}{частота падающей волны}
+\subsection{Асимптотическое поведение в окрестности точек излома}
 
-С помощью \verb+nomenclature+ можно включать в~список сокращения,
-не~используя их~в~тексте.
-% запись сокращения в список происходит командой \nomenclature,
-% а не употреблением самого сокращения
-\nomenclature{FEM}{finite element method, метод конечных элементов}
-\nomenclature{FIT}{finite integration technique, метод конечных интегралов}
-\nomenclature{FMM}{fast multipole method, быстрый метод многополюсника}
-\nomenclature{FVTD}{finite volume time-domain, метод конечных объёмов
-    во~временной области}
-\nomenclature{MLFMA}{multilevel fast multipole algorithm, многоуровневый
-    быстрый алгоритм многополюсника}
-\nomenclature{BEM}{boundary element method, метод граничных элементов}
-\nomenclature{CST MWS}{Computer Simulation Technology Microwave Studio
-    программа для компьютерного моделирования уравнен Максвелла}
-\nomenclature{DDA}{discrete dipole approximation, приближение дискретиных
-    диполей}
-\nomenclature{FDFD}{finite difference frequency domain, метод конечных
-    разностей в~частотной области}
-\nomenclature{FDTD}{finite difference time domain, метод конечных разностей
-    во~временной области}
-\nomenclature{MoM}{method of moments, метод моментов}
-\nomenclature{MSTM}{multiple sphere T-Matrix, метод Т-матриц для множества
-    сфер}
-\nomenclature{PSTD}{pseudospectral time domain method, псевдоспектральный метод
-    во~временной области}
-\nomenclature{TLM}{transmission line matrix method, метод матриц линий передач}
+Как было написано выше, для описания асимптотического поведения решения уравнения \eqref{eq:MG_x} в окрестности точек излома введем специальные функции:
+%
+\begin{equation}
+    \label{eq:w0}
+    w_0(\tau)=-\beta \tau+\frac{\alpha e^\beta}{\beta}\ln(e^{\beta\tau}+1),
+\end{equation}
+%
+\small
+\begin{multline}
+    \label{eq:w1}
+    w_1(\tau)=-\beta\tau-\frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)^2}{(-\beta(\alpha e^\beta(t_1-t_0-1)+1)+\alpha e^\beta)(\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1))}\times
+    \\
+    \times\ln\Bigg(\exp\Big(\beta\tau-\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)+1\Bigg).
+\end{multline}
+\normalsize
 
-\FloatBarrier
+Сформулируем и докажем утверждение, описывающее асимптотическое поведение введенных функций \eqref{eq:w0}, \eqref{eq:w1} при $\tau\to-\infty$ и $\tau\to+\infty$.
+%
+\begin{lemma}\label{lm:w_asymp}
+\begin{equation}
+    \label{eq:w0_asymp-}
+    w_0(\tau)=-\beta \tau+O(e^{\beta\tau}) \text{ при } \tau\to -\infty,
+\end{equation}
+%
+\begin{equation}
+    \label{eq:w0_asymp+}
+    w_0(\tau)=(-\beta+\alpha e^\beta) \tau+O(e^{-\beta\tau}) \text{ при } \tau\to +\infty,
+\end{equation}
+%
+\begin{multline}
+    \label{eq:w1_asymp-}
+    w_1(\tau)=\Big(-\beta+\frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)}{\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^\beta(t_1-t_0)+1}\Big)\tau+
+    \\
+    +O\Big(\exp\Big(-\beta\tau+\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)\Big)\text{ при } \tau\to -\infty,
+\end{multline}
+%
+\begin{equation}
+    \label{eq:w1_asymp+}
+    w_1(\tau)=-\beta\tau+O\Big(\exp\Big(\beta\tau-\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)\Big) \text{ при } \tau\to +\infty,
+\end{equation}
+\end{lemma}

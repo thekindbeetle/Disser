@@ -131,6 +131,16 @@ sorting=none,% настройка сортировки списка литера
 \addbibresource[label=bl-author]{biblio/author.bib}
 \addbibresource[label=bl-registered]{biblio/registered.bib}
 
+% \addbibresource{biblio/external.bib}
+% \addbibresource{biblio/author.bib}
+% \addbibresource{biblio/registered.bib}
+
+
+% \addbibresource[label=bl-external]{external.bib}
+% \addbibresource[label=bl-author]{author.bib}
+% \addbibresource[label=bl-registered]{registered.bib}
+
+
 %http://tex.stackexchange.com/a/141831/79756
 %There is a way to automatically map the language field to the langid field. The following lines in the preamble should be enough to do that.
 %This command will copy the language field into the langid field and will then delete the contents of the language field. The language field will only be deleted if it was successfully copied into the langid field.
@@ -600,7 +610,8 @@ sorting=none,% настройка сортировки списка литера
 
 %%% Создание команд для вывода списка литературы %%%
 \newcommand*{\insertbibliofull}{
-    \printbibliography[keyword=bibliofull,section=0,title=\bibtitlefull]
+    % \printbibliography[keyword=bibliofull,section=0,title=\bibtitlefull]
+    \printbibliography[section=0,title=\bibtitlefull]
     \ifnumequal{\value{draft}}{0}{
       \printbibliography[heading=nobibheading,env=counter,keyword=bibliofull,section=0]
     }{}

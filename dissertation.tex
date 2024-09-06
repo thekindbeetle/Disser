@@ -22,11 +22,12 @@
 %%% Библиография. Выбор движка для реализации %%%
 % Здесь только проверка установленного ключа. Сама настройка выбора движка
 % размещена в common/setup.tex
-\ifnumequal{\value{bibliosel}}{0}{%
-    \input{biblio/predefined}   % Встроенная реализация с загрузкой файла через движок bibtex8
-}{
-    \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
-}
+%\ifnumequal{\value{bibliosel}}{0}{%
+%    \input{biblio/predefined}   % Встроенная реализация с загрузкой файла через движок bibtex8
+%}{
+%    \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
+%}
+\input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
 
 % Вывести информацию о выбранных опциях в лог сборки
 \typeout{Selected options:}
@@ -52,7 +53,7 @@
 \begin{document}
 %%% Переопределение именований типовых разделов
 % https://tex.stackexchange.com/a/156050
-\gappto\captionsrussian{\input{common/renames}\unskip} % for polyglossia and babel
+\gappto\captionsrussian{\input{common/renames}} % for polyglossia and babel
 \input{common/renames}
 
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
@@ -72,6 +73,9 @@
 \include{Dissertation/acronyms}        % Список сокращений и условных обозначений
 \include{Dissertation/dictionary}      % Словарь терминов
 \include{Dissertation/references}      % Список литературы
+
+\printbibliography
+
 \include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
 
 \setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
