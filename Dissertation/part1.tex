@@ -504,47 +504,543 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\sigma}^{t}\fra
 %
 Отметим, что $x_{\gamma}^*(\tilde{t})$ и $x_{\gamma}^*(t_i-\sigma)$ в следствиях \ref{corol_Delta_long} и \ref{corol_Delta_short} определяются формулами, полученными на предыдущих шагах.
 
+\subsection{Вспомогательные асимптотические соотношения}
+
+В дальнейшем мы будем пользоваться следующими асимптотическими соотношениями:
+\begin{equation}
+\label{eq:exp_const}
+	e^{\epsilon} = 1 + O(\epsilon) \text{ при } \epsilon \to 0;
+\end{equation}
+\begin{equation}
+\label{eq:exp_linear}
+	e^{\epsilon} = 1 + \epsilon + O(\epsilon^2) \text{ при } \epsilon \to 0;
+\end{equation}
+\begin{equation}
+\label{eq:exp_frac}
+	\dfrac{1}{1 + e^{x + \epsilon}} = \frac{1}{1 + e^x} + O(\epsilon) \text{ при } \epsilon \to 0.
+\end{equation}
+
+Соотношения \eqref{eq:exp_const}, \eqref{eq:exp_linear} очевидны. Соотношение \eqref{eq:exp_frac} верно и в случае, когда $x$ зависит от $\epsilon$. Действительно,
+%
+\[
+\dfrac{1}{1 + e^x} - \dfrac{1}{1 + e^{x + \epsilon}} = \dfrac{e^x}{(1 + e^x)(1 + e^{x + \epsilon})} \cdot (e^{\epsilon} - 1) = \dfrac{e^x}{(1 + e^x)(1 + e^{x + \epsilon})} \cdot O(\epsilon),
+\]
+где коэффициент при $O(\epsilon)$ меньше единицы.
 
 \subsection{Асимптотическое поведение в окрестности точек излома}
 
-Как было написано выше, для описания асимптотического поведения решения уравнения \eqref{eq:MG_x} в окрестности точек излома введем специальные функции:
-%
-\begin{equation}
-    \label{eq:w0}
-    w_0(\tau)=-\beta \tau+\frac{\alpha e^\beta}{\beta}\ln(e^{\beta\tau}+1),
-\end{equation}
-%
-\small
-\begin{multline}
-    \label{eq:w1}
-    w_1(\tau)=-\beta\tau-\frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)^2}{(-\beta(\alpha e^\beta(t_1-t_0-1)+1)+\alpha e^\beta)(\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1))}\times
-    \\
-    \times\ln\Bigg(\exp\Big(\beta\tau-\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)+1\Bigg).
-\end{multline}
-\normalsize
+Как было написано выше, для описания асимптотического поведения решения уравнения \eqref{eq:MG_x} в окрестности точек излома $t_i$ введем специальные функции $w_i(t)$. В общем случае их вид зависит от знака $\dot{x}(t_i - 1)$. Докажем утверждения о виде данных функций.
 
-Сформулируем и докажем утверждение, описывающее асимптотическое поведение введенных функций \eqref{eq:w0}, \eqref{eq:w1} при $\tau\to-\infty$ и $\tau\to+\infty$.
+\begin{lemma}
+\label{lm:w}
+	Пусть $x^*(t_i - 1) = 0$, при $t \in [t_i - \sigma, t_i + \sigma]$ верны соотношения:
+	\[ x^*_{\gamma}(t_i - \sigma) = x^*(t_i - \sigma) + O(\gamma^{-2\nu}), \quad x^*_{\gamma}(t - 1) = x^*(t - 1) + O(\gamma^{-2\nu}).\]
+	Тогда решение на данном промежутке имеет вид \eqref{eq:x*gamma_2}, где
+	\[
+	w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) > 0,
+	\]
+	\[
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) < 0,
+	\]
+	\[
+	\Delta = O(\gamma^{-2\nu}).
+	\]
+\end{lemma}
 %
-\begin{lemma}\label{lm:w_asymp}
+\begin{proof}
+	По следствию \ref{corol_Delta_short}, остаток $\Delta$ имеет вид \eqref{Delta}, где $I$ и $J$ определяются формулами \eqref{I_point} и \eqref{J_point} соответственно.
+	
+	Оценим $I$.
+	
+	\begin{equation}
+	\label{eq:I_point_estimate}
+	I = \int\limits_{t_i - \sigma}^{t} \dfrac{\alpha \exp(x^*_{\gamma}(s - 1) + \beta(s - t_i + \sigma) - x^*_{\gamma}(t_i - \sigma))}{1 + \exp(\gamma x^*_{\gamma}(s - 1))}\, ds = \ldots
+	\end{equation}
+	
+	Воспользуемся равенствами
+	\[
+	x^*(s - 1) = O(\sigma), \quad \beta(s - t_i + \sigma) = O(\sigma), \quad x^*(t_i - \sigma) = x^*(t_i) + O(\sigma),
+	\]
+	получим
+	\[
+	x^*_{\gamma}(s - 1) + \beta(s - t_i + \sigma) - x^*_{\gamma}(t_i - \sigma) = -x^*(t_i) + O(\sigma).
+	\]
+	Тогда числитель \eqref{eq:I_point_estimate} оценивается как
+	\begin{multline*}
+	\alpha \exp(x^*_{\gamma}(s - 1) + \beta(s - t_i + \sigma) - x^*_{\gamma}(t_i - \sigma)) = \alpha \exp(-x^*(t_i) + O(\sigma)) =\\= \alpha e^{-x^*(t_i)} \exp(O(\sigma)) = \alpha e^{-x^*(t_i)} (1 + O(\sigma)).
+	\end{multline*}
+	
+	Преобразуем \eqref{eq:I_point_estimate} в сумму интегралов:
+	\[
+	\ldots = \int\limits_{t_i - \sigma}^{t} \dfrac{\alpha e^{-x^*(t_i)}}{1 + \exp(\gamma x^*_{\gamma}(s - 1))}\, ds + \int\limits_{t_i - \sigma}^{t} \dfrac{\alpha e^{-x^*(t_i)} O(\sigma)}{1 + \exp(\gamma x^*_{\gamma}(s - 1))} \, ds = \ldots
+	\]
+	
+	Второй интеграл оценим как $O(\sigma^2) = O(\gamma^{-2\nu})$. Для оценки первого интеграла воспользуемся равенством
+	\[
+	x^*_{\gamma}(s - 1) = (s - t_i)\dot{x}^*(t_i - 1) + O(\gamma^{-2\nu}).
+	\]
+	Тогда 
+	\[
+	\exp(\gamma x^*_{\gamma}(s - 1)) = \exp((s - t_i)\dot{x}^*(t_i - 1) + O(\gamma^{1 - 2\nu})).
+	\]
+	Из выбора $\nu$, $O(\gamma^{1 - 2\nu})$ мало. Применяя равенство \eqref{eq:exp_frac}, получаем следующую оценку.
+	\begin{multline*}
+	\dfrac{1}{1 + \exp(\gamma x^*_{\gamma}(s - 1))} = \dfrac{1}{1 + \exp(\gamma (s - t_i) \dot{x}^*(t_i - 1) + O(\gamma^{1 - 2\nu})} =\\= \dfrac{1}{1 + \exp(\gamma(s - t_i)\dot{x}^*(t_i - 1)} + O(\gamma^{1 - 2\nu}).
+	\end{multline*}
+	Таким образом,
+	\begin{multline*}
+	\int\limits_{t_i - \sigma}^{t} \dfrac{\alpha e^{-x^*(t_i)}}{1 + \exp(\gamma x^*_{\gamma}(s - 1))}\, ds = \int\limits_{t_i - \sigma}^{t} \left(\dfrac{\alpha e^{-x^*(t_i)}}{1 + \exp(\gamma(s - t_i)\dot{x}^*(t_i - 1))} + O(\gamma^{1 - 2\nu})\right) ds =\\
+	= \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma(s - t_i)\dot{x}^*(t_i - 1))\right)\bigg\vert_{t_i - \sigma}^t + O(\gamma^{1 - 3\nu}) = \\
+	= \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) -\\- \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma^{1 - \nu}\dot{x}^*(t_i - 1))\right) + O(\gamma^{1 - 3\nu}).
+	\end{multline*}
+	Если $\dot{x}^*(t_i - 1) < 0$, второе слагаемое экспоненциально мало, и мы получаем оценку 
+	\begin{equation}
+	\label{eq:I_estimate_dotx_less_0}
+	I = \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) + O(\gamma^{1 - 3\nu}).
+	\end{equation}
+	Если $\dot{x}^*(t_i - 1) > 0$, 
+	\begin{multline}
+	\dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) -\\- \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(-\gamma^{1 - \nu}\dot{x}^*(t_i - 1))\right) =\\
+	= \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) - \alpha (t - t_i) e^{-x^*(t_i)} -\\- \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(\gamma^{1 - \nu}\dot{x}^*(t_i - 1))\right) + \alpha \sigma e^{-x^*(t_i)}. 
+	\end{multline}
+	При $\dot{x}^*(t_i - 1) > 0$ третье слагаемое экспоненциально мало, и мы получаем следующую оценку.
+	\begin{multline}
+		\label{eq:I_estimate_dotx_greater_0}
+		I = \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) -\\- \alpha (t - t_i - \sigma) e^{-x^*(t_i)} + O(\gamma^{1 - 3\nu}).
+	\end{multline}
+	
+	Оценим $J$.
+	
+	При $\dot{x}^*(t_i - 1) < 0$ на промежутке $[t_i - \sigma, t_i]$ уравнение \eqref{eq:MG_rele} имеет вид $\dot{x} = -\beta$, следовательно, 
+	\[
+	\dot{x}_{\gamma}^*(t_i - \sigma) - x^*(t_i) = \dot{x}^*(t_i - \sigma) - x^*(t_i) + O(\gamma^{-2\nu}) = -\beta \sigma + O(\gamma^{-2\nu}).
+	\]
+	%
+	Подставляя в \eqref{J_point} это равенство и функцию $w(\tau)$ из условия теоремы, получаем
+	\begin{multline}
+		\label{eq:J_estimate_dotx_less_0}
+	J = -\beta \sigma + O(\gamma^{-2\nu}) + \beta (t - t_i) - \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) - \beta(t - t_i - \sigma) =\\
+	\\= -\dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) + O(\gamma^{-2\nu}).
+	\end{multline}
+	
+	Заметим, что в обоих случаях $I = O(\gamma^{-\nu})$, тогда 
+	\begin{equation}
+	\label{eq:ln_1_plus_I}
+	\ln(1 + I) = I + O(\gamma^{-2\nu}).
+	\end{equation}
+	
+	Подставляя \eqref{eq:I_estimate_dotx_less_0} и \eqref{eq:J_estimate_dotx_less_0} в \eqref{Delta}, получаем
+	\[
+	\Delta = J + \ln(1 + I) = O(\gamma^{-2\nu}).
+	\]
+	
+	При $\dot{x}^*(t_i - 1) < 0$ получаем
+	\begin{multline}
+	\label{eq:J_estimate_dotx_greater_0}
+	J = x_{\gamma}^*(t_i - \sigma) - x^*(t_i) - (-\beta + \alpha e^{-x^*(t_i)})(t - t_i) +\\+ \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) - \beta(t - t_i + \sigma) =\\
+	= x^*(t_i - \sigma) - x^*(t_i) - \alpha e^{-x^*(t_i)}(t - t_i) + \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) - \beta\sigma + O(\gamma^{-2\nu}).
+	\end{multline}
+	
+	Подставляя \eqref{eq:I_estimate_dotx_less_0} и \eqref{eq:J_estimate_dotx_less_0} в \eqref{Delta}, и пользуясь оценкой \eqref{eq:ln_1_plus_I}, получаем
+	\[
+	\Delta = x^*(t_i - \sigma) - x^*(t_i) - \beta \sigma - \alpha (t - t_i - \sigma) e^{-x^*(t_i)} + O(\gamma^{-2\nu}).
+	\]
+	С учётом 
+	\[
+	x^*(t_i - \sigma) - x^*(t_i) = -\sigma\dot{x}(t_i - 0) + O(\sigma^2), \, \dot{x}(t_i - 0) = \beta + \alpha e^{x^*(t_i - 1) - x^*(t_i)} = \beta + \alpha e^{-x^*(t_i)}
+	\]
+	получаем
+	\[
+	\Delta = O(\gamma^{-2\nu}).
+	\]
+\end{proof}
+
+Сформулируем и докажем утверждение, описывающее асимптотическое поведение введенных функций $w_i(\tau)$ при $\tau\to-\infty$ и $\tau\to+\infty$.
+%
+\begin{lemma}\label{lm:lem_w_asymp} Верны следующие асимптотические равенства.
+
+Если $\dot{x}(t_i - 1) < 0$,
 \begin{equation}
-    \label{eq:w0_asymp-}
-    w_0(\tau)=-\beta \tau+O(e^{\beta\tau}) \text{ при } \tau\to -\infty,
+	\label{eq:w0_asymp-}
+	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
 \end{equation}
-%
 \begin{equation}
-    \label{eq:w0_asymp+}
-    w_0(\tau)=(-\beta+\alpha e^\beta) \tau+O(e^{-\beta\tau}) \text{ при } \tau\to +\infty,
+	\label{eq:w0_asymp+}
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty,
 \end{equation}
-%
-\begin{multline}
-    \label{eq:w1_asymp-}
-    w_1(\tau)=\Big(-\beta+\frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)}{\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^\beta(t_1-t_0)+1}\Big)\tau+
-    \\
-    +O\Big(\exp\Big(-\beta\tau+\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)\Big)\text{ при } \tau\to -\infty,
-\end{multline}
-%
+	
+Если $\dot{x}(t_i - 1) > 0$,
 \begin{equation}
-    \label{eq:w1_asymp+}
-    w_1(\tau)=-\beta\tau+O\Big(\exp\Big(\beta\tau-\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)\Big) \text{ при } \tau\to +\infty,
+	\label{eq:w1_asymp-}
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
+\end{equation}
+\begin{equation}
+	\label{eq:w1_asymp+}
+	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty.
 \end{equation}
 \end{lemma}
+\begin{proof}
+	При $\dot{x}(t_i - 1) < 0$ верна формула
+	\[
+	w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right).
+	\]
+	
+	При $\tau \to -\infty$,
+	\[
+	\ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) = O(\exp(-\dot{x}^*(t_i - 1)\tau)),
+	\]
+	 откуда следует \eqref{eq:w0_asymp-}.
+	 
+	При $\tau \to +\infty$,
+	\begin{multline*}
+	\dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) = -\dot{x}^*(t_i - 1)\tau)) = \alpha e^{-x^*(t_i)} \tau + \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) =\\
+	= \alpha e^{-x^*(t_i)} \tau + O(\exp(\dot{x}^*(t_i - 1) \tau)),
+	\end{multline*}
+	откуда следует \eqref{eq:w0_asymp+}.
+	
+	Доказательство формул \eqref{eq:w1_asymp-} и \eqref{eq:w1_asymp+} производится аналогично.
+\end{proof}
+
+\begin{remark}
+	Коэффициенты при $\tau$ в формулах \eqref{eq:w0_asymp-},\eqref{eq:w0_asymp+},\eqref{eq:w1_asymp-},\eqref{eq:w1_asymp+} совпадают с односторонними производными в точках $x^*(t_i)$. 
+\end{remark}
+
+Подставляя соответствующие значения $x(t_i),$ $\dot{x}(t_i + 1)$ при $i = 0, 1,$ получаем
+\begin{equation}
+	\label{eq:w0}
+	w_0(\tau)=-\beta \tau+\frac{\alpha e^\beta}{\beta}\ln(e^{\beta\tau}+1),
+\end{equation}
+
+\begin{multline}
+	\label{eq:w1}
+	w_1(\tau)=\left(-\beta + \frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)}{\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0) + 1}\right)\tau -\\- \frac{\alpha e^\beta(\alpha e^\beta(t_1-t_0-1)+1)^2}{(-\beta(\alpha e^\beta(t_1-t_0-1)+1)+\alpha e^\beta)(\frac{\alpha^2}{2}e^{2\beta}(t_1-t_0-1)^2+\alpha e^{\beta}(t_1-t_0)+1))}\times
+	\\ \times\ln\Bigg(\exp\Big(\beta\tau-\frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-t_0-1)+1}\Big)+1\Bigg).
+\end{multline}
+
+\subsection{Построение асимптотики}
+
+Докажем следующую теорему об асимптотическом поведении решения уравнения \eqref{eq:MG_x}.
+
+\begin{theorem}
+\label{thm:th_asymp}
+Пусть параметры $\alpha,$ $\beta$ удовлетворяют условиям теоремы \ref{thm:existence}, $\gamma \gg 1$, $\sigma = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$. Уравнение \eqref{eq:MG_x} с произвольной начальной функцией $\varphi$ из класса \eqref{eq:init_set} имеет решение $x_\gamma^*(t)$ с асимптотикой
+\small
+\begin{equation}
+	\label{eq:sol_x*gamma}
+	x^*_\gamma(t)= 
+	\begin{cases}
+		x_0 - \beta t + (\gamma^{-1} e^{-\beta \sigma \gamma}), & t\in[0, t_0 - \sigma],\\
+		-\beta + \frac{1}{\gamma} w_0(\tau)|_{\tau=(t-t_0)\gamma} + O(\gamma^{-2\nu}), & t \in [t_0-\sigma,t_0+\sigma]\\
+		x_0 - \beta t + \ln(\alpha e^{\beta}(t - t_0)+1) + O(\gamma^{-2\nu}) & t\in[t_0 + \sigma, t_0 + 1]\\
+		x_0 - \beta t + \ln(\frac{\alpha^2}{2}e^{2 \beta}(t - t_0 - 1)^2 + \alpha e^{\beta}(t - t_0) + 1) + O(\gamma^{-2\nu}) & t \in [t_0 + 1, t_1 - \sigma]\\
+		x_0 - \beta t_1 + \ln(\eta)+\frac{1}{\gamma} w_1(\tau)|_{\tau=(t - t_1)\gamma} + O(\gamma^{1 - 3\nu}) & t\in[t_1 - \sigma, t_1  +\sigma]\\
+		x_0 - \beta t + \ln(\eta) + O(\gamma^{1-3\nu}) & t \in [t_1+\sigma, t_2-\sigma]
+	\end{cases}
+\end{equation}
+\normalsize
+где $\eta=\frac{\alpha^2}{2}e^{2\beta}(t_1 - t_0 - 1)^2 + \alpha e^{\beta}(t_1 - t_0) + 1$.
+Асимптотические выражения написаны здесь в предположении $\gamma\to+\infty$.
+Все остатки равномерны по $\varphi \in S$ и $t$ из соответствующих промежутков.
+\end{theorem}
+
+Для построения асимптотики функции $x_\gamma^*(t)$ последовательно рассмотрим семь отрезков:
+$[0, t_0 - \sigma]$, 
+$[t_0  -\sigma, t_0 + \sigma]$,
+$[t_0 + \sigma, t_0 + 1 - \sigma]$,
+$[t_0 + 1 - \sigma, t_0 + 1 + \sigma]$,
+$[t_0 + 1 + \sigma, t_1 - \sigma]$,
+$[t_1 - \sigma, t_1 + \sigma]$,
+$[t_1 + \sigma, t_2 - \sigma]$.
+
+\subsubsection{Первый шаг построения асимптотики}
+
+Рассмотрим отрезок $[0, t_0 - \sigma]$. На этом отрезке будем искать решение в виде
+%
+\begin{equation}
+	\label{eq:sol_1}
+	x_\gamma^*(t) = x_0 - \beta t + \Delta_1,
+\end{equation}
+%
+где $\Delta_1 = \Delta_1(t, \phi)$ --- остаток, порядок малости которого нужно установить. Докажем следующий факт.
+%
+\begin{lemma}
+\label{lm:Delta1}
+На отрезке $[0, t_0 - \sigma]$ функция $x_\gamma^*(t)$ описывается формулой \eqref{eq:sol_1}, причем
+%
+\[
+\Delta_1 = O(\frac{1}{\gamma} e^{-\gamma^{1 - \nu}}) \text{ при } \gamma \to +\infty.
+\]
+\end{lemma}
+\begin{proof}
+Подставим \eqref{eq:sol_1} в \eqref{eq:MG_x}. Сначала рассмотрим отрезок $[0,1]$. Учитывая, что на этом отрезке $x(t-1) = \varphi(t-1)$ и $x_\gamma^*(0)=x_0 +\Delta|_{t=0}=x_0$, получаем следующую задачу Коши для нахождения $\Delta$: 
+\begin{equation}
+	\label{task_Delta1}
+	\dot{\Delta}_1=\frac{\alpha \exp(\varphi(t-1)-x_0+\beta t-\Delta_1)}{1+\exp(\gamma\varphi(t-1))},\quad \Delta_1|_{t=0}=0.
+\end{equation}
+
+Дифференциальное уравнение \eqref{task_Delta1} --- уравнение с разделяющимися переменными. Домножим правую и левую части на экспоненту $e^{\Delta_1}$ и проинтегрируем:
+%
+\[
+\int\limits_0^{\Delta_1} e^\Delta d\Delta=\int\limits_0^t \frac{\alpha \exp(\varphi(s-1) - x_0 + \beta s)}{1 + \exp(\gamma\varphi(s - 1))}ds.
+\]
+%
+Интеграл слева равен $e^{\Delta_1} - 1$. Оценим интеграл в правой части.
+
+Экспонента $e^{\beta s}$ в числителе под знаком интеграла ограничена, так как $s$ изменяется на конечном отрезке. Поскольку $\varphi\in S$, верно неравенство
+%
+\[
+\frac{\exp\varphi(s - 1)}{1 + \exp(\gamma\varphi(s - 1))} \leqslant \frac{e^q}{1 + e^{\gamma p}}.
+\]
+Следовательно существует положительная константа $C$ (её точное значение неважно), такая что
+\[
+\int\limits_0^t\frac{\alpha\exp\varphi(s-1)-x_0+\beta s}{1+\exp(\gamma\varphi(s-1))}ds\leqslant\frac{C}{1+e^{\gamma p}}.
+\]
+%
+Таким образом, 
+\[
+e^{\Delta_1}-1=O\Big(\frac{1}{1+e^{\gamma p}}\Big)=O(e^{-\gamma p}).
+\]
+Отсюда 
+\[
+\Delta_1=\ln(1+O(e^{-\gamma p}))=O(e^{-\gamma p}) \text{ при }t\in[0,1].
+\]
+Отметим, что полученная оценка равномерна по $t$ и $\varphi$.
+
+Далее рассмотрим отрезок $[1, \tilde{t}],$ где $t = \min\{t_0 - \sigma, 2\}$. Здесь по доказанному выше $x_\gamma^*(t-1)=x_0-\beta (t-1)+O(e^{-p\gamma})=-\beta (t-t_0)+O(e^{-p\gamma})$.
+
+
+Далее, рассмотрим отрезок $[1,\min\{t_0-\sigma,2\}]$. Здесь по доказанному выше $x_\gamma^*(t-1)=x_0-\beta (t-1)+O(e^{-p\gamma})=-\beta (t-t_0)+O(e^{-p\gamma})$. 
+
+По следствию \eqref{corol_Delta_long}, на этом отрезке остаток имеет вид \eqref{Delta}. Оценим $J$ и $I$.
+%
+\[
+J = x^*_{\gamma}(1) - x^*(t) - \beta (t - 1) = x_0 - \beta + O(e^{-p\gamma}) - (x_0 - \beta t) - \beta(t - 1) = O(e^{-p\gamma}).
+\]
+%
+\[
+I = \int\limits_{1}^{t}\frac{\alpha\exp(x_{\gamma}^*(s-1)+\beta(s-1)-x_{\gamma}^*(1))}{1 + \exp(\gamma x_{\gamma}^*(s-1))} ds.
+\]
+Заметим, что
+\begin{multline*}
+x_{\gamma}^*(s-1)+\beta(s-1)-x_{\gamma}^*(1) = x^*(s - 1) + O(e^{-p\gamma}) + \beta(s - 1) - x^*(1) + O(e^{-p\gamma}) =\\= x_0 - \beta(s - 1) + \beta(s - 1) - x_0 - \beta + O(e^{-p\gamma}) = \beta + O(e^{-p\gamma}),
+\end{multline*}
+\[
+\gamma x^*_{\gamma}(s - 1) = \gamma (x^*(s - 1) + O(e^{-p\gamma}) = -\beta \gamma (s - t_0) + O(\gamma e^{-p\gamma}).
+\]
+Тогда 
+\[
+I = \int\limits_{1}^{t}\frac{\alpha\exp(\beta + O(e^{-p\gamma}))}{1 + \exp(-\beta \gamma (s - t_0) + O(\gamma e^{-p\gamma})} ds = \ldots
+\]
+Воспользуемся асимптотическими равенствами \eqref{eq:exp_const} и \eqref{eq:exp_frac}.
+\begin{multline*}
+\ldots = \alpha e^{\beta} \int\limits_{1}^{t}\left(\frac{1}{1 + \exp(-\beta \gamma (s - t_0))} + O(\gamma e^{-p\gamma})\right)(1 + O(e^{-p\gamma})) ds = \\
+= \frac{\alpha e^{\beta}}{\beta \gamma} \left(\ln(1 + \exp(\beta \gamma (s - t_0)))\right)\bigg\vert_1^t + O(\gamma e^{-p\gamma}) = \\
+= \frac{\alpha e^{\beta}}{\beta \gamma}  \big(\ln(1 + \exp(-\beta \gamma (t_0 - t))) - \ln(1 + \exp(-\beta \gamma (t_0 - 1)))\big) + O(\gamma e^{-p\gamma}) = \ldots 
+% \\ O(\frac{1}{\gamma} e^{-\beta (t_0 - 2) \gamma}) + .
+\end{multline*}
+%
+Если $t_0 - \sigma > 2$, то первый логарифм оценивается как $O(\exp(-\beta \gamma (t_0 - 2)))$; если $t_0 - \sigma \leq 2$, то $O(\exp(-\beta \gamma^{1 - \nu}))$, что асимптотически больше $O(\gamma e^{-p\gamma})$. Таким образом, получаем
+\[
+I = 
+\begin{cases}
+O(e^{-C \gamma}) & \text{ при } t_0 - \sigma > 2,\\
+O(\frac{1}{\gamma} e^{-\beta \gamma^{1 - \nu}}) & \text{ при } t_0 - \sigma \leq 2,
+\end{cases}
+\]
+где $C > 0$ --- некоторая константа, значение которой не важно.
+
+Значит,
+\begin{equation}
+	\label{eq:Delta_step1}
+\Delta = J + \ln(1 + I) = 
+\begin{cases}
+	O(e^{-C \gamma}) & \text{ при } t_0 - \sigma > 2,\\
+	O(\frac{1}{\gamma} e^{-\beta \gamma^{1 - \nu}}) & \text{ при } t_0 - \sigma \leq 2.
+\end{cases}
+\end{equation}
+
+Если $t_0 - \sigma > 2$, продолжим двигаться шагами длины $1$. Каждый раз остаток будет такого вида, как в \eqref{eq:Delta_step1} (вместо двойки будет натуральное число, соответствующее номеру шага длины $1$). В конце, когда дойдем до точки $t_0 - \sigma$, получим
+%
+\[
+\Delta_1=O(\gamma^{-1} e^{-\beta\gamma^{1 - \nu}}).
+\]
+%
+Лемма \ref{lm:Delta1} доказана.
+
+\end{proof}
+
+\subsubsection{Второй шаг построения асимптотики}
+Поскольку на отрезке $[0, t_0 - \sigma]$ доказана (даже более точная) оценка $x^*_\gamma(t) = x^*(t) + O(\gamma^{-2\nu})$, применима лемма \ref{lm:w} для случая $\dot{x}(t_i - 1) < 0$. Из неё следует, что при $t \in [t_0 - \sigma, t_0 + \sigma]$ верна оценка
+\[
+x^*_\gamma(t) = x^*(t) + \dfrac{1}{\gamma}w_0(\tau)\bigg\vert_{\tau = \gamma(t - t_0)} + O(\gamma^{-2\nu}).
+\]
+%
+Таким образом, $\Delta_2 = O(\gamma^{-2\nu}).$ Напомним, функция $w_0(\tau)$ в явном виде описана формулой \ref{eq:w0}.
+
+\subsubsection{Третий шаг построения асимптотики}
+Рассмотрим отрезок $[t_0 + \sigma, t_0 + 1 - \sigma]$. Здесь решение отыскивается в виде
+\begin{equation}
+	\label{eq:sol_3}
+	x_\gamma^*(t) = x^*(t) + \Delta_3,
+\end{equation}
+где $x^*(t) = x_0 - \beta t +\ln(\alpha e^{\beta}(t - t_0)+1),$ $\Delta_3 = \Delta_3(t, \phi)$ --- очередной остаток, предстоящий определению. Докажем следующий факт.
+
+\begin{lemma}
+	\label{lm:Delta3}
+	На отрезке $[t_0 + \sigma, t_0 + 1 - \sigma]$ функция $x_\gamma^*(t)$ описывается формулой \eqref{eq:sol_3}, причем
+	\[
+	\Delta_3 = O(\gamma^{-2\nu}) \text{ при } \gamma \to +\infty.
+	\]
+\end{lemma}
+\begin{proof}
+Применим следствие \ref{corol_Delta_long} при $\tilde{t} = t_0 + \sigma$. С учетом асимптотического поведения \eqref{eq:w0_asymp+} функции $w_0(\tau)$ верно
+\begin{equation}
+\label{eq:x_gamma_t0_sigma_step3}
+	x_\gamma^*(t_0 + \sigma) = -\beta + \frac{1}{\gamma} w_0(\tau)|_{\tau=\gamma^{1 - \nu}} + O(\gamma^{-2\nu}) = -\beta + (-\beta + \alpha e^\beta)\sigma + O(\gamma^{-2\nu}).
+\end{equation}
+
+Подставим \eqref{eq:x_gamma_t0_sigma_step3} и явный вид $x^*(t)$ в формулу \eqref{J_long}. Получаем:
+\begin{multline}
+	\label{J_step3}
+	J = x_\gamma^*(t_0 + \sigma) - x^*(t) - \beta(t - t_0 - \sigma) =\\
+	= -\beta + (-\beta + \alpha e^\beta)\sigma + O(\gamma^{-2\nu}) - 
+	(-\beta(t - t_0 + 1) + \ln(\alpha e^{\beta}(t - t_0))) - \beta (t - t_0 - \sigma) = \\
+	 =\alpha e^\beta\sigma + O(\gamma^{-2\nu}) - \ln(\alpha e^{\beta}(t - t_0) + 1).
+\end{multline}
+
+Далее оценим значение $I$. Подставим
+%
+\begin{multline*}
+x^*_{\gamma}(s - 1) + \beta (s - t_0 - \sigma) - x^*_{\gamma} (t_0 + \sigma) =\\
+= x_0 - \beta(s - 1) + \beta(s - t_0 - \sigma) + \beta + (\beta - \alpha e^{\beta}) \sigma + O(\gamma^{-2\nu}) =\\
+= \beta - \alpha e^{\beta} \sigma + O(\gamma^{-2\nu})
+\end{multline*}
+%
+в формулу \eqref{I_long}. Получим:
+\begin{multline*}
+	I=\int\limits_{t_0+\sigma}^{t}\frac{\alpha\exp(x_\gamma^*(s-1)+\beta(s-t_0-\sigma)-x_\gamma^*(t_0+\sigma))}{1+\exp(\gamma x_\gamma^*(s-1))} ds =\\
+	=\int\limits_{t_0+\sigma}^{t}\frac{\alpha e^{\beta}\exp(-\alpha e^\beta\sigma+O(\gamma^{-2\nu}))}{1+\exp( -\beta\gamma (s-1)+O(e^{-\beta\sigma\gamma}))} ds,
+\end{multline*}
+%
+что, с учётом асимптотических равенств \eqref{eq:exp_linear} и \eqref{eq:exp_frac}, преобразуется к виду
+\begin{multline*}
+	I = \int\limits_{t_0 + \sigma}^{t}\Big(\frac{\alpha e^\beta}{1 + \exp(-\beta\gamma(s-t_0))} + O(\gamma e^{-\beta\sigma\gamma})\Big) \cdot \big(1-\alpha e^{\beta} \gamma^{-\nu} + O(\gamma^{-2\nu})\big)ds=\\
+	\int\limits_{t_0+\sigma}^{t}\Big(\frac{\alpha e^\beta(1-\alpha e^{\beta}\sigma)}{1 + \exp(-\beta\gamma(s-t_0))} + O(\gamma^{-2\nu})\Big)ds=\\
+	= \frac{\alpha e^{\beta}}{\beta\gamma}\big(\ln(e^{\beta\gamma(t - t_0)} + 1) - \ln(e^{\beta\gamma^{1-\nu}}+1)\big)(1-\alpha e^{\beta}\sigma)+O(\gamma^{-2\nu})=\\
+	= \frac{\alpha e^{\beta}}{\beta\gamma}\big(\ln(e^{\beta\gamma(t-t_0)}(1 + e^{-\beta\gamma(t - t_0)})) - \ln(e^{\beta\gamma^{1 - \nu}}(1 + e^{-\beta\gamma^{1-\nu}}))\big)(1-\alpha e^{\beta}\sigma)+O(\gamma^{-2\nu}).
+\end{multline*}
+	
+Поскольку $\sigma < t - t_0$ при $t \in [t_0+\sigma, t_0 + 1 - \sigma],$ верно неравенство
+%
+\[-\beta \gamma^{1 - \nu} > - \beta \gamma (t - t_0),\]
+%
+а значит, $e^{-\beta \gamma (t - t_0)} = O(e^{-\beta\gamma^{1 - \nu}})$.
+Тогда в силу свойств логарифма
+%
+\begin{multline}
+	\label{I_step3}
+	I=\frac{\alpha e^{\beta}}{\beta\gamma}\big(\beta\gamma(t-t_0)-\beta\gamma^{1-\nu}+O(e^{-\beta\gamma^{1-\nu}})\big)(1-\alpha e^{\beta}\sigma)+O(\gamma^{-2\nu})=\\
+	= \big(\alpha e^{\beta}(t-t_0)-\alpha e^{\beta}\gamma^{-\nu} + O(\frac{1}{\gamma} e^{-\beta\gamma^{1-\nu}})\big)(1-\alpha e^{\beta}\gamma^{-\nu})+O(\gamma^{-2\nu})=\\
+	= \alpha e^{\beta}(t-t_0)-\alpha e^{\beta}\gamma^{-\nu}-\alpha^2 e^{2\beta}(t-t_0)\gamma^{-\nu}+O(\gamma^{-2\nu})=\\
+	= \alpha e^{\beta}(t-t_0)-\alpha e^{\beta}\big(\alpha e^{\beta}(t-t_0)+1\big)\sigma+O(\gamma^{-2\nu}).
+\end{multline}
+
+
+Подставляя в \eqref{Delta} формулы \eqref{J_step3}  и \eqref{I_step3}, получим
+\begin{multline}
+	\label{eq:Delta_step3}
+	\Delta_3=J+\ln(1+I)=\alpha e^{\beta}\sigma-\ln\big(\alpha e^{\beta}(t-t_0)+1\big)+O(\gamma^{-2\nu})+\\ \ln\Big(1+\alpha e^{\beta}(t-t_0)-\alpha e^{\beta}\big(\alpha e^{\beta}(t-t_0)+1\big)\sigma+O(\gamma^{-2\nu})\Big).
+\end{multline}
+
+Из справедливости равенства
+%
+\[\ln(x+\epsilon)-\ln(x) = \frac{\epsilon}{x} + O(\epsilon^2) \quad \text{при } \epsilon \to 0\]
+%
+следует
+\[
+\Delta_3 = \alpha e^{\beta}\sigma + \frac{-\alpha e^{\beta}(\alpha e^{\beta}(t - t_0) + 1)\sigma + O(\gamma^{-2\nu})}{\alpha e^{\beta}(t-t_0)+1} + O(\gamma^{-2\nu}) = O(\gamma^{-2\nu}).
+\]
+Лемма \ref{lm:Delta3} доказана.
+\end{proof}
+
+\subsubsection{Четвёртый шаг построения асимптотики}
+
+Следующий промежуток построения решения --- $[t_0 + 1 -\sigma, t_0 + 1 + \sigma]$.
+
+%TODO: возможно, здесь что-то можно сократить. Пока не буду писать здесь.
+
+
+\subsubsection{Пятый шаг построения асимптотики}
+
+Найдем асимптотику решения при $t \in [t_0 + 1 + \sigma, t_1 - \sigma]$. Будем искать решение в виде
+\begin{equation}
+	\label{eq:sol_5}
+	x_\gamma^*(t) = x^*(t) + \Delta_5,
+\end{equation}
+%
+где 
+\[x^*(t) = x_0 - \beta t + \ln\left(\frac{\alpha^2}{2} e^{2\beta} (t - t_0 - 1)^2 + \alpha e^{\beta}(t - t_0) + 1 \right),\]
+а остаток $\Delta_5$ предстоит оценить. Докажем следующую лемму.
+%
+\begin{lemma}
+\label{lem_Delta5}
+На отрезке $[t_0 + 1 + \sigma, t_1 - \sigma]$ функция $x_\gamma^*(t)$ описывается формулой \eqref{eq:sol_5}, причем
+\[
+\Delta_5 = O(\gamma^{-2\nu}) \text{ при } \gamma \to +\infty.
+\]
+\end{lemma}
+\begin{proof}
+%
+Применим следствие \ref{corol_Delta_long}. В данном случае $\tilde{t} = t_0 + 1 + \sigma$.
+Тогда
+%
+\[
+J = x_\gamma^*(t_0+1+\sigma) - x^*(t) - \beta(t - t_0 - 1 - \sigma).
+\]
+%
+Здесь
+\begin{multline}
+	\label{x*gamma_tilde_step4}
+	x_\gamma^*(t_0 + 1 + \sigma) = x^*(t_0 + 1 + \sigma) + \Delta_4 = \\
+	= -2 \beta - \beta \sigma + \ln\left(\frac{\alpha^2}{2} e^{2\beta} \sigma^2 + \alpha e^{\beta} (1 + \sigma) + 1 \right) + \Delta_4,
+\end{multline}
+%
+\[
+x^*(t) = \beta(t_0 - 1) - \beta t + \ln\left(\frac{\alpha^2}{2} e^{2\beta}(t - t_0 - 1)^2 + \alpha e^{\beta}(t - t_0) + 1\right),
+\]
+%
+тогда
+\begin{multline}
+	\label{J_step5}
+	J = \ln\left(\frac{\alpha^2}{2}e^{2\beta}\sigma^2 + \alpha e^{\beta}(\sigma + 1) + 1 \right) - \ln\Big(\frac{\alpha^2}{2}e^{2\beta}(t - t_0 - 1)^2+\alpha e^{\beta}(t - t_0) + 1 \Big) + \Delta_4=
+	\\
+	-\ln\left(\frac{\frac{\alpha^2}{2}e^{2\beta}(t - t_0 - 1)^2+\alpha e^{\beta}(t - t_0) + 1}{\alpha e^{\beta}(\sigma + 1) + 1 + O(\gamma^{-2\nu})}\right) + O(\gamma^{-2\nu}).
+\end{multline}
+
+Теперь найдём
+\begin{equation*}
+	I = \int\limits_{t_0 + 1 + \sigma}^{t} \frac{\alpha \exp(x_\gamma^*(s - 1) + \beta(s - t_0 - 1 - \sigma) - x_\gamma^*(t_0 + 1 + \sigma))}{1 + \exp(\gamma x_\gamma^*(s - 1))}ds.
+\end{equation*}
+Учитывая формулы \eqref{x*gamma_tilde_step4} и
+%
+\[
+x_\gamma^*(s-1) = -\beta (s - t_0) + \ln(\alpha e^{\beta}(s - t_0 - 1) + 1) + \Delta_3,
+\]
+%
+получим
+%
+\small
+\begin{equation*}
+	I = \int\limits_{t_0 + 1 + \sigma}^{t}\frac{\alpha e^\beta \exp\left( \ln(\alpha e^{\beta}(s - t_0 - 1) + 1) - \ln(\frac{\alpha^2}{2} e^{2\beta} \sigma^2 + \alpha e^{\beta}(1 + \sigma) + 1) + \Delta_3 - \Delta_4 \right)}{1 + \exp\left(\gamma x^*(s-1)  +\gamma\Delta_3\right)} ds.
+\end{equation*}
+\normalsize
+
+% Дальше тонкий момент, который надо осознать и расписать
+	
+	
+\end{proof}
+
+
+
+
+
