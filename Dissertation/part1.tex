@@ -702,7 +702,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\sigma}^{t}\fra
 \end{proof}
 
 \begin{remark}
-	Коэффициенты при $\tau$ в формулах \eqref{eq:w0_asymp-},\eqref{eq:w0_asymp+},\eqref{eq:w1_asymp-},\eqref{eq:w1_asymp+} совпадают с односторонними производными в точках $x^*(t_i)$. 
+	Коэффициенты при $\tau$ в формулах \eqref{eq:w0_asymp-},\eqref{eq:w0_asymp+},\eqref{eq:w1_asymp-},\eqref{eq:w1_asymp+} совпадают с односторонними производными в точках $x^*(t_i)$ при $i = 0, 1$. 
 \end{remark}
 
 Подставляя соответствующие значения $x(t_i),$ $\dot{x}(t_i + 1)$ при $i = 0, 1,$ получаем
@@ -723,7 +723,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\sigma}^{t}\fra
 
 \begin{theorem}
 \label{thm:th_asymp}
-Пусть параметры $\alpha,$ $\beta$ удовлетворяют условиям теоремы \ref{thm:existence}, $\gamma \gg 1$, $\sigma = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$. Уравнение \eqref{eq:MG_x} с произвольной начальной функцией $\varphi$ из класса \eqref{eq:init_set} имеет решение $x_\gamma^*(t)$ с асимптотикой
+Пусть параметры $\alpha,$ $\beta$ удовлетворяют условиям теоремы \ref{thm:existence}, $\alpha > \beta e^{\beta}$, $\gamma \gg 1$, $\sigma = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$. Уравнение \eqref{eq:MG_x} с произвольной начальной функцией $\varphi$ из класса \eqref{eq:init_set} имеет решение $x_\gamma^*(t)$ с асимптотикой
 \small
 \begin{equation}
 	\label{eq:sol_x*gamma}
@@ -1036,11 +1036,163 @@ x_\gamma^*(s-1) = -\beta (s - t_0) + \ln(\alpha e^{\beta}(s - t_0 - 1) + 1) + \D
 \normalsize
 
 % Дальше тонкий момент, который надо осознать и расписать
+Заметим, что $s \in [t_0 + 1 + \sigma, t] \subset [t_0 + 1 + \sigma, t_1 - \sigma]$, значит, $s - 1 \in [t_0 + \sigma, t_1 - 1 - \sigma]$, где $t_1 - 1$ --- это корень уравнения $x^*(t)=0$, причем функция $x^*(t)$ меняет в точке $t = t_1 - 1$ знак с отрицательного на положительный. Условие $\alpha > \beta e^{\beta}$ гарантирует трансверсальность пересечения нуля, т.к.
+%
+\[
+\dot{x}(t_1 - 1) = -\beta + \alpha \exp(x(t_1 - 2) - x(t_1 - 1)) = -\beta + \alpha \exp(x(t_1 - 2)) > -\beta + \alpha e^{-\beta} > 0.
+\]
+%
+Таким образом, здесь $x^*(s - 1) < -C \sigma = -C \gamma^{-\nu}$, где $C > 0$ --- константа, точное значение которой не важно. Тогда $\exp(\gamma x^*(s - 1))=O(\exp(-C \gamma^{1 - \nu}))$. Учитывая выше сказанное и вынося коэффициент перед знаком интеграла, получим  
+\begin{equation*}
+	I=\frac{\alpha e^\beta}
+	{\frac{\alpha^2}{2}e^{2\beta}\sigma^2+\alpha e^{\beta}(1+\sigma)+1}
+	%
+	\int\limits_{t_0+1+\sigma}^{t}
+	%
+	\frac{\big(\alpha e^{\beta}(s-t_0-1)+1\big)\exp\big(O(\gamma^{-2\nu})\big)}
+	%
+	{1+O\big(\exp({-r\gamma^{1-\nu}})\big) \exp\big(O(\gamma^{1-2\nu})\big)}
+	%
+	ds. 
+\end{equation*}
+Отметим, что показатель $1-2\nu<0$ в силу выбора $\nu$. Используем асимптотические формулы \eqref{eq:exp_const}, $\frac{1}{1 + \epsilon} = O(\epsilon)$ при $\epsilon \to 0$:
+%
+\begin{multline*}
+	I=\frac{\alpha e^\beta}
+	{\frac{\alpha^2}{2}e^{2\beta}\sigma^2+\alpha e^{\beta}(1+\sigma)+1}
+	\int\limits_{t_0+1+\sigma}^{t}
+	\big(\alpha e^{\beta}(s-t_0-1)+1\big)\big(1+O(\gamma^{-2\nu})\big)
+	ds=
+	\\
+	= \frac{\frac{\alpha^2}{2} e^{2\beta}(t-t_0-1)^2+\alpha e^\beta(t-t_0-1-\sigma)+O(\gamma^{-2\nu})}
+	{\alpha e^{\beta}(1+\sigma)+1+O(\gamma^{-2\nu})}.
+\end{multline*}
+%
+Тогда
+\begin{multline}
+	\Delta_5=J+\ln(1+I)=
+	-\ln\Big(\frac{\frac{\alpha^2}{2}e^{2\beta}(t-t_0-1)^2+\alpha e^{\beta}(t-t_0)+1}{\alpha e^{\beta}(\sigma+1)+1+O(\gamma^{-2\nu})}\Big)+O(\gamma^{-2\nu})
+	+
+	\\
+	\ln\Big(\frac{\frac{\alpha^2}{2} e^{2\beta}(t-t_0-1)^2+\alpha e^\beta(t-t_0)+1+O(\gamma^{-2\nu})}
+	{\alpha e^{\beta}(1+\sigma)+1+O(\gamma^{-2\nu})}\Big)=O(\gamma^{-2\nu}).
+\end{multline}        
+
+Лемма \ref{lem_Delta5} доказана.
+
+\end{proof}
+
+\subsection{Шестой шаг построения асимптотики}
+
+Очередной промежуток построения решения --- это $[t_1-\sigma, t_1+\sigma]$. Поскольку $x^*_{\gamma}(t_1 - \sigma) = x^*(t_1) + \Delta_5$, $x^*_{\gamma}(t - 1) = x^*(t - 1) + \Delta_3$, где $\Delta_5 = O(\gamma^{-2\nu})$, $\Delta_3 = O(\gamma^{-2\nu})$, на данном промежутке применима лемма \ref{lm:w}. Таким образом, решение имеет вид
+\begin{equation}
+	\label{eq:sol_6}
+	x_{\gamma}^*(t) = x^*(t) + \frac{1}{\gamma} w_1(\tau)\bigg\vert_{\tau=(t - t_1)\gamma} + \Delta_6,
+\end{equation}
+где $\Delta_6 = O(\gamma^{-2\nu})$.
+
+
+\subsection{Седьмой шаг построения асимптотики}
+
+На заключительном этапе построения рассмотрим отрезок $[t_1+\sigma, t_2-\sigma]$. Здесь будем искать решение в виде
+\begin{equation}
+	\label{eq:sol_7}
+	x_\gamma^*(t) = x^*(t) + \Delta_7.
+\end{equation}
+
+Докажем следующий факт
+\begin{lemma}
+\label{lm:Delta_7}
+На отрезке $[t_1 + \sigma, t_2 - \sigma]$ функция $x_\gamma^*(t)$ описывается формулой \eqref{eq:sol_7}, причем
+\[
+\Delta_7 = O(\gamma^{1 - 3\nu})\text{ при }\gamma\to\infty.
+\]
+\end{lemma}
+\begin{proof}
+Применим следствие \ref{corol_Delta_long}.
+Оценим интеграл
+%
+\begin{equation*}
+	I = \int \limits_{t_1+\sigma}^{t}\frac{\alpha\exp(x_\gamma^*(s - 1) + \beta(s - t_1 - \sigma) - x_\gamma^*(t_1 + \sigma))}{1  +\exp(\gamma x_\gamma^*(s - 1))}ds.
+\end{equation*}
+%
+На рассматриваемом отрезке $x_\gamma^*(s - 1) > 0$, причем существует константа $C > 0$ (точное значение которой не важно), такая, что $x_\gamma^*(s-1) > C\sigma.$
+
+Действительно, данная оценка верна на отрезке $[t_1 - 1 + \sigma, t_1]$, поскольку пересечение нуля в точке $t_1 - 1$ трансверсально. Далее, из \eqref{eq:sol_6} следует, что $x^*_{\gamma}(t_1) = x^*(t_1) + O(\gamma^{-1})$. На отрезке $[t_1, t_2]$ верно $\dot{x}^*(t) = -\beta$, $\dot{x}^*_\gamma(t) > -\beta$, поскольку второе слагаемое уравнения \eqref{eq:MG_x} положительно. Значит, разность $x^*_{\gamma}(t) - x^*(t)$ на отрезке $[t_1, t_2]$ возрастает. Тогда
+%
+\[
+x^*_{\gamma}(t) - x^*(t) > x^*_{\gamma}(t_1) - x^*(t_1) = O(\gamma^{-1}).
+\]
+%
+Следовательно,
+%
+\[
+x^*_{\gamma}(t) > x^*(t) + O(\gamma^{-1}) > x^*(t_2 - 1 - \sigma) + O(\gamma^{-1}) = \beta\sigma + O(\gamma^{-1}),
+\]
+откуда следует существование $C > 0$.
 	
+Тогда
+\begin{equation}
+	\label{I_step7}
+	I = \int\limits_{t_1+\sigma}^{t} O\left(\frac{1}{1 + e^{C \sigma \gamma}}\right) ds = O\left(\frac{1}{1 + e^{C \sigma \gamma}}\right) = O(e^{-C\sigma\gamma}).
+\end{equation}
+
+Поскольку здесь
+\[
+x_\gamma^*(t_1+\sigma) = x^*(t_1) + \frac{1}{\gamma} w_1(\tau)\bigg\vert|_{\tau=\sigma\gamma} + \Delta_6,
+\]
+то в силу асимптотического поведения \eqref{eq:w1_asymp+} функции $w_1$ получаем
+\begin{multline*}
+	J = x_\gamma^*(t_1 + \sigma) - x^*(t) - \beta(t - t_1 - \sigma) =\\
+	x^*(t_1) + \frac{1}{\gamma} (-\beta\tau + O(\exp(-\dot{x}^*(t_1 - 1) \tau)))\bigg\vert|_{\tau = \sigma\gamma} + O(\gamma^{-2\nu}) - x^*(t) - \beta(t - t_1 - \sigma) =\\
+	= (x^*(t_1) - x(t)) - \beta \sigma - \beta(t - t_1 - \sigma) + O(\gamma^{-2\nu}) = O(\gamma^{-2\nu}),
+\end{multline*}
+поскольку $x^*(t_1) - x^*(t) = \beta (t - t_1)$.
+
+Тогда $\Delta = J + \ln(1 + I) = O(\gamma^{-2\nu})$.
 	
 \end{proof}
 
+Теорема \ref{thm:th_asymp} доказана.
 
+\subsection{Доказательство периодичности решения}
 
+Подчеркнём зависимость построенного решения от начальной функции $\varphi \in S$:
+\[
+x^*_{\gamma}(t) = x^*_{\gamma}(t, \varphi).
+\]
 
+Из асимптотических соотношений \eqref{eq:sol_x*gamma} следует, что на промежутке $[t_0 - \sigma; t_2 - \sigma]$ длины $T$ верно равенство
+\[
+x_\gamma^*(t, \varphi) = x^*(t) + O(\gamma^{-2\nu}),
+\]
+где остаток равномерен по $\varphi \in S$.
+% \end{proof}
+Отсюда,
+\[
+\max\limits_{0 \leqslant t \leqslant t_2 - \sigma}|x_\gamma^*(t, \varphi) - x^*(t)| = O(\gamma^{-2\nu}).
+\]
+
+Далее, уточним параметры $x_0, p, q$, характеризующие множество $S = S(x_0, p, q)$ начальных функций. Пусть
+%
+\[
+0 < x_0 < x^*(t_1).
+\]
+%
+Тогда уравнение $x^*_\gamma(t, \varphi) = x_0$, по крайней мере для достаточно больших $\gamma$, имеет корень $T_\gamma = T_{\gamma}(\varphi)$, больший $t_1$ и меньший $t_2 - \sigma$.
+
+Из доказательства теоремы \ref{thm:relay} известно, что на промежутке $[t_1 - 1, t_2 - 1]$ длины, большей единицы, верно $x^*(t) > 0$. Тогда на промежутке $[T_{\gamma} - 1, T_{\gamma}]$ верно $x^*_{\gamma}(t, \varphi) > 0$.
+
+Теперь можно зафиксировать
+\[
+p = \min\limits_{t \in [T_\gamma - 1, T_\gamma]} x^*(t), \ q = \max\limits_{t \in [T_\gamma - 1, T_\gamma]} x^*(t)
+\]
+и все рассуждения в доказательстве асимптотических формул проводить в этих предположениях.
+
+Введём оператор Пуанкаре $\Pi_{\gamma}: S(x_0, p, q) \to C[-1; 0]$, определённый равенством
+\begin{equation}
+	\Pi_{\gamma}(\varphi) = x^*_{\gamma}(t + T_\gamma(\varphi), \varphi).
+\end{equation}
+
+Поскольку множество функций $\Pi_{\gamma}(\varphi)$ равномерно ограничено вместе со своими производными, оно является равностепенно непрерывным, откуда из теоремы Арцела следует компактность оператора $\Pi_{\gamma}$. Таким образом, компактный оператор $\Pi_{\gamma}$ преобразует замкнутое, ограниченное выпуклое множество $S(x_0, p, q)$ в себя. В соответствие с принципом Шаудера \cite{Krasnov1975}, отсюда следует существование неподвижной точки $\varphi^*$ этого оператора, которой соответствует периодическое решение $x^*_\gamma(t, \varphi^*)$ с найденной асимптотикой \eqref{eq:sol_x*gamma}. Условия \eqref{eq:lim_x*} следуют из асимптотических соотношений.
 
