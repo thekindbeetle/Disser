@@ -437,7 +437,7 @@ $[t_0, \min\{t_0 + 1, t_1\}]$.
 %
 \subsection{Область параметров, при которых $t_1\in (t_0+1,t_0+\tau_*)$.}
 
-Покажем, что из условий \eqref{eq:cond_thm1}, \eqref{eq:cond_thm2} теоремы \ref{th:mg_auxiliary_main} следует, что $t_1 \in (t_0+1,t_0+\tau_*)$.
+Покажем, что из условий \eqref{eq:cond_thm1}, \eqref{eq:cond_thm2} теоремы \ref{thm:mg_auxiliary_main} следует, что $t_1 \in (t_0+1,t_0+\tau_*)$.
 
 В уравнении \eqref{eq:w3} сделаем замену $s = t - t_0$. С учётом $u_0A=e^{\beta t_0}$, получаем, что уравнение $w(t)=1$ принимает на рассматриваемом промежутке следующую форму:
 \begin{equation}
@@ -504,11 +504,11 @@ $[t_0, \min\{t_0 + 1, t_1\}]$.
 Случай $f(\tau_*) \leq 0$ соответствует условию 1), случай $1 < s_{\min} \leqslant \tau_*$ --- условию 2) леммы. 
 \end{proof}
 
-Таким образом, мы доказали, что из условий \eqref{eq:cond_thm1} и \eqref{eq:cond_thm2} теоремы \ref{th:mg_auxiliary_main} следует, что корень $s_*$ уравнения \eqref{eq:f} существует и лежит между $1$ и $\tau_*$. Это означает, что точка переключения $t_1 = t_0 + s_*$ также существует и попадает на отрезок $[t_0 + 1, t_0 + \tau_*]$.
+Таким образом, мы доказали, что из условий \eqref{eq:cond_thm1} и \eqref{eq:cond_thm2} теоремы \ref{thm:mg_auxiliary_main} следует, что корень $s_*$ уравнения \eqref{eq:f} существует и лежит между $1$ и $\tau_*$. Это означает, что точка переключения $t_1 = t_0 + s_*$ также существует и попадает на отрезок $[t_0 + 1, t_0 + \tau_*]$.
 
 Далее мы опишем область значений параметров, удовлетворяющих условиям \eqref{eq:cond_thm1} и \eqref{eq:cond_thm2} явно.
 
-\subsection{Явное описание области допустимых значений $\alpha$, $\beta$, $\tau_*$}
+\subsection{Явное описание области допустимых значений параметров}
 
 Выразим $\alpha$ из условия \eqref{eq:cond_thm1}.
 \begin{equation*}
@@ -880,8 +880,8 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 
 \begin{proof}
 	
-	Рассмотрим переход через точку из множества $E_*$. В точке $t_0 + \tau_k$ слагаемое $u(t - \tau_k)$ изменяет форму с \eqref{eq:step1} %$u(t-h) = u_0e^{-\beta( t - h)}$ 
-	на \eqref{eq:step2}. %$u(t-h) = u_0 e^{-\beta( t-h)}(\alpha A(t-h - t_0)+1)$.
+	Рассмотрим переход через точку из множества $E_*$. В точке $t_0 + \tau_k$ слагаемое $u(t - \tau_k)$ изменяет форму с \eqref{eq:u_step1} %$u(t-h) = u_0e^{-\beta( t - h)}$ 
+	на \eqref{eq:u_step2}. %$u(t-h) = u_0 e^{-\beta( t-h)}(\alpha A(t-h - t_0)+1)$.
 	Следовательно, функция $w(t)$ при переходе через $t_0 + \tau_k$ изменяется на разность:
 	% 
 	\[u_0 e^{-\beta( t-\tau_k)}(\alpha A(t - \tau_k - t_0)+1) - u_0e^{-\beta( t - \tau_k)}= \alpha e^{-\beta( t-\tau_k-t_0)}(t-\tau_k-t_0).\]
@@ -1015,23 +1015,21 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	\]
 	%
 	В зависимости от упорядоченности пары точек $t_0+\tau_k$ и $t_1+\tau_{k-1}$ возможны два варианта аналитического описания функции $\tilde{v}(t)$ на отрезке $[t_1+\tau_{k-1},t_1+\tau_k]$:
-	\begin{enumerate}
-		\item[1)] если $t_0+\tau_k\in[t_1+\tau_{k-1},t_1+\tau_k]$, то
-		\begin{equation}
-			\label{eq:v_hair1}
-			\tilde{v}(t)=
-			\begin{cases}
-				C_k e^{-\beta(t-t_0)} & \text{ при } t\in(t_1+\tau_{k-1},t_0+\tau_k],\\
-				C_k e^{-\beta(t-t_0)} + \alpha e^{-\beta (t-t_0-\tau_k)} (t-t_0-\tau_k) & \text{ при } t\in(t_0+\tau_k,t_1+\tau_k];
-			\end{cases}
-		\end{equation}
+	1) если $t_0+\tau_k\in[t_1+\tau_{k-1},t_1+\tau_k]$, то
+	\begin{equation}
+		\label{eq:v_hair1}
+		\tilde{v}(t)=
+		\begin{cases}
+			C_k e^{-\beta(t-t_0)} & \text{ при } t\in(t_1+\tau_{k-1},t_0+\tau_k],\\
+			C_k e^{-\beta(t-t_0)} + \alpha e^{-\beta (t-t_0-\tau_k)} (t-t_0-\tau_k) & \text{ при } t\in(t_0+\tau_k,t_1+\tau_k];
+		\end{cases}
+	\end{equation}
 		
-		\item[2)] если $t_0+\tau_{k} < t_1+\tau_{k-1}$, то
-		\begin{equation}
-			\label{eq:v_hair2} 
-			\tilde{v}(t)= C_k e^{-\beta(t-t_0)}+\alpha e^{-\beta (t-t_0-\tau_k)} (t-t_0-\tau_k) \text{ при } t\in(t_1+\tau_{k-1},t_1+\tau_k].
-		\end{equation}
-	\end{enumerate}
+	2) если $t_0+\tau_{k} < t_1+\tau_{k-1}$, то
+	\begin{equation}
+		\label{eq:v_hair2} 
+		\tilde{v}(t)= C_k e^{-\beta(t-t_0)}+\alpha e^{-\beta (t-t_0-\tau_k)} (t-t_0-\tau_k) \text{ при } t\in(t_1+\tau_{k-1},t_1+\tau_k].
+	\end{equation}
 	
 	% Сделаем замену $t=t(s)=s+\tau_k+t_0$. %Учитывая, что $u_0A=e^{\beta t_0}$, 
 	% Тогда

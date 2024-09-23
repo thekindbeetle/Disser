@@ -1,30 +1,30 @@
-\section{Часть I. Уравнение Мэки-Гласса}
-\begin{frame}
-	\frametitle{Решение релейного уравнения Мэки--Гласса}
-	\begin{equation*}
-	x^*(t)= 
-		\begin{cases}
-			-\beta t, & t\in[0, 1],\\
-			-\beta t +\ln(\alpha e^{\beta}(t - 1)+1), & t\in[1, 2],\\
-			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2 + \alpha e^{\beta}(t - 1)+1), & t\in[2, t_1],\\
-			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1)+1), & t\in[t_1, 1 + T].
-		\end{cases}
-	\end{equation*}
-    
+\section{Списки}
+\begin{frame}[plain, noframenumbering]
     \begin{center}
-    	\includegraphics[width=0.8\linewidth]{func1.jpg}
+        \Huge
+        Списки
     \end{center}
 \end{frame}
 
+\subsection{Нумерованные}
+
 \begin{frame}
-	\frametitle{Общий вид погранслойных функций}
-    \[
-    w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \, \text{при} \, \dot{x}^*(t_i - 1) > 0,
-    \]
-    \[
-    w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \, \text{при} \, \dot{x}^*(t_i - 1) < 0,
-    \]
+    \frametitle{Нумерованные списки}
+    \begin{enumerate}
+        \item один
+        \item два
+        \item три
+    \end{enumerate}
 \end{frame}
+\note{
+    Этот текст будет виден только если его отображение включено
+    в~файле \textbf{Presentation/setup}.
+    Для раздельного вывода презентации и заметок на~разные экраны (как
+    в~impress или powerpoint) можно использовать программу
+    \textit{pdf-presenter-console}.
+}
+
+\subsection{Не нумерованные}
 
 
 \begin{frame}

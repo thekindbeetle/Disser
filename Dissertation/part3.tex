@@ -224,9 +224,11 @@
 	\]
 	%
 	Складывая их, получаем
+	\small
 	\begin{multline*}   
 		\underset{\dot{\tilde{u}}}{\underbrace{(\dot{u}(t - 1) + \delta (m - 1)\dot{u} + \delta n\dot{v})}} + (A_{m, n}(u(t - 1), v(t - 1)) + \delta (m - 1) A_{m, n}(u, v) + \delta n A_{n, m}(v, u)) =\\= -\beta\underset{\tilde{u}}{\underbrace{(u(t - 1) + \delta (m - 1) u + \delta n v)}} + \alpha(F(\tilde{u}(t - 1) + \delta (m - 1) \, F(\tilde{u}) + \delta n \, F(\tilde{v}))
 	\end{multline*}
+	\normalsize
 	или, с учётом \eqref{eq:tilde_change} и \eqref{eq:mg_cluster_system_tilde},
 	\[
 	A_{m, n}(u(t - 1), v(t - 1)) + \delta (m - 1) A_{m, n}(u, v) + \delta n A_{n, m}(v, u) = 0.
@@ -270,7 +272,7 @@
 
 Если в системе \eqref{eq:system_main} заменить функцию $G$ на функцию $\tilde{G}$, получим систему с разрывной по $x$, $y$ правой частью, у которой не гарантировано существование решения в обычном смысле.
 
-Будем строить обобщённое решение методом эквивалентного управления \cite[\S 4, с. 54]{Filippov1988}. При фиксированном $t$ правая часть терпит разрыв на прямых $x = 0$ и $y = 0$. 
+Будем строить обобщённое решение методом эквивалентного управления \cite[\S 4, с. 54]{Filippov1985}. При фиксированном $t$ правая часть терпит разрыв на прямых $x = 0$ и $y = 0$. 
 
 Рассмотрим систему
 %
@@ -666,7 +668,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 	%
 	Заметим, что 
 	\[
-	\frac{1}{\delta(m - 1)} - \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} > 0,
+	\frac{1}{\delta(m - 1)} - \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} = \frac{1}{\delta^2 (m - 1)^2} > 0,
 	\]
 	поэтому функция \eqref{eq:tau_to_t2+1} возрастает по $\tau^* \in [0, 1]$, следовательно, 
 	%
@@ -753,7 +755,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 	Пусть $\tau^* = t_{2i} + 2 - t_{2i + 1} $. Поскольку $t_{2i + 1} \in (t_{2i} + 1, t_{2i} + 2)$, $\tau^* \in (0, 1)$. Значение $y^*_{i + 1}$ выражается через $\tau^*$ аналогично \eqref{eq:tau_to_t2+1}
 	\footnotesize
 	\[
-	y^*_{i + 1} = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) +  e^{\beta} \left(\frac{m}{m - 1} + \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}\right) + e^{\beta \tau^*} \left(\frac{1}{\delta(n - 1)} - \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}\right) \Bigg).
+	y^*_{i + 1} = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) +  e^{\beta} \left(\frac{m}{m - 1} + \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}\right) +  \frac{e^{\beta \tau^*}}{\delta^2 (n - 1)^2} \Bigg).
 	\]
 	\normalsize
 	
