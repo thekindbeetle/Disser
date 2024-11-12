@@ -136,8 +136,6 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 	\dot{u}=-\beta u+\alpha w(t) F(w(t)).
 \end{equation}
 
-\subsection{Множество начальных функций}
-
 Множество $S$ начальных функций определим на промежутке длины наибольшего запаздывания: 
 %
 \begin{equation}
@@ -146,8 +144,6 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 \end{equation}
 %
 где параметр $u_0 > 1$.
-
-\subsection{Точки переключения}
 
 \emph{Точками переключения} будем называть точки, в которых правая часть уравнения \eqref{eq:mg_relay_w} изменяет аналитический вид. К ним относятся точки следующих двух типов.
 \begin{enumerate}
@@ -241,7 +237,7 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 		\label{eq:cond_hair_hair_1}
 		\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,m.
 	\end{equation}
-	Тогда решение уравнения \eqref{eq:mg_relay_w} при любой  начальной функции из множества \eqref{eq:mg_init_set} совпадает с одной и той же периодической функцией. Назовем эту функцию $u_*$, а ее период $T$. Справедливо следующее.
+	Тогда решение уравнения \eqref{eq:mg_relay_w} при любой начальной функции из множества \eqref{eq:mg_init_set} совпадает с одной и той же периодической функцией. Назовем эту функцию $u_*$, а ее период $T$. Справедливо следующее.
 	
 	1. Функция $u_*(t)$ обладает наименьшим числом переключений на периоде: $t_0$, $t_0+1$, $t_1$. При этом 
 	%
@@ -281,10 +277,10 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 Схематичный график функции $u_*$ изображен на рисунке \ref{fig:u_star}.
 %
 \begin{figure}[h]
-	\label{fig:u_star}
 	\centering
 	\includegraphics[width=0.7\textwidth]{u_star.eps}
 	\caption{Функция $u_*(t)$, определённая на периоде $[t_0, t_0 + T]$ уравнением \eqref{eq:u_star}.}
+	\label{fig:u_star}
 \end{figure}
 
 Докажем сформулированную теорему.
@@ -350,7 +346,7 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 \end{lemma}
 
 \begin{proof}
-	Докажем лемму методом индукции. На первом шаге мы имеем $P(t) \equiv 0$, $\tilde{t} = 0$, $\tilde u = 1$. Выше было показано, что в это случае решение действительно имеет вид
+	Докажем лемму индукцией по номеру шага построения решения. На первом шаге мы имеем $P(t) \equiv 0$, $\tilde{t} = 0$, $\tilde u = 1$. Выше было показано, что в это случае решение действительно имеет вид
 	%
 	\begin{equation*}
 		u(t) = u_0 e^{-\beta t},
@@ -407,7 +403,7 @@ $[t_0, \min\{t_0 + 1, t_1\}]$.
 \end{equation}
 
 \paragraph{Шаг 3.} Очередной промежуток построения --- это $[t_0 + 1, \min\{t_0 + \tau_*, t_1\}]$. На этом промежутке
-На этом промежутке
+%
 \begin{multline}
 	\label{eq:w3}
 	w(t)=u_0 e^{-\beta (t-1)}(\alpha A(t-t_0-1)+1)+u_0 e^{-\beta(t - \tau_1)} + \ldots + u_0 e^{-\beta(t-\tau_m)} = \\
@@ -435,7 +431,7 @@ $[t_0, \min\{t_0 + 1, t_1\}]$.
 	u_*(t)= u_1 e^{-\beta(t - t_1)} =\\= u_0 e^{-\beta t}\left(\dfrac{\alpha^2}{2}Ae^{\beta}(t_1 - t_0 - 1)^2 + \alpha A(t_1 - t_0) + 1\right) \text{ при } t \in (t_1,t_2].
 \end{multline}
 %
-\subsection{Область параметров, при которых $t_1\in (t_0+1,t_0+\tau_*)$.}
+\subsection{Область параметров, при которых $t_1\in (t_0+1,t_0+\tau_*)$.}\label{ch2:ssect_params}
 
 Покажем, что из условий \eqref{eq:cond_thm1}, \eqref{eq:cond_thm2} теоремы \ref{thm:mg_auxiliary_main} следует, что $t_1 \in (t_0+1,t_0+\tau_*)$.
 
@@ -782,7 +778,7 @@ e^{\beta \tau_*}-1\leqslant\alpha e^\beta(\tau_*-1)\ \Leftrightarrow\ \alpha \ge
 	%
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=0.7\textwidth]{images/w_inverse.eps}
+		\includegraphics[width=0.7\textwidth]{w_inverse.eps}
 		\caption{Функция $f(x) = x e^x$ убывает при $x < -1$ и возрастает при $x > -1$. На рисунке изображена область, соответствующая неравенству \eqref{eq:phi_double_inequality}.}
 		\label{fig:w_inverse}
 	\end{figure}
@@ -796,7 +792,7 @@ e^{\beta \tau_*}-1\leqslant\alpha e^\beta(\tau_*-1)\ \Leftrightarrow\ \alpha \ge
 	\begin{cases}
 		\delta(\beta, \tau_*) < \phi(\beta) < \theta(\beta, \tau_*), & \beta < \tilde{\beta}(\tau_*),\\
 		\delta(\beta, \tau_*) = \phi(\beta) = \theta(\beta, \tau_*), & \beta = \tilde{\beta}(\tau_*),\\
-		\delta(\beta, \tau_*) > \phi(\beta) > \theta(\beta, \tau_*), & \beta > \tilde{\beta}(\tau_*).
+		\delta(\beta, \tau_*) > \theta(\beta, \tau_*) > \phi(\beta), & \beta > \tilde{\beta}(\tau_*).
 	\end{cases}
 \end{equation}
 %
@@ -831,7 +827,7 @@ e^{\beta \tau_*}-1\leqslant\alpha e^\beta(\tau_*-1)\ \Leftrightarrow\ \alpha \ge
 \subsection{Доказательство периодичности построенного решения}
 В разделе \ref{sec:ch2/sect2/subsect_aux_result} на промежутке $[0,t_2]$ построено решение уравнения \eqref{eq:mg_relay_w} с начальной функцией из множества \eqref{eq:mg_init_set}. Показано, что оно совпадает с функцией $u_*(t)$, которая описывается формулами \eqref{eq:u_step1}, \eqref{eq:u_step2}, \eqref{eq:u_step3}, \eqref{eq:u_step4}. Для доказательства того, что получено периодическое решение с периодом $T = t_2 - t_0$, достаточно убедиться в том, что расстояние между точками $t_1$ и $t_2$ не меньше длины наибольшего запаздывания $\tau_m$. Для этого проследим за изменением функции $w(t)$ на промежутке $[t_1,t_1+\tau_m]$ и покажем, что на данном промежутке сохраняется неравенство $w(t) > 1$.
 
-\subsection{Анализ функции $w(t)$}
+\subsection{Доказательство периодичности решения вспомогательного уравнения}
 
 \begin{proposition}
 	\label{w>1_t_1-t_1+1} Пусть выполнено \eqref{eq:cond_th_w>1_t_1+1},
@@ -903,7 +899,6 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	Тогда $w(t)>1$ при $t\in(t_1,t_1+\tau_m]$.
 \end{lemma}
 
-\subsubsection{Доказательство леммы \ref{lm:lem_w>1}}
 Идея доказательства состоит в следующем. На каждом из промежутков $(t_1, t_1+\tau_k]$ мы определим функцию $\tilde{v}(t) < w(t)$ и покажем, что $1 < \tilde{v}(t)$. Тем самым, утверждение леммы \ref{lm:lem_w>1} окажется доказано.
 
 Будем последовательно рассматривать промежутки $(t_1,t_1+1]$, $(t_1+\tau_{k-1},t_1+\tau_k]$, $k = 1,\ldots,m$. Доказывая на каждом шаге, что на соответствующем промежутке верно $w(t) > 1$, мы также доказываем, что на нём не появится новых точек переключения. Поэтому нам не потребуется рассматривать изменения функции $w(t)$, отличные от тех, что описаны в лемме \ref{lm:lem_w_*}.
@@ -981,10 +976,10 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 %
 %%% ГРАФИК W-КУДРЯВОЕ и V-КУДРЯВОЕ
 \begin{figure}
-	\label{fig:w_hair}
 	\centering
 	\includegraphics[width=0.7\textwidth]{w_hair.eps}
 	\caption{Схематичный график функций $\tilde{w}(t)$ и $\tilde{v}(t)$. На этом рисунке $t_0+\tau_1 \notin[t_1+\tau_0,t_1+\tau_1]$, поэтому при $t\in(t_1+\tau_0,t_1+\tau_1]$ функция  $\tilde{v}(t)$ описывается формулой \eqref{eq:v_hair1} при $k=1$, и соответствующие условия того, что здесь $\tilde{v}(t)>1$, --- это формулы \eqref{eq:cond_hair_hair_02} и \eqref{eq:cond_hair_hair_1} при $k=1$. На следующем отрезке $[t_1+\tau_1,t_1+\tau_2]$ другая ситуация,  $t_0+\tau_2\in[t_1+\tau_1,t_1+\tau_2]$, поэтому здесь $\tilde{v}(t)$ описывается формулой \eqref{eq:v_hair2} при $k=2$, а соответствующие условия для $\tilde{v}(t)>1$ здесь --- это \eqref{eq:cond_hair_hair_01} и \eqref{eq:cond_hair_hair_1} при $k=2$. }
+	\label{fig:w_hair}
 \end{figure}
 %
 
@@ -1115,10 +1110,10 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 %
 %%% ФУНКЦИЯ THETA
 \begin{figure}
-	\label{fig:theta_func_min}
 	\centering
 	\includegraphics[width=0.7\textwidth]{theta.eps}
 	\caption{При фиксированном $\beta$ функция $\theta(\beta,  s_*)$ имеет одну точку минимума $ s_*^{\min}$ и два промежутка монотонности $(1; + s_*^{\min}]$ и $[ s_*^{\min}; +\infty)$. Значение $ s_*(\alpha)$ определяется как меньший корень уравнения $\alpha = \theta(\beta,  s_*)$, поэтому левая ветвь (выделена толстой линией) определяет зависимость $ s_*(\alpha)$.}
+	\label{fig:theta_func_min}
 \end{figure}
 
 
@@ -1257,7 +1252,7 @@ $$
 Таким образом, условия леммы 
 \ref{lm:t1_locate} остаются верны при увеличении $\Delta$. Значит, найдётся $\Delta$, удовлетворяющее уравнению \eqref{eq:period_eq_exp}.
 
-Докажем, что при определённых таким образом параметрах $\alpha, \beta, \Delta$ выполнены условия леммы \ref{lm:lem_w>1}, которые соответствуют условиям (\ref{eq:cond_hair_hair_01} -- \ref{eq:cond_hair_hair_1}) теоремы \ref{thm:mg_auxiliary_main}. По построению $s_* < \tau_k - \tau_{k - 1} = \Delta$, поэтому при $k \geqslant 2$ мы должны проверять набор условий \eqref{eq:cond_hair_hair_01}:
+Докажем, что при определённых таким образом параметрах $\alpha, \beta, \Delta$ выполнены условия леммы \ref{lm:lem_w>1}, которые соответствуют условиям \eqref{eq:cond_hair_hair_01}, \eqref{eq:cond_hair_hair_02}, \eqref{eq:cond_hair_hair_1}) теоремы \ref{thm:mg_auxiliary_main}. По построению $s_* < \tau_k - \tau_{k - 1} = \Delta$, поэтому при $k \geqslant 2$ мы должны проверять набор условий \eqref{eq:cond_hair_hair_01}:
 \[
 \frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_* > \frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,m.
 \]
@@ -1308,15 +1303,33 @@ e^{\beta s_*}-\alpha s_* \leqslant 1,
 %
 \begin{theorem}
 	\label{thm:relay_main}
-	Для произвольных $\beta > 0$, $\alpha \geqslant e^{\beta\left(1 + \frac{1}{e^{\beta}}\right)} - 1$ найдётся $\Delta > 1$, при котором набор параметров $\alpha, \beta, \Delta$ удовлетворяет уравнению \eqref{eq:period_eq} и условиям (\ref{eq:cond_thm1} -- \ref{eq:cond_hair_hair_1}) теоремы \eqref{thm:mg_auxiliary_main}.
+	Для произвольных 
+	%
+	\begin{equation}
+		\label{eq:constraints_parameters_final}
+		\beta > 0, \alpha \geq e^{\beta\left(1 + \frac{1}{e^{\beta}}\right)} - 1
+	\end{equation}
+	%
+	найдётся $\Delta > 1$, при котором набор параметров $\alpha, \beta, \Delta$ удовлетворяет уравнению \eqref{eq:period_eq} и условиям \eqref{eq:cond_thm1}, \eqref{eq:cond_thm2}, \eqref{eq:cond_th_w>1_t_1+1}, \eqref{eq:cond_hair_hair_01}, \eqref{eq:cond_hair_hair_02}, \eqref{eq:cond_hair_hair_1} теоремы \ref{thm:mg_auxiliary_main}.
 \end{theorem}
 
 
 \section{Численные результаты}\label{sec:ch2/sect4}
 %
+Численный анализ системы, некоторые результаты которого изображены на рис. \ref{fig:periodic_solution}, показывает, что при ограничениях на параметры \eqref{eq:constraints_parameters_final} и для разных начальных условий, решение системы \eqref{eq:system_relay} стремится к режиму дискретных бегущих волн, аналитическое описание которого задаётся формулой \eqref{eq:discrete_wave}, где функция $u(t)$ описана формулами \eqref{eq:u_star}, \eqref{eq:mg_period_T}, а сдвиг $\Delta$ вычисляется из уравнения \eqref{eq:period_equation} при $p = 1$. Результаты анализа позволяют предположить глобальную устойчивость описанного предельного цикла системы.
+
 На рисунках \ref{fig:solution_2d} и \ref{fig:solution_3d} приведены результаты численного эксперимента для систем \eqref{eq:system_relay} и \eqref{eq:mg_full_renormed}. Отметим, что при $\gamma=100$ графики решений систем \eqref{eq:system_relay} и \eqref{eq:mg_full_renormed} визуально не отличимы.
 
 % Картинки 2022-04-30-численный-счёт.ipynb
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_solution_start.eps}
+	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_const_start.eps}
+	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_random_start.eps}
+	\caption{Численные решения системы \eqref{eq:MG_rele} при  $\alpha = 5.0$, $\beta = 1.2$, $m = 2$ и различных начальных условиях. Слева: решение $u_1$ (сплошная линия), $u_2$ (пунктир), $u_3$ (штрих-пунктир). Справа: псевдофазовые портреты соответствующих решений в координатах $(u_1, u_2, u_3)$.}
+	\label{fig:periodic_solution}
+\end{figure}
 
 \begin{figure}
 	\centering
@@ -1337,4 +1350,4 @@ e^{\beta s_*}-\alpha s_* \leqslant 1,
 
 \section{Выводы к главе 2}\label{sec:ch2/sect5}
 
-В данной главе проведено исследование предельного при $\gamma \to +\infty$ объекта для системы \eqref{eq:mg_full_renormed}, описывающей полносвязную систему генераторов Мэки--Гласса. Для релейной системы \eqref{eq:system_relay} показано (при некоторых ограничениях на параметры) существование периодического режима в виде <<дискретной бегущей волны>> -- режима, при котором компоненты решения отличаются друг от друга сдвигом (в некотором порядке) на фиксированную величину. Явное описание решения и ограничений на параметры дано в теореме \ref{thm:mg_auxiliary_main}. В теореме \ref{thm:relay_main} приведено семейство параметров с более простым аналитическим описанием.
+В данной главе проведено исследование предельного при $\gamma \to +\infty$ объекта для системы \eqref{eq:mg_full_renormed}, описывающей полносвязную систему генераторов Мэки--Гласса. Для релейной системы \eqref{eq:system_relay} показано (при некоторых ограничениях на параметры) существование периодического режима в виде <<дискретной бегущей волны>> --- режима, при котором компоненты решения отличаются друг от друга сдвигом (в некотором порядке) на фиксированную величину. Явное описание решения и ограничений на параметры дано в теореме \ref{thm:mg_auxiliary_main}. В теореме \ref{thm:relay_main} приведено семейство параметров с более простым аналитическим описанием.

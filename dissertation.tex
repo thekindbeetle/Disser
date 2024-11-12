@@ -45,7 +45,7 @@
 % Затем, для вывода отдельных частей можно воспользоваться командой \includeonly
 % Ниже примеры использования команды:
 %
-\includeonly{Dissertation/part1,Dissertation/references}
+%\includeonly{Dissertation/part1,Dissertation/part2,Dissertation/references}
 %\includeonly{Dissertation/contents,Dissertation/appendix,Dissertation/conclusion}
 %
 % Если все команды закомментированы, то документ будет выведен в PDF файл полностью
@@ -70,8 +70,8 @@
 \include{Dissertation/part2}           % Глава 2
 \include{Dissertation/part3}           % Глава 3
 \include{Dissertation/conclusion}      % Заключение
-\include{Dissertation/acronyms}        % Список сокращений и условных обозначений
-\include{Dissertation/dictionary}      % Словарь терминов
+%\include{Dissertation/acronyms}        % Список сокращений и условных обозначений
+%\include{Dissertation/dictionary}      % Словарь терминов
 \include{Dissertation/references}      % Список литературы
 
 \printbibliography
@@ -87,11 +87,11 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
 \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
-\include{Dissertation/appendix}        % Приложения
+%\include{Dissertation/appendix}        % Приложения
 
 \setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
 
 
-\setcounter{draft}{1}
+\setcounter{draft}{0}
 
 \end{document}
