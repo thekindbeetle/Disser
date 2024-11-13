@@ -117,10 +117,10 @@ v(t) = \theta u\Big(\frac{t}{\tau}\Big),\, \beta = b\tau,\, \alpha=a\tau, \, t \
 \end{multline}
 
 \begin{figure}
-	\label{fig:initial_funcs:ch1}
 	\centering
 	\includegraphics[width=0.7\textwidth]{initial_func_S.eps}
 	\caption{Представитель множества \eqref{eq:init_set} начальных функций уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele}.}
+	\label{fig:initial_funcs:ch1}
 \end{figure}
 
 \subsection{Решение релейного уравнения}
@@ -790,11 +790,13 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 \end{equation}
 
 % TODO: эту телегу перепроверить
+\small
 \begin{multline}
 	\label{eq:w1}
 	w_1(\tau)= -\beta \tau - \frac{\alpha e^\beta(\alpha e^\beta(t_1-2)+1)^2}{(-\beta(\alpha e^\beta(t_1-2)+1)+\alpha e^\beta)(\frac{\alpha^2}{2}e^{2\beta}(t_1-2)^2+\alpha e^{\beta}(t_1-1)+1))}\times
 	\\ \times\ln\Bigg(\exp\Big(\beta\tau - \frac{\alpha e^\beta\tau}{\alpha e^\beta(t_1-2)+1}\Big)+1\Bigg).
 \end{multline}
+\normalsize
 
 %
 %\begin{multline}
@@ -1184,8 +1186,7 @@ I = \frac{\alpha e^\beta}{\alpha e^{\beta}+1}\exp\Big(\frac{\alpha e^{\beta}\del
 Здесь $\tau \in [0,\delta\gamma]$, поэтому $\frac{\tau}{\gamma} = O(\delta)$, логарифм $\ln(1 + e^{-\beta\tau})$ ограничен, его значения лежат в промежутке $[0,\ln 2]$. Как и в предыдущем случае под знаком интеграла в числителе получаем экспоненту с малым аргументом, поэтому к числителю применима асимптотическая формула \eqref{eq:exp_linear}. В знаменателе показатель экспоненты $-\beta\gamma + (\alpha e^\beta - \beta) \tau \in [-\beta\gamma, -\gamma(\beta + (\alpha e^\beta - \beta) \gamma^{-\nu})]$. Отсюда и из ограниченности $(1 + e^{-\beta\tau})^\frac{\alpha e^\beta}{\beta}$ получаем малость второго слагаемого в знаменателе под знаком интеграла. Как в предыдущем случае вычисления $I$, применяя формулу \eqref{eq:exp_const}, получаем представление
 %
 \small
-\begin{multline}
-	\label{eq:I_step4_2}
+\begin{multline*}
 	I=\frac{\alpha e^\beta\delta}{\alpha e^\beta+1}+O(\gamma^{-2\nu})+
 	\frac{\alpha e^\beta}{\gamma(\alpha e^{\beta}+1)}\exp\Big(\frac{\alpha e^{\beta}\delta}{\alpha e^\beta+1}\Big)
 	\int\limits_{0}^{(t-2)\gamma}(1+O(\gamma^{-\nu}))d\tau=
@@ -1208,9 +1209,9 @@ I = \frac{\alpha e^\beta}{\alpha e^{\beta}+1}\exp\Big(\frac{\alpha e^{\beta}\del
 	% \\
 	\frac{\alpha e^\beta}{\alpha e^{\beta}+1}(
 	t-2+\delta)+O(\gamma^{-2\nu}),
-\end{multline}
+\end{multline*}
 \normalsize
-что совпадает с асимптотикой для $I$, полученной на отрезке $[2 - \delta, 2]$
+что совпадает с асимптотикой для $I$, полученной на отрезке $[2 - \delta, 2]$.
 Отсюда следует формула \eqref{Delta_step4}. 
 
 Лемма \ref{lem_Delta4} доказана.

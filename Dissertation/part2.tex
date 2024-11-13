@@ -1,10 +1,12 @@
 \chapter{Периодические режимы в виде дискретной бегущей волны в полносвязной системе генераторов Мэки--Гласса}\label{ch:ch2}
 
 В данной главе рассматривается полносвязная цепь генераторов Мэки--Гласса:
+\small
 \begin{equation}
 	\label{eq:system_full_generators}
 	\dfrac{d V_{j}}{dt}=- bV_{j} + \dfrac{ac\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{m}V_{k}(t)\right)}{1 + \left(c\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{m}V_{k}(t)\right)\right)^{\gamma}}, \quad j=0,1,\ldots,m.
 \end{equation}
+\normalsize
 
 Коротко опишем план главы. В разделе \ref{sec:ch2/sect1} формулируется постановка задачи, описывается механизм построения дискретных бегущих волн. В разделе \ref{sec:ch2/sect2} анализируется вспомогательное уравнение со множеством запаздываний, доказывается существование периодического решения. В разделе \ref{sec:ch2/sect3} доказывается существование периодического решения системы в виде дискретной бегущей волны. В разделе \ref{sec:ch2/sect4} приводятся результаты численного эксперимента.
 
@@ -85,10 +87,12 @@ F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{1}{1+w^
 %
 Подставляя \eqref{eq:shift_sum_equality} в \eqref{eq:mg_relay_0}, сведём последнее к не зависящему от $j$ виду:
 %
+\small
 \begin{equation}
 	\label{eq:mg_relay_1}
 	\dot{u}=-\beta u+\alpha\left(u(t-1)+ \sum_{s=1}^{m}u(t-s\Delta)\right)F\left(u(t-1)+ \sum_{s=1}^{m}u(t-s\Delta)\right).
 \end{equation}
+\normalsize
 %
 Таким образом, задача решения системы \eqref{eq:system_relay} сводится к поиску $T$-периодического решения уравнения \eqref{eq:mg_relay_1} и параметра $\Delta > 0$, при некотором $p \in \mathbb{N}$ удовлетворяющего условию \eqref{eq:period_equation}. Уравнение \eqref{eq:mg_relay_1} в дальнейшем будем называть \emph{вспомогательным уравнением}.
 
