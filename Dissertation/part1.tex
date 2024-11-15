@@ -110,7 +110,7 @@ v(t) = \theta u\Big(\frac{t}{\tau}\Big),\, \beta = b\tau,\, \alpha=a\tau, \, t \
 %
 \[0 < p < \beta \sigma_0 < q.\]
 %
-В качестве множества начальных функций для уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} возьмем множество
+В качестве множества начальных функций для уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} возьмём множество
 \begin{multline}
     \label{eq:init_set}
     S=\{\varphi\in C[-1 - \sigma_0, -\sigma_0]: 0 < p \leqslant \varphi(t)\leqslant q \text{ при } t \in [-1 - \sigma_0, -\sigma_0],\\ \varphi(-\sigma_0) = \beta \sigma_0 \}.
@@ -266,7 +266,7 @@ F(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\fra
 эквивалентна условиям \eqref{eq:cond_alpha1}.
 \end{lemma}
 \begin{proof}
-	Утверждение леммы будет доказано в более общем случае в главе \ref{ch:ch2}: в рассуждениях в подразделе \ref{ch2:ssect_params} достаточно положить $\tau_* = 2$.
+	Утверждение леммы будет доказано в более общем случае в главе \ref{ch:ch2}: в рассуждениях в разделе \ref{ch2:ssect_params} достаточно положить $\tau_* = 2$.
 \end{proof}
 
 %\begin{proof}
@@ -860,7 +860,7 @@ $[t_1 + \delta, t_2 - \delta]$.
 \]
 \end{lemma}
 \begin{proof}
-Подставим \eqref{eq:sol_1} в \eqref{eq:MG_x}. Сначала рассмотрим отрезок $[-\sigma_0, 1 - \sigma_0]$. Учитывая, что на этом отрезке $x(t - 1) = \varphi(t - 1)$ и $x_\gamma^*(-\sigma_0) = \beta \sigma_0 +\Delta|_{t = -\sigma_0} = \beta \sigma_0$, получаем следующую задачу Коши для нахождения $\Delta$: 
+Подставим \eqref{eq:sol_1} в \eqref{eq:MG_x}. Сначала рассмотрим отрезок $[-\sigma_0, 1 - \sigma_0]$. Учитывая, что на этом отрезке $x(t - 1) = \varphi(t - 1)$ и $x_\gamma^*(-\sigma_0) = \beta \sigma_0 +\Delta_1|_{t = -\sigma_0} = \beta \sigma_0$, получаем следующую задачу Коши для нахождения $\Delta_1$: 
 \begin{equation}
 	\label{task_Delta1}
 	\dot{\Delta}_1=\frac{\alpha \exp(\varphi(t-1) + \beta t - \Delta_1)}{1 + \exp(\gamma\varphi(t-1))},\quad \Delta_1|_{t = -\beta \sigma_0}=0.
@@ -879,7 +879,7 @@ $[t_1 + \delta, t_2 - \delta]$.
 \[
 \frac{\exp\varphi(s - 1)}{1 + \exp(\gamma\varphi(s - 1))} \leqslant \frac{e^q}{1 + e^{p \gamma}}.
 \]
-Следовательно существует положительная константа $C$ (её точное значение неважно), такая что
+Следовательно, существует положительная константа $C$ (её точное значение неважно) такая, что
 \[
 \int\limits_{\sigma_0}^t\frac{\alpha\exp\varphi(s-1)-x_0+\beta s}{1+\exp(\gamma\varphi(s-1))}ds\leqslant\frac{C}{1+e^{p \gamma}}.
 \]
@@ -969,6 +969,7 @@ I = O(\gamma^{-1} e^{-\beta \gamma^{1 - \nu}}).
 \end{equation}
 
 Подставим \eqref{eq:x_gamma_t0_delta_step3} и явный вид $x^*(t)$ в формулу \eqref{eq:J_long}. Получаем:
+\small
 \begin{multline}
 	\label{eq:J_step3}
 	J = x_\gamma^*(1 + \delta) - x^*(t) - \beta(t - 1 - \delta) =\\
@@ -976,6 +977,7 @@ I = O(\gamma^{-1} e^{-\beta \gamma^{1 - \nu}}).
 	(-\beta(t - 2) + \ln(\alpha e^{\beta}(t - 1))) - \beta (t - 1 - \delta) = \\
 	 =\alpha e^\beta\delta + O(\gamma^{-2\nu}) - \ln(\alpha e^{\beta}(t - 1) + 1).
 \end{multline}
+\normalsize
 
 Далее оценим значение $I$. Подставим
 %
