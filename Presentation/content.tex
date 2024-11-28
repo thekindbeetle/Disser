@@ -32,7 +32,7 @@
 	\frametitle{Релейное уравнение Мэки--Гласса}
 	\begin{equation}
 		\label{eq:MG_rele}
-		\dot{x}=-\beta + \alpha \exp({x(t-1)-x})H(x(t-1))).
+		\dot{x}=-\beta + \alpha \exp({x(t-1)-x})H(x(t-1)).
 	\end{equation}
 	%
 	\begin{equation}
@@ -44,6 +44,24 @@
 			1, & x < 0.
 		\end{cases}
 	\end{equation}
+	
+	\textbf{Теорема} (О решении релейного уравнения)
+		Пусть параметры $\alpha,\beta>0$ удовлетворяют условиям
+		%
+		\begin{equation}
+			\label{eq:cond_alpha1}
+			\begin{cases}
+				\alpha > -\dfrac{\beta e^{-\beta}}{W(-e^{-\beta - 1})} & \text{ при } \beta \geq \tilde{\beta},\\
+				\alpha > e^{\beta} - e^{-\beta} & \text{ при } 0 < \beta < \tilde{\beta},
+			\end{cases}
+		\end{equation}
+		где $\tilde{\beta} = 1 + \frac{1}{2} W(-2 e^{-2})$, $W$ --- функция Ламберта, % т.~е. обратная к функции $t \mapsto te^t$, рассматриваемой при $t \in [-1; +\infty)$,
+		\begin{equation}
+			\label{eq:cond_alpha2}
+			\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
+		\end{equation}
+		%
+		Тогда уравнение \eqref{eq:MG_rele} с начальной функцией из множества \eqref{eq:init_set} имеет $T$-периодическое решение
 \end{frame}
 
 \begin{frame}
@@ -51,7 +69,7 @@
 	\begin{equation*}
 	x^*(t)= 
 		\begin{cases}
-			-\beta t, & t\in[0, 1],\\
+			-\beta t, & t\in[-\sigma_0, 1],\\
 			-\beta t +\ln(\alpha e^{\beta}(t - 1)+1), & t\in[1, 2],\\
 			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2 + \alpha e^{\beta}(t - 1)+1), & t\in[2, t_1],\\
 			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1)+1), & t\in[t_1, 1 + T].
@@ -67,13 +85,13 @@
 	\frametitle{Основная теорема}
 	\textbf{Теорема.} Пусть $S$ --- множество начальных функций,
 	\[
-	S = \{\varphi \in C[-1 - \sigma_0] \, | \, 0 < q \leq \varphi(t) \leq p, \, \varphi(-\sigma_0) = \beta \sigma_0\}.
+	S = \{\varphi \in C[-1 - \sigma_0, -\sigma_0] \, | \, 0 < q \leq \varphi(t) \leq p, \, \varphi(-\sigma_0) = \beta \sigma_0\}.
 	\]
 	
 	Тогда (при некоторых ограничениях на параметры $\alpha, \beta$) для произвольной $\varphi \in S$ и достаточно больших $\gamma$ уравнение \eqref{eq:MG_x} имеет решение $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$, причём
 	
 	\[
-	\lim\limits_{\gamma \to +\infty} \max\limits_{t \in [-\sigma_0, T_{\gamma, \varphi} + \sigma_0]} |x^*_\gamma(t, \varphi) - x^*(t)| = 0,
+	\lim\limits_{\gamma \to +\infty} \max\limits_{t \in [-\sigma_0, T_{\gamma, \varphi} - \sigma_0]} |x^*_\gamma(t, \varphi) - x^*(t)| = 0,
 	\]
 	
 	\[
@@ -107,7 +125,9 @@
 \begin{frame}
 	\frametitle{Существование периодического решения}
 	
-	
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{func2.png}
+	\end{center}
 \end{frame}
 
 \section{Часть II. Дискретные бегущие волны в полносвязной цепи осцилляторов Мэки--Гласса}
@@ -203,7 +223,7 @@
 	Здесь $A = e + e^{\Delta} + e^{2\Delta} + \ldots + e^{m\Delta}$, $t_0$, $t_1$ --- точки переключения.
 	
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{u_star.png}
+		\includegraphics[width=0.6\textwidth]{u_star.eps}
 	
 	\end{center}
 \end{frame}
@@ -219,11 +239,11 @@
 	\frametitle{Бегущая волна: численные результаты}
 	
 	\begin{center}
-		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_solution_start.png}
+		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_solution_start.eps}
 		
-		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_const_start.png}
+		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_const_start.eps}
 		
-		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_random_start.png}
+		\includegraphics[width=0.8\linewidth]{a5p0_b1p2_m2_random_start.eps}
 	\end{center}
 \end{frame}
 
@@ -363,7 +383,7 @@
 
 \begin{frame}
 	\frametitle{Решение системы}
-	\includegraphics[width=\linewidth]{cluster_step_by_step.png}
+	\includegraphics[width=\linewidth]{cluster_step_by_step.eps}
 \end{frame}
 
 
@@ -388,7 +408,7 @@
 
 \begin{frame}
 	\frametitle{Численные результаты}
-	\includegraphics[width=0.66\linewidth]{cluster_solution.png}
+	\includegraphics[width=0.66\linewidth]{cluster_solution.eps}
 	\hfill
-	\includegraphics[width=0.33\linewidth]{cluster_phase_portrait.png}
+	\includegraphics[width=0.33\linewidth]{cluster_phase_portrait.eps}
 \end{frame}
