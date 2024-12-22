@@ -184,20 +184,20 @@
 		\end{pmatrix}.
 	\end{equation}
 	
-	Пусть $C^1([0, T] \times [0, T])$ --- пространство непрерывно дифференцируемых $T$-периодических функций $\mathbb{R}^2 \to \mathbb{R}$ с нормой
+	Пусть $C^1[0, T]$ --- пространство непрерывно дифференцируемых $T$-периодических функций $\mathbb{R} \to \mathbb{R}^2$ с нормой
 	
 	\[\Vert (f, g) \Vert = \Vert f \Vert_{C^1} + \Vert g \Vert_{C^1} = \sup\limits_{[0, T]} |f| + \sup\limits_{[0, T]} |f'| + \sup\limits_{[0, T]} |g| + \sup\limits_{[0, T]} |g'|.\]
 	
-	Определим оператор $\mathcal{L}:C^1([0, T] \times [0, T]) \to C^1([0, T] \times [0, T])$:
+	Определим оператор $\mathcal{L}:C^1[0, T] \to C^1[0, T]$:
 	%\[\mathcal{L}: \varphi \mapsto \left(\psi: t \mapsto J^{-1} \left[ \tilde{\varphi} - \varphi(t - 1) \right] \right)\]
 	\[\mathcal{L}\varphi = J^{-1} \left(\tilde{\varphi} - \varphi(t - 1) \right).\]
 	
-	Оператор $\mathcal{L}$ является сжимающим на $C^1([0, T] \times [0, T])$, т.к.
+	Оператор $\mathcal{L}$ является сжимающим на $C^1[0, T]$, т.к.
 	\[\Vert\mathcal{L}\varphi - \mathcal{L}\psi\Vert = \Vert J^{-1} (\psi(t - 1) - \phi(t - 1)) \Vert \leq \Vert J^{-1} \Vert \cdot \Vert \psi - \phi \Vert = \dfrac{1}{\delta} \Vert \psi - \phi \Vert,\]
 	%
 	где $\Vert J^{-1} \Vert = \frac{1}{\delta} < 1$ --- 1-норма матрицы $J^{-1}$.
 	
-	Поскольку пространство $C^1([0, T] \times [0, T])$ полно, существует единственная неподвижная точка $\varphi_*$ оператора $\mathcal{L}$, которая удовлетворяет равенству \eqref{eq:tilde_matrix_form}.
+	Поскольку пространство $C^1[0, T]$ полно, существует единственная неподвижная точка $\varphi_*$ оператора $\mathcal{L}$, которая удовлетворяет равенству \eqref{eq:tilde_matrix_form}.
 \end{proof}
 
 \begin{lemma}
@@ -299,11 +299,11 @@
 %
 Систему \eqref{eq:system_main_relay} будем называть \emph{релейной}.
 
-Определим на множестве $[-1, 0] \times [-1, 0]$ семейство начальных функций. Фиксируем $x_0 > y_0 > 0$.
+Определим на множестве $[-1, 0]$ семейство пар начальных функций. Фиксируем $x_0 > y_0 > 0$.
 \small
 \begin{equation}
 	\label{eq:initial_set}
-	S = \left\{(\phi, \psi) \in C[-1, 0] \times C[-1, 0] \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
+	S = \left\{\phi, \psi \in C[-1, 0] \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
 \end{equation}
 \normalsize
 
