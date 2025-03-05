@@ -184,20 +184,20 @@
 		\end{pmatrix}.
 	\end{equation}
 	
-	Пусть $C^1[0, T]$ --- пространство непрерывно дифференцируемых $T$-периодических функций $\mathbb{R} \to \mathbb{R}^2$ с нормой
+	Пусть $(C^1[0, T])^2$ --- пространство пар непрерывно дифференцируемых $T$-периодических функций $\mathbb{R} \to \mathbb{R}$ с нормой
 	
 	\[\Vert (f, g) \Vert = \Vert f \Vert_{C^1} + \Vert g \Vert_{C^1} = \sup\limits_{[0, T]} |f| + \sup\limits_{[0, T]} |f'| + \sup\limits_{[0, T]} |g| + \sup\limits_{[0, T]} |g'|.\]
 	
-	Определим оператор $\mathcal{L}:C^1[0, T] \to C^1[0, T]$:
+	Определим оператор $\mathcal{L}:(C^1[0, T])^2 \to (C^1[0, T])^2$:
 	%\[\mathcal{L}: \varphi \mapsto \left(\psi: t \mapsto J^{-1} \left[ \tilde{\varphi} - \varphi(t - 1) \right] \right)\]
 	\[\mathcal{L}\varphi = J^{-1} \left(\tilde{\varphi} - \varphi(t - 1) \right).\]
 	
-	Оператор $\mathcal{L}$ является сжимающим на $C^1[0, T]$, т.к.
+	Оператор $\mathcal{L}$ является сжимающим на $(C^1[0, T])^2$, т.к.
 	\[\Vert\mathcal{L}\varphi - \mathcal{L}\psi\Vert = \Vert J^{-1} (\psi(t - 1) - \phi(t - 1)) \Vert \leq \Vert J^{-1} \Vert \cdot \Vert \psi - \phi \Vert = \dfrac{1}{\delta} \Vert \psi - \phi \Vert,\]
 	%
 	где $\Vert J^{-1} \Vert = \frac{1}{\delta} < 1$ --- 1-норма матрицы $J^{-1}$.
 	
-	Поскольку пространство $C^1[0, T]$ полно, существует единственная неподвижная точка $\varphi_*$ оператора $\mathcal{L}$, которая удовлетворяет равенству \eqref{eq:tilde_matrix_form}.
+	Поскольку пространство $(C^1[0, T])^2$ полно, существует единственная неподвижная точка $\varphi_*$ оператора $\mathcal{L}$, которая удовлетворяет равенству \eqref{eq:tilde_matrix_form}.
 \end{proof}
 
 \begin{lemma}
@@ -426,8 +426,8 @@
 \end{figure}
 
 
-\subsection{Шаг 1}
-На отрезке $[0, t_0]$ система \eqref{eq:system_main_relay} принимает вид
+\subsection{Метод шагов}
+\paragraph{Шаг 1.} На отрезке $[0, t_0]$ система \eqref{eq:system_main_relay} принимает вид
 %
 \begin{equation}
 	\label{eq:step1_system}
@@ -439,9 +439,7 @@
 
 Она имеет решение \eqref{eq:step1_solution}, которое продолжается до точки $t_0 = \dfrac{y_0}{\beta}$, в которой $y(t_0) = 0$.
 
-\subsection{Шаг 2}
-
-Рассмотрим следующий отрезок построения решения $[t_0, t_0 + 1]$. C учётом условия \eqref{eq:constraint_2}, при $y < 0$ второе уравнение системы \eqref{eq:system_main_relay} принимает вид
+\paragraph{Шаг 2.} Рассмотрим следующий отрезок построения решения $[t_0, t_0 + 1]$. C учётом условия \eqref{eq:constraint_2}, при $y < 0$ второе уравнение системы \eqref{eq:system_main_relay} принимает вид
 \[
 \dot{y} = -\beta + \alpha \delta (n - 1) > 0,
 \]
@@ -522,8 +520,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 
 Следовательно, $x > 0$ на отрезке $[t_0, t_0 + 1]$.
 
-\subsection{Шаг 3}
-На отрезке $[t_0 + 1, t_1]$ система \eqref{eq:system_main_relay} принимает вид
+\paragraph{Шаг 3.} На отрезке $[t_0 + 1, t_1]$ система \eqref{eq:system_main_relay} принимает вид
 \begin{equation}
 	\label{eq:system_step3}
 	\begin{cases}
@@ -561,8 +558,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 	Неравенство $x(t_0 + 2) < 0$ эквивалентно \eqref{eq:constraint_1}, что можно проверить элементарными преобразованиями.
 \end{proof}
 
-\subsection{Шаг 4}
-На отрезке $[t_1, t_0 + 2]$ система \eqref{eq:system_main_relay} принимает вид
+\paragraph{Шаг 4.} На отрезке $[t_1, t_0 + 2]$ система \eqref{eq:system_main_relay} принимает вид
 \small
 \begin{equation}
 	\begin{cases}
@@ -602,8 +598,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \]
 поэтому новых точек переключения на отрезке $[t_1, t_0 + 2]$ не появляется.
 
-\subsection{Шаг 5}
-На отрезке $[t_0 + 2, t_1 + 1]$ система имеет вид \eqref{eq:step4_system} с одним изменением: $G(0, t - 1) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$.
+\paragraph{Шаг 5.} На отрезке $[t_0 + 2, t_1 + 1]$ система имеет вид \eqref{eq:step4_system} с одним изменением: $G(0, t - 1) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$.
 %
 Тогда на 5-м шаге система имеет решение \eqref{eq:step5_solution}.
 %
@@ -613,8 +608,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \]
 что верно, поскольку левая часть больше $1$, а правая --- меньше.
 
-\subsection{Шаг 6 и последующие шаги}
-Поскольку $G(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$ на промежутке $[t_1, t_1 + 1]$, следующая точка переключения --- либо $t_1 + 2$, либо $t_2 \in (t_1 + 1, t_1 + 2)$ при условии $y(t_2) = 0$. Предположим, что реализуется второй случай; соответствующие ограничения на параметры сформулируем и докажем позже.
+\paragraph{Шаг 6 и последующие шаги.} Поскольку $G(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$ на промежутке $[t_1, t_1 + 1]$, следующая точка переключения --- либо $t_1 + 2$, либо $t_2 \in (t_1 + 1, t_1 + 2)$ при условии $y(t_2) = 0$. Предположим, что реализуется второй случай; соответствующие ограничения на параметры сформулируем и докажем позже.
 
 Тогда при $t \in [t_1 + 1, t_2]$ система \eqref{eq:system_main_relay} имеет вид
 %

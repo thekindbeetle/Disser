@@ -1,4 +1,4 @@
-\chapter{Периодические режимы в виде дискретной бегущей волны в полносвязной системе генераторов Мэки--Гласса}\label{ch:ch2}
+\chapter{Дискретные бегущие волны в полносвязной системе генераторов Мэки--Гласса}\label{ch:ch2}
 
 В данной главе рассматривается генератор Мэки-Гласса --- электрический генератор, функция напряжения $V(t)$ которого описывается уравнением Мэки-Гласса
 %
@@ -10,17 +10,17 @@
 %
 Здесь $V=V(t) > 0$ --- скалярная функция, $a, b, c, \tau, \gamma$ --- положительные параметры. Параметр $\tau$ --- запаздывание по времени, параметр $\gamma$ определяет форму нелинейности.
 
-Рассмотрим полносвязная цепь из $(m + 1)$ генератора Мэки--Гласса, в которой каждый генератор цепи является как принимающим, так и передающим. Такая цепь описывается системой
+Рассмотрим полносвязная цепь из $(N + 1)$ генератора Мэки--Гласса, в которой каждый генератор цепи является как принимающим, так и передающим. Такая цепь описывается системой
 \small
 \begin{equation}
 	\label{eq:system_full_generators}
-	\dfrac{d V_{j}}{dt}=- bV_{j} + \dfrac{ac\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{m}V_{k}(t)\right)}{1 + \left(c\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{m}V_{k}(t)\right)\right)^{\gamma}}, \quad j=0,1,\ldots,m.
+	\dfrac{d V_{j}}{dt}=- bV_{j} + \dfrac{ac\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{N}V_{k}(t)\right)}{1 + \left(c\left(V_{j}(t - \tau) + \sum\limits_{k = 0, k\neq j}^{N}V_{k}(t)\right)\right)^{\gamma}}, \quad j=0,1,\ldots,N.
 \end{equation}
 \normalsize
 
 В данной главе будет показано существование у предельной при $\gamma \to +\infty$ для системы \eqref{eq:system_full_generators}, периодических режимов в виде дискретной бегущей волны --- режимов, для которых компоненты решения отличаются друг от друга сдвигом по времени.
 
-Коротко опишем план главы. В разделе \ref{sec:ch2/sect1} формулируется постановка задачи, описывается механизм построения дискретных бегущих волн. В разделе \ref{sec:ch2/sect2} анализируется вспомогательное уравнение со множеством запаздываний, доказывается существование периодического решения. В разделе \ref{sec:ch2/sect3} доказывается существование периодического решения системы в виде дискретной бегущей волны. В разделе \ref{sec:ch2/sect4} приводятся результаты численного эксперимента.
+Коротко опишем план главы. В разделе \ref{sec:ch2/sect1} формулируется постановка задачи, описывается механизм построения дискретных бегущих волн. В разделе \ref{sec:ch2/sect2} анализируется вспомогательное уравнение со множеством запаздываний, доказывается существование его периодического решения. В разделе \ref{sec:ch2/sect3} доказывается существование периодического решения системы в виде дискретной бегущей волны. В разделе \ref{sec:ch2/sect4} приводятся результаты численного эксперимента.
 
 \section{Постановка задачи}\label{sec:ch2/sect1}
 
@@ -34,26 +34,26 @@
 Получим:
 %
 \begin{equation*}
-	\frac{d}{dt} \left(\dfrac{1}{c}u_j\left(\dfrac{t}{\tau}\right)\right)= -\dfrac{\beta}{\tau c}u_j(\tilde{t}) + \dfrac{\alpha}{\tau c}\dfrac{u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(\tilde{t})}{1 + \left(u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(\tilde{t})\right)^{\gamma}}
+	\frac{d}{dt} \left(\dfrac{1}{c}u_j\left(\dfrac{t}{\tau}\right)\right)= -\dfrac{\beta}{\tau c}u_j(\tilde{t}) + \dfrac{\alpha}{\tau c}\dfrac{u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(\tilde{t})}{1 + \left(u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(\tilde{t})\right)^{\gamma}}
 \end{equation*}
 %
 \begin{equation*}
-	\frac{1}{\tau} \dot{u}_j(\tilde{t}) = -\dfrac{\beta}{\tau}u_j(\tilde{t}) + \dfrac{\alpha}{\tau}\dfrac{u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(\tilde{t})}{1 + \left(u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(\tilde{t})\right)^{\gamma}}
+	\frac{1}{\tau} \dot{u}_j(\tilde{t}) = -\dfrac{\beta}{\tau}u_j(\tilde{t}) + \dfrac{\alpha}{\tau}\dfrac{u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(\tilde{t})}{1 + \left(u_j(\tilde{t} - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(\tilde{t})\right)^{\gamma}}
 \end{equation*}
 %
 Для удобства будем писать $t$ вместо $\tilde{t}$, получим:
 %
 \begin{equation}
 	\label{eq:mg_full_renormed}
-	\dot{u}_j(t) = -\beta u_j(t) + \dfrac{\alpha \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(t)\right)}{1 + \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^m u_k(t)\right)^{\gamma}}
+	\dot{u}_j(t) = -\beta u_j(t) + \dfrac{\alpha \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(t)\right)}{1 + \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(t)\right)^{\gamma}}
 \end{equation}
 %
 Будем считать $\gamma \gg 1$ большим параметром. Пусть 
 %
 \begin{equation}
 \label{eq:relay_function_F}
-F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{1}{1+w^\gamma}=\left\lbrace\begin{array}{cl}
-	1, & 0<w<1 \\
+F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{w}{1+w^\gamma}=\left\lbrace\begin{array}{cl}
+	w, & 0<w<1 \\
 	\frac{1}{2}, & w=1, \\
 	0, & w>1.
 \end{array}\right.
@@ -63,7 +63,7 @@ F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{1}{1+w^
 %
 \begin{equation}
 \label{eq:system_relay}
-\dot{u}_j=-\beta u_j+\alpha\left(u_j(t-1)+ \sum\limits_{k=0, k\neq j}^{m} u_{k}(t)\right)F\left(u_j(t-1)+\sum\limits_{k=0, k\neq j}^{m} u_{k}(t)\right).
+\dot{u}_j=-\beta u_j+\alpha F\left(u_j(t-1)+\sum\limits_{k=0, k\neq j}^{N} u_{k}(t)\right).
 \end{equation}
 
 Решением системы \eqref{eq:system_relay} в форме \emph{дискретной бегущей волны} будем называть решение вида
@@ -72,39 +72,35 @@ F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{1}{1+w^
 	\label{eq:discrete_wave}
 	u_j(t) = u(t + k_j\Delta),   
 \end{equation}
-где $\{k_0, k_1, \ldots, l_m\}$ --- перестановка номеров $\{0, 1, \ldots, m\}$, $u(t)$ --- некоторая функция, $\Delta > 0$ --- сдвиг.
+где $\{k_0, k_1, \ldots, k_N\}$ --- перестановка номеров $\{0, 1, \ldots, N\}$, $u(t)$ --- некоторая функция, $\Delta > 0$ --- сдвиг.
 
 Пусть $u(t)$ --- периодическая функция с периодом $T$. В уравнении \eqref{eq:system_relay} для фиксированного $j$ сделаем подстановку \eqref{eq:discrete_wave} и выполним сдвиг времени $t + k_j \Delta \mapsto t$. Получим
 %
-\small
 \begin{equation}
 	\label{eq:mg_relay_0}
-	\dot{u} = -\beta u+\alpha\left(u(t-1)+ \sum_{s=0,s\neq j}^{m}u(t+(k_s-k_j)\Delta)\right)F\left(u(t-1)+ \sum_{s=0, s\neq j}^{m}u(t+(k_s-k_j)\Delta)\right).
+	\dot{u} = -\beta u + \alpha F\left(u(t-1)+ \sum_{s=0, s\neq j}^{N}u(t+(k_s-k_j)\Delta)\right).
 \end{equation}
-\normalsize
 
-Заметим, что множество значений $\{(k_s - k_j) \mod (m + 1) \ | \ s \neq j\}$ совпадает с множеством $\{1, 2, \ldots, m\}$. Предположим, что сдвиг $\Delta$ таков, что величина $(m + 1) \Delta$ кратна периоду $T$, т.~е. существует число $p \in \mathbb{N}$ такое, что
+Заметим, что множество значений $\{(k_s - k_j) \mod (N + 1) \ | \ s \neq j\}$ совпадает с множеством $\{1, 2, \ldots, N\}$. Предположим, что сдвиг $\Delta$ таков, что величина $(N + 1) \Delta$ кратна периоду $T$, т.~е. существует число $p \in \mathbb{N}$ такое, что
 %
 \begin{equation}
 	\label{eq:period_equation}
-	pT = (m + 1)\Delta
+	pT = (N + 1)\Delta
 \end{equation}
 %
 Из этого предположения следует равенство сумм
 %
 \begin{equation}
 	\label{eq:shift_sum_equality}
-	\sum\limits_{s=0, s\neq j}^{m}u(t+(k_s-k_j)\Delta)=\sum\limits_{s=1}^{m}u(t-s\Delta).
+	\sum\limits_{s=0, s\neq j}^{N}u(t+(k_s-k_j)\Delta)=\sum\limits_{s=1}^{N}u(t-s\Delta).
 \end{equation}
 %
 Подставляя \eqref{eq:shift_sum_equality} в \eqref{eq:mg_relay_0}, сведём последнее к не зависящему от $j$ виду:
 %
-\small
 \begin{equation}
 	\label{eq:mg_relay_1}
-	\dot{u}=-\beta u+\alpha\left(u(t-1)+ \sum_{s=1}^{m}u(t-s\Delta)\right)F\left(u(t-1)+ \sum_{s=1}^{m}u(t-s\Delta)\right).
+	\dot{u}=-\beta u+\alpha F\left(u(t-1)+ \sum_{s=1}^{N}u(t-s\Delta)\right).
 \end{equation}
-\normalsize
 %
 Таким образом, задача решения системы \eqref{eq:system_relay} сводится к поиску $T$-периодического решения уравнения \eqref{eq:mg_relay_1} и параметра $\Delta > 0$, при некотором $p \in \mathbb{N}$ удовлетворяющего условию \eqref{eq:period_equation}. Уравнение \eqref{eq:mg_relay_1} в дальнейшем будем называть \emph{вспомогательным уравнением}.
 
@@ -113,28 +109,28 @@ F(w)\stackrel{\text{def}}{=}\lim\limits_{\gamma\rightarrow+\infty} \frac{1}{1+w^
 %%%
 \section{Анализ вспомогательного уравнения}\label{sec:ch2/sect2}
 
-\subsection{Запаздывания}
+\subsection{Вспомогательные результаты}\label{sec:ch2/sect2/subsect_aux_result}
 
-В уравнении \eqref{eq:mg_relay_1} функция $u(t)$ входит с запаздываниями $1$, $\Delta$, $2\Delta$, \dots, $m\Delta$. Упорядочим запаздывания: пусть
-$$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
-где множество $\{\tau_0, \tau_1, \ldots, \tau_m\}$ совпадает с множеством $\{1, \Delta, 2\Delta, \ldots, m\Delta\}$.
+В уравнении \eqref{eq:mg_relay_1} функция $u(t)$ входит с запаздываниями $1$, $\Delta$, $2\Delta$, \dots, $N\Delta$. Упорядочим запаздывания: пусть
+$$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_N,$$
+где множество $\{\tau_0, \tau_1, \ldots, \tau_N\}$ совпадает с множеством $\{1, \Delta, 2\Delta, \ldots, N\Delta\}$.
 
 Тогда уравнение \eqref{eq:mg_relay_1} можно переписать в виде
 \begin{equation}
 	\label{eq:mg_relay_tau}
-	\dot{u}=-\beta u+\alpha\left(\sum_{s=0}^{m}u(t-\tau_s)\right)F\left(\sum_{s=0}^{m}u(t-\tau_s)\right)
+	\dot{u}=-\beta u+\alpha F\left(\sum_{s=0}^{N}u(t-\tau_s)\right)
 \end{equation}
 %
 Проведём в \eqref{eq:mg_relay_tau} нормировку времени, делающее наименьшее запаздывание равным единице. Пусть
 %
 \begin{equation*}
-	\tilde{t} = \frac{t}{\tau_0}, \ u(t) = \tilde{u}\left(\frac{t}{\tau_0}\right), \ \alpha = \frac{\tilde{\alpha}}{\tau_0}, \ \beta = \frac{\tilde{\beta}}{\tau_0}, \ \tilde{\tau}_s = \frac{\tau_s}{\tau_0} \ (s = 0, 1, \ldots, m).
+	\tilde{t} = \frac{t}{\tau_0}, \ u(t) = \tilde{u}\left(\frac{t}{\tau_0}\right), \ \alpha = \frac{\tilde{\alpha}}{\tau_0}, \ \beta = \frac{\tilde{\beta}}{\tau_0}, \ \tilde{\tau}_s = \frac{\tau_s}{\tau_0} \ (s = 0, 1, \ldots, N).
 \end{equation*}
 %
 Получаем
 %
 \begin{equation*}
-	\frac{d}{dt} \tilde{u}\left(\frac{t}{\tau_0}\right) = -\frac{\beta}{\tau_0} \tilde{u}(\tilde{t}) + \frac{\tilde{\alpha}}{\tau_0} \left(\sum_{s=0}^{m}\tilde{u}(\tilde{t}-\tilde{\tau}_s)\right) F \left(\sum_{s=0}^{m}\tilde{u}(\tilde{t}-\tilde{\tau}_s)\right).
+	\frac{d}{dt} \tilde{u}\left(\frac{t}{\tau_0}\right) = -\frac{\beta}{\tau_0} \tilde{u}(\tilde{t}) + \frac{\tilde{\alpha}}{\tau_0} F \left(\sum_{s=0}^{N}\tilde{u}(\tilde{t}-\tilde{\tau}_s)\right).
 \end{equation*}
 %
 Домножим на $\tau_0$ и для удобства уберём <<тильды>> над обозначениями. Получим в точности уравнение \eqref{eq:mg_relay_tau}, в котором изменились только запаздывания $\tau_s$.
@@ -142,21 +138,21 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 Введём обозначение для суммы функций $u(t)$ с задаздываниями $\tau_s$:
 %
 \begin{equation*}
-	w(t) = \sum\limits_{s = 0}^m u(t - \tau_s).
+	w(t) = \sum\limits_{s = 0}^N u(t - \tau_s).
 \end{equation*}
 %
 Тогда уравнение \eqref{eq:mg_relay_tau} примет компактный вид
 %
 \begin{equation}
 	\label{eq:mg_relay_w}
-	\dot{u}=-\beta u+\alpha w(t) F(w(t)).
+	\dot{u}=-\beta u + \alpha F(w(t)).
 \end{equation}
 
 Множество $S$ начальных функций определим на промежутке длины наибольшего запаздывания: 
 %
 \begin{equation}
 	\label{eq:mg_init_set}
-	S = \{\varphi\in C[-\tau_{m},0]:\  \varphi(t)>1 \text{ при } t\in[-\tau_{m},0),\ \varphi(0)=u_0\},
+	S = \{\varphi\in C[-\tau_{N},0]:\  \varphi(t)>1 \text{ при } t\in[-\tau_{N},0),\ \varphi(0)=u_0\},
 \end{equation}
 %
 где параметр $u_0 > 1$.
@@ -165,10 +161,10 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 \begin{enumerate}
 	\item[a)] Корни уравнения $w(t) = 1$. Будем обозначать их $t_k$.
 	В точках $t_k$ происходит <<переключение>> релейного множителя $F(w(t))$.
-	\item[б)] Точки переключения вида $t_k + \tau_s$ при условии $w(t_k + \tau_s) < 1$. При таких значениях $t$ релейный множитель $F(w(t)) = 1$, а значит, правая часть уравнения \eqref{eq:mg_relay_w} имеет вид
+	\item[б)] Точки переключения вида $t_k + \tau_s$ при условии $w(t_k + \tau_s) < 1$. При таких значениях $t$ релейный множитель $F(w(t)) = w(t)$, а значит, правая часть уравнения \eqref{eq:mg_relay_w} имеет вид
 	%
 	\begin{equation*}
-		-\beta u+\alpha \big(u(t-\tau_0)+u(t-\tau_1)+\ldots+u(t-\tau_{m})\big),
+		-\beta u+\alpha \big(u(t-\tau_0)+u(t-\tau_1)+\ldots+u(t-\tau_{N})\big),
 	\end{equation*}
 	%
 	в точке $t_k + \tau_s$ слагаемое $u(t - \tau_s)$ меняет аналитический вид.
@@ -181,7 +177,7 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 	Периодический режим уравнения \eqref{eq:mg_relay_w} имеет не менее двух точек переключения $t_0, t_1$ типа а).
 \end{theorem}
 \begin{proof}
-	Ввиду периодичности решения, число точек переключения должно быть чётным. Докажем, что оно не может быть равно нулю. Из условия на начальные функции \eqref{eq:mg_init_set} следует, что $w(t) > 1$ по крайней мере на промежутке $[0; \tau_m]$, следовательно, решение находится из задачи Коши
+	Ввиду периодичности решения, число точек переключения должно быть чётным. Докажем, что оно не может быть равно нулю. Из условия на начальные функции \eqref{eq:mg_init_set} следует, что $w(t) > 1$ по крайней мере на промежутке $[0; \tau_N]$, следовательно, решение находится из задачи Коши
 	%
 	\begin{equation*}
 		\dot{u} = -\beta u, \quad u(0) = u_0.
@@ -196,13 +192,10 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 	что не является периодической функцией, следовательно, хотя бы одна точка переключения должна быть.
 \end{proof}
 
-
-\subsection{Результат для вспомогательного уравнения}\label{sec:ch2/sect2/subsect_aux_result}
-
 Введём обозначения:
 %
 \begin{equation*}
-	A = \sum_{i=0}^{m}e^{\beta \tau_{i}}=e^\beta+e^{\beta \tau_1}+\ldots+e^{\beta \tau_{m}},
+	A = \sum_{i=0}^{N}e^{\beta \tau_{i}}=e^\beta+e^{\beta \tau_1}+\ldots+e^{\beta \tau_{N}},
 \end{equation*}
 \begin{equation*}
 	\tau_* = \min\{2,\tau_1\}=\left\lbrace\begin{array}{cl}
@@ -243,15 +236,15 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 	
 	\begin{equation}
 		\label{eq:cond_hair_hair_01}
-		\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_*\leqslant \tau_k-\tau_{k-1},\quad k=1,\ldots,m,
+		\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_*\leqslant \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
 	\end{equation}
 	\begin{equation}
 		\label{eq:cond_hair_hair_02}
-		\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta (s_*+\tau_{k-1})}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_* > \tau_k-\tau_{k-1},\quad k=1,\ldots,m,
+		\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta (s_*+\tau_{k-1})}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_* > \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
 	\end{equation}
 	\begin{equation}
 		\label{eq:cond_hair_hair_1}
-		\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,m.
+		\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,N.
 	\end{equation}
 	Тогда решение уравнения \eqref{eq:mg_relay_w} при любой начальной функции из множества \eqref{eq:mg_init_set} совпадает с одной и той же периодической функцией. Назовём эту функцию $u_*$, а её период $T$. Справедливо следующее.
 	
@@ -301,17 +294,18 @@ $$\tau_0 < \tau_1 < \tau_2 < \ldots < \tau_m,$$
 
 Докажем сформулированную теорему.
 
+\subsection{Метод шагов}
 
 Будем искать решение уравнения \eqref{eq:mg_relay_w} методом шагов, последовательно рассматривая временные отрезки между точками переключения. 
 
 \paragraph{Шаг 1.} 
-Проследим за функцией $w(t)=u(t-1)+u(t-\tau_1)+\ldots+u(t-\tau_m)$ на отрезках $[0, 1]$, $[1, \tau_1]$, \dots, $[\tau_{m-1}$, $\tau_{m}]$. Величины $t - 1$, $t - \tau_1$, \dots, $t - \tau_m$ при $t \in [0,1]$ изменяются на отрезке $[-\tau_m,0]$, а значит, здесь 
+Проследим за функцией $w(t)=u(t-1)+u(t-\tau_1)+\ldots+u(t-\tau_N)$ на отрезках $[0, 1]$, $[1, \tau_1]$, \dots, $[\tau_{N-1}$, $\tau_{N}]$. Величины $t - 1$, $t - \tau_1$, \dots, $t - \tau_N$ при $t \in [0,1]$ изменяются на отрезке $[-\tau_N,0]$, а значит, здесь 
 %
 \begin{equation*}
-	w(t)=\varphi(t-1)+\varphi(t-\tau_1)+\ldots+\varphi(t-\tau_m) > m+1 > 1
+	w(t)=\varphi(t-1)+\varphi(t-\tau_1)+\ldots+\varphi(t -\tau_N) > N + 1 > 1
 \end{equation*}
 %
-и $F(w(t))=0$. Таким образом, 
+и $F(w(t)) = 0$. Таким образом, 
 $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши 
 %
 \begin{equation*}
@@ -324,10 +318,10 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 	u(t)=u_0e^{-\beta t}.
 \end{equation*}
 %
-Эта формула сохранится по крайней мере на отрезке $[0,\tau_m]$, так как в $w(t)$ везде на этом промежутке входит слагаемое $\varphi(t - \tau_m) > 1$, и при переходе через точки $\tau_k$, $k = 1, \ldots, m$, слагаемое $\varphi(t-\tau_k)$ в $w(t)$ заменяется на $u_0e^{\beta (t-\tau_k)} > 0$, то есть свойство $w(t) > 1$ сохраняется. Какой бы ни была функция $\varphi\in S$, начиная с $\tau_m$, $w(t)$ имеет следующий вид, определяемый формулой $u(t)=u_0e^{-\beta t}$:
+Эта формула сохранится по крайней мере на отрезке $[0, \tau_N]$, так как в $w(t)$ везде на этом промежутке входит слагаемое $\varphi(t - \tau_N) > 1$, и при переходе через точки $\tau_k$, $k = 1, \ldots, N$, слагаемое $\varphi(t-\tau_k)$ в $w(t)$ заменяется на $u_0e^{\beta (t-\tau_k)} > 0$, то есть свойство $w(t) > 1$ сохраняется. Какой бы ни была функция $\varphi\in S$, начиная с $\tau_N$, $w(t)$ имеет следующий вид, определяемый формулой $u(t)=u_0e^{-\beta t}$:
 \begin{equation}
 	\label{eq:w_step1}
-	w(t)=u_0 e^{-\beta(t-1)} + u_0 e^{-\beta(t-\tau_1)} + \ldots + u_0 e^{-\beta(t-\tau_m)}=u_0 A e^{-\beta t}.
+	w(t)=u_0 e^{-\beta(t-1)} + u_0 e^{-\beta(t-\tau_1)} + \ldots + u_0 e^{-\beta(t-\tau_N)}=u_0 A e^{-\beta t}.
 \end{equation} 
 
 Формула $u(t)=u_0 e^{-\beta t}$ сохраняется до точки $t_0$, в которой $w(t)$ обращается в 1.
@@ -408,7 +402,7 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 	$w(t)<1$ при $t \in (t_0, t_0 + 1]$.
 \end{lemma}
 \begin{proof}
-	Рассмотрим функцию $w(t)$ на промежутке $t \in (t_0,t_0+1]$. Здесь величины $t - 1$, $t - \tau_1$, \dots, $t - \tau_m$ попадают в промежуток $(0, t_0]$, на котором $u(t)$ описывается формулой \eqref{eq:u_step1}. Это означает, что $w(t)$ описывается здесь формулой \eqref{eq:w_step1} и уравнение $w(t) = 1$ принимает вид $u_0 A e^{-\beta t} = 1$, как на первом шаге. Однако это  уравнение имеет единственный корень \eqref{eq:t0}, следовательно, $w(t) < 1$ при $t \in (t_0, t_0 + 1]$.
+	Рассмотрим функцию $w(t)$ на промежутке $t \in (t_0,t_0+1]$. Здесь величины $t - 1$, $t - \tau_1$, \dots, $t - \tau_N$ попадают в промежуток $(0, t_0]$, на котором $u(t)$ описывается формулой \eqref{eq:u_step1}. Это означает, что $w(t)$ описывается здесь формулой \eqref{eq:w_step1} и уравнение $w(t) = 1$ принимает вид $u_0 A e^{-\beta t} = 1$, как на первом шаге. Однако это  уравнение имеет единственный корень \eqref{eq:t0}, следовательно, $w(t) < 1$ при $t \in (t_0, t_0 + 1]$.
 \end{proof}
 
 Таким образом, следующий промежуток построения решения --- это $[t_0,t_0+1]$. Применим лемму \eqref{lm:u_star} при $P(t)\equiv A$, $\tilde{t} = t_0$, $\tilde{u} = 1$, получаем, что на отрезке $t \in [t_0, t_0 + 1]$ верно
@@ -421,7 +415,7 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 %
 \begin{multline}
 	\label{eq:w3}
-	w(t)=u_0 e^{-\beta (t-1)}(\alpha A(t-t_0-1)+1)+u_0 e^{-\beta(t - \tau_1)} + \ldots + u_0 e^{-\beta(t-\tau_m)} = \\
+	w(t)=u_0 e^{-\beta (t-1)}(\alpha A(t-t_0-1)+1)+u_0 e^{-\beta(t - \tau_1)} + \ldots + u_0 e^{-\beta(t-\tau_N)} = \\
 	= u_0 A e^{-\beta t}(1 + \alpha e^{\beta}(t - t_0 - 1)).
 \end{multline}
 Поскольку мы рассматриваем случай минимального числа точек переключения на периоде, будем считать, что $\tau_* \in (t_0 + 1, t_1)$. Условия, при которых это верно, будут сформулированы и доказаны далее.
@@ -445,8 +439,8 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 	\label{eq:u_step4}
 	u_*(t)= u_1 e^{-\beta(t - t_1)} =\\= u_0 e^{-\beta t}\left(\dfrac{\alpha^2}{2}Ae^{\beta}(t_1 - t_0 - 1)^2 + \alpha A(t_1 - t_0) + 1\right) \text{ при } t \in (t_1,t_2].
 \end{multline}
-%
-\subsection{Область параметров, при которых $t_1\in (t_0+1,t_0+\tau_*)$.}\label{ch2:ssect_params}
+
+\subsection{Описание области допустимых значений параметров}
 
 Покажем, что из условий \eqref{eq:cond_thm1}, \eqref{eq:cond_thm2} теоремы \ref{thm:mg_auxiliary_main} следует, что $t_1 \in (t_0+1,t_0+\tau_*)$.
 
@@ -518,8 +512,6 @@ $u(t)$ при $t\in[0,1]$ отыскивается из задачи Коши
 Таким образом, мы доказали, что из условий \eqref{eq:cond_thm1} и \eqref{eq:cond_thm2} теоремы \ref{thm:mg_auxiliary_main} следует, что корень $s_*$ уравнения \eqref{eq:f} существует и лежит между $1$ и $\tau_*$. Это означает, что точка переключения $t_1 = t_0 + s_*$ также существует и попадает на отрезок $[t_0 + 1, t_0 + \tau_*]$.
 
 Далее мы опишем область значений параметров, удовлетворяющих условиям \eqref{eq:cond_thm1} и \eqref{eq:cond_thm2} явно.
-
-\subsection{Явное описание области допустимых значений параметров}
 
 Выразим $\alpha$ из условия \eqref{eq:cond_thm1}.
 \begin{equation*}
@@ -840,7 +832,7 @@ e^{\beta \tau_*}-1\leqslant\alpha e^\beta(\tau_*-1)\ \Leftrightarrow\ \alpha \ge
 
 
 \subsection{Доказательство периодичности построенного решения}
-В разделе \ref{sec:ch2/sect2/subsect_aux_result} на промежутке $[0,t_2]$ построено решение уравнения \eqref{eq:mg_relay_w} с начальной функцией из множества \eqref{eq:mg_init_set}. Показано, что оно совпадает с функцией $u_*(t)$, которая описывается формулами \eqref{eq:u_step1}, \eqref{eq:u_step2}, \eqref{eq:u_step3}, \eqref{eq:u_step4}. Для доказательства того, что получено периодическое решение с периодом $T = t_2 - t_0$, достаточно убедиться в том, что расстояние между точками $t_1$ и $t_2$ не меньше длины наибольшего запаздывания $\tau_m$. Для этого проследим за изменением функции $w(t)$ на промежутке $[t_1,t_1+\tau_m]$ и покажем, что на данном промежутке сохраняется неравенство $w(t) > 1$.
+В разделе \ref{sec:ch2/sect2/subsect_aux_result} на промежутке $[0,t_2]$ построено решение уравнения \eqref{eq:mg_relay_w} с начальной функцией из множества \eqref{eq:mg_init_set}. Показано, что оно совпадает с функцией $u_*(t)$, которая описывается формулами \eqref{eq:u_step1}, \eqref{eq:u_step2}, \eqref{eq:u_step3}, \eqref{eq:u_step4}. Для доказательства того, что получено периодическое решение с периодом $T = t_2 - t_0$, достаточно убедиться в том, что расстояние между точками $t_1$ и $t_2$ не меньше длины наибольшего запаздывания $\tau_N$. Для этого проследим за изменением функции $w(t)$ на промежутке $[t_1,t_1+\tau_N]$ и покажем, что на данном промежутке сохраняется неравенство $w(t) > 1$.
 
 \subsection{Доказательство периодичности решения вспомогательного уравнения}
 
@@ -864,7 +856,7 @@ e^{\beta \tau_*}-1\leqslant\alpha e^\beta(\tau_*-1)\ \Leftrightarrow\ \alpha \ge
 
 Функция $w(t)$ изменяется в точках переключения функции $u_*(t)$, к которым прибавляются все возможные запаздывания, а именно в точках из множеств
 %
-\[E_*\stackrel{\text{def}}{=}\{t_0 + \tau_k\},\ E_{**}\stackrel{\text{def}}{=}\{t_0 + 1 + \tau_k\},\ E_{***}\stackrel{\text{def}}{=}\{t_1 + \tau_k\},\text{ где }k=0,1,\ldots,m,\ \tau_0=1.\]
+\[E_*\stackrel{\text{def}}{=}\{t_0 + \tau_k\},\ E_{**}\stackrel{\text{def}}{=}\{t_0 + 1 + \tau_k\},\ E_{***}\stackrel{\text{def}}{=}\{t_1 + \tau_k\},\text{ где }k=0,1,\ldots,N,\ \tau_0=1.\]
 %
 Отметим, что данные множества точек могут пересекаться.
 
@@ -911,12 +903,12 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	\label{lm:lem_w>1}
 	Пусть выполнены условия лемм \ref{lm:t1_existence}, \ref{lm:t1_locate} и пусть, кроме того,
 	параметры удовлетворяют ограничениям \eqref{eq:cond_th_w>1_t_1+1}, \eqref{eq:cond_hair_hair_01}, \eqref{eq:cond_hair_hair_02}, \eqref{eq:cond_hair_hair_1}.
-	Тогда $w(t)>1$ при $t\in(t_1,t_1+\tau_m]$.
+	Тогда $w(t)>1$ при $t\in(t_1,t_1+\tau_N]$.
 \end{lemma}
 
 Идея доказательства состоит в следующем. На каждом из промежутков $(t_1, t_1+\tau_k]$ мы определим функцию $\tilde{v}(t) < w(t)$ и покажем, что $1 < \tilde{v}(t)$. Тем самым, утверждение леммы \ref{lm:lem_w>1} окажется доказано.
 
-Будем последовательно рассматривать промежутки $(t_1,t_1+1]$, $(t_1+\tau_{k-1},t_1+\tau_k]$, $k = 1,\ldots,m$. Доказывая на каждом шаге, что на соответствующем промежутке верно $w(t) > 1$, мы также доказываем, что на нём не появится новых точек переключения. Поэтому нам не потребуется рассматривать изменения функции $w(t)$, отличные от тех, что описаны в лемме \ref{lm:lem_w_*}.
+Будем последовательно рассматривать промежутки $(t_1,t_1+1]$, $(t_1+\tau_{k-1},t_1+\tau_k]$, $k = 1,\ldots,N$. Доказывая на каждом шаге, что на соответствующем промежутке верно $w(t) > 1$, мы также доказываем, что на нём не появится новых точек переключения. Поэтому нам не потребуется рассматривать изменения функции $w(t)$, отличные от тех, что описаны в лемме \ref{lm:lem_w_*}.
 
 Рассмотрим вспомогательную функцию $\tilde{u}(t)$, определенную на отрезке $[0,t_2]$ следующим образом (см. рис. \ref{fig:u_hair}): 
 \begin{equation}
@@ -924,7 +916,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	\tilde{u}(t)\stackrel{\text{def}}{=}\left\lbrace\begin{array}{cl}
 		u_0e^{-\beta t} & \text{ при } t\in[0,t_1],
 		\\
-		u_1e^{-\beta (t-t_1)} & \text{ при } t\in(t_1,t_1+1+\tau_m].
+		u_1e^{-\beta (t-t_1)} & \text{ при } t\in(t_1,t_1+1+\tau_N].
 	\end{array}\right.
 \end{equation}
 %
@@ -940,17 +932,17 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 По функции $\tilde{u}(t)$ построим функцию
 %
 \[
-\tilde{w}(t) = \sum_{i=0}^{m}\tilde{u}(t-\tau_i),
+\tilde{w}(t) = \sum_{i=0}^{N}\tilde{u}(t-\tau_i),
 \]
 %
-определенную на отрезке $[\tau_m, t_1 + \tau_m]$. Ее явный аналитический вид:
+определенную на отрезке $[\tau_N, t_1 + \tau_N]$. Ее явный аналитический вид:
 %
 \begin{equation}
 	\label{eq:w_hair}
 	\tilde{w}(t)=
 	\begin{cases}
-		e^{-\beta (t-t_0)} & \text{ при } t\in[\tau_m,t_1+1],\\
-		C_k e^{-\beta(t-t_0)} & \text{ при } t\in(t_1 + \tau_{k-1}, t_1 + \tau_k],\ k=1,\ldots,m,
+		e^{-\beta (t-t_0)} & \text{ при } t\in[\tau_N,t_1+1],\\
+		C_k e^{-\beta(t-t_0)} & \text{ при } t\in(t_1 + \tau_{k-1}, t_1 + \tau_k],\ k=1,\ldots,N,
 	\end{cases}
 \end{equation}
 где
@@ -966,7 +958,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 %
 Изменение \eqref{eq:w_hair_***} функции $\tilde{w}(t)$ --- это \eqref{eq:w_***} без участия слагаемых-добавок из \eqref{eq:w_*} и \eqref{eq:w_**}. В отличие от $w(t)$, функция $\tilde{w}(t)$ не меняет форму при переходе через точки из множеств $E_*$ и $E_{**}$. Заметим также, что функция $\tilde{w}(t)$ будет разрывной в точках из $E_{***}$. Схематичный график функции $\tilde{w}(t)$ изображен на рисунке \ref{fig:w_hair}.
 
-Теперь к этой функции <<добавим>> на отрезках $[t_0+1,t_1+1]$, $[t_0+\tau_k, t_1+\tau_k]\cap[t_1+\tau_{k-1},t_1+\tau_k]$, $k=1,\ldots,m$, слагаемые из \eqref{eq:w_*}.
+Теперь к этой функции <<добавим>> на отрезках $[t_0+1,t_1+1]$, $[t_0+\tau_k, t_1+\tau_k]\cap[t_1+\tau_{k-1},t_1+\tau_k]$, $k=1,\ldots,N$, слагаемые из \eqref{eq:w_*}.
 
 Пусть
 %
@@ -978,12 +970,12 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 \end{cases}
 \]
 %
-Определим функцию $\tilde{v}(t)$ на отрезке $[\tau_m,t_1+1+\tau_m]$ следующим образом (см. рис. \ref{fig:w_hair}):
+Определим функцию $\tilde{v}(t)$ на отрезке $[\tau_N,t_1+1+\tau_N]$ следующим образом (см. рис. \ref{fig:w_hair}):
 %
 \[
 \tilde{v}(t) =
 \begin{cases}
-	\tilde{w}(t)+\tilde{\xi}(t-t_0-1)& \text{ при } t\in[\tau_{m}, t_1 + 1],\\
+	\tilde{w}(t)+\tilde{\xi}(t-t_0-1)& \text{ при } t\in[\tau_{N}, t_1 + 1],\\
 	\tilde{w}(t)+\tilde{\xi}(t-t_0-\tau_k)& \text{ при } t\in(t_1 + \tau_{k-1}, t_1 + \tau_k],\
 \end{cases}
 \]
@@ -1001,7 +993,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 %
 \begin{proposition}
 	\label{prop:w_w_hair}
-	$\tilde{w}(t)\leqslant\tilde{v}(t)\leqslant w(t)$ при $t\in[\tau_m,t_1+\tau_k]$.
+	$\tilde{w}(t)\leqslant\tilde{v}(t)\leqslant w(t)$ при $t\in[\tau_N,t_1+\tau_k]$.
 \end{proposition}
 \begin{proof}
 	Функции $\tilde{w}(t)$ и $\tilde{v}(t)$ отличаются на неотрицательные добавки \eqref{eq:w_*}, функции $\tilde{v}(t)$ и $w(t)$ отличаются по крайней мере на неотрицательные добавки \eqref{eq:w_**}.
@@ -1010,7 +1002,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 \begin{proposition}
 	\label{prop:v_hair>1}
 	Пусть выполнены условия лемм \ref{lm:t1_existence}, \ref{lm:t1_locate} и ограничения \eqref{eq:cond_th_w>1_t_1+1}, \eqref{eq:cond_hair_hair_01}, \eqref{eq:cond_hair_hair_02}, \eqref{eq:cond_hair_hair_1}. Тогда 
-	$\tilde{v}(t)>1$ при $t\in(t_1,\ t_1+\tau_m]$.
+	$\tilde{v}(t)>1$ при $t\in(t_1,\ t_1+\tau_N]$.
 \end{proposition}
 
 \begin{proof}
@@ -1019,7 +1011,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	\[
 	\tilde{v}(t) = 
 	\begin{cases}
-		e^{-\beta(t-t_0)} & \text{ при } t\in[\tau_m,t_0+1],\\
+		e^{-\beta(t-t_0)} & \text{ при } t\in[\tau_N,t_0+1],\\
 		e^{-\beta(t-t_0)}+\alpha e^{-\beta (t-t_0-1)} (t-t_0-1) & \text{ при } t\in(t_0+1,t_1+1].
 	\end{cases}
 	\]
@@ -1060,7 +1052,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 	%
 	%Функция $e^{-\beta s}(\frac{\alpha^2}{2}e^\beta\big( s_*-1)^2+\alpha s_*+C_k)$ либо монотонно убывает, либо имеет локальные минимум и максимум. В последнем случае точка минимума оказывается меньше 1.
 	%
-	Тогда на любом конечном промежутке она либо монотонна, либо имеет локальный максимум, то есть достаточно проверять неравенство в концах промежутка. Это означает, что для верности неравенства $\tilde{v}(t)>1$ при $t\in(t_1,t_1+1]$ и  $t\in(t_1+\tau_{k-1},t_1+\tau_k]$, $k = 1,\ldots,m$,  достаточно, чтобы выполнялось  
+	Тогда на любом конечном промежутке она либо монотонна, либо имеет локальный максимум, то есть достаточно проверять неравенство в концах промежутка. Это означает, что для верности неравенства $\tilde{v}(t)>1$ при $t\in(t_1,t_1+1]$ и  $t\in(t_1+\tau_{k-1},t_1+\tau_k]$, $k = 1,\ldots,N$,  достаточно, чтобы выполнялось  
 	\begin{equation}
 		\label{eq:cond_v_hair>1_1}
 		e^{-\beta(t-t_0)}+\alpha e^{-\beta (t-t_0-1)} (t-t_0-1)|_{t=t_1}\geqslant 1,
@@ -1097,17 +1089,17 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 
 Докажем, что при фиксированных параметрах $\alpha, \beta$ и некотором $\Delta$ существует периодическое решение системы \eqref{eq:mg_relay_1} с периодом $T(\Delta)$, удовлетворяющее уравнению \eqref{eq:period_equation} при $p = 1$.
 
-Пусть $\Delta > 1$, тогда запаздывания равны $\{1, \Delta, 2\Delta, \ldots, m\Delta\}$. В этом случае нормировка \eqref{eq:mg_norm} не изменяет уравнение периодов \eqref{eq:period_equation}.  Подставим значение $T(\Delta)$ из \eqref{eq:mg_period_T} в \eqref{eq:period_equation} при $p = 1$:
+Пусть $\Delta > 1$, тогда запаздывания равны $\{1, \Delta, 2\Delta, \ldots, N\Delta\}$. В этом случае нормировка \eqref{eq:mg_norm} не изменяет уравнение периодов \eqref{eq:period_equation}.  Подставим значение $T(\Delta)$ из \eqref{eq:mg_period_T} в \eqref{eq:period_equation} при $p = 1$:
 %
 \begin{equation}
 	\label{eq:period_eq}
-	\dfrac{1}{\beta}\ln\left( \frac{\alpha^2}{2}Ae^{\beta}( s_*-1)^2+\alpha A s_* + 1\right) = \Delta (m + 1).
+	\dfrac{1}{\beta}\ln\left( \frac{\alpha^2}{2}Ae^{\beta}( s_*-1)^2+\alpha A s_* + 1\right) = \Delta (N + 1).
 \end{equation}
 %
 Элементарными преобразованиями сводим уравнение к виду:
 \begin{equation}
 	\label{eq:period_eq_exp}
-	\dfrac{1}{A}\left(e^{\beta\Delta(m + 1)} - 1\right) = \dfrac{\alpha^2}{2}e^{\beta}( s_* - 1)^2 + \alpha s_*.
+	\dfrac{1}{A}\left(e^{\beta\Delta(N + 1)} - 1\right) = \dfrac{\alpha^2}{2}e^{\beta}( s_* - 1)^2 + \alpha s_*.
 \end{equation}
 
 \begin{proposition}
@@ -1148,7 +1140,7 @@ $$\xi(s)\stackrel{\text{def}}{=}\alpha e^{-\beta s} s ,\quad \eta(s)\stackrel{\t
 
 В свою очередь, правая часть не зависит от $\Delta$, а левая эквивалентна $e^{\beta\Delta}$ при $\Delta \to +\infty$:
 $$
-\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(m + 1)} - 1\right) = \dfrac{e^{\beta\Delta(m + 1)} - 1}{e^{\beta} - 1 + \frac{e^{\beta\Delta(m + 1)} - 1}{e^{\beta\Delta} - 1}} \sim e^{\beta \Delta}.
+\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(N + 1)} - 1\right) = \dfrac{e^{\beta\Delta(N + 1)} - 1}{e^{\beta} - 1 + \frac{e^{\beta\Delta(N + 1)} - 1}{e^{\beta\Delta} - 1}} \sim e^{\beta \Delta}.
 $$
 
 Таким образом, при фиксированных $\alpha$ и $\beta$ мы можем добиться равенства в уравнении \eqref{eq:period_eq_exp} за счёт увеличения $\Delta$; для этого нам нужно, чтобы сова нашла хвост и левая часть уравнения была меньше правой для некоторого $\Delta$.
@@ -1214,13 +1206,13 @@ $$
 \begin{proposition}
 	При $s_* = \Delta < 1 + \frac{1}{e^{\beta}}$ верно неравенство
 	$$
-	\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(m + 1)} - 1\right) \leqslant \dfrac{\alpha^2}{2}e^{\beta}(s_* - 1)^2 + \alpha s_*.
+	\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(N + 1)} - 1\right) \leqslant \dfrac{\alpha^2}{2}e^{\beta}(s_* - 1)^2 + \alpha s_*.
 	$$
 \end{proposition}
 \begin{proof}
 	Оценим левую часть:
 	\[
-	\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(m + 1)} - 1\right) = \dfrac{e^{\beta\Delta(m + 1)} - 1}{e^{\beta} - 1 + \frac{e^{\beta\Delta(m + 1)} - 1}{e^{\beta\Delta} - 1}} < e^{\beta \Delta} - 1.
+	\dfrac{1}{A(\Delta)}\left(e^{\beta\Delta(N + 1)} - 1\right) = \dfrac{e^{\beta\Delta(N + 1)} - 1}{e^{\beta} - 1 + \frac{e^{\beta\Delta(N + 1)} - 1}{e^{\beta\Delta} - 1}} < e^{\beta \Delta} - 1.
 	\]
 	%
 	Докажем, что правая часть больше $e^{\beta \Delta} - 1$:
@@ -1269,7 +1261,7 @@ $$
 
 Докажем, что при определённых таким образом параметрах $\alpha, \beta, \Delta$ выполнены условия леммы \ref{lm:lem_w>1}, которые соответствуют условиям \eqref{eq:cond_hair_hair_01}, \eqref{eq:cond_hair_hair_02}, \eqref{eq:cond_hair_hair_1}) теоремы \ref{thm:mg_auxiliary_main}. По построению $s_* < \tau_k - \tau_{k - 1} = \Delta$, поэтому при $k \geqslant 2$ мы должны проверять набор условий \eqref{eq:cond_hair_hair_01}:
 \[
-\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_* > \frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,m.
+\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_* > \frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,N.
 \]
 %
 Перепишем правую часть с учётом $\Delta > 1$.
@@ -1277,7 +1269,7 @@ $$
 \frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}} = \frac{e^{\beta\Delta k } - 1}{e^{\beta} - 1 + \frac{e^{\beta\Delta k} - 1}{e^{\beta\Delta} - 1}} = \frac{1}{\frac{e^{\beta} - 1}{e^{\beta\Delta k} - 1} + \frac{1}{e^{\beta\Delta} - 1}}.
 \]
 %
-Заметим, что это выражение возрастает по $k$, поэтому достаточно выполнение условия при $k = m$. Но при подстановке $k = m + 1$ мы получаем равенство \eqref{eq:period_eq_exp}, поэтому при $k \leqslant m$ оно обратится в нужное нам неравенство.
+Заметим, что это выражение возрастает по $k$, поэтому достаточно выполнение условия при $k = N$. Но при подстановке $k = N + 1$ мы получаем равенство \eqref{eq:period_eq_exp}, поэтому при $k \leqslant N$ оно обратится в нужное нам неравенство.
 
 При $k = 1$ и $s_* > \tau_1 - \tau_0 = \Delta - 1$ нужно проверять условие \eqref{eq:cond_hair_hair_02}. Докажем, что оно слабее условия \eqref{eq:cond_th_w>1_t_1+1}, которое было проверено ранее. Запишем условие \eqref{eq:cond_hair_hair_02} при $k=1$:
 \[
@@ -1294,11 +1286,11 @@ $$
 делает неравенство ещё строже.
 
 % На самом деле так не бывает, \Delta < 2.
-Если же $s_* \leqslant \Delta - 1$, то для случая $k = 1$ верны те же рассуждения, что и для случая $2 \leqslant k \leqslant m$.
+Если же $s_* \leqslant \Delta - 1$, то для случая $k = 1$ верны те же рассуждения, что и для случая $2 \leqslant k \leqslant N$.
 
 Для выполнения условий \eqref{eq:cond_hair_hair_1}:
 \[
-\frac{\alpha^2}{2}e^\beta(-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}(e^{\beta s_*}-\alpha s_*)-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k = 1,\ldots, m
+\frac{\alpha^2}{2}e^\beta(-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}(e^{\beta s_*}-\alpha s_*)-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k = 1,\ldots, N
 \]
 достаточно проверить, что верно неравенство
 \[
@@ -1329,7 +1321,7 @@ e^{\beta s_*}-\alpha s_* \leqslant 1,
 \end{theorem}
 
 
-\section{Численные результаты}\label{sec:ch2/sect4}
+\section{Результаты численного анализа системы}\label{sec:ch2/sect4}
 %
 Численный анализ системы, результаты которого изображены на рис. \ref{fig:periodic_solution}, показывает, что при ограничениях на параметры \eqref{eq:constraints_parameters_final} и для разных начальных условий, решение системы \eqref{eq:system_relay} стремится к режиму дискретных бегущих волн, аналитическое описание которого задаётся формулой \eqref{eq:discrete_wave}, где функция $u(t)$ описана формулами \eqref{eq:u_star}, \eqref{eq:mg_period_T}, а сдвиг $\Delta$ вычисляется из уравнения \eqref{eq:period_equation} при $p = 1$. Результаты анализа позволяют предположить глобальную устойчивость описанного предельного цикла системы.
 
@@ -1339,17 +1331,17 @@ e^{\beta s_*}-\alpha s_* \leqslant 1,
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_solution_start.eps}
-	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_const_start.eps}
-	\includegraphics[width=0.87\textwidth]{a5p0_b1p2_m2_random_start.eps}
-	\caption{Численные решения системы \eqref{eq:MG_rele} при  $\alpha = 5.0$, $\beta = 1.2$, $m = 2$ и различных начальных условиях. Слева: решение $u_1$ (сплошная линия), $u_2$ (пунктир), $u_3$ (штрих-пунктир). Справа: псевдофазовые портреты соответствующих решений в координатах $(u_1, u_2, u_3)$.}
+	\includegraphics[width=\textwidth]{a5p0_b1p2_N2_solution_start.eps}
+	\includegraphics[width=\textwidth]{a5p0_b1p2_N2_const_start.eps}
+	\includegraphics[width=\textwidth]{a5p0_b1p2_N2_random_start.eps}
+	\caption{Численные решения системы \eqref{eq:MG_rele} при  $\alpha = 5.0$, $\beta = 1.2$, $N = 2$ и различных начальных условиях. Слева: решение $u_0$ (чёрная линия), $u_1$ (красная линия), $u_2$ (синяя линия). Справа: псевдофазовые портреты соответствующих решений в координатах $(u_0, u_1, u_2)$.}
 	\label{fig:periodic_solution}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{alpha_5_beta_1p2_multi.eps}
-	\caption{Пунктирной линией изображено периодическое решение предельной системы  \eqref{eq:system_relay}, полученное численно для параметров $m = 2, \alpha = 5.0, \beta = 1.2, \Delta \approx 1.801$. Сплошная линия изображает решение системы \eqref{eq:mg_full_renormed} для значения показателя $\gamma = 10$.}
+	\caption{Пунктирной линией изображено периодическое решение предельной системы  \eqref{eq:system_relay}, полученное численно при $N = 2, \alpha = 5.0, \beta = 1.2, \Delta \approx 1.801$. Сплошная линия изображает решение системы \eqref{eq:mg_full_renormed} при $\gamma = 20$.}
 	\label{fig:solution_2d}
 \end{figure}
 
@@ -1366,3 +1358,5 @@ e^{\beta s_*}-\alpha s_* \leqslant 1,
 \section{Выводы к главе 2}\label{sec:ch2/sect5}
 
 В данной главе проведено исследование предельного при $\gamma \to +\infty$ объекта для системы \eqref{eq:mg_full_renormed}, описывающей полносвязную систему генераторов Мэки--Гласса. Для релейной системы \eqref{eq:system_relay} показано (при некоторых ограничениях на параметры) существование периодического режима в виде <<дискретной бегущей волны>> --- режима, при котором компоненты решения отличаются друг от друга сдвигом (в некотором порядке) на фиксированную величину. Явное описание решения и ограничений на параметры дано в теореме \ref{thm:mg_auxiliary_main}. В теореме \ref{thm:relay_main} приведено семейство параметров с более простым аналитическим описанием.
+
+% Картинки: см. ноутбуки 2022-04-30-численный-счёт, 2024-01-27-картинки-в-диссер
