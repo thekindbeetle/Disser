@@ -2,8 +2,9 @@
 \graphicspath{{images/}{Synopsis/images/}}         % Пути к изображениям
 
 %%% Макет страницы %%%
-\geometry{a5paper, top=14mm, bottom=14mm, inner=18mm, outer=10mm, footskip=5mm, nomarginpar}%, showframe
+\geometry{a4paper, top=2cm, bottom=3.5cm, left=2.5cm, right=1cm, nofoot, nomarginpar} %, heightrounded, showframe
 \setlength{\topskip}{0pt}   %размер дополнительного верхнего поля
+\setlength{\footskip}{30pt} % снимет warning, согласно https://tex.stackexchange.com/a/334346
 
 %%% Интервалы %%%
 %% Реализация средствами класса (на основе setspace) ближе к типографской классике.
@@ -25,6 +26,7 @@
 %\sloppy                 % Избавляемся от переполнений
 \clubpenalty=10000      % Запрещаем разрыв страницы после первой строки абзаца
 \widowpenalty=10000     % Запрещаем разрыв страницы после последней строки абзаца
+\brokenpenalty=4991     % Ограничение на разрыв страницы, если строка заканчивается переносом
 
 %%% Колонтитулы %%%
 \makeevenhead{plain}{}{}{}

@@ -6,171 +6,60 @@
 \section{Введение}
 
 \begin{frame}
-	\frametitle{Историческая справка}
-	
-	\textbf{Модель Мальтуса}
-	\begin{equation*}
-		\dot{x}=\lambda x
-	\end{equation*}
-	\begin{itemize}
-		\item $x(t)$ --- размер популяции,
-		\item $\lambda > 0$ --- скорость роста популяции.
-	\end{itemize}
-	
-	\pause
-	
-	\bigskip
-	
-	\textbf{Логистическое уравнение}
-	\begin{equation*}
-		\dot{x}=\lambda x\left(1-\frac{x}{K}\right)
-	\end{equation*}
-	\begin{itemize}
-		\item $x(t)$ --- размер популяции,
-		\item $\lambda > 0$ --- скорость роста популяции,
-		\item $K$ --- максимально возможная численность популяции.
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Модель хищник -- жертва}
-	
-	\textbf{Модель Лотки -- Вольтерры (хищник -- жертва)}
-	\begin{equation*}
-		\begin{cases}
-			\dot{x}=(\alpha-\beta y)x,\\
-			\dot{y}=(-\gamma+\delta x)y.
-		\end{cases}
-	\end{equation*}
-	\begin{itemize}
-	\item $x(t)$ --- плотность популяции жертвы,
-	\item $y(t)$ --- плотность популяции хищника,
-	\item $\alpha$ --- скорость роста популяции жертвы,
-	\item $\beta$ --- влияние численности популяции хищника на уменьшение популяции жертвы,
-	\item $\gamma$ --- коэффициент естественной смертности хищника, \item $\delta$ --- влияние численности популяции жертвы на увеличение популяции хищника.
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Уравнение Хатчинсона}
-	
-	\textbf{Уравнение Хатчинсона}
-	\begin{equation*}
-		\label{eq:intro:hutch}
-		\dot{x}=\lambda x\left(1 - \frac{x(t-\tau)}{K}\right),
-	\end{equation*}
-	\begin{itemize}
-		\item $x(t)$ --- размер популяции,
-		\item $\lambda > 0$ --- скорость роста популяции,
-		\item $\tau$ --- возраст половозрелости.
-	\end{itemize}
-	
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Обобщённые версии уравнения Хатчинсона}
-	
-	Глызин С. Д.\\Учёт возрастных групп в уравнении Хатчинсона, 2007.
-	\begin{equation*}
-		\dot{x}=\lambda x\left(1 - \frac{1}{K}\sum\limits_{i = 1}^{m} a_i x(t-\tau_i)\right).
-	\end{equation*}
-	
-	\pause
-	
-	Кащенко С. А.\\Асимптотика решений обобщённого уравнения Хатчинсона, 2012.
-	\begin{equation*}
-		\dot{x} = \lambda x \left(1 - \int\limits_{h_1}^{h_2}dr(\tau)x(t - \tau)\right).
-	\end{equation*}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Обобщённое уравнение Хатчинсона}
-	
-	Колесов А. Ю., Мищенко Е. Ф., Розов Н. Х.\\
-	Об одной модификации уравнения Хатчинсона, 2010.
-	
-	\begin{equation*}
-		\dot{x} = \lambda x f(x(t - 1)),
-	\end{equation*}
-	
-	где $f(0) = 1$, \quad $f(x) = -a_0 + \sum\limits_{k = 1}^{\infty} \frac{a_k}{x^k}, \quad x \to +\infty, \quad a_0 > 0.$
-	
-	\pause
-	\bigskip
-	
-	После замены $x = e^{\lambda y}$:
-	
-	\[
-	\dot{y} = f(e^{\lambda y(t - 1)}).
-	\]
-	
-	\pause
-	
-	\bigskip
-	\[
-	\lim\limits_{\lambda \to +\infty} f(e^{\lambda y}) = 
-	\begin{cases}
-		1, & y < 0,\\
-		-a_0, & y > 0.
-	\end{cases}
-	\]
-	
-	\pause
-	
-	\bigskip
-
-Пример функции:
-	\[
-	f(x) = \dfrac{1 - x}{1 + cx}, \quad c = \text{const} > 0.
-	\]
-	
-\end{frame}
-
-\begin{frame}
 	\frametitle{Уравнение Мэки--Гласса}
 	
-	\begin{equation*}
-		\label{eq:mg_equation_1:intro}
-		\dot{v}=-b v+\frac{a \theta^{\gamma} v(t-\tau)}{\theta^{\gamma}+(v(t-\tau))^{\gamma}}.
-	\end{equation*}
-	\begin{itemize}
-		\item $v(t)$ --- плотность нейтрофилов в крови человека,
-		\item $b$ --- скорость случайного распада нейтрофилов,
-		\item $\tau$ --- временное запаздывание.
-	\end{itemize}
+	\begin{empheq}[box=\myeq]{equation*}
+		\dot{u}=-\beta u + \frac{\alpha u(t - 1)}{1 + u^{\gamma}(t - 1)}, 
+		\quad \alpha, \beta, \gamma > 0.
+	\end{empheq}
+	
+	Если $u(t) > 0$ при $t \in [-1; 0]$, то $u(t) > 0$ при $t \in (0; + \infty)$.
 	
 	\pause
 	\bigskip
 	
-	После нормировки:
+	После экспоненциальной замены $u = e^x$:
 	
-	\begin{equation*}
-		\dot{u}=-\beta u + \frac{\alpha u(t - 1)}{1 + u^{\gamma}(t - 1)}, 
-		\quad \alpha, \beta, \gamma > 0.
-	\end{equation*}
+	\begin{empheq}[box=\myeq]{equation*}
+		\dot{x}=-\beta+\alpha\frac{e^{x(t-1)-x}}{1 + e^{\gamma x(t-1)}}.
+	\end{empheq}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Цепочки осцилляторов}
+	\frametitle{Релейное уравнение Мэки--Гласса}
+	
+	\begin{empheq}[box=\myeq]{equation*}
+		\dot{x}=-\beta+\alpha e^{-x} F\left(\exp(x(t-1))\right),
+	\end{empheq}
+	
+	\begin{empheq}[box=\myeq]{equation*}
+		\text{где } F(u)=\lim\limits_{\gamma\to +\infty}\frac{u}{1+u^{\gamma}} = 
+		\begin{cases}
+			u, & u < 1;\\
+			1/2, & u = 1;\\
+			0, & u > 1.
+		\end{cases}
+	\end{empheq}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.7\textwidth]{F_relay_plot_intro.eps}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Полносвязная сеть генераторов}
+	
+	Полносвязная сеть релейных генераторов Мэки--Гласса:
+	
+	\begin{equation}
+		\dot{u}_j(t) = -\beta u_j(t) + \alpha F \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(t)\right),
+	\end{equation}
+	где $j = 0, 1, \dots, N.$
 	
 	\begin{figure}
-		\begin{minipage}[b]{0.45\linewidth}
-			\centering
-			\includegraphics[width=\textwidth]{mg_generator_ring.eps}
-			\caption{Кольцо осцилляторов с однонаправленной связью.}
-			\label{fig:ring:intro}
-		\end{minipage}
-		\hspace{0.5cm}
-		\begin{minipage}[b]{0.45\linewidth}
-			\centering
-			\includegraphics[width=\textwidth]{mg_generator_full.eps}
-			\caption{Полносвязная цепь осцилляторов.}
-			\label{fig:full_mesh:intro}
-		\end{minipage}
+		\centering
+		\includegraphics[width=0.5\textwidth]{full_mesh_u.eps}
 	\end{figure}
 	
 \end{frame}

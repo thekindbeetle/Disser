@@ -88,6 +88,22 @@
         \opponentThreeJobPlace,\par
         \opponentThreeJobPost
     \fi
+     \ifdefined\opponentFourFio
+    \par
+    \vspace{0.01\paperheight}
+    \textbf{\opponentFourFio,}\par
+    \opponentFourRegalia,\par
+    \opponentFourJobPlace,\par
+    \opponentFourJobPost
+    \fi
+    \ifdefined\opponentFiveFio
+    \par
+    \vspace{0.01\paperheight}
+    \textbf{\opponentFiveFio,}\par
+    \opponentFiveRegalia,\par
+    \opponentFiveJobPlace,\par
+    \opponentFiveJobPost
+    \fi
     }%
     \vspace{0.013\paperheight} \\
     \ifdefined\leadingOrganizationTitle
@@ -99,34 +115,34 @@
 \end{tabularx}
 \vspace{0.008\paperheight plus1fill}
 
-\noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~при \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
+%\noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~при \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
 
-\vspace{0.008\paperheight plus1fill}
-\noindent С диссертацией можно ознакомиться в библиотеке \synopsisLibrary.
+%\vspace{0.008\paperheight plus1fill}
+%\noindent С диссертацией можно ознакомиться в библиотеке \synopsisLibrary.
 
-\vspace{0.008\paperheight plus1fill}
-\noindent Отзывы на автореферат в двух экземплярах, заверенные печатью учреждения, просьба направлять по адресу: \defenseCouncilAddress, ученому секретарю диссертационного совета~\defenseCouncilNumber.
+%\vspace{0.008\paperheight plus1fill}
+%\noindent Отзывы на автореферат в двух экземплярах, заверенные печатью учреждения, просьба направлять по адресу: \defenseCouncilAddress, ученому секретарю диссертационного совета~\defenseCouncilNumber.
 
-\vspace{0.008\paperheight plus1fill}
-\noindent{Автореферат разослан \synopsisDate.}
+%\vspace{0.008\paperheight plus1fill}
+%\noindent{Автореферат разослан \synopsisDate.}
 
-\noindent Телефон для справок: \defenseCouncilPhone.
+%\noindent Телефон для справок: \defenseCouncilPhone.
 
-\vspace{0.008\paperheight plus1fill}
-\noindent%
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}b{18em}@{}
->{\centering\arraybackslash}X
-r
-@{}}
-    Ученый секретарь\par
-    диссертационного совета\par
-    \defenseCouncilNumber,\par
-    \defenseSecretaryRegalia
-    &
-    \ifnumequal{\value{showsecrsign}}{0}{}{%
-        \includegraphics[width=2cm]{secretary-signature.png}%
-    }%
-    &
-    \defenseSecretaryFio
-\end{tabularx}
+%\vspace{0.008\paperheight plus1fill}
+%\noindent%
+%\begin{tabularx}{\textwidth}{@{}%
+%>{\raggedright\arraybackslash}b{18em}@{}
+%>{\centering\arraybackslash}X
+%r
+%@{}}
+%    Ученый секретарь\par
+%    диссертационного совета\par
+%    \defenseCouncilNumber,\par
+%    \defenseSecretaryRegalia
+%    &
+%    \ifnumequal{\value{showsecrsign}}{0}{}{%
+%        \includegraphics[width=2cm]{secretary-signature.png}%
+%    }%
+%    &
+%    \defenseSecretaryFio
+%\end{tabularx}

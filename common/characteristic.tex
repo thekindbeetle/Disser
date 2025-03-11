@@ -126,7 +126,7 @@ f(x) = \dfrac{1 - x}{1 + cx}, \quad c = \text{const} > 0.
 
 {\methods} Для сложных моделей в случае, когда не удается отыскать решение непосредственным интегрированием, уместно использование специальных методов поиска решения. В частности, это относится к дифференциальным уравнениям с запаздывающим аргументом. Одна из идей упрощения исследования --- это переход к предельному объекту.
 
-\textit{Релейные уравнения и методы их исследования.} Для упрощения исследования необходимо подобрать такую замену, чтобы при стремлении большого параметра $\gamma \to +\infty$ получилось релейное уравнение, у которого, с одной стороны, имеется достаточно сложная динамика (периодические решения различной структуры), а с другой стороны, при стремлении $\gamma \to +\infty$ можно было доказать сходимость решения исходного уравнения к периодическому решению релейной задачи. В частности, это получается сделать, если нелинейность в правой части уравнения близка к сигмоидальной функции, например, имеет вид $f_\gamma(u)=\frac{1}{1 + u^\gamma}$, $u > 0$ (см., например, \cite{Preobrazhenskaya2020, Glyzin2017, Krisztin2020, Bartha2021}). Такая функция в пределе при $\gamma\to+\infty$ устремляется к кусочно-постоянной функции, меняющей значение в 1. Тогда исходное уравнение можно заменить релейным, которое, как правило, существенно проще для анализа. После построения решения предельного уравнения доказывается существование асимптотически близкого решения исходной задачи.
+\textit{Релейные уравнения и методы их исследования.} Для упрощения исследования необходимо подобрать такую замену, чтобы при стремлении большого параметра $\gamma \to +\infty$ получилось релейное уравнение, у которого, с одной стороны, имеется достаточно сложная динамика (периодические решения различной структуры), а с другой стороны, при стремлении $\gamma \to +\infty$ можно было доказать сходимость решения исходного уравнения к периодическому решению релейной задачи. В частности, это получается сделать, если нелинейность в правой части уравнения близка к сигмоидальной функции, например, имеет вид $S_\gamma(u)=\frac{1}{1 + u^\gamma}$, $u > 0$ (см., например, \cite{Preobrazhenskaya2020, Glyzin2017, Krisztin2020, Bartha2021}). Такая функция в пределе при $\gamma\to+\infty$ устремляется к кусочно-постоянной функции, меняющей значение в 1. Тогда исходное уравнение можно заменить релейным, которое, как правило, существенно проще для анализа. После построения решения предельного уравнения доказывается существование асимптотически близкого решения исходной задачи.
 
 Для исследуемого в первой части уравнения
 \begin{equation}
@@ -151,7 +151,7 @@ f(x) = \dfrac{1 - x}{1 + cx}, \quad c = \text{const} > 0.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\textwidth]{F_relay_plot_intro.eps}
-	\caption{Релейная функция $F(x)$, задаваемая уравнением \eqref{eq:intro:F_relay}.}
+	\caption{Релейная функция $F(x)$, задаваемая формулой \eqref{eq:intro:F_relay}.}
 	\label{fig:F_relay_plot:intro}
 \end{figure}
 
@@ -291,18 +291,21 @@ f(x) = \dfrac{1 - x}{1 + cx}, \quad c = \text{const} > 0.
 
 Режимы двухкластерной синхронизации строятся в работах \cite{Glyzin2016a, Glyzin2022}.
 
-\textit{Дифференциальные уравнения с разрывной правой частью.} При переходе в дифференциальном уравнении 
-$\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$ уравнению
+\textit{Дифференциальные уравнения с разрывной правой частью.} Рассмотрим дифференциальное уравнение 
+\[
+\dot{x} = f_{\gamma}(x, t),
+\]
+где $\gamma$ --- вещественный параметр. При переходе к предельному при $\gamma \to +\infty$ уравнению
 \begin{equation}
 	\label{eq:intro:equiv_equation_initial}
-	\dot{x} = f(x, t),
+	\dot{x} = \lim\limits_{\gamma \to +\infty}f_{\gamma}(x, t) = f(x, t),
 \end{equation}
-правая часть может стать разрывной функцией. При этом возникает необходимость обобщить понятие решения уравнения, удовлетворяющего следующим естественным требованиям.
+правая часть может стать разрывной функцией. При этом возникает необходимость обобщить понятие решения уравнения так, чтобы оно удовлетворяло следующим естественным требованиям.
 \begin{enumerate}
 	\item Для дифференциальных уравнений с непрерывной правой частью определение решения должно быть равносильно обычному.
-	\item Для уравнения $\dot{x} = f(t)$ решениями должны быть функции $x(t) = \int f(t)\, dt + c$ (и только они).
+	\item Для уравнения $\dot{x} = f(t)$ решениями (в обобщённом смысле) должны быть функции $x(t) = \int f(t)\, dt + c$ (и только они).
 \end{enumerate}
-Суть большинства из известных методов решения таких уравнений состоит в следующем. Пусть дано уравнение \eqref{eq:intro:equiv_equation_initial} где функция $f$ кусочно непрерывна в области $G \subset \mathbb{R}^n \times \mathbb{R}$, $x \in \mathbb{R}^n$, $M$ --- множество точек разрыва функции $f$. Для каждой точки $(x, t) \in G$ указывается множество $F(x, t) \subset \mathbb{R}^n$. Если в точке $(x, t)$ функция $f$ непрерывна, то $F(x, t)$ состоит в точности из этой точки. Если же $f$ разрывна, то множество $F(x, t)$ задаётся некоторым образом. Тогда решением уравнения \eqref{eq:intro:equiv_equation_initial} на отрезке $I$ называется непрерывная функция $x(t)$, определённая на этом интервале, для которой почти всюду на $I$ выполнено $\dot{x}(t) \in F(t, x)$.
+Суть большинства из известных методов решения таких уравнений состоит в следующем. Пусть дано уравнение \eqref{eq:intro:equiv_equation_initial} где функция $f$ кусочно непрерывна в области $G \subset \mathbb{R}^n \times \mathbb{R}$, $x \in \mathbb{R}^n$, $M$ --- множество точек разрыва функции $f$. Для каждой точки $(x, t) \in G$ указывается множество $\mathcal{F}(x, t) \subset \mathbb{R}^n$. Если в точке $(x, t)$ функция $f$ непрерывна, то $\mathcal{F}(x, t)$ состоит в точности из этой точки. Если же $f$ разрывна, то множество $\mathcal{F}(x, t)$ задаётся некоторым образом. Тогда решением уравнения \eqref{eq:intro:equiv_equation_initial} на отрезке $I$ называется непрерывная функция $x(t)$, определённая на этом интервале, для которой почти всюду на $I$ выполнено $\dot{x}(t) \in \mathcal{F}(t, x)$.
 
 Наиболее известные определения излагаются в книге \cite[\S 4]{Filippov1988}.
 
@@ -310,128 +313,19 @@ $\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$
 
 \bigskip
 
-%Уравнение \eqref{eq:mg_equation_1:intro} нормировкой времени и заменой переменных сводится к следующему виду
-%\begin{equation}
-%	\label{eq:mg_normed_equation:intro}
-%	\dot{u}=-\beta u+\frac{\alpha u(t-1)}{1 + (u(t-1))^\gamma},
-%\end{equation}
-%где $\alpha, \beta, \gamma > 0$, $u(t) > 0$.
-%
-%Для исследования поведения решений уравнения \eqref{eq:mg_normed_equation:intro} при $\gamma \gg 1$ определим предельное уравнение при $\gamma \to +\infty$:
-%\begin{equation}
-%	\label{eq:mg_relay_equation:intro}
-%	\dot{u}=-\beta u + \alpha u(t-1) F(u(t-1)),
-%\end{equation}
-%где
-%\begin{equation*}
-%	F(u) = \lim\limits_{\gamma \to +\infty}\dfrac{1}{1 + u^\gamma} = \begin{cases}
-%		1, & u < 1,\\
-%		1/2, & u = 1,\\
-%		0, & u > 1.
-%	\end{cases}
-%\end{equation*}
-%Уравнение \eqref{eq:mg_relay_equation:intro} будем называть \emph{релейным} по причине разрыва типа <<скачок>> в правой части при $u = 1$.
-
-%В диссертационной работе исследуются периодические режимы систем осцилляторов, функционирование которых описывается уравнением Мэки--Гласса. Для исследования релаксационных колебаний одиночного осциллятора используется метод большого параметра. Периодические режимы исследуются для систем осцилляторов релейного типа, т.е. систем, элементы которых описываются релейным уравнением Мэки--Гласса \eqref{eq:mg_relay_equation:intro}.
-%
-%Уравнение Мэки--Гласса исследовалось в ряде работ \cite{Junges2012, Berezansky2006, Su2011, Liz2002, Wu2007, Kubyshkin2016}. В оригинальной работе \cite{Mackey1977} приведены численные решения, как в форме периодических, так и непериодических колебаний. В работах \cite{Berezansky2006, Liz2002} изучены условия, при которых решение уравнения остаётся положительным (англ. \emph{persistence}) или стремится к нулю при $t \to +\infty$ (англ. \emph{extinction}). В работах \cite{Berezansky2006, Kubyshkin2016} также анализируется устойчивость состояния равновесия $v \equiv \theta \left(\frac{a}{b} - 1\right)^{1/\gamma}$. В работе \cite{Kubyshkin2016} рассматриваются решения, бифурцирующие из этого состояния равновесия.
-%
-%Уравнение Мэки--Гласса и его различные модификации широко использовались для моделирования функционирования электрогенераторов \cite{Tateno2012, Namajunas1995, Glyzin2018, Glyzin2018a}, а также для симуляции хаотического сигнала \cite{Grassberger1983, Amil2015, Amil2015a, Shahverdiev2006}. В работах \cite{Bartha2021, Krisztin2020} исследуются периодические решения уравнения Мэки--Гласса. В частности, в \cite{Bartha2021} при определённых ограничениях на параметры доказано существование и единственность предельного цикла, который является экспоненциально орбитально устойчивым.
-%
-%Особое внимание уделяется исследованию систем, представляющих собой цепи генераторов Мэки--Гласса \cite{Preobrazhenskaia2021, Tateno2012, Sano2007, Wan2009}. В статье \cite{Sano2007} численно и экспериментально изучалась система из четырёх генераторов Мэки--Гласса, два из которых были вещательными, а два --- принимающими, образуя систему с петлёй обратной связи. В работе приводится схема электрической цепи и описание эксперимента, в ходе которого установлена двойная синхронизация хаотического сигнала. В работе \cite{Wan2009} исследовалась потеря устойчивости состояния равновесия в этой системе.
-%
-%Похожая система генераторов Мэки--Гласса с двумя уравнениями и несколько иной структурой связи рассматривалась в \cite{Tateno2012}. В данной цепи генераторы делятся на два типа: один вещатель и одно принимающее устройство. Модель содержит две петли обратной связи с запаздыванием по времени. Для этой системы проводились как численные, так и экспериментальные исследования генерации хаоса. Показано, что соотношение запаздываний играет ключевую роль в усилении или подавлении хаотической динамики. Также продемонстрировано, что синхронизация хаоса может быть достигнута при высокой силе связи и условии согласования параметров между двумя электронными схемами.
-%
-%Рассмотрим систему произвольного (фиксированного) числа генераторов. Можно выделить две естественные структуры для связи генераторов: кольцо (рис. \ref{fig:ring:intro}) и полносвязную цепь, где каждый генератор связан с каждым (рис. \ref{fig:full_mesh:intro}). Следует отметить, что цепочки идентичных нелинейных осцилляторов используются в качестве математических моделей в различных областях естествознания: биофизике, экологии, оптике, химической кинетике, нейродинамике, генной инженерии и др. \cite{Goodwin1963}.
-%
-%В данной работе рассматриваются два типа периодических режимов, возникающих в полносвязной цепи генераторов Мэки--Гласса: режим дискретных бегущих волн и режим двухкластерной синхронизации.
-%
-%\begin{figure}[ht]
-%	\begin{minipage}[b]{0.45\linewidth}
-%		\centering
-%		\includegraphics[width=\textwidth]{mg_generator_ring.eps}
-%		\caption{Кольцо генераторов. Каждый генератор является принимающим для предыдущего, и передающим для следующего в кольце генератора.}
-%		\label{fig:ring:intro}
-%	\end{minipage}
-%	\hspace{0.5cm}
-%	\begin{minipage}[b]{0.45\linewidth}
-%		\centering
-%		\includegraphics[width=\textwidth]{mg_generator_full.eps}
-%		\caption{Полносвязная цепь генераторов. Каждый генератор является передающим и принимающим для всех остальных генераторов в цепи.}
-%		\label{fig:full_mesh:intro}
-%	\end{minipage}
-%\end{figure}
-%
-%Дискретная бегущая волна --- такое периодическое решение, в котором все компоненты представлены одной и той же функцией с кратными сдвигами, строгое описание таких решений будет приведено во второй главе диссертации. Методика поиска бегущих волн и доказательства их устойчивости в кольцевых цепях описана в работе \cite{Glyzin2012}, а для полносвязной цепи --- в \cite{Glyzin2022a}.
-%
-%Режим двухкластерной синхронизации --- такое решение, в котором все компоненты совпадают с одной из двух различных периодических функций. Общий подход к исследованию таких режимов описан в статье \cite{Glyzin2022}.
-%
-%В первой главе диссертации исследуются периодические решения уравнения \eqref{eq:mg_equation_1:intro}. Вначале рассматривается предельное при $\gamma \to +\infty$ уравнение, для которого явным образом (при некоторых ограничениях на параметры) находится решение. Затем для уравнения \eqref{eq:mg_equation_1:intro} доказываются асимптотические соотношения при $\gamma \to +\infty$ по малому параметру $\gamma^{-1}$, доказывающие сходимость решений уравнения \eqref{eq:mg_equation_1:intro} к решению предельного уравнения.
-%
-%Во второй и третьей главах диссертации рассматривается полносвязная система генераторов Мэки--Гласса. Как и в работах \cite{Preobrazhenskaya2020, Preobrazhenskaya2021, Preobrazhenskaia2021, Krisztin2020}, соответствующая система дифференциальных уравнений с запаздыванием заменяется предельным объектом, для которого во второй главе доказывается существование режимов дискретной бегущей волны, а в третьей главе --- существование режимов двухкластерной синхронизации.
-
-
-
-%Обзор, введение в тему, обозначение места данной работы в
-%мировых исследованиях и~т.\:п., можно использовать ссылки на~другие
-%работы~(если их~нет, то~в~автореферате
-%автоматически пропадёт раздел <<Список литературы>>). Внимание! Ссылки
-%на~другие работы в~разделе общей характеристики работы можно
-%использовать только при использовании \verb!biblatex! (из-за технических
-%ограничений \verb!bibtex8!. Это связано с тем, что одна
-%и~та~же~характеристика используются и~в~тексте диссертации, и в
-%автореферате. В~последнем, согласно ГОСТ, должен присутствовать список
-%работ автора по~теме диссертации, а~\verb!bibtex8! не~умеет выводить в~одном
-%файле два списка литературы).
-%При использовании \verb!biblatex! возможно использование исключительно
-%в~автореферате подстрочных ссылок
-%для других работ командой \verb!\autocite!, а~также цитирование
-%собственных работ командой \verb!\cite!. Для этого в~файле
-%\verb!common/setup.tex! необходимо присвоить положительное значение
-%счётчику \verb!\setcounter{usefootcite}{1}!.
-
-%Для генерации содержимого титульного листа автореферата, диссертации
-%и~презентации используются данные из файла \verb!common/data.tex!. Если,
-%например, вы меняете название диссертации, то оно автоматически
-%появится в~итоговых файлах после очередного запуска \LaTeX. Согласно
-%ГОСТ 7.0.11-2011 <<5.1.1 Титульный лист является первой страницей
-%диссертации, служит источником информации, необходимой для обработки и
-%поиска документа>>. Наличие логотипа организации на~титульном листе
-%упрощает обработку и~поиск, для этого разметите логотип вашей
-%организации в папке images в~формате PDF (лучше найти его в векторном
-%варианте, чтобы он хорошо смотрелся при печати) под именем
-%\verb!logo.pdf!. Настроить размер изображения с логотипом можно
-%в~соответствующих местах файлов \verb!title.tex!  отдельно для
-%диссертации и автореферата. Если вам логотип не~нужен, то просто
-%удалите файл с~логотипом.
-
-%\ifsynopsis
-%Этот абзац появляется только в~автореферате.
-%Для формирования блоков, которые будут обрабатываться только в~автореферате,
-%заведена проверка условия \verb!\!\verb!ifsynopsis!.
-%Значение условия задаётся в~основном файле документа (\verb!synopsis.tex! для
-%автореферата).
-%\else
-%Этот абзац появляется только в~диссертации.
-%Через проверку условия \verb!\!\verb!ifsynopsis!, задаваемого в~основном файле
-%документа (\verb!dissertation.tex! для диссертации), можно сделать новую
-%команду, обеспечивающую появление цитаты в~диссертации, но~не~в~автореферате.
-%\fi
-
-% {\progress}
-% Этот раздел должен быть отдельным структурным элементом по
-% ГОСТ, но он, как правило, включается в описание актуальности
-% темы. Нужен он отдельным структурынм элемементом или нет ---
-% смотрите другие диссертации вашего совета, скорее всего не нужен.
-
 {\aim} данной работы является исследование периодических режимов в полносвязной цепи генераторов Мэки--Гласса.
 
 Для~достижения поставленной цели необходимо было решить следующие {\tasks}.
 \begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
 	\item Описать достаточные условия, при которых уравнение Мэки--Гласса \eqref{eq:mg_equation_1:intro} имеет периодическое решение.
-	\item Исследовать полносвязную систему релейных генераторов Мэки--Гласса, описать условия и ограничения на параметры системы, при которых она имеет решение (а) в виде дискретной бегущей волны, (б) в виде, соответствующем режиму двухкластерной синхронизации.
+	\item Исследовать полносвязную систему релейных генераторов Мэки--Гласса, описать условия и ограничения на параметры системы, при которых она имеет решение:
+	\begin{enumerate}
+		\item[а)]в виде дискретной бегущей волны,
+		\item[б)]в виде, соответствующем режиму двухкластерной синхронизации.
+	\end{enumerate}
 \end{enumerate}
 
+\bigskip
 
 {\novelty}
 \begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
@@ -441,7 +335,11 @@ $\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$
   %TODO: сказать про скользящие траектории.
 \end{enumerate}
 
+\bigskip
+
 {\influence} Полученные в диссертации результаты могут стать основой для дальнейших исследований в области нелинейной динамики и быть использованы специалистами для решения широкого спектра научных и прикладных задач.
+
+\bigskip
 
 {\defpositions}
 \begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
@@ -454,9 +352,13 @@ $\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$
 %(в~файле \verb+Def_positions.pdf+), где обоснованно даются рекомендации
 %по~формулировкам защищаемых положений.
 
+\bigskip
+
 {\reliability} полученных результатов обеспечивается строгими математическими доказательствами, приведёнными в работе. % Результаты находятся в соответствии с результатами, полученными другими авторами.
 
 \nocite{scbib1, wosbib1, wosbib2}
+
+\bigskip
 
 {\probation}
 Основные результаты работы докладывались~на следующих конференциях и семинарах.
@@ -476,6 +378,8 @@ $\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$
 %{\contribution} Автор принимал активное участие \ldots
 
 % \vspace{-11em}
+
+\bigskip
 
 {\publications} Основные результаты по теме диссертации изложены в 9 печатных изданиях, 3 из которых \cite{wosbib1,wosbib2,scbib1} изданы в журналах, рекомендованных ВАК, 3 "--- в~периодических научных журналах, индексируемых Web of~Science и Scopus \cite{wosbib1,wosbib2,scbib1}, 6 "--- в~тезисах докладов \cite{confbib1,confbib2,confbib3,confbib4,confbib5,confbib6}.
 
@@ -596,482 +500,5 @@ $\dot{x} = f_\gamma(x, t)$ к предельному при $\gamma \to +\infty$
 %Для добавления в список публикаций автора работ, которые не были процитированы в
 %автореферате, требуется их~перечислить с использованием команды \verb!\nocite! в
 %\verb!Synopsis/content.tex!.
-
-\bigskip
-
-\subsection*{Краткое содержание диссертации}
-
-\paragraph{Содержание первой главы.} В первой главе исследуется уравнение Мэки--Гласса в предположении, что показатель степени в знаменателе нелинейности --- большой параметр. Рассматривается случай, в котором релейное уравнение, возникающее при устремлении большого параметра к бесконечности, имеет периодическое решение с наименьшим числом переключений релейной части на периоде. Для данного случая доказывается существование периодического решения уравнения Мэки--Гласса, асимптотически близкого периодическому решению предельного уравнения.
-
-Уравнение Мэки--Гласса \eqref{eq:mg_equation_1:intro} после нормировки параметров и времени принимает вид
-\begin{equation}
-	\label{eq:intro:mg_norm}
-	\dot{u}=-\beta u+\frac{\alpha u(t-1)}{1+(u(t-1))^\gamma}, \text{ где } \alpha > 0, \beta > 0, \gamma > 0.
-\end{equation}
-
-Для положительных начальных функций решение уравнения \eqref{eq:intro:mg_norm} также положительно, поэтому корректна замена $u = e^x$, после которой это уравнение примет вид
-\begin{equation}
-	\label{eq:intro:MG_x}
-	\dot{x}=-\beta+\alpha\frac{e^{x(t-1)-x}}{1+e^{\gamma x(t-1)}}.
-\end{equation}
-
-Будем считать $\gamma$ большим параметром. При $\gamma \to +\infty$ получаем релейное уравнение
-\begin{equation}
-	\label{eq:intro:MG_rele}
-	\dot{x}=-\beta + \alpha e^{-x} F(\exp({x(t-1)})),
-\end{equation}
-где
-\begin{equation}
-	\label{eq:intro:F}
-	F(u)=\lim\limits_{\gamma\to +\infty}\frac{u}{1+u^{\gamma}}=
-	\begin{cases}
-		0, & u > 1,\\
-		\frac{1}{2}, & u = 1,\\
-		u, & 0 \leq u < 1.
-	\end{cases}
-\end{equation}
-
-Определим множество начальных функций, для которых затем явно будет построено решение предельного уравнения методом шагов. Зафиксируем положительные параметры $\sigma_0 < 1/2$, $p$, $q$ такие, что 
-%
-\[0 < p < \beta \sigma_0 < q.\]
-%
-В качестве множества начальных функций для уравнений \eqref{eq:intro:MG_x} и \eqref{eq:intro:MG_rele} зададим множество
-\begin{multline}
-	\label{eq:intro:init_set}
-	S=\{\varphi\in C[-1 - \sigma_0, -\sigma_0]: 0 < p \leqslant \varphi(t)\leqslant q \text{ при } t \in [-1 - \sigma_0, -\sigma_0],\\ \varphi(-\sigma_0) = \beta \sigma_0 \}.
-\end{multline}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{initial_func_S.eps}
-	\caption{Представитель множества \eqref{eq:intro:init_set} начальных функций уравнений \eqref{eq:intro:MG_x} и \eqref{eq:intro:MG_rele}.}
-	\label{fig:intro:initial_funcs:ch1}
-\end{figure}
-
-Введём обозначения:
-\begin{equation}
-	\label{eq:intro:T}
-	T = \frac{1}{\beta} \ln\left(\frac{1}{2}\alpha^2e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1\right),
-\end{equation}
-где $t = t_1$ --- корень уравнения 
-\begin{equation}
-	\label{eq:intro:t1_cond_exp}
-	-\beta(t - 1) + \ln(\alpha e^{\beta}(t - 2) + 1) = 0,
-\end{equation}
-\begin{equation}
-	\label{eq:intro:t2_period}
-	t_2 = 1 + T.
-\end{equation}
-
-Справедливо следующее утверждение.
-
-\textbf{Теорема} (О решении релейного уравнения).
-	Пусть параметры $\alpha, \beta > 0$ удовлетворяют условиям
-	%
-	\begin{equation}
-		\label{eq:intro:cond_alpha1}
-		\begin{cases}
-			\left[
-			\begin{array}{ll}
-				\alpha > e^{\beta} - e^{-\beta},\\
-				\alpha < \beta e^{\beta},
-			\end{array}
-			\right.\\
-			\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1,
-		\end{cases}
-	\end{equation}
-	\begin{equation}
-		\label{eq:intro:cond_alpha2}
-		\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
-	\end{equation}
-	%
-	Тогда уравнение \eqref{eq:intro:MG_rele} с начальной функцией из множества \eqref{eq:intro:init_set} имеет $T$-периодическое решение
-	\small
-	\begin{equation}
-		\label{eq:intro:sol_x_star}
-		x^*(t)= 
-		\begin{cases}
-			-\beta t, & t\in[-\sigma_0, 1],\\
-			-\beta t +\ln(\alpha e^{\beta}(t - 1)+1), & t\in[1, 2],\\
-			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2+\alpha e^{\beta}(t - 1)+1), & t\in[2, t_1],\\
-			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2+\alpha e^{\beta}(t_1 - 1) + 1), & t\in[t_1, t_2].
-		\end{cases}
-	\end{equation}
-	\normalsize
-
-Изображение цикла \eqref{eq:intro:sol_x_star} приведено на рисунке \ref{fig:intro:x_star:ch1}.
-
-% 2024-01-21-mackey-glass-asymptotics.ipynb
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\textwidth]{x_star.eps}
-	\captionof{figure}{Периодическое решение $x^{*}(t)$ уравнения \eqref{eq:intro:MG_rele}.}
-	\label{fig:intro:x_star:ch1}
-\end{figure}
-
-Введём вспомогательные функции $w_i(\tau)$, $i = 0, 1$ для описания решения в окрестностях точек излома релейного уравнения.
-\[
-w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) > 0,
-\]
-\[
-w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) < 0,
-\]
-Соответствующие значения функции $x^*(t)$ находится из формул \eqref{eq:intro:sol_x_star}.
-
-Данные функции удовлетворяют асимптотическим свойствам.
-
-Если $\dot{x}(t_i - 1) < 0$,
-\begin{equation*}
-	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
-\end{equation*}
-\begin{equation*}
-	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty,
-\end{equation*}
-
-Если $\dot{x}(t_i - 1) > 0$,
-\begin{equation*}
-	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
-\end{equation*}
-\begin{equation*}
-	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty.
-\end{equation*}
-
-Коэффициенты при $\tau$ в приведённых формулах совпадают с односторонними производными в точках излома решения релейного уравнения $t_i$ при $i = 0, 1$.
-
-Основной результат главы формулируется следующим образом.
-	
-\bigskip
-
-\textbf{Теорема.} \textit{Пусть параметры $\alpha > \beta > 0$ удовлетворяют условиям \eqref{eq:intro:cond_alpha1}, \eqref{eq:intro:cond_alpha2}. Тогда существуют такие значения параметров $\sigma_0, p, q$ и такое достаточно большое $\gamma_0$, что при всех $\gamma > \gamma_0$ уравнение \eqref{eq:intro:MG_x} с начальной функцией $\varphi$ из множества \eqref{eq:intro:init_set} обладает периодическим решением $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$ с асимптотикой}
-\footnotesize
-\begin{equation}
-	\label{eq:intro:sol_x*gamma}
-	x^*_\gamma(t, \varphi)= 
-	\begin{cases}
-		- \beta t + O(\gamma^{-1} e^{-\beta \delta \gamma}), & t\in[-\sigma_0, 1 - \delta],\\
-		-\beta + \frac{1}{\gamma} w_0(\tau)|_{\tau=(t - 1)\gamma} + O(\gamma^{-2\nu}), & t \in [1 - \delta,1 + \delta],\\
-		- \beta t + \ln(\alpha e^{\beta}(t - 1) + 1) + O(\gamma^{-2\nu}) & t\in[1 + \delta, 2]\\
-		- \beta t + \ln(\frac{\alpha^2}{2}e^{2 \beta}(t - 2)^2 + \alpha e^{\beta}(t - 1) + 1) + O(\gamma^{-2\nu}), & t \in [2, t_1 - \delta],\\
-		- \beta t_1 + \ln(\eta)+\frac{1}{\gamma} w_1(\tau)|_{\tau=(t - t_1)\gamma} + O(\gamma^{-2\nu}), & t\in[t_1 - \delta, t_1  +\delta],\\
-		- \beta t + \ln(\eta) + O(\gamma^{-2\nu}), & t \in [t_1 + \delta, t_2 - \delta],
-	\end{cases}
-\end{equation}
-\normalsize
-где $\nu \in (\frac{1}{2}, 1)$, $\delta = \gamma^{-\nu}$, $\eta=\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1$.
-%
-\textit{Данное решение удовлетворяет предельным равенствам}
-%
-\begin{equation}
-	\label{eq:intro:lim_x*}
-	\lim_{\gamma\to+\infty}\max_{0\leqslant t\leqslant T_{\gamma, \varphi}}|x_{\gamma}^*(t, \phi)-x^*(t)|=0,\quad \lim_{\gamma\to+\infty}T_{\gamma, \varphi} = T.
-\end{equation}
-\textit{Все остатки и пределы равномерны по $\varphi \in S$ и $t$ из соответствующих промежутков.}
-
-\textbf{Содержание второй главы.} Во второй главе рассматривается полносвязная сеть релейных осцилляторов Мэки--Гласса, описываемая системой \eqref{eq:intro:mg_full_renormed}. Будем искать решение в виде дискретной бегущей волны. После подстановки $u_j(t) = u(t + j\Delta)$ получим вспомогательное уравнение \eqref{eq:intro:mg_auxiliary}.
-
-Нормируем время так, чтобы наименьшее из запаздываний вспомогательного уравнения стало равно 1. Пусть $1 = \tau_0 \leq \tau_1 \leq \ldots \leq \tau_m$ --- множество запаздываний после нормировки. Получим уравнение 
-\begin{equation}
-	\label{eq:intro:mg_relay_w}
-	\dot{u}=-\beta u+\alpha F(w(t)), \text{ где } w(t) = \sum\limits_{s = 0}^m u(t - \tau_s).
-\end{equation}
-%
-Определим множество начальных функций на промежутке длины наибольшего запаздывания: 
-%
-\begin{equation}
-	\label{eq:intro:mg_init_set}
-	\{\varphi\in C[-\tau_{m},0]:\  \varphi(t)>1 \text{ при } t\in[-\tau_{m},0),\ \varphi(0)=u_0 > 1\}.
-\end{equation}
-%
-Введём обозначения:
-%
-\begin{equation*}
-	A = \sum_{i=0}^{m}e^{\beta \tau_{i}}=e^\beta+e^{\beta \tau_1}+\ldots+e^{\beta \tau_{m}},
-\end{equation*}
-\begin{equation*}
-	\tau_* = \min\{2,\tau_1\}=\left\lbrace\begin{array}{cl}
-		\min\{2,1/\Delta\}, & \text{ если } \Delta < 1,
-		\\
-		\min\{2,\Delta\}, & \text{ если } \Delta > 1,
-	\end{array}\right.
-\end{equation*}
-\begin{equation*}
-	s_* = t_1-t_0.
-\end{equation*}
-%
-Для вспомогательного уравнения \eqref{eq:intro:mg_relay_w} доказана следующая теорема.
-
-\textbf{Теорема.} \textit{Пусть параметры $\alpha, \beta$ и величина $\tau_*$ удовлетворяют ограничениям}
-
-\begin{equation}
-	\label{eq:intro:cond_thm1}
-	\frac{\alpha}{\beta}e^{\beta}\left(\ln\left(\frac{\beta}{\alpha}\right)+1\right) < 1,
-	\quad
-	\alpha > \beta.
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_thm2}
-	e^{\beta \tau_*}-1 \leqslant \alpha e^\beta(\tau_*-1)
-	\quad\text{или}\quad
-	0 < \frac{1}{\beta}\ln\frac{\alpha}{\beta}\leqslant\tau_*-1,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_th_w>1_t_1+1}
-	e^{-\beta s_*}(e^{-\beta}+\alpha s_*)>1
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_01}
-	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_*\leqslant \tau_k-\tau_{k-1},\quad k=1,\ldots,m,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_02}
-	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta (s_*+\tau_{k-1})}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_* > \tau_k-\tau_{k-1},\quad k=1,\ldots,m,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_1}
-	\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,m.
-\end{equation}
-\textit{Тогда решение уравнения \eqref{eq:mg_relay_w} при любой начальной функции из множества \eqref{eq:mg_init_set} совпадает с одной и той же периодической функцией. Назовём эту функцию $u_*$, а её период $T$. Справедливо следующее.}
-
-\textit{1. Функция $u_*(t)$ обладает наименьшим числом переключений на периоде: $t_0$, $t_0+1$, $t_1$. При этом }
-%
-\begin{equation*}
-	t_0=\frac{1}{\beta}\ln(u_0 A),
-\end{equation*}
-\begin{equation}
-	e^{\beta s_*} - 1=\alpha e^{\beta}(s_* - 1), \quad s_* \in (1, \tau_*).
-\end{equation}
-
-\textit{2. Функция $u_*(t)$ и период $T$ имеют следующий явный вид:}
-%
-\small
-\begin{equation}
-	\label{eq:intro:u_star}
-	u_*(t)=
-	\begin{cases}
-		u_0 e^{-\beta t}(\alpha A(t-t_0)+1) & \text{ при } t\in[t_0,t_0+1].
-		\\
-		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t-t_0-1)^2+\alpha A(t-t_0)+1\right) & \text{ при } t\in[t_0+1,t_1],
-		\\
-		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right) & \text{ при } t\in[t_1,t_0+T].
-	\end{cases}
-\end{equation}
-\normalsize
-%
-\[
-u_*(t + T) \equiv u_*(t),
-\]
-%
-\begin{equation}
-	\label{eq:intro:mg_period_T}
-	T = \dfrac{1}{\beta}\ln\left( \frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right). 
-\end{equation}
-%
-Схематичный график функции $u_*$ изображён на рисунке \ref{fig:intro:u_star}.
-%
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{u_star.eps}
-	\caption{Функция $u_*(t)$, определённая на периоде $[t_0, t_0 + T]$ уравнением \eqref{eq:intro:u_star}.}
-	\label{fig:intro:u_star}
-\end{figure}
-
-Для существования дискретной бегущей волны нужно проверить, что при некотором $\Delta$ период решения вспомогательного уравнения кратен $\Delta (m + 1)$, где $(m + 1)$ --- число уравнений в системе, т.е. для некоторого $p \in \mathbb{N}$ выполнено
-\begin{equation}
-	\label{eq:intro:period_eq}
-	pT = \Delta (m + 1).
-\end{equation}
-
-Во второй главе доказывается следующая теорема.
-
-\textbf{Теорема.} \textit{Для произвольных 
-%
-\begin{equation}
-	\label{eq:intro:constraints_parameters_final}
-	\beta > 0, \alpha \geq e^{\beta\left(1 + \frac{1}{e^{\beta}}\right)} - 1
-\end{equation}
-%
-найдётся $\Delta > 1$, при котором набор параметров $\alpha, \beta, \Delta$ удовлетворяет уравнению \eqref{eq:intro:period_eq} при $p = 1$ и условиям \eqref{eq:intro:cond_thm1}, \eqref{eq:intro:cond_thm2}, \eqref{eq:intro:cond_th_w>1_t_1+1}, \eqref{eq:intro:cond_hair_hair_01}, \eqref{eq:intro:cond_hair_hair_02}, \eqref{eq:intro:cond_hair_hair_1}.}
-
-Из справедливости данной теоремы сразу следует существование решения в виде дискретной бегущей волны у системы \eqref{eq:intro:mg_full_renormed} при данных ограничениях на параметры. Численные эксперименты показывают, что решение является устойчивым; более того, результаты экспериментов позволяют предположить глобальную притягиваемость решений данного вида.
-
-\bigskip
-
-\textbf{Содержание третьей главы.} В третьей главе рассматривается полносвязная сеть, состоящая из $N = m + n$ релейных осцилляторов Мэки--Гласса, описываемая системой \eqref{eq:intro:mg_full_renormed_delta}. Будем искать решение, описывающее режим двухкластерной синхронизации. После подстановки \eqref{eq:intro:cluster} получим вспомогательную систему \eqref{eq:intro:system_uv}.
-
-После замен
-\begin{equation}
-	\label{eq:intro:tilde_change}
-	\tilde{u}(t) = u(t - 1) + \delta (m - 1) u + \delta n v, \quad \tilde{v}(t) = v(t - 1) + \delta m u + \delta (n - 1) v
-\end{equation}
-%
-и последующей экспоненциальной подстановки
-\begin{equation}
-	\label{eq:intro:exp_change}
-	\tilde{u} = e^x, \quad \tilde{v} = e^y
-\end{equation}
-%
-система \eqref{eq:intro:system_uv} примет вид
-%
-\begin{equation}
-	\label{eq:intro:system_cluster_main}
-	\begin{cases}
-		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G(x(t - 1)) + \delta (m - 1) G(x) + \delta n e^{y - x} G(y)\right),\\
-		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(y(t - 1)) + \delta m e^{x - y} G(x) + \delta (n - 1) G(y)\right),
-	\end{cases}
-\end{equation}
-где $G(x) = e^{-x} \, F(e^x)$.
-
-Данная замена корректна в смысле следующей теоремы.
-
-\textbf{Теорема.} \textit{Пусть $(x, y)$ --- $T$-периодическое решение системы \eqref{eq:intro:system_cluster_main}. Тогда существуют $T$-периодические функции $u, v$, однозначно определяемые соотношениями \eqref{eq:intro:tilde_change}, \eqref{eq:intro:exp_change}, которые являются решением системы \eqref{eq:intro:system_uv}.}
-
-Как и в предыдущей части диссертации, будем исследовать предельный при $\gamma \to +\infty$ объект. Подменим функцию $G$ предельной, т.~е. в уравнении \eqref{eq:intro:system_cluster_main} будем считать, что функция $G$ имеет вид 
-\begin{equation}
-	\label{eq:intro:relay_G_tilde}
-	G(x) = \lim\limits_{\gamma \to +\infty} \dfrac{1}{1 + e^{\gamma x}} = 
-	\begin{cases}
-		0, & x > 0,\\
-		1/2, & x = 0,\\
-		1, & x < 0.
-	\end{cases}
-\end{equation}
-%
-В этом случае правая часть релейной системы \eqref{eq:intro:system_cluster_main} терпит разрыв при $x = 0$ и при $y = 0$. Анализ системы показывает, что её решение при достижении одной из прямых разрыва может продолжаться только вдоль этой прямой (трансверсальное пересечение прямой разрыва оказывается невозможным). В связи с этим находится обобщённое решение системы: положим, что при $x \neq 0$ функция $G$ описывается формулой \eqref{eq:intro:relay_G_tilde}, а в случае $x = 0$ принимает то значение из промежутка $(0, 1)$, при котором решение $(x, y)$ продолжается вдоль прямой $x = 0$; аналогично определяется движение по прямой $y = 0$. В такой постановке данный метод соответствует методу эквивалентного управления \cite{Utkin1981}. %, однако в силу специфики данной системы, такое доопределение оказывается эквивалентным другим вариантам обобщения понятия решения системы дифференциальных уравнений, приведённым в \cite{Filippov1988}.
-
-
-Определим на множестве $[-1, 0]$ семейство пар начальных функций. Фиксируем $x_0 > y_0 > 0$.
-\begin{equation}
-	\label{eq:intro:initial_set}
-	S = \left\{\phi, \psi \in C[-1, 0] \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
-\end{equation}
-
-Справедлива следующая теорема.
-
-\bigskip
-
-\textbf{Теорема.}
-	\textit{Пусть}
-	%
-	\begin{equation}
-		\label{eq:intro:constraint_1}
-		x_0 - y_0 < \ln \dfrac{e^{2\beta}(n - \delta(n - 1)) - ne^{\beta} + \delta n(n - 1)}{\delta (n - 1)^2},
-	\end{equation}
-	\begin{equation}
-		\label{eq:intro:constraint_2}
-		\beta < \alpha \delta (m - 1), \quad \beta < \alpha \delta (n - 1),
-	\end{equation}
-	\small
-	\begin{equation}
-		\label{eq:intro:constraint_3}
-		e^{\beta} \cdot \dfrac{n - \delta(n - 1)}{\delta (n - 1)^2} > \dfrac{1}{n - 1} + \dfrac{1}{\delta(m - 1)}, \quad
-		e^{\beta} \cdot \dfrac{m - \delta(m - 1)}{\delta (m - 1)^2} > \dfrac{1}{\delta(n - 1)} + \dfrac{1}{m - 1}.
-	\end{equation}
-	\normalsize
-	
-	\textit{При ограничениях \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3}  и произвольных начальных функциях из множества \eqref{eq:intro:initial_set} релейная система \eqref{eq:intro:system_cluster_main} имеет обобщённое решение, описываемое формулами}
-	%
-	\small
-	\begin{equation}
-		\label{eq:intro:step1_solution}
-		\begin{cases}
-			x = x_0 - \beta t,\\
-			y = y_0 - \beta t
-		\end{cases}
-		\text{при } t \in [0, t_0], \text{ где } t_0 = \dfrac{y_0}{\beta};
-	\end{equation}
-	%
-	\begin{equation}
-		\label{eq:intro:step2_solution}
-		\begin{cases}
-			x = x_0 - \beta t + \ln\left(1 + \frac{n}{n - 1} e^{-x_0 + \beta t_0}  (e^{\beta  (t - t_0)} - 1)\right),\\
-			y = 0
-		\end{cases}
-		\text{при } t \in [t_0, t_0 + 1];
-	\end{equation}
-	%
-	\begin{multline}
-		\label{eq:intro:step3_solution}
-		\begin{cases}
-			x = -\beta t + \ln\left(\exp(x(t_{2i} + 1) + \beta (t_{2i} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i} + 1)))\right)
-			,\\
-			y = 0
-		\end{cases}\\
-		\text{при } t \in [t_{2i} + 1, t_{2i + 1}];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step4_solution}
-		\begin{cases}
-			x = 0,\\
-			y = -\beta t + \ln\left(\exp(\beta t_{2i + 1}) + \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 1}))\right)
-		\end{cases}\\
-		\text{при } t \in [t_{2i + 1}, t_{2i} + 2];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step5_solution}
-		\begin{cases}
-			x = 0,\\
-			y = -\beta t + \ln\left(\exp(y(t_{2i} + 2) + \beta (t_{2i} + 2)) + \left(\frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i} + 2)))\right)
-		\end{cases}\\
-		\text{при } t \in [t_{2i} + 2, t_{2i + 1} + 1];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step6_solution}
-		\begin{cases}
-			x = 0,\\
-			y = -\beta t + \ln\left(\exp(y(t_{2i + 1} + 1) + \beta(t_{2i + 1} + 1)) + \frac{m (\delta (m - 1) - 1)}{\delta (m - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 1} + 1))) \right)
-		\end{cases}\\
-		\text{при } t \in [t_{2i + 1} + 1, t_{2i + 2}];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step7_solution}
-		\begin{cases}
-			x = -\beta t + \ln\left(\exp(\beta t_{2i + 2}) + \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 2}))\right),\\
-			y = 0
-		\end{cases}\\
-		\text{при } t \in [t_{2i + 2}, t_{2i + 1} + 2];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step8_solution}
-		\begin{cases}
-			x = -\beta t + \ln\left(\exp(x(t_{2i + 1} + 2) + \beta (t_{2i + 1} + 2)) + \left(\frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i + 1} + 2)))\right),\\
-			y = 0
-		\end{cases}\\
-		\text{при } t \in [t_{2i + 1} + 2, t_{2i + 2} + 1];
-	\end{multline}
-	%
-	\begin{multline}
-		\label{eq:intro:step9_solution}
-		\begin{cases}
-			x = -\beta t + \ln\left(\exp(y(t_{2i + 2} + 1) + \beta(t_{2i + 2} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 2} + 1))) \right),\\
-			y = 0
-		\end{cases}\\
-		\text{при } t \in [t_{2i + 2} + 1, t_{2i + 3}].
-	\end{multline}
-	\normalsize
-	
-	\textit{Здесь $i \geqslant 0$ --- целое число. Каждый момент времени $t_{2i + 1}$ определяется как корень уравнения $x = 0$, где функция $x(t)$ задаётся уравнением \eqref{eq:intro:step3_solution}. Каждый момент времени $t_{2i + 2}$ определяется как корень уравнения $y = 0$, где функция $y(t) = 0$ определяется из системы \eqref{eq:intro:step6_solution}. Для всех $i \geqslant 0$ верно, что $t_{i + 1} \in (t_i + 1, t_i + 2)$.}
-
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=\textwidth]{cluster_step_by_step.eps}
-	\caption{Обобщённое решение релейной системы \eqref{eq:intro:system_cluster_main}, построенное методом шагов. Чёрная линия --- компонента решения $x$, красная линия --- компонента решения $y$. Числа в кругах означают номер шага построения.}
-	\label{fig:intro:cluster_step_by_step}
-\end{figure}
-
-Основным результатом третьей главы является следующая теорема.
-
-\textbf{Теорема.} \textit{При ограничениях \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3} релейная система \eqref{eq:intro:system_cluster_main} имеет периодическое решение, описываемое на периоде $[t_1, t_3]$ формулами \eqref{eq:intro:step4_solution} -- \eqref{eq:intro:step9_solution}.}
-
 
 

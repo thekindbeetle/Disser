@@ -83,3 +83,12 @@
         \setbeameroption{show notes on second screen=\presposition}
     }{}
 }
+
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}
+
+\newtcbox{\myeq}[1][]{%
+	nobeforeafter, math upper, tcbox raise base,
+	enhanced, colframe=blue!30!black,
+	colback=blue!10, boxrule=1pt,
+	#1}
