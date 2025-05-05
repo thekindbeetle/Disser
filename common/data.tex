@@ -2,6 +2,9 @@
 \newcommand{\thesisAuthorLastName}{Алексеев}
 \newcommand{\thesisAuthorOtherNames}{Владислав Владимирович}
 \newcommand{\thesisAuthorInitials}{В.\,В.}
+\newcommand{\thesisAuthorLastNameEng}{Alekseev}
+\newcommand{\thesisAuthorOtherNamesEng}{Vladislav}
+\newcommand{\thesisAuthorInitialsEng}{V.}
 \newcommand{\thesisAuthor}             % Диссертация, ФИО автора
 {%
     \texorpdfstring{% \texorpdfstring takes two arguments and uses the first for (La)TeX and the second for pdf
@@ -10,16 +13,28 @@
         \thesisAuthorLastName, \thesisAuthorOtherNames% эта запись для свойств pdf-файла. В таком виде, если pdf будет обработан программами для сбора библиографических сведений, будет правильно представлена фамилия.
     }
 }
+\newcommand{\thesisAuthorEng}             % Диссертация, ФИО автора
+{%
+\texorpdfstring{% \texorpdfstring takes two arguments and uses the first for (La)TeX and the second for pdf
+	\thesisAuthorLastNameEng~\thesisAuthorOtherNamesEng% так будет отображаться на титульном листе или в тексте, где будет использоваться переменная
+}{%
+	\thesisAuthorLastNameEng, \thesisAuthorOtherNamesEng% эта запись для свойств pdf-файла. В таком виде, если pdf будет обработан программами для сбора библиографических сведений, будет правильно представлена фамилия.
+}
+}
 \newcommand{\thesisAuthorShort}        % Диссертация, ФИО автора инициалами
 {\thesisAuthorInitials~\thesisAuthorLastName}
 %\newcommand{\thesisUdk}                % Диссертация, УДК
 %{\fixme{xxx.xxx}}
 \newcommand{\thesisTitle}              % Диссертация, название
 {Режимы кластерной синхронизации и дискретных бегущих волн в~полносвязной сети осцилляторов Мэки--Гласса}
+\newcommand{\thesisTitleEng}              % Диссертация, название
+{Two-Cluster Synchronisation and Discrete Traveling Waves in a Fully Coupled Network of~Mackey--Glass Oscillators}
 \newcommand{\thesisSpecialtyNumber}    % Диссертация, специальность, номер
 {1.1.2}
 \newcommand{\thesisSpecialtyTitle}     % Диссертация, специальность, название (название взято с сайта ВАК для примера)
 {Дифференциальные уравнения и математическая физика}
+\newcommand{\thesisSpecialtyTitleEng}     % Диссертация, специальность, название (название взято с сайта ВАК для примера)
+{Differential Equations and Mathematical Physics}
 %% \newcommand{\thesisSpecialtyTwoNumber} % Диссертация, вторая специальность, номер
 %% {\fixme{XX.XX.XX}}
 %% \newcommand{\thesisSpecialtyTwoTitle}  % Диссертация, вторая специальность, название
@@ -27,19 +42,25 @@
 %% оздоровительной и~адаптивной физической культуры}}
 \newcommand{\thesisDegree}             % Диссертация, ученая степень
 {кандидата физико-математических наук}
+\newcommand{\thesisDegreeEng}             % Диссертация, ученая степень
+{Doctor of Philosophy in Mathematics}
 \newcommand{\thesisDegreeShort}        % Диссертация, ученая степень, краткая запись
 {канд. физ.-мат. наук}
 \newcommand{\thesisCity}               % Диссертация, город написания диссертации
 {Ярославль}
+\newcommand{\thesisCityEng}               % Диссертация, город написания диссертации
+{Yaroslavl}
 \newcommand{\thesisYear}               % Диссертация, год написания диссертации
 {2025}
 \newcommand{\thesisOrganization}       % Диссертация, организация
 {Федеральное государственное бюджетное образовательное учреждение высшего образования\linebreak<<Ярославский государственный университет им. П.Г. Демидова>>}
 \newcommand{\thesisOrganizationShort}  % Диссертация, краткое название организации для доклада
-{Периодические режимы в полносвязной системе уравнений Мэки--Гласса}
+{Периодические режимы \linebreak в полносвязной системе уравнений Мэки--Гласса}
 
 \newcommand{\thesisInOrganization}     % Диссертация, организация в предложном падеже: Работа выполнена в ...
 {Федеральном государственном бюджетном образовательном учреждении высшего образования <<Ярославский государственный университет им. П.Г. Демидова>>}
+\newcommand{\thesisInOrganizationEng}     % Диссертация, организация в предложном падеже: Работа выполнена в ...
+{P.G.~Demidov Yaroslavl State University}
 
 %% \newcommand{\supervisorDead}{}           % Рисовать рамку вокруг фамилии
 \newcommand{\supervisorFio}              % Научный руководитель, ФИО
@@ -50,6 +71,15 @@
 {М.\,М.~Преображенская}
 \newcommand{\supervisorRegaliaShort}     % Научный руководитель, регалии
 {к.~ф.-м.~н.}
+
+\newcommand{\supervisorFioEng}              % Научный руководитель, ФИО
+{Margarita M. Preobrazhenskaia}
+\newcommand{\supervisorRegaliaEng}          % Научный руководитель, регалии
+{PhD}
+\newcommand{\supervisorFioShortEng}         % Научный руководитель, ФИО
+{M.\,M.~Preobrazhenskaia}
+\newcommand{\supervisorRegaliaShortEng}     % Научный руководитель, регалии
+{PhD}
 
 \newcommand{\opponentOneFio}           % Оппонент 1, ФИО
 {Починка Ольга Витальевна}

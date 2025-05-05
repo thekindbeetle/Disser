@@ -54,22 +54,6 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Решение релейного уравнения}
-	Введём обозначения:
-	\begin{empheq}[box=\myeq]{equation*}
-		T = \frac{1}{\beta} \ln\left(\frac{1}{2}\alpha^2e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1\right),
-	\end{empheq}
-	где $t = t_1$ --- корень уравнения 
-	\begin{empheq}[box=\myeq]{equation*}
-		-\beta(t - 1) + \ln(\alpha e^{\beta}(t - 2) + 1) = 0,
-	\end{empheq}
-	\begin{empheq}[box=\myeq]{equation*}
-		t_2 = 1 + T.
-	\end{empheq}
-	
-\end{frame}
-
-\begin{frame}
 \frametitle{Решение релейного уравнения}
 Определим множество начальных функций.
 
@@ -143,35 +127,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Основная теорема}
-	
-	\textbf{Теорема.} Пусть параметры $\alpha > 0$, $\beta > 0$ удовлетворяют условиям
-	%
-	\footnotesize
-	\begin{empheq}[box=\myeq]{equation*}
-		\alpha > e^{\beta} - e^{-\beta} \text{ или } \alpha < \beta e^{\beta}, \quad 
-		\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1, \quad 
-		\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
-	\end{empheq}
-	\normalsize
-	Тогда для произвольной начальной функции $\varphi \in S$ и достаточно больших $\gamma$ уравнение Мэки~--~Гласса \eqref{eq:mg} имеет решение $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$, причём
-	
-	\small
-	\begin{empheq}[box=\myeq]{equation*}
-	\lim\limits_{\gamma \to +\infty} \max\limits_{t \in [-\sigma_0, T_{\gamma, \varphi} - \sigma_0]} |x^*_\gamma(t, \varphi) - x^*(t)| = 0,
-	\end{empheq}
-	
-	\begin{empheq}[box=\myeq]{equation*}
-	\lim\limits_{\gamma \to +\infty} T_{\gamma, \varphi} = T.
-	\end{empheq}
-	\normalsize
-	
-	Пределы равномерны по $\varphi \in S$.
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Основная теорема}
+	\frametitle{Решение релейного уравнения}
 	
 	\textbf{Замечание.} Для выполнения условий
 	%
@@ -194,7 +150,7 @@
 	\frametitle{Асимптотика решения}
 	
 	\footnotesize
-	Пусть $\delta = \gamma^{-\nu}$ --- малый параметр, $\nu \in (1/2, 1)$ --- константа.
+	Пусть $\delta = \gamma^{-\nu}$ --- малый параметр, $\nu \in (\nicefrac{1}{2}, 1)$ --- константа.
 	%
 	Вне окрестностей точек излома $t_0$ и $t_1$ ищем решение в виде
 	\begin{empheq}[box=\myeq]{equation*}
@@ -235,7 +191,7 @@
 \begin{frame}
 	\frametitle{Асимптотика решения}
 	\small
-	\textbf{Теорема.} Пусть $\delta = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$. Уравнение \eqref{eq:mg} с начальной функцией $\varphi \in S$ при соответствующих ограничениях на параметры $\alpha, \beta$ имеет решение $x_\gamma^*(t, \varphi)$ с асимптотикой
+	\textbf{Теорема.} Пусть $\delta = \gamma^{-\nu}$, $\nu \in (\nicefrac{1}{2}, 1)$. Уравнение \eqref{eq:mg} с начальной функцией $\varphi \in S$ при соответствующих ограничениях на параметры $\alpha, \beta$ имеет решение $x_\gamma^*(t, \varphi)$ с асимптотикой
 	\tiny
 	\begin{empheq}[box=\myeq]{gather*}
 		\label{eq:sol_x*gamma}
@@ -298,6 +254,34 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Основная теорема}
+	
+	\textbf{Теорема.} Пусть параметры $\alpha > 0$, $\beta > 0$ удовлетворяют условиям
+	%
+	\footnotesize
+	\begin{empheq}[box=\myeq]{equation*}
+		\alpha > e^{\beta} - e^{-\beta} \text{ или } \alpha < \beta e^{\beta}, \quad 
+		\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1, \quad 
+		\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
+	\end{empheq}
+	\normalsize
+	Тогда для произвольной начальной функции $\varphi \in S$ и достаточно больших $\gamma$ уравнение Мэки~--~Гласса \eqref{eq:mg} имеет решение $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$, причём
+	
+	\small
+	\begin{empheq}[box=\myeq]{equation*}
+		\lim\limits_{\gamma \to +\infty} \max\limits_{t \in [-\sigma_0, T_{\gamma, \varphi} - \sigma_0]} |x^*_\gamma(t, \varphi) - x^*(t)| = 0,
+	\end{empheq}
+	
+	\begin{empheq}[box=\myeq]{equation*}
+		\lim\limits_{\gamma \to +\infty} T_{\gamma, \varphi} = T.
+	\end{empheq}
+	\normalsize
+	
+	Пределы равномерны по $\varphi \in S$.
+	
+\end{frame}
+
 \section{Глава 2. Дискретные бегущие волны в полносвязной сети релейных генераторов Мэки--Гласса}
 
 
@@ -342,8 +326,16 @@
 
 \begin{frame}
 	\frametitle{Решение вспомогательного уравнения}
+	
+	Множество начальных функций:
 	\footnotesize
-	%\textbf{Теорема}. Пусть $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$. Для произвольной положительной начальной функции уравнение \eqref{eq:mg_aux1} имеет решение
+	\begin{empheq}[box=\myeq]{equation*}
+		S_1 = \{\varphi \in C[-\tau, 0] \,|\, \varphi(t) > 0\}, \tau = \max\{N\Delta, 1\}.
+	\end{empheq}
+	\normalsize
+	
+	\footnotesize
+	\textbf{Теорема}. Пусть $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$. Для произвольной положительной начальной функции из множества $S_1$ уравнение \eqref{eq:mg_aux1} имеет решение
 	\begin{empheq}[box=\myeq]{equation*}
 		u_*(t)=
 		\begin{cases}
@@ -361,9 +353,26 @@
 	\]
 	
 	Здесь $A = e + e^{\Delta} + e^{2\Delta} + \ldots + e^{N\Delta}$, $t_0$, $t_1$ --- точки переключения.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Решение вспомогательного уравнения}
+
+\footnotesize
+	\begin{empheq}[box=\myeq]{equation*}
+		u_*(t)=
+		\begin{cases}
+			u_0 e^{-\beta t}(\alpha A(t-t_0)+1) & \text{ при } t\in[t_0,t_0+1],
+			\\
+			u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t-t_0-1)^2+\alpha A(t-t_0)+1\right) & \text{ при } t\in[t_0+1,t_1],
+			\\
+			u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right) & \text{ при } t\in[t_1,t_0+T],
+		\end{cases}
+	\end{empheq}
+\normalsize
 	
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{u_star.eps}
+		\includegraphics[width=0.8\textwidth]{u_star.eps}
 	\end{center}
 \end{frame}
 
@@ -371,7 +380,15 @@
 	\frametitle{Бегущая волна: теорема существования}
 	
 	\textbf{Теорема.} 
-	Для произвольных $\beta > 0$, $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$ найдётся $\Delta > 1$, при котором вспомогательное уравнение с параметрами $\alpha, \beta, \Delta$ имеет $T$-периодическое решение $u_*(t)$, причём $T = (N + 1) \Delta$. Соответствующий набор функций $u_j(t) = u_*(t + j \Delta), j = 0, \ldots N$ (с точностью до нумерации компонент) является решением в виде дискретной бегущей волны.
+	Для произвольных $\beta > 0$, $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$
+	существует единственное значение $\Delta > 1$, при котором 
+	\begin{enumerate}
+		\item вспомогательное уравнение с параметрами $\alpha, \beta, \Delta$ имеет $T$-периодическое решение $u_*(t)$, причём $T = (N + 1) \Delta$;
+		\item соответствующий набор функций
+		\[u_j(t) = u_*(t + j \Delta), j = 0, \ldots N\]
+		(с точностью до нумерации компонент) является решением в виде дискретной бегущей волны.
+	\end{enumerate}
+	
 \end{frame}
 
 \begin{frame}
@@ -393,9 +410,9 @@
 \begin{frame}
 	\frametitle{Глава 3. Двухластерная синхронизация}
 	
-	Полносвязная сеть из $N = m + n$ релейных генераторов Мэки~--~Гласса описывается системой	
+	Полносвязная сеть из $N = m + n$ генераторов Мэки~--~Гласса описывается системой	
 	\begin{empheq}[box=\myeq]{equation*}
-		\dot{u}_j(t) = -\beta u_j(t) + \alpha F \bigg(u_j(t - 1) + \delta\sum\limits_{k = 0, k\neq j}^N u_k(t)\bigg), \quad j = 0, 1, \dots, N.
+		\dot{u}_j(t) = -\beta u_j(t) + \alpha F_{\gamma} \bigg(u_j(t - 1) + \delta\sum\limits_{k = 0, k\neq j}^N u_k(t)\bigg), \quad j = 0, 1, \dots, N.
 	\end{empheq}
 	
 	\begin{wrapfigure}{r}{0.4\textwidth} 
@@ -421,8 +438,8 @@
 	\begin{empheq}[box=\myeq]{equation*}
 		\label{eq:pres:aux}
 		\begin{cases}
-			\dot{u} = -\beta u + \alpha \, F \big(u(t - 1) + \delta (m - 1) u + \delta n v\big),\\
-			\dot{v} = -\beta v + \alpha \, F \big(v(t - 1) + \delta m u + \delta (n - 1) v\big).
+			\dot{u} = -\beta u + \alpha \, F_{\gamma} \big(u(t - 1) + \delta (m - 1) u + \delta n v\big),\\
+			\dot{v} = -\beta v + \alpha \, F_{\gamma} \big(v(t - 1) + \delta m u + \delta (n - 1) v\big).
 		\end{cases}\tag{AUX2}
 	\end{empheq}
 	
@@ -434,7 +451,7 @@
 		\end{cases}
 	\end{empheq}
 	
-	\textbf{Теорема 1.} Приведённая замена обратима в классе $T$-периодических непрерывно дифференцируемых функций ($T > 0$).
+	\textbf{Теорема 1.} Замена \eqref{eq:pres:tilde_change} обратима в классе $T$-периодических непрерывно дифференцируемых функций ($T > 0$).
 	\normalsize
 	
 \end{frame}
@@ -448,8 +465,8 @@
 	\begin{empheq}[box=\myeq]{equation}
 		\label{eq:pres:mg_cluster_system_tilde}
 		\begin{cases}
-			\dot{\tilde{u}} = -\beta \tilde{u} + \alpha \big(F(\tilde{u}(t - 1)) + \delta (m - 1) \, F(\tilde{u}) + \delta n \, F(\tilde{v})\big),\\
-			\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F(\tilde{v}(t - 1)) + \delta m \, F(\tilde{u}) + \delta (n - 1) \, F(\tilde{v})\big).
+			\dot{\tilde{u}} = -\beta \tilde{u} + \alpha \big(F_{\gamma}(\tilde{u}(t - 1)) + \delta (m - 1) \, F_{\gamma}(\tilde{u}) + \delta n \, F_{\gamma}(\tilde{v})\big),\\
+			\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F_{\gamma}(\tilde{v}(t - 1)) + \delta m \, F_{\gamma}(\tilde{u}) + \delta (n - 1) \, F_{\gamma}(\tilde{v})\big).
 		\end{cases}
 	\end{empheq}
 	\normalsize
@@ -466,14 +483,14 @@
 	\end{empheq}
 	и ввода функции 
 	\begin{empheq}[box=\myeq]{equation*}
-		G(x) = e^{-x} \, F (e^x) = \dfrac{1}{1 + e^{\gamma x}},
+		G_{\gamma}(x) = e^{-x} \, F_{\gamma} (e^x) = \dfrac{1}{1 + e^{\gamma x}},
 	\end{empheq}
 	получаем итоговый вид системы:
 	\footnotesize
 	\begin{empheq}[box=\myeq]{equation*}
 		\begin{cases}
-			\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G(x(t - 1)) + \delta (m - 1) G(x) + \delta n e^{y - x} G(y)\right),\\
-			\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(y(t - 1)) + \delta m e^{x - y} G(x) + \delta (n - 1) G(y)\right).
+			\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G_{\gamma}(x(t - 1)) + \delta (m - 1) G_{\gamma}(x) + \delta n e^{y - x} G_{\gamma}(y)\right),\\
+			\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G_{\gamma}(y(t - 1)) + \delta m e^{x - y} G_{\gamma}(x) + \delta (n - 1) G_{\gamma}(y)\right).
 		\end{cases}
 	\end{empheq}
 	\normalsize
@@ -482,10 +499,10 @@
 \begin{frame}{Переход к релейной системе}
 	Пусть 
 	\begin{empheq}[box=\myeq]{equation*}
-		\tilde{G}(x) = \lim\limits_{\gamma \to +\infty} G(x) = \lim\limits_{\gamma \to +\infty} \dfrac{1}{1 + e^{\gamma x}} = \begin{cases}
-			0, & x < 0;\\
+		G(x) = \lim\limits_{\gamma \to +\infty} G_{\gamma}(x) = \lim\limits_{\gamma \to +\infty} \dfrac{1}{1 + e^{\gamma x}} = \begin{cases}
+			1, & x < 0;\\
 			1/2, & x = 0;\\
-			1, & x > 0.
+			0, & x > 0.
 		\end{cases}
 	\end{empheq}
 	
@@ -493,8 +510,8 @@
 	\footnotesize
 	\begin{empheq}[box=\myeq]{equation*}
 		\begin{cases}
-			\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} \tilde{G}(x(t - 1)) + \delta (m - 1) \tilde{G}(x) + \delta n e^{y - x} \tilde{G}(y)\right),\\
-			\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} \tilde{G}(y(t - 1)) + \delta m e^{x - y} \tilde{G}(x) + \delta (n - 1) \tilde{G}(y)\right).
+			\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G(x(t - 1)) + \delta (m - 1) G(x) + \delta n e^{y - x} G(y)\right),\\
+			\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(y(t - 1)) + \delta m e^{x - y} G(x) + \delta (n - 1) G(y)\right).
 		\end{cases}
 	\end{empheq}
 	\normalsize
@@ -506,25 +523,25 @@
 	\end{empheq}
 	\normalsize
 \end{frame}
-
-\begin{frame}{Первый шаг решения системы}
-	
-	Пусть $\alpha > \frac{\beta}{\delta (n - 1)}$. Решение продолжается только вдоль прямой $y = 0$. Тогда $G(0) = \frac{\beta}{\delta(n - 1)} = \frac{1}{2}$?
-	
-	\begin{center}
-		\includegraphics[width=\textwidth]{cluster_1_step.png}
-	\end{center}
-\end{frame}
+%
+%\begin{frame}{Первый шаг решения системы}
+%	
+%	Пусть $\alpha > \frac{\beta}{\delta (n - 1)}$. Решение продолжается только вдоль прямой $y = 0$. Тогда $G(0) = \frac{\beta}{\delta(n - 1)} = \frac{1}{2}$?
+%	
+%	\begin{center}
+%		\includegraphics[width=\textwidth]{cluster_1_step.png}
+%	\end{center}
+%\end{frame}
 
 \begin{frame}{Обобщённое решение уравнения}
-	Введём предстоящие определению функции $g_x(x, t)$, $g_y(y, t)$; перепишем систему в виде:
+	Релейная система не имеет решения при $t > \frac{y_0}{\beta}$. Ищем решение в обобщённом смысле. Введём предстоящие определению функции $g_x(x, t)$, $g_y(y, t)$; перепишем систему в виде:
 	\footnotesize
 	\begin{empheq}[box=\myeq]{equation*}
 		\begin{cases}
 			\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} g_x(x(t - 1), t - 1) + \delta (m - 1) g_x(x, t) + \delta n e^{y - x} g_y(y, t)\right),\\
 			\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} g_y(y(t - 1), t - 1) + \delta m e^{x - y} g_x(x, t) + \delta (n - 1) g_y(y, t)\right),\\
-			g_x(x, t) = \tilde{G}(x) \text{  при  } x \neq 0,\\
-			g_y(y, t) = \tilde{G}(y) \text{  при  } y \neq 0. 
+			g_x(x, t) = G(x) \text{  при  } x \neq 0,\\
+			g_y(y, t) = G(y) \text{  при  } y \neq 0. 
 		\end{cases}
 	\end{empheq}
 	\normalsize
@@ -564,7 +581,8 @@
 \begin{frame}
 	\frametitle{Численные результаты}
 	
-	Результаты численного моделирования. Сплошная линия --- решение релейной системы, длинный пунктир --- решение системы при $\gamma = 200$, короткий пунктир --- при $\gamma = 20$.
+	Результаты численного моделирования.
+	\includegraphics[height=1.2em]{ptr1.png} --- решение релейной системы, \includegraphics[height=1em]{ptr2.png}  --- решение системы при $\gamma = 200$, \includegraphics[height=1em]{ptr3.png} --- решение системы при $\gamma = 20$.
 	
 	% 2024-06-22 двухкластерная синхронизация XY 
 	\begin{center}

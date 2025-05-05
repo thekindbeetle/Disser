@@ -1,23 +1,13 @@
-\chapter{Режимы двухкластерной синхронизации в полносвязной цепи генераторов Мэки--Гласса}\label{ch:ch3}
+\chapter{Режимы двухкластерной синхронизации в полносвязной сети осцилляторов Мэки--Гласса}\label{ch:ch3}
 
-Как и в главе \eqref{ch:ch2}, в текущей главе рассматривается генератор Мэки-Гласса --- электрический генератор, функция напряжения $V(t)$ которого описывается уравнением Мэки-Гласса
-%
-\begin{equation}
-	\label{eq:mg:ch3}
-	\dfrac{d V}{dt}=
-	- bV+\dfrac{acV(t - \tau) }{1 + (cV(t - \tau))^{\gamma}}.
-\end{equation}
-%
-Здесь $V=V(t) > 0$ --- скалярная функция, $a, b, c, \tau, \gamma$ --- положительные параметры. Параметр $\tau$ --- запаздывание по времени, параметр $\gamma$ определяет форму нелинейности.
-
-Пусть в распоряжении имеется произвольное (фиксированное) число генераторов Мэки--Гласса \eqref{eq:mg:ch3}. Рассмотрим полносвязную цепь генераторов, где каждый генератор связан с каждым. В этом случае можно поставить вопрос поиска периодических режимов двухкластерной синхронизации --- таких решений, что все компоненты совпадают с одной из двух различных периодических функций.
+Результаты, полученные в третьей главе, опубликованы в статье \cite{scbib1}. Как и в главе \ref{ch:ch2}, здесь рассматривается полносвязная сеть осцилляторов Мэки--Гласса, в которую добавлен коэффициент связи между элементами сети. В текущей главе решена задача поиска периодических режимов двухкластерной синхронизации --- таких периодических решений, что все компоненты совпадают с одной из двух различных периодических функций.
 
 В разделе \ref{sec:ch3/sect1} описывается система дифференциальных уравнений с запаздывающим аргументом, соответствующая режиму двухкластерной синхронизации. Производится переход к новым переменным. В разделе \ref{sec:ch3/sect2} доказывается обратимость проведённой замены. В разделе \ref{sec:ch3/sect3} для предельной при $\gamma \to +\infty$ системы отыскивается решение, которое при $t \to +\infty$ стремится к периодическому. В разделе \ref{sec:ch3/sect4} доказывается существование периодического режима двухкластерной синхронизации. В разделе \ref{sec:ch3/sect5} приводятся результаты численного моделирования.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Постановка задачи}\label{sec:ch3/sect1}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Зафиксируем натуральные $m$ и $n$. Рассмотрим полносвязную цепь из $N = m + n$ генераторов Мэки-Гласса, т.~е. цепь, в которой каждый генератор взаимодействует со всеми остальными. Такая цепь задаётся системой
+Зафиксируем натуральные $m$ и $n$. Рассмотрим полносвязную сеть из $N = m + n$ осцилляторов Мэки-Гласса, т.~е. сеть, в которой каждый осциллятор взаимодействует со всеми остальными. Такая сеть задаётся системой
 %
 \begin{equation}
 	\label{eq:mg_system}
@@ -25,7 +15,7 @@
 \end{equation}
 где $V_j(t) > 0$ для всех $j = 1, \ldots, N$, коэффициент $\delta > 1$ контролирует силу связи. 
 
-После замен $V_j = c^{-1}u_j(\frac{t}{\tau})$, $\beta = b\tau$, $\alpha=ac\tau$, $t \mapsto \frac{t}{\tau}$,
+После замен $V_j(t) = c^{-1}u_j(\frac{t}{\tau})$, $\beta = b\tau$, $\alpha=ac\tau$, $t \mapsto \frac{t}{\tau}$,
 перейдём от системы (\ref{eq:mg_system}) к более удобной форме с меньшим числом параметров:
 %
 \begin{equation}
@@ -39,55 +29,55 @@
 %
 \begin{equation}
 	\label{eq:F_func}
-	F(x) = \dfrac{x}{1 + x^\gamma}.
+	F_{\gamma}(x) = \dfrac{x}{1 + x^\gamma}.
 \end{equation}
 
 С учётом \eqref{eq:F_func} система \eqref{eq:mg_system_norm} примет вид:
 %
 \begin{equation}
 	\label{eq:mg_system_norm_F}
-	\dot{u_j} = -\beta u_j + \alpha\,F\left(u_j(t - 1) + \delta \sum_{k = 1, k\neq j}^{N}u_{k}(t)\right), \quad j = 1, \ldots, N.
+	\dot{u_j} = -\beta u_j + \alpha\,F_{\gamma}\left(u_j(t - 1) + \delta \sum_{k = 1, k\neq j}^{N}u_{k}(t)\right), \quad j = 1, \ldots, N.
 \end{equation}
 
-Будем искать режимы двухкластерной синхронизации, т.~е. периодические режимы, в которых $m$ генераторов описываются функцией $u(t)$, а остальные $n$ генераторов --- другой функцией $v(t)$.
+Будем искать режимы двухкластерной синхронизации, т.~е. периодические режимы, в которых $m$ осцилляторов описываются функцией $u(t)$, а остальные $n$ осцилляторов --- другой функцией $v(t)$.
 
 Система \eqref{eq:mg_system_norm_F} примет вид:
 %
 \begin{equation}
 	\label{eq:mg_cluster_system_norm}
 	\begin{cases}
-		\dot{u} = -\beta u + \alpha \, F \big(u(t - 1) + \delta (m - 1) u + \delta n v\big),\\
-		\dot{v} = -\beta v + \alpha  \, F \big(v(t - 1) + \delta m u + \delta (n - 1) v\big).
+		\dot{u} = -\beta u + \alpha \, F_{\gamma} \big(u(t - 1) + \delta (m - 1) u + \delta n v\big),\\
+		\dot{v} = -\beta v + \alpha  \, F_{\gamma} \big(v(t - 1) + \delta m u + \delta (n - 1) v\big).
 	\end{cases}
 \end{equation}
 
 После замен
 \begin{equation}
 	\label{eq:tilde_change}
-	\tilde{u}(t) = u(t - 1) + \delta (m - 1) u + \delta n v, \quad \tilde{v}(t) = v(t - 1) + \delta m u + \delta (n - 1) v,
+	\tilde{u} = u(t - 1) + \delta (m - 1) u + \delta n v, \quad \tilde{v} = v(t - 1) + \delta m u + \delta (n - 1) v,
 \end{equation}
-
+%
 система \eqref{eq:mg_cluster_system_norm} примет вид
 %
 \begin{equation}
 	\label{eq:mg_cluster_system_pre_tilde}
 	\begin{cases}
-		\dot{u} = -\beta u + \alpha \, F(\tilde{u}),\\
-		\dot{v} = -\beta v + \alpha \, F(\tilde{v}).
+		\dot{u} = -\beta u + \alpha \, F_{\gamma}(\tilde{u}),\\
+		\dot{v} = -\beta v + \alpha \, F_{\gamma}(\tilde{v}).
 	\end{cases}
 \end{equation}
 
 
 Перепишем систему \eqref{eq:mg_cluster_system_pre_tilde} через переменные $\tilde{u}$ и $\tilde{v}$.
 \begin{multline*}
-	\dot{\tilde{u}}(t) = \dot{u}(t - 1) + \delta (m - 1) \dot{u} + \delta n \dot{v} =\\= \left(-\beta u(t - 1) + \alpha \, F(\tilde{u}(t - 1))\right) + \delta (m - 1)(-\beta u + \alpha\, F(\tilde{u})) + \delta n (-\beta v + \alpha \, F(\tilde{v})) =\\
-	= -\beta(u(t - 1) + \delta (m - 1)u + \delta nv) + \alpha\big(F(\tilde{u}(t - 1)) + \delta (m - 1) \, F(\tilde{u}) + \delta n \, F(\tilde{v})\big) = \\
-	= -\beta \tilde{u} + \alpha \big(F(\tilde{u}(t - 1)) + \delta (m - 1)\, F(\tilde{u}) + \delta n \, F(\tilde{v})\big).
+	\dot{\tilde{u}} = \dot{u}(t - 1) + \delta (m - 1) \dot{u} + \delta n \dot{v} =\\= \left(-\beta u(t - 1) + \alpha \, F_{\gamma}(\tilde{u}(t - 1))\right) + \delta (m - 1)(-\beta u + \alpha\, F_{\gamma}(\tilde{u})) + \delta n (-\beta v + \alpha \, F_{\gamma}(\tilde{v})) =\\
+	= -\beta(u(t - 1) + \delta (m - 1)u + \delta nv) + \alpha\big(F_{\gamma}(\tilde{u}(t - 1)) + \delta (m - 1) \, F_{\gamma}(\tilde{u}) + \delta n \, F_{\gamma}(\tilde{v})\big) = \\
+	= -\beta \tilde{u} + \alpha \big(F_{\gamma}(\tilde{u}(t - 1)) + \delta (m - 1)\, F_{\gamma}(\tilde{u}) + \delta n \, F_{\gamma}(\tilde{v})\big).
 \end{multline*}
 
 Аналогично,
 \[
-\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F(\tilde{v}(t - 1)) + \delta m \, F(\tilde{u}) + \delta (n - 1) \, F(\tilde{v})\big).
+\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F_{\gamma}(\tilde{v}(t - 1)) + \delta m \, F_{\gamma}(\tilde{u}) + \delta (n - 1) \, F_{\gamma}(\tilde{v})\big).
 \]
 
 Получаем систему:
@@ -95,8 +85,8 @@
 \begin{equation}
 	\label{eq:mg_cluster_system_tilde}
 	\begin{cases}
-		\dot{\tilde{u}} = -\beta \tilde{u} + \alpha \big(F(\tilde{u}(t - 1)) + \delta (m - 1) \, F(\tilde{u}) + \delta n \, F(\tilde{v})\big),\\
-		\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F(\tilde{v}(t - 1)) + \delta m \, F(\tilde{u}) + \delta (n - 1) \, F(\tilde{v})\big).
+		\dot{\tilde{u}} = -\beta \tilde{u} + \alpha \big(F_{\gamma}(\tilde{u}(t - 1)) + \delta (m - 1) \, F_{\gamma}(\tilde{u}) + \delta n \, F_{\gamma}(\tilde{v})\big),\\
+		\dot{\tilde{v}} = -\beta \tilde{v} + \alpha \big(F_{\gamma}(\tilde{v}(t - 1)) + \delta m \, F_{\gamma}(\tilde{u}) + \delta (n - 1) \, F_{\gamma}(\tilde{v})\big).
 	\end{cases}
 \end{equation}
 % По ходу возник вопрос, почему функции u~ и v~ будут дифференцируемы (в смысле не будет точек, в которых производные справа и слева отличаются, как это бывает в методе шагов). Ответ простой: если в какой-то точке производные бы отличались слева и справа, то правая часть отличалась бы слева и справа, но она непрерывная. Значит, всё ок. Более того, решение непрерывно дифференцируемое, т.к. производные равны непрерывным функциям в правой части.
@@ -107,14 +97,16 @@
 	\tilde{u} = e^x, \quad \tilde{v} = e^y.
 \end{equation}
 
-Вводя новую функцию $G(x) = e^{-x} \, F(e^x)$, получаем итоговый вид системы:
+Вводя новую функцию $G_{\gamma}(x) = e^{-x} \, F_{\gamma}(e^x)$, получаем итоговый вид системы:
+\small
 \begin{equation}
 	\label{eq:system_main}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G(x(t - 1)) + \delta (m - 1) G(x) + \delta n e^{y - x} G(y)\right),\\
-		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(y(t - 1)) + \delta m e^{x - y} G(x) + \delta (n - 1) G(y)\right).
+		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G_{\gamma}(x(t - 1)) + \delta (m - 1) G_{\gamma}(x) + \delta n e^{y - x} G_{\gamma}(y)\right),\\
+		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G_{\gamma}(y(t - 1)) + \delta m e^{x - y} G_{\gamma}(x) + \delta (n - 1) G_{\gamma}(y)\right).
 	\end{cases}
 \end{equation}
+\normalsize
 
 \section{Обратимость замены}\label{sec:ch3/sect2}
 
@@ -167,7 +159,7 @@
 	\end{pmatrix}
 	\]
 	
-	Выразим $\varphi$:
+	Получаем равенство $\tilde{\phi} = \phi(t - 1) + J \phi$. Выразим $\phi$:
 	\begin{equation}
 		\label{eq:tilde_matrix_form}
 		\varphi = 
@@ -185,7 +177,7 @@
 	\end{equation}
 	
 	Пусть $(C^1[0, T])^2$ --- пространство пар непрерывно дифференцируемых $T$-периодических функций $\mathbb{R} \to \mathbb{R}$ с нормой
-	
+	%
 	\[\Vert (f, g) \Vert = \Vert f \Vert_{C^1} + \Vert g \Vert_{C^1} = \sup\limits_{[0, T]} |f| + \sup\limits_{[0, T]} |f'| + \sup\limits_{[0, T]} |g| + \sup\limits_{[0, T]} |g'|.\]
 	
 	Определим оператор $\mathcal{L}:(C^1[0, T])^2 \to (C^1[0, T])^2$:
@@ -208,7 +200,7 @@
 	Введём обозначение:
 	\begin{equation}
 		\label{eq:operator_A_definition}
-		A_{m, n}(u, v) = -\beta u + \alpha \, F\big(u(t - 1) + \delta (m - 1)u + \delta n v \big) - \dot{u}.
+		A_{m, n}(u, v) = -\beta u + \alpha \, F_{\gamma}\big(u(t - 1) + \delta (m - 1)u + \delta n v \big) - \dot{u}.
 	\end{equation}
 	%
 	Тогда система \eqref{eq:mg_cluster_system_norm} при фиксированных $m, n$ примет вид
@@ -225,16 +217,16 @@
 	Из определения \eqref{eq:operator_A_definition} следуют равенства
 	\[
 	\begin{cases}
-		\dot{u}(t - 1) + A_{m, n}(u(t - 1), v(t - 1))  = -\beta u(t - 1) + \alpha \, F(\tilde{u}(t - 1)),\\
-		\delta (m - 1)\dot{u} + \delta (m - 1) A_{m, n}(u, v)  = -\delta \beta (m - 1) u + \delta \alpha (m - 1) \, F(\tilde{u}),\\
-		\delta n \dot{v} + \delta n A_{n, m}(v, u)  = -\delta \beta n v + \delta \alpha n \, F(\tilde{v}).
+		\dot{u}(t - 1) + A_{m, n}(u(t - 1), v(t - 1))  = -\beta u(t - 1) + \alpha \, F_{\gamma}(\tilde{u}(t - 1)),\\
+		\delta (m - 1)\dot{u} + \delta (m - 1) A_{m, n}(u, v)  = -\delta \beta (m - 1) u + \delta \alpha (m - 1) \, F_{\gamma}(\tilde{u}),\\
+		\delta n \dot{v} + \delta n A_{n, m}(v, u)  = -\delta \beta n v + \delta \alpha n \, F_{\gamma}(\tilde{v}).
 	\end{cases}
 	\]
 	%
 	Складывая их, получаем
 	\small
 	\begin{multline*}   
-		(\dot{u}(t - 1) + \delta (m - 1)\dot{u} + \delta n\dot{v}) + A_{m, n}(u(t - 1), v(t - 1)) + \delta (m - 1) A_{m, n}(u, v) + \delta n A_{n, m}(v, u) =\\= -\beta(u(t - 1) + \delta (m - 1) u + \delta n v) + \alpha(F(\tilde{u}(t - 1) + \delta (m - 1) \, F(\tilde{u}) + \delta n \, F(\tilde{v}))
+		(\dot{u}(t - 1) + \delta (m - 1)\dot{u} + \delta n\dot{v}) + A_{m, n}(u(t - 1), v(t - 1)) + \delta (m - 1) A_{m, n}(u, v) + \delta n A_{n, m}(v, u) =\\= -\beta(u(t - 1) + \delta (m - 1) u + \delta n v) + \alpha(F_{\gamma}(\tilde{u}(t - 1) + \delta (m - 1) \, F_{\gamma}(\tilde{u}) + \delta n \, F_{\gamma}(\tilde{v}))
 	\end{multline*}
 	\normalsize
 	или, с учётом \eqref{eq:tilde_change} и \eqref{eq:mg_cluster_system_tilde},
@@ -257,7 +249,7 @@
 \end{proof}
 
 % Теорема существования и единственности
-Теперь из леммы \ref{lm:uv_inverse_system} и обратимости экспоненциальной замены \eqref{eq:exp_change} сразу следует
+Теперь из леммы \ref{lm:uv_inverse_system} и обратимости экспоненциальной замены \eqref{eq:exp_change} сразу следует справедливость следующей теоремы.
 \begin{theorem}
 	Пусть $x, y$ --- $T$-периодическое решение системы \eqref{eq:system_main}. Тогда существуют $T$-периодические функции $u, v$, однозначно определяемые соотношениями \eqref{eq:tilde_change}, \eqref{eq:exp_change}, которые являются решением системы \eqref{eq:mg_cluster_system_norm}.
 \end{theorem}
@@ -267,11 +259,11 @@
 \section{Переход к релейной системе}\label{sec:ch3/sect3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Будем считать $\gamma$ большим параметром. При $\gamma \to +\infty$ предельной для $G(x)$ является функция 
+Будем считать $\gamma$ большим параметром. При $\gamma \to +\infty$ предельной для $G_{\gamma}(x)$ является функция 
 %
 \begin{equation}
 	\label{eq:relay_G_tilde}
-	\tilde{G}(x) = \lim\limits_{\gamma \to +\infty}G(x) = \lim\limits_{\gamma \to +\infty} \dfrac{1}{1 + e^{\gamma x}} = 
+	G(x) = \lim\limits_{\gamma \to +\infty}G_{\gamma}(x) = \lim\limits_{\gamma \to +\infty} \dfrac{1}{1 + e^{\gamma x}} = 
 	\begin{cases}
 		0, & x > 0,\\
 		1/2, & x = 0,\\
@@ -279,7 +271,7 @@
 	\end{cases}
 \end{equation}
 
-Если в системе \eqref{eq:system_main} заменить функцию $G$ на функцию $\tilde{G}$, получим систему с разрывной по $x$, $y$ правой частью; точки разрыва образуют прямые $x = 0$ и $y = 0$. У этой системы существование решения в обычном смысле не гарантировано. Так, пусть во время $t_0$ положительное решение системы пересекает прямую разрыва $y = 0$. В окрестности точки $t_0$ выполнены условия $y > 0 \Rightarrow \dot{y} < 0$ и $y < 0 \Rightarrow \dot{y} > 0$, т.е. решение может быть продолжено только вдоль прямой $y = 0$. В этом случае $\dot{y} = 0$, поэтому в системе \eqref{eq:system_main} с функцией $\tilde{G}$ мы получим $0 = -\beta + \frac{1}{2} \alpha (n - 1)$, что возможно лишь при фиксированном отношении параметров $\alpha$ и $\beta$.
+Если в системе \eqref{eq:system_main} заменить функцию $G_{\gamma}$ на функцию $G$, получим систему с разрывной по $x$, $y$ правой частью; точки разрыва образуют прямые $x = 0$ и $y = 0$. У этой системы существование решения в обычном смысле не гарантировано. Так, пусть во время $t_0$ положительное решение системы пересекает прямую разрыва $y = 0$. В окрестности точки $t_0$ выполнены условия $y > 0 \Rightarrow \dot{y} < 0$ и $y < 0 \Rightarrow \dot{y} > 0$, т.е. решение может быть продолжено только вдоль прямой $y = 0$. В этом случае $\dot{y} = 0$, поэтому в системе \eqref{eq:system_main} с функцией $G$ мы получим $0 = -\beta + \frac{1}{2} \alpha (n - 1)$, что возможно лишь при фиксированном отношении параметров $\alpha$ и $\beta$.
 
 Будем строить обобщённое решение методом эквивалентного управления \cite[\S 4, с. 54]{Filippov1988}.
 
@@ -289,23 +281,24 @@
 \begin{equation}
 	\label{eq:system_main_relay}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G(x(t - 1), t - 1) + \delta (m - 1) G(x, t) + \delta n e^{y - x} G(y, t)\right),\\
-		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(y(t - 1), t - 1) + \delta m e^{x - y} G(x, t) + \delta (n - 1) G(y, t)\right),
+		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} g_x(x(t - 1), t - 1) + \delta (m - 1) g_x(x, t) + \delta n e^{y - x} g_y(y, t)\right),\\
+		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} g_y(y(t - 1), t - 1) + \delta m e^{x - y} g_x(x, t) + \delta (n - 1) g_y(y, t)\right),\\
+		g_x(x, t) = G(x) \quad\text{при } x \neq 0,\\
+		g_y(y, t) = G(y) \quad\text{при } y \neq 0.
 	\end{cases}
 \end{equation}
 \normalsize
 %
-где $G(x, t) = \tilde{G}(x)$ при $x \neq 0$, и $G(0, t)$ принимает значение из интервала $(0, 1)$, позволяющее продолжить решение вдоль прямой $x = 0$. Как будет показано далее, значение $G(0, t)$ на каждом шаге определяется однозначно из уравнения $\dot{x} = 0$ (аналогично для переменной $y$). Функцию $G$ будет рассматривать как часть системы.
+где функции $g_x(x, t)$ и $g_y(y, t)$ принимают при $x = 0$ (соответственно, $y = 0$) значения из интервала $(0, 1)$, позволяющее продолжить решение вдоль прямой $x = 0$. Как будет показано далее, значения $g_x(0, t)$ и $g_y(0, t)$ на каждом шаге определяются однозначно из уравнения $\dot{x} = 0$ или, соответственно, $\dot{y} = 0$. Функции $g_x$ и $g_y$ будем рассматривать как часть системы.
 %
 Систему \eqref{eq:system_main_relay} будем называть \emph{релейной}.
 
 Определим на множестве $[-1, 0]$ семейство пар начальных функций. Фиксируем $x_0 > y_0 > 0$.
-\small
+%
 \begin{equation}
 	\label{eq:initial_set}
-	S = \left\{\phi, \psi \in C[-1, 0] \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
+	S = \left\{(\phi, \psi) \in (C[-1, 0])^2 \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
 \end{equation}
-\normalsize
 
 \begin{theorem}
 	\label{thm:relay_solution}
@@ -343,7 +336,8 @@
 		\label{eq:step2_solution}
 		\begin{cases}
 			x = x_0 - \beta t + \ln\left(1 + \frac{n}{n - 1} e^{-x_0 + \beta t_0}  (e^{\beta  (t - t_0)} - 1)\right),\\
-			y = 0
+			y = 0,\\
+			g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
 		\end{cases}
 		\text{при } t \in [t_0, t_0 + 1];
 	\end{equation}
@@ -353,7 +347,8 @@
 		\begin{cases}
 			x = -\beta t + \ln\left(\exp(x(t_{2i} + 1) + \beta (t_{2i} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i} + 1)))\right)
 			,\\
-			y = 0
+			y = 0,\\
+			g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
 		\end{cases}\\
 		\text{при } t \in [t_{2i} + 1, t_{2i + 1}];
 	\end{multline}
@@ -362,7 +357,8 @@
 		\label{eq:step4_solution}
 		\begin{cases}
 			x = 0,\\
-			y = -\beta t + \ln\left(\exp(\beta t_{2i + 1}) + \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 1}))\right)
+			y = -\beta t + \ln\left(\exp(\beta t_{2i + 1}) + \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 1}))\right),\\
+			g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
 		\end{cases}\\
 		\text{при } t \in [t_{2i + 1}, t_{2i} + 2];
 	\end{multline}
@@ -371,7 +367,8 @@
 		\label{eq:step5_solution}
 		\begin{cases}
 			x = 0,\\
-			y = -\beta t + \ln\left(\exp(y(t_{2i} + 2) + \beta (t_{2i} + 2)) + \left(\frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i} + 2)))\right)
+			y = -\beta t + \ln\left(\exp(y(t_{2i} + 2) + \beta (t_{2i} + 2)) + \left(\frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i} + 2)))\right),\\
+			g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
 		\end{cases}\\
 		\text{при } t \in [t_{2i} + 2, t_{2i + 1} + 1];
 	\end{multline}
@@ -380,7 +377,8 @@
 		\label{eq:step6_solution}
 		\begin{cases}
 			x = 0,\\
-			y = -\beta t + \ln\left(\exp(y(t_{2i + 1} + 1) + \beta(t_{2i + 1} + 1)) + \frac{m (\delta (m - 1) - 1)}{\delta (m - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 1} + 1))) \right)
+			y = -\beta t + \ln\left(\exp(y(t_{2i + 1} + 1) + \beta(t_{2i + 1} + 1)) + \frac{m (\delta (m - 1) - 1)}{\delta (m - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 1} + 1))) \right),\\
+			g_x(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (m - 1) - 1}{\delta^2 (m - 1)^2}
 		\end{cases}\\
 		\text{при } t \in [t_{2i + 1} + 1, t_{2i + 2}];
 	\end{multline}
@@ -389,7 +387,8 @@
 		\label{eq:step7_solution}
 		\begin{cases}
 			x = -\beta t + \ln\left(\exp(\beta t_{2i + 2}) + \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 2}))\right),\\
-			y = 0
+			y = 0,\\
+			g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
 		\end{cases}\\
 		\text{при } t \in [t_{2i + 2}, t_{2i + 1} + 2];
 	\end{multline}
@@ -398,7 +397,8 @@
 		\label{eq:step8_solution}
 		\begin{cases}
 			x = -\beta t + \ln\left(\exp(x(t_{2i + 1} + 2) + \beta (t_{2i + 1} + 2)) + \left(\frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i + 1} + 2)))\right),\\
-			y = 0
+			y = 0,\\
+			g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
 		\end{cases}\\
 		\text{при } t \in [t_{2i + 1} + 2, t_{2i + 2} + 1];
 	\end{multline}
@@ -407,13 +407,14 @@
 		\label{eq:step9_solution}
 		\begin{cases}
 			x = -\beta t + \ln\left(\exp(y(t_{2i + 2} + 1) + \beta(t_{2i + 2} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 2} + 1))) \right),\\
-			y = 0
+			y = 0,\\
+			g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
 		\end{cases}\\
 		\text{при } t \in [t_{2i + 2} + 1, t_{2i + 3}].
 	\end{multline}
 	\normalsize
-	
-	Здесь $i \geqslant 0$ --- целое число. Каждый момент времени $t_{2i + 1}$ определяется как корень уравнения $x = 0$, где функция $x(t)$ определяется уравнением \eqref{eq:step3_solution}. Каждый момент времени $t_{2i + 2}$ определяется как корень уравнения $y = 0$, где функция $y(t)$ определяется уравнением \eqref{eq:step6_solution}. Для всех $i \geqslant 0$ верно, что $t_{i + 1} \in (t_i + 1, t_i + 2)$.
+	%
+	Здесь $i \geqslant 0$ --- целое число. Каждый момент времени $t_{2i + 1}$ определяется как корень уравнения $x = 0$, где функция $x(t)$ определяется формулой \eqref{eq:step3_solution}. Каждый момент времени $t_{2i + 2}$ определяется как корень уравнения $y = 0$, где функция $y(t)$ определяется формулой \eqref{eq:step6_solution}. Для всех $i \geqslant 0$ верно, что $t_{i + 1} \in (t_i + 1, t_i + 2)$.
 \end{theorem}
 
 Для доказательства этой теоремы будем строить решение методом шагов (см. рисунок \ref{fig:cluster_step_by_step}).
@@ -450,20 +451,20 @@
 \begin{equation}
 	\label{eq:step2_system}
 	\begin{cases}
-		\dot{x} = -\beta + G(0, t) \alpha \delta n e^{-x},\\
-		\dot{y} = -\beta + G(0, t) \alpha \delta (n - 1),
+		\dot{x} = -\beta + g_y(0, t) \alpha \delta n e^{-x},\\
+		\dot{y} = -\beta + g_y(0, t) \alpha \delta (n - 1),
 	\end{cases}
 \end{equation}
 %
-Из второго уравнения и условия $\dot{y} = 0$ находим $G(0, t) = \frac{\beta}{\alpha \delta (n - 1)}$. Подставляя это значение в первое уравнение, получаем начальную задачу Коши
+Из второго уравнения и условия $\dot{y} = 0$ находим $g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}$ при $t \in [t_0, t_0 + 1]$. Подставляя это значение в первое уравнение, получаем начальную задачу Коши
 \begin{equation}
 	\label{eq:step2_start}
-	\dot{x} = -\beta + \beta\cdot\dfrac{n}{n - 1}e^{-x}, \quad x(t_0) = x_0 - \beta t_0.
+	\dot{x} = -\beta + \beta\cdot\dfrac{n}{n - 1}e^{-x}, \quad x|_{t = t_0} = x_0 - \beta t_0.
 \end{equation}
 
 \begin{lemma}
 	\label{lm:default_equation}
-	Задача Коши 
+	Начальная задача Коши 
 	\[
 	\dot{x} = -\beta + \beta \theta e^{-x}, \quad x \vert_{t = t_*} = x_*,
 	\]
@@ -496,7 +497,7 @@
 
 \begin{lemma}
 	\label{lm:solution_monotone}
-	Пусть $A, B$ --- вещественные константы такие, что $A + B e^{\beta t} > 0$ при $t > 0$. Функция $f(t) = -\beta t + \ln\left(A + B e^{\beta t}\right)$ монотонна на всей обрасти определения.
+	Пусть $A, B$ --- вещественные константы такие, что $A + B e^{\beta t} > 0$ при $t > 0$. Функция $f(t) = -\beta t + \ln\left(A + B e^{\beta t}\right)$ монотонна на всей области определения.
 \end{lemma}
 \begin{proof}
 	Продифференцируем $f(t)$:
@@ -524,19 +525,19 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \begin{equation}
 	\label{eq:system_step3}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \delta n e^{-x} G(0, t),\\
-		\dot{y} = -\beta + \alpha \left(G(0, t - 1) + \delta (n - 1) G(0, t)\right).
+		\dot{x} = -\beta + \alpha \delta n e^{-x} g_y(0, t),\\
+		\dot{y} = -\beta + \alpha \left(g_y(0, t - 1) + \delta (n - 1) g_y(0, t)\right).
 	\end{cases}
 \end{equation}
 
-Учитывая условия $\dot{y} = 0$, $G(0, t - 1) = \frac{\beta}{\alpha \delta (n - 1)}$, из второго уравнения находим $G(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$. Подставляя это значение в первое уравнение, получаем
+Учитывая условия $\dot{y} = 0$, $g_y(0, t - 1) = \frac{\beta}{\alpha \delta (n - 1)}$, из второго уравнения находим $g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$. Подставляя это значение в первое уравнение, получаем
 \[
-\dot{x} = -\beta + \beta \cdot \dfrac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} e^{-x}.
+\dot{x} = -\beta + \beta \cdot \dfrac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} e^{-x} \quad \text{при } t\in[t_0 + 1, t_1].
 \]
 %
 Применяя лемму \ref{lm:default_equation} при $\theta = \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2}$, получаем решение \eqref{eq:step3_solution} при $i = 0$.
 
-Аналитический вид решения сохраняется до точки $t_0 + 2$ или до точки $t_1$, в которой $x(t_1) = 0$. По лемме \ref{lm:solution_monotone}, $x(t)$ монотонна на третье	м шаге. Следовательно, $t_1 \in (t_0 + 1, t_0 + 2)$ тогда и только тогда, когда $x(t_0 + 2) < 0$.
+Аналитический вид решения сохраняется до точки $t_0 + 2$ или до точки $t_1$, в которой $x(t_1) = 0$. По лемме \ref{lm:solution_monotone}, $x(t)$ монотонна на третьем шаге. Следовательно, $t_1 \in (t_0 + 1, t_0 + 2)$ тогда и только тогда, когда $x(t_0 + 2) < 0$.
 
 \begin{lemma}
 	\label{lm:t1_one_step}
@@ -562,8 +563,8 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \small
 \begin{equation}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \left(\delta (m - 1) G(x, t) + \delta n e^{y - x} G(y, t)\right)\\
-		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G(0, t - 1) + \delta m e^{x - y} G(x, t) + \delta (n - 1) G(y, t)\right).
+		\dot{x} = -\beta + \alpha \left(\delta (m - 1) g_x(x, t) + \delta n e^{y - x} g_y(y, t)\right)\\
+		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} g_y(0, t - 1) + \delta m e^{x - y} g_x(x, t) + \delta (n - 1) g_y(y, t)\right).
 	\end{cases}
 \end{equation}
 \normalsize
@@ -576,12 +577,12 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \begin{equation}
 	\label{eq:step4_system}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \delta (m - 1) G(0, t),\\
-		\dot{y} = -\beta + \alpha \left(e^{-y} G(0, t - 1) + \delta m e^{-y} G(0, t)\right).
+		\dot{x} = -\beta + \alpha \delta (m - 1) g_x(0, t),\\
+		\dot{y} = -\beta + \alpha \left(e^{-y} g_y(0, t - 1) + \delta m e^{-y} g_x(0, t)\right).
 	\end{cases}
 \end{equation}
 %
-Из первого уравнения находим $G(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$. С учётом $G(0, t - 1) = \frac{\beta}{\alpha \delta (n - 1)}$, первое уравнение примет вид
+Из первого уравнения находим $g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$. С учётом $g_y(0, t - 1) = \frac{\beta}{\alpha \delta (n - 1)}$, второе уравнение примет вид
 \[
 \dot{y} = -\beta + \beta \left(\dfrac{1}{\delta(n - 1)} + \dfrac{m}{m - 1} \right) e^{-y}.
 \]
@@ -598,7 +599,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \]
 поэтому новых точек переключения на отрезке $[t_1, t_0 + 2]$ не появляется.
 
-\paragraph{Шаг 5.} На отрезке $[t_0 + 2, t_1 + 1]$ система имеет вид \eqref{eq:step4_system} с одним изменением: $G(0, t - 1) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$.
+\paragraph{Шаг 5.} На отрезке $[t_0 + 2, t_1 + 1]$ система имеет вид \eqref{eq:step4_system} с одним изменением: $g_y(0, t - 1) = \frac{\beta}{\alpha} \cdot \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}$.
 %
 Тогда на 5-м шаге система имеет решение \eqref{eq:step5_solution}.
 %
@@ -608,19 +609,19 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \]
 что верно, поскольку левая часть больше $1$, а правая --- меньше.
 
-\paragraph{Шаг 6 и последующие шаги.} Поскольку $G(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$ на промежутке $[t_1, t_1 + 1]$, следующая точка переключения --- либо $t_1 + 2$, либо $t_2 \in (t_1 + 1, t_1 + 2)$ при условии $y(t_2) = 0$. Предположим, что реализуется второй случай; соответствующие ограничения на параметры сформулируем и докажем позже.
+\paragraph{Шаг 6 и последующие шаги.} Поскольку $g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}$ на промежутке $[t_1, t_1 + 1]$, следующая точка переключения --- либо $t_1 + 2$, либо $t_2 \in (t_1 + 1, t_1 + 2)$ при условии $y(t_2) = 0$. Предположим, что реализуется второй случай; соответствующие ограничения на параметры сформулируем и докажем позже.
 
 Тогда при $t \in [t_1 + 1, t_2]$ система \eqref{eq:system_main_relay} имеет вид
 %
 \begin{equation}
 	\label{eq:step6_system}
 	\begin{cases}
-		\dot{x} = -\beta + \alpha \left(\frac{\beta}{\alpha \delta (m - 1)} + \delta (m - 1) G(0, t)\right)\\
-		\dot{y} = -\beta + \alpha \delta m e^{-y} G(0, t).
+		\dot{x} = -\beta + \alpha \left(\frac{\beta}{\alpha \delta (m - 1)} + \delta (m - 1) g_x(0, t)\right)\\
+		\dot{y} = -\beta + \alpha \delta m e^{-y} g_x(0, t).
 	\end{cases}
 \end{equation}
 %
-Заметим, что он совпадает с системой \eqref{eq:system_step3} с точностью до замены $x$ на $y$, $m$ и $n$, и начального значения $y(t_1 + 1)$. Значит, следующие шаги построения решения аналогичны шагам 3~--~5. Общий вид решения на отрезках $[t_1 + 1, t_2]$, $[t_2, t_1 + 2]$, $[t_1 + 2, t_2 + 1]$ приведён в формулах \eqref{eq:step6_solution}, \eqref{eq:step7_solution},  \eqref{eq:step8_solution}.
+Заметим, что она совпадает с системой \eqref{eq:system_step3} с точностью до замены $x$ на $y$, $m$ на $n$, $g_y$ на $g_x$ и начального значения $y(t_1 + 1)$. Значит, следующие шаги построения решения аналогичны шагам 3~--~5. Общий вид решения на отрезках $[t_1 + 1, t_2]$, $[t_2, t_1 + 2]$, $[t_1 + 2, t_2 + 1]$ приведён в формулах \eqref{eq:step6_solution}, \eqref{eq:step7_solution},  \eqref{eq:step8_solution}.
 
 При условии, что компонента $x$ обращается в ноль в точке $t_3 \in (t_2 + 1, t_2 + 2)$, решение на отрезке $[t_2 + 1, t_3]$ описывается формулами \eqref{eq:step9_solution} для $i = 0$.
 
@@ -694,6 +695,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 		x^*_1 = x(t_2 + 1) = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) + \\ + \left(\frac{n}{n - 1} + \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2}\right) e^{\beta} + \left(\frac{1}{\delta(m - 1)} - \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2}\right) e^{\beta \tau^*} \Bigg).
 	\end{multline}
 	%
+	Рассмотрим 
 	Заметим, что 
 	\[
 	\frac{1}{\delta(m - 1)} - \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} = \frac{1}{\delta^2 (m - 1)^2} > 0,
@@ -713,7 +715,7 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \end{lemma}
 \begin{proof}
 	
-	База индукции $t_1 \in (t_0 + 1, t_0 + 2)$ доказана в лемме \eqref{lm:t1_one_step}. Индукция заключается в последовательной проверке условий $y(t_{2i - 1} + 2) < 0$ на шаге \eqref{eq:step6_solution} и $x(t_{2i} + 2) < 0$ на шаге \eqref{eq:step9_solution} при любом $i \geqslant 1$.
+	База индукции $t_1 \in (t_0 + 1, t_0 + 2)$ доказана в лемме \eqref{lm:t1_one_step}. Индукция заключается в последовательной проверке условий $y(t_{2i - 1} + 2) < 0$ на шестом шаге в формуле \eqref{eq:step6_solution} и $x(t_{2i} + 2) < 0$ на девятом шаге в формуле~\eqref{eq:step9_solution} при любом $i \geqslant 1$.
 	
 	Не ограничивая общности, рассмотрим условие $y(t_1 + 2) < 0$. Из формул \eqref{eq:step6_solution} получаем:
 	\[
@@ -744,31 +746,62 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 \end{lemma}
 \begin{proof}
 	
-	Рассмотрим последовательность $x^*_i$. Докажем, что последовательность $x^*_i$ ограничена и монотонна для достаточно больших $i$.
+	Рассмотрим последовательность $x^*_i$. Докажем, что она ограничена и монотонна для достаточно больших $i$.
 	
-	Решение системы определяет отображение
+	Определим функцию $\Phi$ следующим образом. Рассмотрим систему \eqref{eq:system_main_relay} с~начальными условиями
+	\begin{equation}
+		\label{eq:lm_star_sonvergence_initial_problem}
+	\begin{cases}
+		x(t^*) = x^*,\\
+		x(t) > 0 \quad \text{при } t \in [t^* - 1, t^*],\\
+		y(t) = 0 \quad \text{при } t \in [t^* - 1, t^*],\\
+		g_y(0, t) = \frac{\beta}{\alpha\delta(n - 1)} \quad \text{при } t \in [t^* - 1, t^*],
+	\end{cases}
+	\end{equation}
+	где значение $x^*$ удовлетворяет ограничениям \eqref{eq:x_star_bound}, в которые вместо $x_i^*$ следует подставить $x^*$. Решение этой задачи соответствует решению релейной системы \eqref{eq:system_main_relay}, приведённому в теореме \ref{thm:relay_solution}, начиная с шага 9, см. формулу \eqref{eq:step9_solution}. Продолжим решение аналогично шагам 9, 4 -- 8, см. формулы \eqref{eq:step9_solution}, \eqref{eq:step4_solution} --- \eqref{eq:step8_solution}. В конце последнего шага решение приходит в точку $x = x^{**}, y = 0$. По~определению, полагаем $\Phi(x^*) = x^{**}$. Поскольку решение продолжается однозначно, такое определение функции $\Phi$ корректно.
+	
+	Из приведённого определения следует, что при всех $i \geq 0$ выполнено равенство
 	\begin{equation}
 		\label{eq:flow_relay}
-		\Phi: x^*_i \mapsto x^*_{i + 1}.
+		\Phi(x^*_i) = x^*_{i + 1}.
 	\end{equation}
 	
-	Докажем, что $\Phi$ возрастает. Разложим $\Phi$ в композицию отображений
+	Докажем, что $\Phi$ возрастает. Разложим его в композицию функций
+	\[
+	\Phi = \Phi_{tx} \circ \Phi_{yt} \circ \Phi_{ty} \circ \Phi_{xt}.
+	\]
+	Здесь функция $\Phi_{xt}$ сопоставляет значению $x^*$ момент времени $t^*_x$ в который компонента $x$ обращается в ноль. Решение на промежутке $[t^*, t_x^*]$ определяется аналогично шагу 9, см. формулу \eqref{eq:step9_solution}. Функция $\Phi_{ty}$ сопоставляет моменту времени $t^*_x$ значение $y^* = y(t^*_x + 1)$, решение на промежутке $[t_x^*, t_x^* + 1]$ определяется аналогично шагам 4 и 5, см. формулы \eqref{eq:step4_solution}, \eqref{eq:step5_solution}. Функции $\Phi_{yt}$ и $\Phi_{tx}$ определяются аналогично, здесь компоненты системы $x$ и $y$ меняются ролями.
+	
+	Тогда
 	\begin{equation}
-		x^*_i \mapsto t_{2i + 1} \mapsto y^*_{i + 1} \mapsto t_{2i + 2} \mapsto x^*_{i + 1}.
+		x^*_i \underset{\Phi_{xt}}{\longmapsto} t_{2i + 1} \underset{\Phi_{ty}}{\longmapsto} y^*_{i + 1}  \underset{\Phi_{yt}}{\longmapsto}  t_{2i + 2} \underset{\Phi_{tx}}{\longmapsto}  x^*_{i + 1}.
 	\end{equation}
+	%Здесь каждое предыдущее значение в цепочке определяет последующее.
 	
-	Отображения $x^*_i \mapsto t_{2i + 1}$ и $y^*_{i + 1} \mapsto t_{2i + 2}$ возрастают из условия непересечения интегральных кривых на каждом шаге решения.
+%	Отображения $x^*_i \mapsto t_{2i + 1}$ и $y^*_{i + 1} \mapsto t_{2i + 2}$ возрастают из условия непересечения интегральных кривых на каждом шаге решения.
 	
-	Пусть $\tau^* = t_{2i} + 2 - t_{2i + 1} $. Поскольку $t_{2i + 1} \in (t_{2i} + 1, t_{2i} + 2)$, $\tau^* \in (0, 1)$. Значение $y^*_{i + 1}$ выражается через $\tau^*$ аналогично \eqref{eq:tau_to_t2+1}
+	Отображения $\Phi_{xt}$ и $\Phi_{yt}$ возрастают из условия непересечения интегральных кривых на каждом шаге решения.
+	
+%	Пусть $\tau^* = t_{2i} + 2 - t_{2i + 1} $. Поскольку $t_{2i + 1} \in (t_{2i} + 1, t_{2i} + 2)$, $\tau^* \in (0, 1)$. Значение $y^*_{i + 1}$ выражается через $\tau^*$ аналогично \eqref{eq:tau_to_t2+1}
+	Пусть $\tau^* = t_x^* - t^*$, $\tau^* \in (0, 1)$. Значение $x^*_t$ выражается через $\tau^*$ аналогично \eqref{eq:tau_to_t2+1}
+%	\footnotesize
+%	\[
+%	y^*_{i + 1} = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) +  e^{\beta} \left(\frac{m}{m - 1} + \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}\right) +  \frac{e^{\beta \tau^*}}{\delta^2 (n - 1)^2} \Bigg).
+%	\]
+%	\normalsize
 	\footnotesize
 	\[
-	y^*_{i + 1} = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) +  e^{\beta} \left(\frac{m}{m - 1} + \frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2}\right) +  \frac{e^{\beta \tau^*}}{\delta^2 (n - 1)^2} \Bigg).
+	x^*_t = -\beta + \ln\Bigg( 1 - \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) +  e^{\beta} \left(\frac{n}{n - 1} + \frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2}\right) +  \frac{e^{\beta \tau^*}}{\delta^2 (m - 1)^2} \Bigg).
 	\]
 	\normalsize
 	
-	Поскольку коэффициент $\frac{1}{\delta^2 (n - 1)^2}$ при $e^{\beta \tau^*}$ положителен, $y^*_{i + 1}$ возрастает по переменной $\tau^*$, соответственно, отображение $t_{2i + 1} \mapsto y^*_{i + 1}$ убывает.
+%	Поскольку коэффициент $\frac{1}{\delta^2 (n - 1)^2}$ при $e^{\beta \tau^*}$ положителен, $y^*_{i + 1}$ возрастает по переменной $\tau^*$, соответственно, отображение $t_{2i + 1} \mapsto y^*_{i + 1}$ убывает.
 	
-	Аналогично, убывает отображение $t_{2i + 2} \mapsto x^*_{i + 1}$. Следовательно, $\Phi$ возрастает как композиция двух возрастающих и двух убывающих отображений.
+	Поскольку коэффициент $\frac{1}{\delta^2 (m - 1)^2}$ при $e^{\beta \tau^*}$ положителен, $x^*_t$ возрастает по переменной $\tau^*$, соответственно, отображение $\Phi_{tx}$ убывает.
+	
+%	Аналогично, убывает отображение $t_{2i + 2} \mapsto x^*_{i + 1}$. Следовательно, $\Phi$ возрастает как композиция двух возрастающих и двух убывающих отображений.
+	
+	Аналогично, убывает отображение $\Phi_{ty}$. Следовательно, $\Phi$ возрастает как композиция двух возрастающих и двух убывающих отображений.
 	
 	Пусть $x^*_2 > x^*_1$. Тогда по индукции
 	\[
@@ -777,17 +810,22 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 	следовательно, $x^*_i$ возрастает. Аналогично, если $x^*_2 < x^*_1$, то $x^*_i$ убывает, а если $x^*_2 = x^*_1$, то $x^*_i = x^*_1$ при любом $i$. Ограниченность $x^*_i$ следует из леммы \ref{lm:xy_star_bounds}. Следовательно, $x^*_i$ сходится. Аналогично, сходится последовательность $y^*_i$.
 \end{proof}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{star_map.eps}
+	\caption{Иллюстрация к доказательству леммы \ref{lm:convergence_x_star}. На графике изображено решение начальной задачи Коши для системы \eqref{eq:system_main_relay} с~начальными условиями \eqref{eq:lm_star_sonvergence_initial_problem}.}
+\end{figure}
 
 \begin{theorem}
 	\label{thm:periodic_relay_existence}
 	При ограничениях \eqref{eq:constraint_1}, \eqref{eq:constraint_2}, \eqref{eq:constraint_3} система \eqref{eq:system_main_relay} имеет периодическое решение, описываемое на периоде $[t_1, t_3]$ формулами \eqref{eq:step4_solution} -- \eqref{eq:step9_solution}.
 \end{theorem}
 \begin{proof}
-	Рассмотрим последовательность $x^*_i$, пусть $x^*_i \to x^*$. По построению, отображение $\Phi$ из леммы \ref{lm:convergence_x_star} непрерывно, поэтому
+	Рассмотрим последовательность $x^*_i$. По лемме \ref{lm:convergence_x_star} она сходится, пусть $x^*_i \to \hat{x}$ при $i \to +\infty$. По построению, отображение $\Phi$ из леммы \ref{lm:convergence_x_star} непрерывно, поэтому
 	\[
-	x^*_{i + 1} = \Phi(x^*_i) \Rightarrow x^* = \Phi(x^*).
+	x^*_{i + 1} = \Phi(x^*_i) \Rightarrow \hat{x} = \Phi(\hat{x}).
 	\]
-	Поскольку значение $x^*_1 = x(t_2 + 1)$ однозначно определяет решение при $t > t_2 + 1$, положив $x^*_1 = x^*$, получим периодическое решение, описываемое на периоде формулами \eqref{eq:step4_solution} -- \eqref{eq:step9_solution}.
+	Поскольку значение $x^*_1 = x(t_2 + 1)$ однозначно определяет решение при $t > t_2 + 1$, положив $x^*_1 = \hat{x}$, получим периодическое решение, описываемое на периоде формулами \eqref{eq:step4_solution} -- \eqref{eq:step9_solution}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -838,6 +876,6 @@ e^{x_0 - \beta t_0} > \dfrac{n - e^\beta}{n - 1},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Выводы к главе 3}\label{sec:ch3/sect6}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-В данной главе было показано существование периодических режимов с кластерной синхронизацией в релейной системе генераторов Мэки-Гласса, а также дано их аналитическое описание.
+В данной главе было показано существование периодических режимов с кластерной синхронизацией в релейной системе осцилляторов Мэки-Гласса, а также дано их аналитическое описание.
 
-Отметим, что возможно рассмотрение более общего случая: можно опустить требование $t_{i + 1} \in (t_{i} + 1, t_{i} + 2)$, при этом аналитический вид решения также представляется явно. Численное моделирование показывает существование периодических режимов в этом случае, однако доказательство его существования аналогично лемме \ref{lm:convergence_x_star} не обобщается ввиду немонотонности отображения $\Phi$. Также возможно построение решения с другими начальными условиями и ограничениями на параметры. Эти обобщения представляют интерес для дальнейших исследований.
+Отметим, что возможно рассмотрение более общего случая: можно опустить требование $t_{i + 1} \in (t_{i} + 1, t_{i} + 2)$, при этом аналитический вид решения также представляется явно. Численное моделирование показывает существование периодических режимов в этом случае, однако доказательство его существования аналогично лемме \ref{lm:convergence_x_star} не обобщается ввиду немонотонности отображения $\Phi$. Также возможно построение решения с другими начальными условиями и ограничениями на параметры.

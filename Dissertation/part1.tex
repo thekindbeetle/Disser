@@ -1,11 +1,11 @@
 \chapter{Анализ асимптотических свойств периодического решения уравнения Мэки--Гласса}\label{ch:ch1}
 
-В данной главе исследуются автоколебания уравнения Мэки--Гласса в предположении, что показатель степени в знаменателе нелинейности --- большой параметр. Рассматривается случай, в котором предельное релейное уравнение, возникающее при устремлении большого параметра к бесконечности, имеет периодическое решение с наименьшим числом переключений релейной части на периоде. Для данного случая доказывается существование периодического решения уравнения Мэки--Гласса, асимптотически близкого периодическому решению предельного уравнения.
+Результаты, полученные в первой главе, опубликованы в статье \cite{wosbib1}. В данной главе исследуются автоколебания уравнения Мэки--Гласса в предположении, что показатель степени в знаменателе нелинейности --- большой параметр. Рассматривается случай, в котором предельное релейное уравнение, возникающее при устремлении большого параметра к бесконечности, имеет периодическое решение с наименьшим числом переключений релейной части на периоде. Для данного случая доказывается существование периодического решения уравнения Мэки--Гласса, асимптотически близкого периодическому решению предельного уравнения.
 
-В первой части главы приводятся основные свойства решений уравнения Мэки--Гласса в зависимости от значения параметров. В второй части осуществляется переход к предельному уравнению, явно описывается его периодическое решение и достаточные ограничения на его параметры для существования этого решения. В третьей части доказывается сходимость решения уравнения Мэки--Гласса к решению предельного уравнения.
+В первой части главы приводятся основные свойства решений уравнения Мэки--Гласса при различных ограничениях на параметры. В второй части осуществляется переход к предельному уравнению, явно описывается его периодическое решение и достаточные ограничения на его параметры для существования этого решения. В третьей части доказывается сходимость решения уравнения Мэки--Гласса к решению предельного уравнения.
 % TODO: доказать устойчивость предельного цикла
 
-\section{Постановка задачи}
+\section{Постановка задачи}\label{sec:ch1/sec1}
 
 Объектом исследования является уравнение Мэки--Гласса 
 \cite{Mackey1977, Glass1988}
@@ -18,7 +18,7 @@
 После перенормировки времени, замены параметров и неизвестной функции 
 \begin{equation}
 	\label{eq:substitutions_v}
-	v(t) = \theta u\Big(\frac{t}{\tau}\Big),\, \beta = b\tau,\, \alpha=a\tau, \, \frac{t}{\tau} \mapsto t
+	v(t) = \theta u\Big(\frac{t}{\tau}\Big),\ \beta = b\tau,\ \alpha=a\tau, \ \frac{t}{\tau} \mapsto t
 \end{equation}
 уравнение \eqref{eq:MG} примет форму
 \begin{equation}
@@ -50,7 +50,7 @@
 	Уравнение \eqref{eq:MG_norm} при $\beta \geq \alpha$ не имеет положительных периодических решений.
 \end{proposition}
 \begin{proof}
-	Функция $f(\xi) = \dfrac{\alpha \xi}{1 + \xi^{\gamma}}$ унимодальна, что устанавливается элементарной проверкой. Поскольку $f'(0) = \alpha \leq \beta$, по утверждению \eqref{prop:unimodal} функция $u^* \equiv 0$ является глобально притягивающим состоянием равновесия уравнения \eqref{eq:MG_norm}, следовательно, решение уравнения \eqref{eq:MG_norm} не является периодическим.
+	Функция $f(\xi) = \dfrac{\alpha \xi}{1 + \xi^{\gamma}}$ унимодальна, что устанавливается элементарной проверкой. Поскольку $f'(0) = \alpha \leq \beta$, по утверждению \ref{prop:unimodal} функция $u^* \equiv 0$ является глобально притягивающим состоянием равновесия уравнения \eqref{eq:MG_norm}, следовательно, любое ненулевое решение уравнения \eqref{eq:MG_norm} не является периодическим. % т.к. у периодической функции не константы не может быть предела на бесконечности
 \end{proof}
 
 В дальнейшем будем считать, что $\alpha > \beta$.
@@ -76,7 +76,7 @@
 	\end{equation}
 \end{proposition}
 \begin{proof}
-	Для решения $u(t)$ с произвольными (неотрицательными) начальными условиями найдётся значение $t_0$ такое, что при любом $t > t_0$ верно неравенство $0 \leq u(t) \leq \frac{\alpha}{\beta}$. Действительно, если $u > \frac{\alpha}{\beta}$, то из неравенства
+	Для решения $u(t)$ уравнения \eqref{eq:MG_norm} с произвольными неотрицательными начальными условиями найдётся значение $t_0$ такое, что при любом $t > t_0$ верно неравенство $0 \leq u(t) \leq \frac{\alpha}{\beta}$. Действительно, если при некотором $t$ верно $u > \frac{\alpha}{\beta}$, то из неравенства
 	\[
 	\dfrac{\xi}{1 + \xi^{\gamma}} < 1 \text{ при } \xi \geq 0, \gamma > 1,
 	\]
@@ -85,9 +85,9 @@
 	причём за пределами промежутка $[0, \frac{\alpha}{\beta}]$ производная $\dot{u}$ отделена от нуля. Подставляя в уравнение \eqref{eq:MG_norm} оценку \eqref{eq:u_bound}, получаем \eqref{eq:dot_u_bound}.
 \end{proof}
 
-Будем исследовать уравнение \eqref{eq:MG_norm} при больших значениях параметра $\gamma$. Для удобства последующего анализа перейдём к логарифмической шкале. Дальнейший план характерен для уравнений с большим параметром (см., например, \cite{Kolesov2010}): мы рассмотрим предельное при $\gamma\to+\infty$ уравнение и найдём его периодическое решение. Затем будем доказывать наличие периодического режима уравнения \eqref{eq:MG_norm}, сколь угодно близкого к предельному при достаточно большом значении $\gamma$. С этой целью найдём асимптотические формулы решения и докажем теорему о существовании цикла исходного уравнения.
+Будем исследовать уравнение \eqref{eq:MG_norm} при больших значениях параметра $\gamma$. Для удобства последующего анализа перейдём к логарифмической шкале. Дальнейший план характерен для уравнений с большим параметром (см., например, \cite{Kolesov2010}): мы рассмотрим предельное при $\gamma\to+\infty$ уравнение и найдём его периодическое решение. Затем будем доказывать наличие периодического режима уравнения \eqref{eq:MG_norm}, сколь угодно близкого к решению предельного уравнения при достаточно большом значении $\gamma$. С этой целью найдём асимптотические формулы решения уравнения \eqref{eq:MG_norm} и докажем теорему о существовании цикла исходного уравнения.
 
-\section{Релейное уравнение Мэки--Гласса}\label{sec:ch1/sec1}
+\section{Релейное уравнение Мэки--Гласса}\label{sec:ch1/sec2}
 
 Сделаем в \eqref{eq:MG_norm} экспоненциальную замену $u=e^x$. Данная замена корректна, поскольку $u(t) > 0$. Получим уравнение относительно новой неизвестной $x$:
 \begin{equation}
@@ -113,15 +113,17 @@
     \end{cases}
 \end{equation*}
 
-Уравнение \eqref{eq:MG_rele} далее будем называть предельным, или \emph{релейным} уравнением для уравнения \eqref{eq:MG_x}.
+Уравнение \eqref{eq:MG_rele} далее будем называть предельным для уравнения \eqref{eq:MG_x}, или \emph{релейным} уравнением.
 
 \subsection{Множество начальных функций}
 
-Определим множество начальных функций, для которых затем явно будет построено решение предельного уравнения методом шагов. Зафиксируем положительные параметры $\sigma_0 < 1/2$, $p$, $q$ такие, что 
+Определим множество начальных функций, для которых затем явно будет построено решение предельного уравнения методом шагов. Зафиксируем положительные параметры $\sigma_0$, $p$, $q$ такие, что 
 %
-\[0 < p < \beta \sigma_0 < q.\]
+\[0 < p < \beta \sigma_0 < q, \quad \sigma_0 < \frac{1}{2}.\]
 %
-В качестве множества начальных функций для уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} зададим множество
+Ограничения на параметры будут уточнены позднее.
+
+В качестве множества начальных функций для уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} зададим множество (см. рисунок \ref{fig:initial_funcs:ch1})
 \begin{multline}
     \label{eq:init_set}
     S=\{\varphi\in C[-1 - \sigma_0, -\sigma_0]: 0 < p \leqslant \varphi(t)\leqslant q \text{ при } t \in [-1 - \sigma_0, -\sigma_0],\\ \varphi(-\sigma_0) = \beta \sigma_0 \}.
@@ -199,7 +201,7 @@ x^*(t)=
 \end{figure}
 
 
-\subsection{Доказательство теоремы о существовании решения релейного уравнения}
+\subsection{Доказательство теоремы о существовании решения релейного~уравнения}
 
 Решение уравнения \eqref{eq:MG_rele} строится методом шагов.
 
@@ -214,24 +216,33 @@ x^*(t)=
 \begin{equation}
     \dot{x} = -\beta + \alpha\exp(-\beta(t - 1) - x), \quad x|_{t = 1} = -\beta.
 \end{equation}
-
-Эта задача явно интегрируется. После замены $u = e^x$ получаем
+%
+Эта задача явно интегрируется. После замены $x = -\beta t + \ln z$ получаем
+%\begin{equation*}
+%	\dot{x} = -\beta t + \alpha e^{-\beta (t - 1)}, \quad u|_{t = 1} = e^{-\beta}.
+%\end{equation*}
 \begin{equation*}
-	\dot{u} = -\beta u + \alpha e^{-\beta (t - 1)}, \quad u|_{t = 1} = e^{-\beta}.
+	\dot{z} = \alpha e^{\beta}, \quad z|_{t = 1} = 1.
 \end{equation*}
-Ищем решение в виде $u(t) = e^{-\beta t} p(t)$, после подстановки в исходное уравнение получаем
-\[
-\dot{p}(t) = \alpha e^{\beta}, \quad p(t) = 1 + \alpha e^{\beta} (t - 1).
-\]
-Тогда $u(t) = e^{-\beta t} (\alpha e^{\beta} (t - 1))$, $p(1) = 1$, откуда находим
+%
+Тогда $z = \alpha e^{\beta} (t - 1) + 1$, откуда находим
 \begin{equation}
 \label{eq:solution_step1:ch1}
-    x(t) = -\beta t +\ln(\alpha e^{\beta}(t - 1) + 1).
+	x(t) = -\beta t +\ln(\alpha e^{\beta}(t - 1) + 1).
 \end{equation}
+%Ищем решение в виде $u(t) = e^{-\beta t} p(t)$, после подстановки в исходное уравнение получаем
+%\[
+%\dot{p}(t) = \alpha e^{\beta}, \quad p(t) = 1 + \alpha e^{\beta} (t - 1).
+%\]
+%Тогда $u(t) = e^{-\beta t} (\alpha e^{\beta} (t - 1))$, $p(1) = 1$, откуда находим
+%\begin{equation}
+%\label{eq:solution_step1:ch1}
+%    x(t) = -\beta t +\ln(\alpha e^{\beta}(t - 1) + 1).
+%\end{equation}
 %
 На следующих шагах решения получаются аналогичным образом, далее детали интегрирования будем опускать.
 
-Следующее изменение аналитического вида решения происходит либо при $t = 3$ (в этот момент аргумент функции $x(t - 1)$ выходит из отрезка $[1, 2]$), либо в точке, где $x(t - 1) = 0$, и величина $x(t - 1)$ второй раз меняет знак.
+Следующее изменение аналитического вида решения происходит либо при $t = 3$ (в этот момент аргумент $(t - 1)$ функции $x(t - 1)$ выходит из отрезка $[1, 2]$), либо в точке, где $x(t - 1) = 0$, и величина $x(t - 1)$ второй раз меняет знак.
 
 Проверим, что при ограничении \eqref{eq:cond_alpha1} выполнен второй случай, т.е. корень $t_1$ уравнения $x(t - 1) = 0$, которое с учётом \eqref{eq:solution_step1:ch1}, принимает вид
 \begin{equation}
@@ -250,7 +261,7 @@ $$-\beta s + \ln(\alpha e^{\beta} (s - 1) + 1) = 0$$
 \label{eq:t1_eq2}
 e^{\beta s} - \alpha e^{\beta} (s - 1) - 1 = 0.
 \end{equation}
-Нужно показать, что при условии \eqref{eq:cond_alpha1} существует корень этого уравнения на промежутке $(1, 2)$.
+Нужно показать, что при условии \eqref{eq:cond_alpha1} существует корень $s = s_*$ этого уравнения на промежутке $(1, 2)$.
 
 Обозначим левую часть равенства \eqref{eq:t1_eq2} как $H(s) = e^{\beta s} - \alpha e^{\beta} (s - 1) - 1$. Исследуем функцию $H$:
 %
@@ -263,10 +274,10 @@ H'(s) = \beta e^{\beta s} - \alpha e^{\beta}, \quad H''(s) = \beta^2 e^{\beta s}
 \beta e^{\beta s} - \alpha e^{\beta} = 0 \Leftrightarrow s = s_{\min} = 1 + \frac{1}{\beta}\ln\frac{\alpha}{\beta}.
 \]
 %
-Поскольку $H(1) = e^{\beta} - 1 > 0$, и при $\alpha > \beta$ верно $s_{\min} > 1$, корень $s = s_* > 1$ уравнения \eqref{eq:t1_eq2} существует тогда и только тогда, когда $H(s_{\min}) \leqslant 0$. Выразим $\alpha$ из этого условия.
+Поскольку $H(1) = e^{\beta} - 1 > 0$, и при $\alpha > \beta$ верно $s_{\min} > 1$, корень $s_* > 1$ уравнения \eqref{eq:t1_eq2} существует тогда и только тогда, когда $H(s_{\min}) < 0$. Перепишем это условие в виде соотношения на параметры.
 %
 \[
-H(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\frac{\alpha}{\beta} - 1 < 0 \Leftrightarrow \frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1.
+H(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\frac{\alpha}{\beta} - 1 < 0 \ \Leftrightarrow \  \frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1.
 \]
 
 Условие $s_* < 2$ выполняется, если $H(2) < 0$ или $s_{\min} < 2$, что эквивалентно (в первом случае) $\alpha > e^{\beta} - e^{-\beta}$ или (во втором случае) $\alpha < \beta e^{\beta}$.
@@ -304,7 +315,7 @@ H(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\fra
 %\right.
 %\end{align}
 %%
-%где $W_{-1}(x)$ --- ветвь функции Ламберта, принимающая значения из промежутка $(-\infty; -1]$.
+%где $W_{-1}(x)$ --- ветвь функции Ламберта, принимающая значения из промежутка $(-\infty, -1]$.
 %
 %Однако, второе неравенство соответствует случаю $\dfrac{-\beta e^{-\beta}}{\alpha} < -1$, поскольку $W_{-1}(x) < -1$. Тогда
 %\[
@@ -337,7 +348,7 @@ H(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\fra
 %
 %\end{proof}
 
-На отрезке $t \in [2, t_1]$ решение (аналогично предыдущему шагу) отыскивается из задачи Коши 
+На отрезке $t \in [2, t_1]$ решение (аналогично предыдущему шагу) отыскивается из начальной задачи Коши 
 %
 \begin{multline}
     \dot{x} = -\beta + \alpha\exp\bigg(-\beta(t - 1) + \ln(\alpha e^{\beta}(t - 2) + 1) - x\bigg),\\
@@ -355,14 +366,14 @@ H(s_{\min}) = \frac{\alpha}{\beta}e^{\beta} - \frac{\alpha}{\beta}e^\beta\ln\fra
 	\label{eq:sol_rele_3}
 	x(t) = -\beta t + \ln\left(\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1\right).
 \end{equation}
-
+%
 Тогда
 \begin{equation}
 \label{eq:t2}
 t_2 = 1 + \dfrac{1}{\beta}\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2 + \alpha e^{\beta}(t - 1) + 1\right).
 \end{equation}
 
-Отбросим в \eqref{eq:sol_rele_2} квадратичное слагаемое, получим выпуклую вверх функцию $\tilde{x}(t) = -\beta t + \ln(\alpha e^{\beta} (t - 1) + 1)$, равную нулю (как следует из \eqref{eq:t1_cond_exp}) в точке $t_1 - 1$. Тогда $\tilde{x}(t) > 0$ на промежутке $(t_1 - 1, t_1]$, если $\tilde{x}(t_1) > 0$. Выражая из этого неравенства $\alpha$, с учётом $x(t) \geqslant \tilde{x}(t)$ получим условие \eqref{eq:cond_alpha2}.
+Отбросим в \eqref{eq:sol_rele_2} квадратичное слагаемое, получим выпуклую вверх функцию $\tilde{x}(t) = -\beta t + \ln(\alpha e^{\beta} (t - 1) + 1)$, равную нулю в точке $t_1 - 1$ (поскольку $t_1$ --- корень \eqref{eq:t1_cond_exp}). Тогда $\tilde{x}(t) > 0$ на промежутке $(t_1 - 1, t_1]$, если $\tilde{x}(t_1) > 0$. Выражая из этого неравенства $\alpha$, с учётом $x(t) \geqslant \tilde{x}(t)$ получим условие \eqref{eq:cond_alpha2}.
 
 Поскольку $x(t) > 0$ на промежутке длины не меньше единицы, последующие шаги построения решения будут совпадать с приведёнными выше, и решение $x(t)$ будет периодическим с периодом $T = t_2 - 1$. Подставляя соответствующее значение $t_2$ в \eqref{eq:t2}, получаем явное значение периода \eqref{eq:T}.
 
@@ -374,10 +385,10 @@ t_2 = 1 + \dfrac{1}{\beta}\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2 + \alph
 Одновременное выполнение условий \eqref{eq:cond_alpha1} и \eqref{eq:cond_alpha2} затруднительно для проверки. Сформулируем достаточное условие, позволяющее легко находить подходящие наборы параметров $\alpha$ и $\beta$.
 
 \begin{theorem}
-Пусть параметры $\alpha$, $\beta$ таковы, что $\beta > 0$, $\alpha > \exp(\beta + e^{-\beta})$. Тогда $\alpha$ и $\beta$ удовлетворяют условиям \eqref{eq:cond_alpha1} и \eqref{eq:cond_alpha2}.
+Пусть параметры $\alpha$, $\beta$ таковы, что $\beta > 0$, $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$. Тогда $\alpha$ и $\beta$ удовлетворяют условиям \eqref{eq:cond_alpha1} и \eqref{eq:cond_alpha2}.
 \end{theorem}
 \begin{proof}
-	Следует из утверждения \ref{prop:alpha_greater_phi}, доказанного в главе \ref{ch:ch2}.
+	Следует из утверждения \ref{prop:alpha_greater_zeta}, доказанного в главе \ref{ch:ch2}.
 \end{proof}
 
 %%%%%%
@@ -385,7 +396,7 @@ t_2 = 1 + \dfrac{1}{\beta}\ln\left(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2 + \alph
 %%%%%%
 \section{Асимптотика уравнения Мэки--Гласса}
 
-В данном разделе мы получим следующий результат.
+В данном разделе доказан следующий результат.
 
 %% !!TODO: Здесь пока нет единственности. Для доказательства единственности надо написать производную Фреше.
 \begin{theorem}
@@ -452,8 +463,8 @@ $[t_1 + \delta, t_2 - \delta]$
 %
 \begin{equation}
     \label{AB_eq:x*gamma_1}
-\text{где } A = \frac{\alpha\exp(x_{\gamma}^*(t - 1) - x^*(t))}{1+\exp(\gamma x_{\gamma}^*(t - 1))},\, 
-B = -\beta-\dot{x}^*,\, 
+\text{где } A = \frac{\alpha\exp(x_{\gamma}^*(t - 1) - x^*(t))}{1+\exp(\gamma x_{\gamma}^*(t - 1))},\quad
+B = -\beta-\dot{x}^*,\quad 
 \tilde{\Delta}=x_{\gamma}^*(\tilde{t}) - x^*(\tilde{t}).
 \end{equation}
 
@@ -462,6 +473,8 @@ B = -\beta-\dot{x}^*,\,
 	\label{eq:t0:ch1}
 	t_0 = 1.
 \end{equation}
+
+Отметим, что подход к построению асимптотики решения в окрестности точек излома решения релейного уравнения, описываемый далее, разработан и применяется в статьях \cite{Kolesov1997, Kolesov2010, Glyzin2013} и других работах тех же авторов.
 
 На отрезках $[t_i - \delta, t_i + \delta],$ $i=0, 1,$ будем предполагать, что решение имеет вид
 %
@@ -483,7 +496,7 @@ B = -\beta-\dot{x}^*,\,
 \end{equation}
 %% !!DONE: проверено.
 
-Получаем, что на каждом из рассматриваемых отрезков, остаток $\Delta$ находится из задачи Коши \eqref{eq:task_DeltaAB}. Докажем вспомогательное утверждение.
+Получаем, что на каждом из рассматриваемых отрезков, остаток $\Delta$ находится из начальной задачи Коши вида \eqref{eq:task_DeltaAB}. Докажем вспомогательное утверждение.
 
 \begin{lemma}\label{lm:DeltaAB}
 Пусть $\tilde{t} \geqslant 0$, $\tilde{\Delta}$ --- известные вещественные числа, $A = A(t),$ $B = B(t)$ --- непрерывные при $t \geq \tilde{t}$ функции, $A(t) > 0$. Тогда решение задачи Коши \eqref{eq:task_DeltaAB} выражается формулой
@@ -503,11 +516,11 @@ B = -\beta-\dot{x}^*,\,
 %	 $\theta|_{t=\tilde{t}}=e^{\tilde{\Delta}}$ --- это функция  
 %	Тогда решение задачи \eqref{task_theta} --- это $\theta=\theta_* y$, где $y$ удовлетворяет задаче $\dot{y} = A \theta^{-1}$, $y|_{t=\tilde{t}} = 1$. Отсюда $y = 1 + \int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds$, следовательно $\theta=\theta_*(1+\int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds)$.
     
-    Тогда $\Delta=\ln\theta=\ln\theta_*+\ln(1+\int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds),$ откуда следует формула \eqref{sol_DeltaAB}.
+    Тогда $\Delta=\ln\theta=\ln\theta_*+\ln(1+\int\limits_{\tilde{t}}^{t}A(s)\theta_*^{-1}ds),$ откуда следует формула~\eqref{sol_DeltaAB}.
 \end{proof}
 %%!! DONE: проверено.
 
-Из леммы \eqref{lm:DeltaAB} и формул \eqref{AB_eq:x*gamma_1}, \eqref{AB_eq:x*gamma_2}, \eqref{tilde_eq:x*gamma_2} получаем следующие утверждения.
+Из леммы \ref{lm:DeltaAB} и формул \eqref{AB_eq:x*gamma_1}, \eqref{AB_eq:x*gamma_2}, \eqref{tilde_eq:x*gamma_2} получаем следующие утверждения.
 \begin{corollary}\label{corol_Delta_long}
 На отрезках $[-\sigma_0, 1 - \delta],$ $[1 + \delta, 2 - \delta],$ $[2 - \delta, 2 + \delta],$ $[2 + \delta, t_1 - \delta],$ $[t_1 + \delta,t_2 - \delta],$ где решение имеет вид \eqref{eq:x*gamma_1}, остаток $\Delta$ определяется формулой
 \begin{equation}
@@ -576,15 +589,15 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 В дальнейшем мы будем пользоваться следующими асимптотическими соотношениями:
 \begin{equation}
 \label{eq:exp_const}
-	e^{\epsilon} = 1 + O(\epsilon) \text{ при } \epsilon \to 0;
+	e^{\epsilon} = 1 + O(\epsilon) \text{ при } \epsilon \to 0,
 \end{equation}
 \begin{equation}
 \label{eq:exp_linear}
-	e^{\epsilon} = 1 + \epsilon + O(\epsilon^2) \text{ при } \epsilon \to 0;
+	e^{\epsilon} = 1 + \epsilon + O(\epsilon^2) \text{ при } \epsilon \to 0,
 \end{equation}
 \begin{equation}
 \label{eq:asymp_frac}
-	\frac{1}{1 + \varepsilon} = 1 + O(\varepsilon) \text{ при } \epsilon \to 0;
+	\frac{1}{1 + \varepsilon} = 1 + O(\varepsilon) \text{ при } \epsilon \to 0,
 \end{equation}
 \begin{equation}
 \label{eq:exp_frac}
@@ -608,7 +621,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 \[
 \ln(x + \epsilon) = \ln x + \ln\left(1 + \frac{\epsilon}{x}\right) = \ln x + \frac{\epsilon}{x} + O(\epsilon^2).
 \]
-Без дополнительных уточнений оно применимо лишь в случаях, когда $x > 0$ не зависит от $\epsilon$.
+Без дополнительных уточнений оно применимо лишь в случаях, когда $x > 0$, и не зависит от $\epsilon$.
 
 \subsection{Асимптотическое поведение в окрестностях точек излома}
 \label{subsect:ch1:w_func}
@@ -617,15 +630,15 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 
 \begin{lemma}
 \label{lm:w}
-	Пусть $x^*(t_i - 1) = 0$, при $t \in [t_i - \delta, t_i + \delta]$ верны соотношения:
+	Пусть $x^*(t_i - 1) = 0$, при $t \in [t_i - \delta, t_i + \delta],$ $i=0, 1,$ верны соотношения:
 	\[ x^*_{\gamma}(t_i - \delta) = x^*(t_i - \delta) + O(\gamma^{-2\nu}), \quad x^*_{\gamma}(t - 1) = x^*(t - 1) + O(\gamma^{-2\nu}).\]
 	Тогда решение уравнения \eqref{eq:MG_x} на данном промежутке имеет вид \eqref{eq:x*gamma_2}, где
 	
 	\[
-	w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) > 0,
+	w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) < 0,
 	\]
 	\[
-	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) < 0,
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{при} \quad \dot{x}^*(t_i - 1) > 0,
 	\]
 	\[
 	\Delta = O(\gamma^{-2\nu}).
@@ -695,6 +708,8 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 		I = \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)}\ln\left(1 + \exp(\gamma(t - t_i)\dot{x}^*(t_i - 1))\right) -\\- \alpha (t - t_i - \delta) e^{-x^*(t_i)} + O(\gamma^{1 - 3\nu}).
 	\end{multline}
 	
+	Заметим, что независимо от знака $\dot{x}^*(t_i - 1)$, $I = O(\gamma^{-\nu})$.
+	
 	Оценим $J$.
 	
 	При $\dot{x}^*(t_i - 1) < 0$ на промежутке $[t_i - \delta, t_i]$ уравнение \eqref{eq:MG_rele} имеет вид $\dot{x} = -\beta$, следовательно, 
@@ -702,14 +717,14 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 	\dot{x}_{\gamma}^*(t_i - \delta) - x^*(t_i) = \dot{x}^*(t_i - \delta) - x^*(t_i) + O(\gamma^{-2\nu}) = -\beta \delta + O(\gamma^{-2\nu}).
 	\]
 	%
-	Подставляя в \eqref{J_point} это равенство и функцию $w(\tau)$ из условия теоремы, получаем
+	Подставляя в \eqref{J_point} это равенство и функцию $w_i(\tau)$ (для случая $\dot{x}^*(t_i - 1) < 0$) из условия леммы, получаем
 	\begin{multline}
 		\label{eq:J_estimate_dotx_less_0}
 	J = -\beta \delta + O(\gamma^{-2\nu}) + \beta (t - t_i) - \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) - \beta(t - t_i - \delta) =\\
 	\\= -\dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) + O(\gamma^{-2\nu}).
 	\end{multline}
 	
-	Заметим, что в обоих случаях $I = O(\gamma^{-\nu})$, тогда 
+	Поскольку $I = O(\gamma^{-\nu})$, 
 	\begin{equation}
 	\label{eq:ln_1_plus_I}
 	\ln(1 + I) = I + O(\gamma^{-2\nu}).
@@ -720,7 +735,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 	\Delta = J + \ln(1 + I) = O(\gamma^{-2\nu}).
 	\]
 	
-	При $\dot{x}^*(t_i - 1) < 0$ получаем
+	При $\dot{x}^*(t_i - 1) > 0$ получаем
 	\begin{multline}
 	\label{eq:J_estimate_dotx_greater_0}
 	J = x_{\gamma}^*(t_i - \delta) - x^*(t_i) - (-\beta + \alpha e^{-x^*(t_i)})(t - t_i) +\\+ \dfrac{\alpha e^{-x^*(t_i)}}{\gamma \dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) - \beta(t - t_i + \delta) =\\
@@ -738,17 +753,19 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 	\[
 	\dot{x}(t_i - 0) = \beta + \alpha e^{x^*(t_i - 1) - x^*(t_i)} = \beta + \alpha e^{-x^*(t_i)}
 	\]
-	получаем
+	также получаем
 	\[
 	\Delta = O(\gamma^{-2\nu}).
 	\]
+	
+	Лемма \eqref{lm:w} доказана.
 \end{proof}
 
 Сформулируем и докажем утверждение, описывающее асимптотическое поведение введенных функций $w_i(\tau)$ при $\tau\to-\infty$ и $\tau\to+\infty$.
 %
-\begin{lemma}\label{lm:lem_w_asymp} Верны следующие асимптотические равенства.
+\begin{lemma}\label{lm:lem_w_asymp} При $i = 0, 1$ верны следующие асимптотические равенства.
 
-Если $\dot{x}(t_i - 1) < 0$,
+Если $\dot{x}^*(t_i - 1) < 0$,
 \begin{equation}
 	\label{eq:w0_asymp-}
 	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
@@ -758,7 +775,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty,
 \end{equation}
 	
-Если $\dot{x}(t_i - 1) > 0$,
+Если $\dot{x}^*(t_i - 1) > 0$,
 \begin{equation}
 	\label{eq:w1_asymp-}
 	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
@@ -769,7 +786,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 \end{equation}
 \end{lemma}
 \begin{proof}
-	При $\dot{x}(t_i - 1) < 0$ верна формула
+	При $\dot{x}^*(t_i - 1) < 0$ верна формула
 	\[
 	w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right).
 	\]
@@ -782,7 +799,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 	 
 	При $\tau \to +\infty$,
 	\begin{multline*}
-	\dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) = -\dot{x}^*(t_i - 1)\tau)) = \alpha e^{-x^*(t_i)} \tau + \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) =\\
+	-\dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) = \alpha e^{-x^*(t_i)} \tau + \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) =\\
 	= \alpha e^{-x^*(t_i)} \tau + O(\exp(\dot{x}^*(t_i - 1) \tau)),
 	\end{multline*}
 	откуда следует \eqref{eq:w0_asymp+}.
@@ -822,7 +839,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 
 \begin{theorem}
 \label{thm:th_asymp}
-Пусть параметры $\alpha,$ $\beta$ удовлетворяют условиям теоремы \ref{thm:existence}, $\alpha > \beta e^{\beta}$, $\gamma \gg 1$, $\delta = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$. Уравнение \eqref{eq:MG_x} с произвольной начальной функцией $\varphi$ из класса \eqref{eq:init_set} имеет решение $x_\gamma^*(t, \varphi)$ с асимптотикой
+Пусть параметры $\alpha,$ $\beta$ удовлетворяют условиям теоремы~\ref{thm:existence}, $\gamma \gg 1$, $\delta = \gamma^{-\nu}$, $\nu \in (\frac{1}{2}, 1)$ --- фиксированный параметр. Уравнение~\eqref{eq:MG_x} с произвольной начальной функцией $\varphi$ из класса~\eqref{eq:init_set} имеет решение $x_\gamma^*(t, \varphi)$ с асимптотикой
 \footnotesize
 \begin{equation}
 	\label{eq:sol_x*gamma}
@@ -842,7 +859,7 @@ I = \int\limits_{\tilde{t}}^{t}A(s) e^{-J} ds = \int\limits_{t_i-\delta}^{t}\fra
 Все остатки равномерны по $\varphi \in S$ и $t$ из соответствующих промежутков.
 \end{theorem}
 
-Для построения асимптотики функции $x_\gamma^*(t)$ последовательно рассмотрим семь отрезков:
+Для построения асимптотики функции $x_\gamma^*(t, \phi)$ последовательно рассмотрим семь отрезков:
 $[-\sigma_0, 1 - \delta]$, 
 $[1  -\delta, 1 + \delta]$,
 $[1 + \delta, 2 - \delta]$,
@@ -851,9 +868,9 @@ $[2 + \delta, t_1 - \delta]$,
 $[t_1 - \delta, t_1 + \delta]$,
 $[t_1 + \delta, t_2 - \delta]$.
 
-\subsubsection{Первый шаг построения асимптотики}
+В процессе построения асимптотики для краткости будем опускать обозначение зависимости решения $x_{\gamma}^*(t, \phi)$ от начальной функции $\phi$, вместо этого будем писать~$x_\gamma^*(t)$.
 
-Рассмотрим отрезок $[-\sigma_0, 1 - \delta]$. На этом отрезке будем искать решение в виде
+\paragraph{Шаг 1.} Рассмотрим отрезок $[-\sigma_0, 1 - \delta]$. На этом отрезке будем искать решение в виде
 %
 \begin{equation}
 	\label{eq:sol_1}
@@ -864,7 +881,7 @@ $[t_1 + \delta, t_2 - \delta]$.
 %
 \begin{lemma}
 \label{lm:Delta1}
-На отрезке $[-\sigma_0, 1 - \delta]$ функция $x_\gamma^*(t)$ описывается формулой \eqref{eq:sol_1}, причем
+На отрезке $[-\sigma_0, 1 - \delta]$ функция $x_\gamma^*(t)$ описывается формулой~\eqref{eq:sol_1}, причем
 %
 \[
 \Delta_1 = O\left(\gamma^{-1} e^{-\beta\gamma^{1 - \nu}}\right) \text{ при } \gamma \to +\infty.
@@ -907,7 +924,7 @@ e^{\Delta_1}-1=O\Big(\frac{1}{1+e^{p \gamma}}\Big)=O(e^{-p \gamma}).
 
 Далее рассмотрим отрезок $[1 - \sigma_0, 1 - \delta]$. Здесь по доказанному выше $x_\gamma^*(t - 1) = -\beta (t-1) + O(e^{-p\gamma}) = -\beta (t-1) + O(e^{-p\gamma})$.
 
-По следствию \eqref{corol_Delta_long}, на этом отрезке остаток имеет вид \eqref{Delta}. Оценим $J$ и $I$.
+По следствию \ref{corol_Delta_long}, на этом отрезке остаток имеет вид \eqref{Delta}. Оценим $J$ и $I$.
 %
 \[
 J = x^*_{\gamma}(1 - \sigma_0) - x^*(t) - \beta (t - 1) = -\beta + O(e^{-p\gamma}) + \beta t - \beta(t - 1) = O(e^{-p\gamma}).
@@ -949,15 +966,14 @@ I = O(\gamma^{-1} e^{-\beta \gamma^{1 - \nu}}).
 
 \end{proof}
 
-\subsubsection{Второй шаг построения асимптотики}
-Очередной промежуток построения решения --- это $[1 - \delta, 1 + \delta]$. Поскольку на отрезке $[-\sigma_0, 1 - \delta]$ доказана (даже более точная) оценка $x^*_\gamma(t) = x^*(t) + O(\gamma^{-2\nu})$, применима лемма \ref{lm:w} для случая $\dot{x}(t_i - 1) < 0$. Из неё следует, что при $t \in [1 - \delta, 1 + \delta]$ верна оценка
+\paragraph{Шаг 2.} Очередной промежуток построения решения --- это $[1 - \delta, 1 + \delta]$. Поскольку на отрезке $[-\sigma_0, 1 - \delta]$ доказана (даже более точная) оценка $x^*_\gamma(t) = x^*(t) + O(\gamma^{-2\nu})$, применима лемма \ref{lm:w} для случая $\dot{x}(t_i - 1) < 0$. Из неё следует, что при $t \in [1 - \delta, 1 + \delta]$ верна оценка
 \begin{equation}
 	\label{eq:sol_2}
 	x_{\gamma}^*(t) = x^*(t) + \frac{1}{\gamma} w_0(\tau)\bigg\vert_{\tau=(t - 1)\gamma} + \Delta_2,
 \end{equation}
-где $\Delta_2 = O(\gamma^{-2\nu})$. Напомним, функция $w_0(\tau)$ в явном виде описана формулой \ref{eq:w0}.
+где $\Delta_2 = O(\gamma^{-2\nu})$. Напомним, функция $w_0(\tau)$ в явном виде описана формулой \eqref{eq:w0}.
 
-\subsubsection{Третий шаг построения асимптотики}
+\paragraph{Шаг 3.} 
 Рассмотрим отрезок $[1 + \delta, 2 - \delta]$. Здесь решение отыскивается в виде
 \begin{equation}
 	\label{eq:sol_3}
@@ -1045,9 +1061,7 @@ x^*_{\gamma}(s - 1) + \beta (s - 1 - \delta) - x^*_{\gamma} (1 + \delta) =\\
 Лемма \ref{lm:Delta3} доказана.
 \end{proof}
 
-\subsubsection{Четвёртый шаг построения асимптотики}
-
-Следующий промежуток построения решения --- $[2 - \delta, 2 + \delta]$. Будем искать решение в виде
+\paragraph{Шаг 4.} Следующий промежуток построения решения --- $[2 - \delta, 2 + \delta]$. Будем искать решение в виде
 \begin{equation}
 	\label{eq:sol_4}
 	x_\gamma^*(t) = x^*(t) + \Delta_4, \text{ где } 
@@ -1234,9 +1248,7 @@ I = \frac{\alpha e^\beta}{\alpha e^{\beta}+1}\exp\Big(\frac{\alpha e^{\beta}\del
 %TODO: возможно, здесь что-то можно сократить. Пока не буду писать здесь.
 
 
-\subsubsection{Пятый шаг построения асимптотики}
-
-Найдем асимптотику решения при $t \in [2 + \delta, t_1 - \delta]$. Будем искать решение в виде
+\paragraph{Шаг 5.} Найдем асимптотику решения при $t \in [2 + \delta, t_1 - \delta]$. Будем искать решение в виде
 \begin{equation}
 	\label{eq:sol_5}
 	x_\gamma^*(t) = x^*(t) + \Delta_5,
@@ -1348,9 +1360,7 @@ x_\gamma^*(s-1) = -\beta (s - 1) + \ln(\alpha e^{\beta}(s - 2) + 1) + \Delta_3,
 
 \end{proof}
 
-\subsubsection{Шестой шаг построения асимптотики}
-
-Очередной промежуток построения решения --- это $[t_1-\delta, t_1+\delta]$. Поскольку $x^*_{\gamma}(t_1 - \delta) = x^*(t_1) + \Delta_5$, $x^*_{\gamma}(t - 1) = x^*(t - 1) + \Delta_3$, где $\Delta_5 = O(\gamma^{-2\nu})$, $\Delta_3 = O(\gamma^{-2\nu})$, на данном промежутке применима лемма \ref{lm:w}. Таким образом, решение имеет вид
+\paragraph{Шаг 6.} Очередной промежуток построения решения --- это $[t_1-\delta, t_1+\delta]$. Поскольку $x^*_{\gamma}(t_1 - \delta) = x^*(t_1) + \Delta_5$, $x^*_{\gamma}(t - 1) = x^*(t - 1) + \Delta_3$, где $\Delta_5 = O(\gamma^{-2\nu})$, $\Delta_3 = O(\gamma^{-2\nu})$, на данном промежутке применима лемма \ref{lm:w}. Таким образом, решение имеет вид
 \begin{equation}
 	\label{eq:sol_6}
 	x_{\gamma}^*(t) = x^*(t) + \frac{1}{\gamma} w_1(\tau)\bigg\vert_{\tau=(t - t_1)\gamma} + \Delta_6,
@@ -1358,9 +1368,7 @@ x_\gamma^*(s-1) = -\beta (s - 1) + \ln(\alpha e^{\beta}(s - 2) + 1) + \Delta_3,
 где $\Delta_6 = O(\gamma^{-2\nu})$.
 
 
-\subsubsection{Седьмой шаг построения асимптотики}
-
-На заключительном этапе построения рассмотрим отрезок $[t_1+\delta, t_2-\delta]$. Здесь будем искать решение в виде
+\paragraph{Шаг 7.} На заключительном этапе построения рассмотрим отрезок $[t_1+\delta, t_2-\delta]$. Здесь будем искать решение в виде
 \begin{equation}
 	\label{eq:sol_7}
 	x_\gamma^*(t) = x^*(t) + \Delta_7.
@@ -1384,7 +1392,7 @@ x_\gamma^*(s-1) = -\beta (s - 1) + \ln(\alpha e^{\beta}(s - 2) + 1) + \Delta_3,
 %
 На рассматриваемом отрезке $x_\gamma^*(s - 1) > 0$, причем существует константа $C > 0$ (точное значение которой не важно), такая, что $x_\gamma^*(s-1) > C\delta.$
 
-Действительно, данная оценка верна на отрезке $[t_1 - 1 + \delta, t_1]$, поскольку пересечение нуля в точке $t_1 - 1$ трансверсально. Далее, из \eqref{eq:sol_6} следует, что $x^*_{\gamma}(t_1) = x^*(t_1) + O(\gamma^{-1})$. На отрезке $[t_1, t_2]$ верно $\dot{x}^*(t) = -\beta$, $\dot{x}^*_\gamma(t) > -\beta$, поскольку второе слагаемое уравнения \eqref{eq:MG_x} положительно. Значит, разность $x^*_{\gamma}(t) - x^*(t)$ на отрезке $[t_1, t_2]$ возрастает. Тогда
+Действительно, данная оценка верна на отрезке $[t_1 - 1 + \delta, t_1]$, поскольку пересечение нуля функцией решения $x^*_{\gamma}(t)$ в точке $t_1 - 1$ трансверсально. Далее, из \eqref{eq:sol_6} следует, что $x^*_{\gamma}(t_1) = x^*(t_1) + O(\gamma^{-1})$. На отрезке $[t_1, t_2]$ верно $\dot{x}^*(t) = -\beta$, $\dot{x}^*_\gamma(t) > -\beta$, поскольку второе слагаемое уравнения \eqref{eq:MG_x} положительно. Значит, разность $x^*_{\gamma}(t) - x^*(t)$ на отрезке $[t_1, t_2]$ возрастает. Тогда
 %
 \[
 x^*_{\gamma}(t) - x^*(t) > x^*_{\gamma}(t_1) - x^*(t_1) = O(\gamma^{-1}).
@@ -1410,7 +1418,7 @@ x_\gamma^*(t_1+\delta) = x^*(t_1) + \frac{1}{\gamma} w_1(\tau)\bigg\vert_{\tau=\
 то в силу асимптотического поведения \eqref{eq:w1_asymp+} функции $w_1$ получаем
 \begin{multline*}
 	J = x_\gamma^*(t_1 + \delta) - x^*(t) - \beta(t - t_1 - \delta) =\\
-	x^*(t_1) + \frac{1}{\gamma} (-\beta\tau + O(\exp(-\dot{x}^*(t_1 - 1) \tau)))\bigg\vert|_{\tau = \delta\gamma} + O(\gamma^{-2\nu}) - x^*(t) - \beta(t - t_1 - \delta) =\\
+	x^*(t_1) + \frac{1}{\gamma} (-\beta\tau + O(\exp(-\dot{x}^*(t_1 - 1) \tau)))\bigg\vert_{\tau = \delta\gamma} + O(\gamma^{-2\nu}) - x^*(t) - \beta(t - t_1 - \delta) =\\
 	= (x^*(t_1) - x(t)) - \beta \delta - \beta(t - t_1 - \delta) + O(\gamma^{-2\nu}) = O(\gamma^{-2\nu}),
 \end{multline*}
 поскольку $x^*(t_1) - x^*(t) = \beta (t - t_1)$.
@@ -1423,7 +1431,7 @@ x_\gamma^*(t_1+\delta) = x^*(t_1) + \frac{1}{\gamma} w_1(\tau)\bigg\vert_{\tau=\
 
 \subsection{Доказательство существования периодического решения}
 
-Из асимптотических соотношений \eqref{eq:sol_x*gamma} следует, что на промежутке $[1 - \delta; t_2 - \delta]$ длины $T$ верно равенство
+Из асимптотических соотношений \eqref{eq:sol_x*gamma} следует, что на промежутке\\$[1 - \delta, t_2 - \delta]$ длины $T$ верно равенство
 \[
 x_\gamma^*(t, \varphi) = x^*(t) + O(\gamma^{-2\nu}),
 \]
@@ -1446,13 +1454,13 @@ x_\gamma^*(t, \varphi) = x^*(t) + O(\gamma^{-2\nu}),
 
 Теперь можно зафиксировать
 \[
-p = \frac{1}{2}\min\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t), \ q > \max\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t)
+p = \frac{1}{2}\min\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t), \quad q > \max\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t)
 \]
 и все рассуждения в доказательстве асимптотических формул проводить в этих предположениях.
 
-Определим оператор $\Pi_{\gamma}: S(\sigma_0, p, q) \to C[-1-\sigma_0; -\sigma_0]$:
+Определим оператор $\Pi_{\gamma}: S(\sigma_0, p, q) \to C[-1-\sigma_0, -\sigma_0]$:
 \begin{equation}
-	\Pi_{\gamma}(\varphi): t \mapsto x^*_{\gamma}(t + T_{\gamma, \varphi}, \varphi).
+	\Pi_{\gamma}(\varphi): t \mapsto x^*_{\gamma}(t + T_{\gamma, \varphi}, \varphi) \quad \text{при } t \in [- 1 -\sigma_0, -\sigma_0].
 \end{equation}
 
 Из оценок \eqref{eq:u_bound} и \eqref{eq:dot_u_bound} следует, что множество функций $\{\Pi_{\gamma}(\varphi)\, | \, \varphi \in S\}$ равномерно ограничено вместе со своими производными, оно является равностепенно непрерывным, откуда из теоремы Арцела следует вполне непрерывность оператора $\Pi_{\gamma}$. Таким образом, компактный оператор $\Pi_{\gamma}$ преобразует замкнутое, ограниченное, выпуклое множество $S(\sigma_0, p, q)$ в себя. В соответствие с принципом Шаудера \cite{Krasnov1975}, отсюда следует существование неподвижной точки $\varphi^*$ этого оператора, которой соответствует периодическое решение $x^*_\gamma(t, \varphi^*)$ с найденной асимптотикой \eqref{eq:sol_x*gamma}. Условия \eqref{eq:lim_x*} следуют из асимптотических соотношений.
@@ -1460,7 +1468,7 @@ p = \frac{1}{2}\min\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t), \ q 
 %%% Выводы %%%
 \subsection{Выводы к главе 1}
 
-В работе проводится построение асимптотики уравнения \eqref{eq:MG_norm} по степеням малого параметра $\gamma^{-\nu}$, где показатель нелинейности $\gamma$ полагается большим параметром. Данное предположение оправдано тем, что в оригинальной статье \cite{Mackey1977} приводятся значения (после нормировки на запаздывание) $\alpha$, $\beta$ порядка единицы и $\gamma = 10$. Численное моделирование показывает, что для таких значений предельный цикл уравнения \eqref{eq:MG_norm} оказывается достаточно близок к циклу предельного при $\gamma \to +\infty$ уравнения \eqref{eq:MG_rele}. Подобное предположение используется в статьях \cite{Bartha2021, Krisztin2020}, а также в работах, посвящённых генным сетям (см., например, \cite{Volokitin2004}), где возникает аналогичная нелинейность.
+В первой главе проводится построение асимптотики уравнения \eqref{eq:MG_norm} по степеням малого параметра $\gamma^{-\nu}$, где показатель нелинейности $\gamma$ полагается большим параметром. Данное предположение оправдано тем, что в оригинальной статье \cite{Mackey1977} приводятся значения (после нормировки на запаздывание) $\alpha$, $\beta$ порядка единицы и $\gamma = 10$. Численное моделирование показывает, что для таких значений предельный цикл уравнения \eqref{eq:MG_norm} оказывается достаточно близок к циклу предельного при $\gamma \to +\infty$ уравнения \eqref{eq:MG_rele}. Подобное предположение используется в статьях \cite{Bartha2021, Krisztin2020}, а также в работах, посвящённых генным сетям (см., например, \cite{Volokitin2004}), где возникает аналогичная нелинейность.
 
 Отметим, что похожий подход к построению асимптотики решения применяется в статьях \cite{Kolesov2010, Kolesov1997, Glyzin2013} и других работах тех же авторов.
 
@@ -1469,9 +1477,9 @@ p = \frac{1}{2}\min\limits_{t \in [T - 1 - \sigma_0, T - \sigma_0]} x^*(t), \ q 
 	\label{cond_Bartha}
 	\alpha>\max\{\beta e^\beta, e^\beta-e^{-\beta}\}.
 \end{equation}
-Заметим, что ограничения \eqref{cond_Bartha} и \eqref{eq:cond_alpha1}, \eqref{eq:cond_alpha2} описывают схожие области, однако неравенство \eqref{cond_Bartha} оказывается более сильным. 
+Заметим, что ограничения \eqref{cond_Bartha} и \eqref{eq:cond_alpha1}, \eqref{eq:cond_alpha2} описывают схожие области, однако неравенство \eqref{cond_Bartha} описывает более узкую область параметров. 
 В работах \cite{Bartha2021,Krisztin2020} доказывается сходимость решения уравнения \eqref{eq:MG_norm} к решению предельного при $\gamma\to+\infty$ со ссылкой на общий результат, изложенный в XIV главе книги \cite{Diekmann1995}.
-В качестве отличия настоящей работы от \cite{Bartha2021} отметим точную асимптотическую оценку разности решений уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} (аналогичная пара уравнений, рассмотренным в  работах \cite{Bartha2021,Krisztin2020}, но после экспоненциальной замены).
+В качестве отличия результатов, доказанных в данной главе, от результатов \cite{Bartha2021}, отметим точную асимптотическую оценку разности решений уравнений \eqref{eq:MG_x} и \eqref{eq:MG_rele} (аналогичная пара уравнений, рассмотренным в  работах \cite{Bartha2021,Krisztin2020}, но после экспоненциальной замены).
 
 
 

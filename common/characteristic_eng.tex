@@ -1,0 +1,343 @@
+
+% common/newnames.tex & common/renames.tex
+{\actuality} Biological models play an important role in the theory of dynamic systems, covering a wide range of phenomena occurring in biological processes. These models include those that describe the concentration of various substances in biological systems, such as chemical reactions in cells or metabolic processes in organisms, as well as population equations that model changes in the size and structure of populations of living organisms. Typically, population dynamics models are described by differential or difference equations. Over time, these models have undergone significant changes and complexities.
+
+One of the earliest population models was Thomas Malthus's model, which proposed that population growth, when not constrained by resource limitations, would be exponential.
+
+Pierre Verhulst, in his work \cite{Verhulst1838}, proposed adding a quadratic term to Malthus's model to limit the growth rate of the population for large values of its size. Thus, he derived a model known as the logistic equation
+\begin{equation}
+\label{eq:intro:logistic}
+	\dot{x}=\lambda x\left(1-\frac{x}{K}\right),
+\end{equation}
+where the function $x(t)$ represents the current density (or size) of the population, the parameter $\lambda$ characterizes the growth rate of the population, and the parameter $K$ represents the carrying capacity of the environment.
+
+Later, various improvements to the presented model were considered. One idea for complicating the right-hand side of equation \eqref{eq:intro:logistic} is the addition of a delay\footnote{In this work, the following conventions are adopted: only the delayed argument of the function is explicitly indicated; for example, instead of $x(t)$, we write $x$. Differentiation with respect to time is denoted by a dot over the function.}. In 1948, George Hutchinson proposed a modification of the logistic equation that incorporates a time delay and accounts for the age structure of the population in a simple manner:
+
+\begin{equation}
+	\label{eq:intro:hutch}
+	\dot{x} = \lambda x\left(1 - \frac{x(t - \tau)}{K}\right),
+\end{equation}
+%
+where $x(t)$ is the population density, $\lambda$ is the growth rate of the population, $K$ is the carrying capacity of the environment, and the delay $\tau$ represents the age of maturity \cite{Hutchinson1948}. %https://encyclopediaofmath.org/wiki/Hutchinson_equation
+
+
+In addition to Hutchinson's equation, various generalizations were considered, replacing the quadratic dependence on the right-hand side with a more complex one. For example, in the work \cite{Glyzin2007}, a model is proposed that more intricately accounts for the age structure of the population:
+\begin{equation}
+\label{eq:intro:glyzin2007}
+	\dot{x}=\lambda \left(1 - \frac{1}{K}\sum\limits_{i = 1}^{m} a_i x(t-\tau_i)\right) x.
+\end{equation}
+%
+In the work \cite{Kaschenko2012}, a generalization of the model \eqref{eq:intro:hutch}:
+\begin{equation}
+	\dot{x} = \lambda \left(1 - \int\limits_{h_1}^{h_2}dr(\tau)x(t - \tau)\right) x,
+\end{equation}
+where $r(\tau)$ is a monotonic non-negative function, and $\lambda, h_1, h_2$ --- are positive parameters.
+
+In the work \cite{Kolesov2010}, a generalization of the model \eqref{eq:intro:hutch} is proposed, defined by the equation
+\begin{equation}
+\label{eq:intro:hutch_modified}
+	\dot{x} = \lambda f(x(t - 1)) x,
+\end{equation}
+%
+where the infinitely differentiable function $f$ for $t \geq 0$ has the properties
+\[
+f(0) = 1, \quad f(x) = -a_0 + \sum\limits_{k = 1}^{\infty} \frac{a_k}{x^k}, \quad x \to +\infty, \quad a_0 > 0.
+\]
+After the exponential substitution $x = e^{\lambda y}$ equation \eqref{eq:intro:hutch_modified} takes the form
+\begin{equation}
+\label{eq:intro:hutch_modified_exp}
+\dot{y} = f(e^{\lambda y(t - 1)}).
+\end{equation}
+For sufficiently large $\lambda$, the right-hand side becomes close to a relay function, which changes value when the sign of the argument changes. A typical example of the function $f$ is
+\[
+f(x) = \dfrac{1 - x}{1 + cx}, \quad c = \text{const} > 0.
+\]
+In the work \cite{Kolesov2010}, it is noted that for large values of the parameter $\lambda$ equation~\eqref{eq:intro:hutch_modified} has better biological characteristics than equation~\eqref{eq:intro:hutch}: this is related to the fact that the solution of equation~\eqref{eq:intro:hutch} has a very deep minimum, which in a biological context means the extinction of the population after the first increase in numbers (see Fig. \ref{fig:intro:hutch}).
+
+It should be noted that the models presented above \eqref{eq:intro:logistic} -- \eqref{eq:intro:hutch_modified} have properties characteristic of population models. For instance, solutions with positive initial conditions remain positive for $t > 0$. Equations \eqref{eq:intro:logistic} -- \eqref{eq:intro:glyzin2007} have a positive equilibrium state corresponding to the carrying capacity of the environment.
+
+%\fixme{Однако, уравнение \eqref{eq:intro:hutch_modified} является моделью с насыщением, т.~е., как видно из уравнения \eqref{eq:intro:hutch_modified_exp}, любое решение ограничено константой, не зависящей от параметра $\lambda$.}
+	
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{hutch_eng.png}
+	\caption{On the left: the solution of equation \eqref{eq:intro:hutch} for $\lambda = 2.5$, $K = 1$, $\tau = 1$; on the right: the solution of equation \eqref{eq:intro:hutch_modified} for $\lambda = 2.5$, $f(x) = \frac{1 - x}{1 + 0.2x}$. The solution (a) has a minimum close to zero, which in a biological context indicates complete extinction of the population; solution (b) does not have this drawback. The illustration is taken from the article \cite{Kolesov2010}.}
+	\label{fig:intro:hutch}
+\end{figure}
+
+Nonlinearities represented by rational functions are also found in various biological systems, including gene networks, which will be described below. This dissertation investigates the Mackey--Glass model, which also features rational nonlinearity.
+
+The Mackey--Glass equations refer to two delay models \cite{Mackey1977, Glass1988}:
+\begin{equation}
+	\label{eq:mg_equation_1:intro}
+	\dot{v}=-b v+\frac{a \theta^{\gamma} v(t-\tau)}{\theta^{\gamma}+(v(t-\tau))^{\gamma}},
+\end{equation}
+\begin{equation}
+	\label{eq:mg_equation_2:intro}
+	\dot{v}=-b v+\frac{a \theta^{\gamma}}{\theta^{\gamma}+(v(t-\tau))^{\gamma}},
+\end{equation}
+where $a, b, \gamma, \theta$ are positive parameters.
+
+These models were proposed in the work \cite{Mackey1977} to describe regulatory functions in hematopoiesis. Equations \eqref{eq:mg_equation_1:intro} and \eqref{eq:mg_equation_2:intro} differ in the form of the nonlinearity in the delayed term (see Fig. \ref{fig:mg_delay_form}): in equation \eqref{eq:mg_equation_1:intro} it takes the form of a ,,hump'', while in equation \eqref{eq:mg_equation_2:intro}, it monotonically decreases. In this work, the Mackey--Glass equation will refer to equation \eqref{eq:mg_equation_1:intro}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{mg_delay_form.eps}
+	\caption{The graphs of the nonlinear terms in equation \eqref{eq:mg_equation_1:intro} are shown on the left, and in equation \eqref{eq:mg_equation_2:intro} on the right (as functions of the variable $v(t - \tau)$).
+	}
+	\label{fig:mg_delay_form}
+\end{figure}
+
+The biological meaning of this model is as follows: the function $v(t)$ represents the density of circulating neutrophils (a type of white blood cell) in the blood of a human, measured in cells per kilogram of body mass, $b$ is the rate of random decay of neutrophils, and the positive term indicates the current influx of cells into the blood, which occurs in response to a demand that arose at some moment $\tau$ time ago in the past.
+
+Over a wide range of changes in the level of circulating neutrophils, the rate of neutrophil production decreases as their density increases. However, due to the influence of various factors, it can be expected that at very low levels of neutrophils, the rate of their production will decline, approaching zero \cite[p. 85]{Mackey1977}. The form of the nonlinearity is chosen based on these considerations.
+
+The Mackey--Glass equation has been studied in numerous works; for example, see \cite{Junges2012, Su2011, Wu2007, Kubyshkin2016, Krisztin2020, Bartha2021}, as well as the article \cite{Berezansky2012}, which provides a comprehensive review of various known results (as of 2012) related to the study of the Mackey--Glass equation and its generalizations, along with references to the relevant works.
+
+In the original work \cite{Mackey1977}, numerical solutions are provided for both periodic and non-periodic oscillations. The works \cite{Krisztin2020, Bartha2021} investigate periodic solutions of the Mackey--Glass equation. In particular, \cite{Bartha2021} proves (under certain restrictions on the parameters and the set of initial functions) the existence and uniqueness of an orbitally stable limit cycle. The work \cite{Kubyshkin2016} studies periodic solutions of the Mackey--Glass equation that bifurcate from its unique equilibrium state as the parameters of the equation change.
+
+The equation allows for various generalizations. For instance, the work \cite{Berezansky2006} investigates an analogue of the Mackey--Glass equation with variable delay. The work \cite{Liz2002} examines the asymptotic properties of solutions to equations of the Mackey--Glass type with similar nonlinearity. In \cite{Wu2007}, the Mackey--Glass equation with time-dependent parameters and delays is considered, and conditions for the existence of a positive periodic solution are established. The work \cite{Huang2024} studies a stochastic version of the equation with multiple delays.
+
+The Mackey--Glass equation and its various modifications have been widely used to model the functioning of electric generators \cite{Tateno2012, Namajunas1995, Glyzin2018, Glyzin2018a}, as well as to simulate chaotic signals \cite{Grassberger1983, Amil2015, Amil2015a, Shahverdiev2006}.
+
+In addition to biological models described by a single equation, models obtained by combining elements into a network are also of interest. It should be noted that chains of identical nonlinear oscillators are used as mathematical models in various fields of natural science: biophysics, ecology, optics, chemical kinetics, neurodynamics, genetic engineering, and others \cite{Glyzin2022}. Two natural structures can be highlighted for connecting the elements of the network: a ring, where each element is connected to its neighboring elements, and a fully coupled network (see Fig. \ref{fig:full_mesh:intro}), where each element of the network is connected to all others.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{mg_generator_full.eps}
+	\caption{A fully coupled network of oscillators. Each oscillator acts as both a transmitter and a receiver for all other oscillators in the network.}
+	\label{fig:full_mesh:intro}
+\end{figure}
+
+An example of such a system is artificial gene networks. The interest in artificial genetic oscillators arises from the fact that they are simplified models of key biological processes such as the cell cycle and circadian rhythms. The simplest genetic oscillator, proposed in \cite{Elowitz2000} and called a repressilator, consists of at least three elements connected in a ring \cite{Glyzin2017, GlyzinBook2018}. The functioning of such a network is described by the system
+\begin{equation}
+	\label{eq:intro:repressilator}
+	\dot{u}_j = -u_j + \dfrac{\alpha}{1 + u^{\gamma}_{j - 1}}, \quad j = 1, 2, 3,
+\end{equation}
+где $u_0 = u_3$, $\alpha, \gamma > 0$. Investigation of gene networks provided in \cite{Likhoshvaj2003, Volokitin2004, Golubyatnikov2006, Buse2009, Buse2010}.
+
+Similarly, elements whose functioning is described by equation \eqref{eq:mg_equation_1:intro} can be connected in a network. Such systems have been investigated in the works \cite{Preobrazhenskaia2021, Tateno2012, Sano2007, Wan2009}. For instance, in \cite{Sano2007}, a system of four Mackey--Glass generators was studied both numerically and experimentally, with two of them being broadcasting and two receiving. The work \cite{Wan2009} examined the loss of stability of the equilibrium state in this system, as well as the conditions under which a stable limit cycle emerges as a result of bifurcation.
+
+In this dissertation, using methods of large parameters, periodic modes arising in a fully coupled network of oscillators, whose functioning is described by relay Mackey--Glass equations, are investigated. The existence of periodic modes of a special kind is proven: discrete traveling waves and two-cluster synchronization, the description of which is provided below.
+
+{\methods} For complex models, when it is not possible to find a solution through direct integration, the use of specialized methods for finding solutions is appropriate. This is particularly relevant for differential equations with delayed arguments. One of the ideas for simplifying the investigation is to transition to a limiting object.
+
+\textit{Transition to a relay equation.} To simplify the investigation, it is necessary to choose a substitution such that as the large parameter $\gamma \to +\infty$, a relay (limiting) equation is obtained, which, on one hand, has sufficiently complicated dynamics (periodic solutions of various structures), and on the other hand, allows for the proof that the solution of the original equation converges to a periodic solution of the relay problem as $\gamma \to +\infty$. In particular, this can be achieved if the nonlinearity on the right-hand side of the equation is close to a sigmoidal function, for example, taking the form $S_\gamma(u) = \frac{1}{1 + u^\gamma}$, $u > 0$ (see, for example, \cite{Preobrazhenskaya2020, Glyzin2017, Krisztin2020, Bartha2021}). Such a function approaches a piecewise constant function that changes value at 1 in the limit as $\gamma \to +\infty$. Then, the original equation can be replaced by a relay equation, which is generally much simpler to analyze. After constructing the solution of the limiting equation, it can be proven that an asymptotically close solution to the original problem exists.
+
+For the equation studied in the first part
+\begin{equation}
+\label{eq:intro:MG_norm1}
+	\dot{x}=-\beta+\alpha\frac{e^{x(t-1)-x}}{1+e^{\gamma x(t-1)}},
+\end{equation}
+the corresponding relay equation takes the form
+\[
+\dot{x}=-\beta + \alpha e^{-x} F(\exp({x(t-1)})),
+\]
+where the function $F$ (see Fig. \ref{fig:F_relay_plot:intro}) is defined by the formula
+\begin{equation}
+	\label{eq:intro:F_relay}
+	F(u)=\lim\limits_{\gamma\to +\infty}\frac{u}{1+u^{\gamma}} = 
+	\begin{cases}
+		u, & 0 \leq u < 1,\\
+		\frac{1}{2}, & u = 1,\\
+		0, & u > 1.
+	\end{cases}
+\end{equation}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{F_relay_plot_intro.eps}
+	\caption{The relay function $F(x)$, defined by the formula \eqref{eq:intro:F_relay}.}
+	\label{fig:F_relay_plot:intro}
+\end{figure}
+
+Another idea is to find a solution in a specific form. Let us expand on this procedure in more detail.
+
+\textit{Search for solutions of a special form.} In this work, two approaches to constructing special solutions of the system of differential-difference equations, developed in the works of S. D. Glyzin et al. \cite{GlyKol2013, GlyKol2013a, Glyzin2014}, are utilized: the construction of discrete traveling waves (the second chapter of the dissertation) and the search for cluster synchronization modes (the third chapter of the dissertation). Let us describe the method for constructing solutions of both types in general terms.
+
+\textit{Discrete traveling waves.} Consider a symmetric system of oscillators connected either in a ring or in a fully connected network. A discrete traveling wave is referred to as a periodic solution where all components are represented by the same periodic function $u(t)$ with a time shift that is a multiple of a certain parameter $\Delta$.
+
+For a fully coupled network of relay Mackey--Glass oscillators, considered in the second chapter of the dissertation, the corresponding system takes the form
+%
+\begin{equation}
+	\label{eq:intro:mg_full_renormed}
+	\dot{u}_j(t) = -\beta u_j(t) + \alpha F \left(u_j(t - 1) + \sum\limits_{k = 0, k\neq j}^N u_k(t)\right), \text{ where } j = 0, 1, \dots, N,
+\end{equation}
+the function $F$ (as in the first part) is defined by the system \eqref{eq:intro:F_relay}.
+
+After substituting $u_j(t) = u(t + j\Delta)$ into the system \eqref{eq:intro:mg_full_renormed} we obtain the auxiliary equation
+
+\begin{equation}
+	\label{eq:intro:mg_auxiliary}
+	\dot{u}(t) =-\beta u(t) + \alpha F\left(u(t - 1) + \sum_{s=1}^{N}u(t-s\Delta)\right).
+\end{equation}
+
+A discrete traveling wave corresponds to a periodic solution of equation $\eqref{eq:intro:mg_auxiliary}$, the period (not necessarily fundamental) of which is a multiple of the parameter $\Delta$. It is worth noting that the existence of one solution in the form of a discrete traveling wave implies the simultaneous existence of $N!$ such modes, obtained by permuting the components of the original solution, where $N$ is the number of equations in the system.
+
+\textit{Cluster synchronization modes.} 
+In the third chapter of the dissertation, we consider the system of $N = n + m$ equations:
+\begin{equation}
+	\label{eq:intro:mg_full_renormed_delta}
+	\dot{u}_j(t) = -\beta u_j(t) + \alpha F_{\gamma} \left(u_j(t - 1) + \delta\sum\limits_{k = 1, k\neq j}^N u_k(t)\right), \text{ where } j = 1, \dots, N,
+\end{equation}
+$\delta > 1$ is a feedback multiplier, 
+\[
+F_{\gamma}(u) = \dfrac{u}{1 + u^{\gamma}}.
+\]
+The solution of the form
+\begin{equation}
+	\label{eq:intro:cluster}
+	u_1(t)=\ldots=u_m(t) = u(t),\quad u_{m+1}(t)=\ldots=u_{m+n}(t) = v(t),
+\end{equation}
+where a part of the oscillators is described by one function and the others by another is referred to as a two-cluster synchronization mode. After substituting \eqref{eq:intro:cluster} into the system \eqref{eq:intro:mg_full_renormed_delta}, a system of two equations is obtained:
+%
+\begin{equation}
+	\label{eq:intro:system_uv}
+	\begin{cases}
+		\dot{u} = -\beta u + \alpha \, F_{\gamma} \big(u(t - 1) + \delta (m - 1) u + \delta n v\big),\\
+		\dot{v} = -\beta v + \alpha \, F_{\gamma} \big(v(t - 1) + \delta m u + \delta (n - 1) v\big).
+	\end{cases}
+\end{equation}
+%
+For this system, a search for a periodic solution is conducted.
+
+Two-cluster synchronization modes are constructed in the works \cite{Glyzin2016a, Glyzin2022}.
+
+\textit{Differential equations with discontinuous right-hand side.} Let us consider the differential equation
+\[
+\dot{x} = f_{\gamma}(x, t),
+\]
+where the parameter $\gamma$ is a real number. In the transition to the limiting equation as $\gamma \to +\infty$,
+\begin{equation}
+	\label{eq:intro:equiv_equation_initial}
+	\dot{x} = \lim\limits_{\gamma \to +\infty}f_{\gamma}(x, t) = f(x, t),
+\end{equation}
+the right-hand side may become a discontinuous function. In this case, there arises a need to generalize the concept of a solution to the equation so that it satisfies the following natural requirements.
+\begin{enumerate}
+	\item For differential equations with a continuous right-hand side, the definition of a solution should be equivalent to the standard one.
+	\item For equation $\dot{x} = f(t)$ the solutions (in the generalized sense) should be the functions $x(t) = \int f(t)\, dt + c$ (and only these).
+\end{enumerate}
+The essence of most known methods for solving such equations is as follows. Consider equation \eqref{eq:intro:equiv_equation_initial}, where the function $f$ is piecewise continuous in the region $G \subset \mathbb{R}^n \times \mathbb{R}$, $x \in \mathbb{R}^n$, $M$ is the set of points of discontinuity of the function $f$. For each point $(x, t) \in G$ a set $\mathcal{F}(x, t) \subset \mathbb{R}^n$ is specified. If the function $f$ is continuous at the point $(x, t)$, then $\mathcal{F}(x, t)$ consists precisely of that point. However, if $f$ is discontinuous, the set  $\mathcal{F}(x, t)$ is defined in some manner. Then, a continuous function $x(t)$ defined on the interval $I$ is called a solution of equation \eqref{eq:intro:equiv_equation_initial} if it satisfies $\dot{x}(t) \in \mathcal{F}(t, x)$ almost everywhere on $I$.
+
+The most well-known definitions are presented in the book \cite[\S 4]{Filippov1988}.
+
+In the third part of the dissertation, the equivalent control method \cite{Utkin1981} is used, and a description of this method is provided therein.
+
+\bigskip
+
+The {\aim} of this work is to investigate periodic modes in a fully coupled network of relay Mackey--Glass oscillators.
+
+To achieve the stated goal, it was necessary to solve the following {\tasks}.
+\begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
+	\item Describe the sufficient conditions under which the Mackey--Glass equation \eqref{eq:mg_equation_1:intro} has a periodic solution.
+	\item Investigate the fully coupled system of relay Mackey--Glass oscillators, and describe the conditions and constraints on the parameters of the system under which it has a solution:
+	\begin{enumerate}
+		\item[a)]in the form of a discrete traveling wave,
+		\item[b)]in the form corresponding to the two-cluster synchronization mode.
+	\end{enumerate}
+\end{enumerate}
+
+\bigskip
+
+{\novelty}
+\begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
+	\item For the first time, asymptotic formulas for the solution of the Mackey--Glass equation \eqref{eq:intro:MG_norm1} have been obtained for the parameter $\gamma \gg 1$, and the existence of periodic solutions has been proven under the constraint  $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$.
+	\item For the first time, the existence of periodic modes in the form of discrete traveling waves in a fully coupled network of relay Mackey--Glass oscillators has been proven, and conditions for their existence have been formulated and proven as constraints on the parameters of the corresponding system of differential equations with delay.
+	\item For the first time, the existence of periodic modes of two-cluster synchronization in a fully coupled network of relay Mackey--Glass oscillators has been proven, and conditions for their existence have been formulated and proven as constraints on the parameters of the corresponding system of differential equations with delay.
+  %TODO: сказать про скользящие траектории.
+\end{enumerate}
+
+\bigskip
+
+{\influence} The results obtained in the dissertation may serve as a foundation for further research in the field of nonlinear dynamics and can be utilized by specialists to address a wide range of scientific and practical problems.
+
+This work was carried out within the framework of a development programme for the Regional Scientific and Educational Mathematical Center of the Yaroslavl State University with financial support from the Ministry of Science and Higher Education of the Russian Federation (Agreement on provision of subsidy from the federal budget No. 075-02-2025-1636).
+
+\bigskip
+
+{\defpositions}
+\begin{enumerate}[beginpenalty=10000] % https://tex.stackexchange.com/a/476052/104425
+	\item Asymptotic formulas for the solution of the Mackey--Glass equation \eqref{eq:intro:MG_norm1} have been obtained for the parameter $\gamma \gg 1$, and the existence of periodic solutions has been proven under the constraint  $\alpha > \exp\left(\beta(1 + e^{-\beta})\right)$ \cite[Theorem 3.2]{wosbib1}.
+	\item The existence of periodic modes in the form of discrete traveling waves in a fully coupled network of relay Mackey--Glass oscillators has been proven, and conditions for their existence have been formulated and proven as constraints on the parameters of the corresponding system of differential equations with delay \cite[Theorem 16]{wosbib2}.
+	\item The existence of periodic modes of two-cluster synchronization in a fully coupled network of relay Mackey--Glass oscillators has been proven, and conditions for their existence have been formulated and proven as constraints on the parameters of the corresponding system of differential equations with delay \cite[Theorem 5.2]{scbib1}.
+\end{enumerate}
+
+\bigskip
+
+\textbf{List of published works that are submitted for defence:}
+\begin{enumerate}
+	\item Analysis of the asymptotic convergence of periodic solution of the Mackey–Glass equation to the solution of the limit relay equation / V.~V.~Алексеев, M.~M.~Preobrazhenskaia // Theoretical and Mathematical Physics. --- 2024. --- Vol. 220. --- P. 1241--1261. \cite{wosbib1}
+	\item Existence of Discrete Traveling Waves in Fully Coupled Network of Mackey--Glass Relay Generators / V.~Alekseev, M.~Preobrazhenskaia, V.~Vorontsova // Differential Equations. --- 2024. --- Vol. 60, No 9. --- P.~1217--1231 \cite{wosbib2}
+	\item Two-cluster synchronization on a fully coupled network of Mackey--Glass generators // V.~Alekseev // Partial Differential Equations in Applied Mathematics. --- 2024. --- Vol. 12. --- P. 100930. \cite{scbib1}
+\end{enumerate}
+
+%В папке Documents можно ознакомиться с решением совета из Томского~ГУ
+%(в~файле \verb+Def_positions.pdf+), где обоснованно даются рекомендации
+%по~формулировкам защищаемых положений.
+
+\bigskip
+
+The {\reliability} of the obtained results is ensured by rigorous mathematical proofs presented in the work. % Результаты находятся в соответствии с результатами, полученными другими авторами.
+
+\nocite{scbib1, wosbib1, wosbib2}
+
+\bigskip
+
+{\probation}
+The main results of the work were presented at the following conferences and seminars.
+\begin{enumerate}
+	\item Seminar of the Department ,,Functional Analysis and Its Applications'' at Vladimir State University named after A.~G.~and~N.~G.~Stoletov, February 13, 2025.
+	\item Seminar on qualitative theory of differential equations at Lomonosov Moscow State University, November 29, 2024. \cite{Sergeev2024},\\\texttt{https://www.elibrary.ru/item.asp?id=75144298}
+	\item Scientific seminar of the Laboratory of Dynamic Systems and Applications at HSE University in Nizhny Novgorod, September 25, 2024,\\\texttt{https://nnov.hse.ru/bipm/dsa/semtmd}.
+	\item Seminar on nonlinear dynamics at Yaroslavl State University named after P. G. Demidov, September 19, 2024,\\\texttt{https://cis.uniyar.ac.ru/index.php/event/460}.
+	\item Conference ,,Integrable Systems and Nonlinear Dynamics'' (ISND – 2024), Yaroslavl, 2024 \cite{confbib5}.
+	\item Conference ,,Topological Methods in Dynamics and Related Topics VII'', Nizhny Novgorod, 2024 \cite{confbib6}.
+	\item International Conference on Differential Equations and Dynamic Systems ,,DIFF-2024'',  Suzdal, 2024 \cite{confbib3}.
+	\item Conference ,,Nonlinear Days in Saratov'', Saratov, 2023 \cite{confbib2}.
+	\item Conference ,,Satellite International Conference on Nonlinear Dynamics {\&} Integrability'', Yaroslavl, 2022 \cite{confbib4}.
+	\item International Conference on Differential Equations and Dynamic Systems ,,DIFF--2022'', Suzdal, 2022 \cite{confbib1}.
+\end{enumerate}
+
+%{\contribution} Автор принимал активное участие \ldots
+
+% \vspace{-11em}
+
+\bigskip
+
+{\publications} The main results on the topic of the dissertation are presented in 9 published works, 3 of which \cite{wosbib1,wosbib2,scbib1} are published in journals recommended by the Higher Attestation Commission, 3 are in periodic scientific journals indexed by Web of Science or Scopus \cite{wosbib1,wosbib2,scbib1}, and 6 are in conference proceedings \cite{confbib1,confbib2,confbib3,confbib4,confbib5,confbib6}. Among the collaborative works, only the results obtained personally by the author are included in the dissertation.
+
+{\contribution} The results from sections 1.1 and 1.2 of the first chapter (problem statement and analysis of the relay equation) were obtained in collaboration with M.~M.~Preobrazhenskaia and correspond to sections 1~--~4 of the work \cite{wosbib1}. The authorship of the problem formulation in the second chapter of the dissertation (section 2.1) belongs to M. M. Preobrazhenskaia, see section 2 of the work \cite{wosbib2}. The remaining results presented in the dissertation were obtained by the author personally.
+
+List of published works in peer-reviewed journals on the topic of the dissertation.
+\begin{enumerate}
+	\item Analysis of the asymptotic convergence of periodic solution of the Mackey–Glass equation to the solution of the limit relay equation / V.~V.~Алексеев, M.~M.~Preobrazhenskaia // Theoretical and Mathematical Physics. --- 2024. --- Vol. 220. --- P. 1241--1261. \cite{wosbib1}
+	\item Existence of Discrete Traveling Waves in Fully Coupled Network of Mackey--Glass Relay Generators / V.~Alekseev, M.~Preobrazhenskaia, V.~Vorontsova // Differential Equations. --- 2024. --- Vol. 60, No 9. --- P.~1217--1231 \cite{wosbib2}
+	\item Two-cluster synchronization on a fully coupled network of Mackey--Glass generators // V.~Alekseev // Partial Differential Equations in Applied Mathematics. --- 2024. --- Vol. 12. --- P. 100930. \cite{scbib1}
+	\item On the seminar on qualitative theory of differential equations at Moscow State University [in Russian]. --- 2024. --- Vol.~60, No~11, P.~1580--1582. \cite{Sergeev2024}
+\end{enumerate}
+
+\medskip
+
+List of published works on the topic of the dissertation in the proceedings of conferences and seminars.
+\begin{enumerate}
+	\item Two-cluster Synchronization in a Fully Coupled Network of	Mackey--Glass Generators / V.~V.~Alekseev // Topological Methods in Dynamics and Related Topics. --- 2024. --- P. 9--10. \cite{confbib6}
+	\item Two-cluster synchronization in a fully coupled network of	Mackey--Glass generators / V.~V.~Alekseev // Integrable Systems and Nonlinear Dynamics (ISND -- 2024). --- 2024. --- P. 9--10. \cite{confbib5}
+	\item Analysis of the asymptotic convergence of periodic solution of the Mackey–Glass equation to the solution of the limit relay equation [in Russian]	/ V.~Alekseev, M.~Preobrazhenskaia // Proceedings of the International Conference and International School for Young Scientists (Suzdal). --- 2024. --- P. 86. \cite{confbib3}
+	\item Existence and Investigation of Stability of Discrete Traveling Waves in Fully Coupled Network of Mackey-Glass Relay Generators [in Russian] / V.~Alekseev, M.~Preobrazhenskaia, V.~Zelenova // Nonlinear days in Saratov for young scientists — 2023. Book of abstracts. --- 2023. --- P. 63--64. \cite{confbib2}
+	\item Existence of discrete traveling waves in a fully connected relay system of Mackey–Glass type equations / V.~Alekseev, M.~Preobrazhenskaia, V.~Zelenova // Satellite International Conference on Nonlinear Dynamics and Integrability and Scientific School "Nonlinear Days". --- 2022. --- P. 14--15. \cite{confbib4}
+	\item Existence of Discrete Traveling Waves in Fully Coupled Network of Mackey-Glass Relay Generators / V.~Alekseev, M.~Preobrazhenskaia, V.~Zelenova // Proceedings of the International Conference and International School for Young Scientists (Suzdal). --- 2022. --- P. 81. \cite{confbib1}
+\end{enumerate}
+
+\begin{refsection}[bl-author, bl-registered]
+    % Это refsection=2.
+    % Процитированные здесь работы:
+    %  * попадают в авторскую библиографию, при usefootcite==0 и стиле `\insertbiblioauthorimportant`.
+    %  * ни на что не влияют в противном случае
+    \nocite{vakbib2}%vak
+    \nocite{patbib1}%patent
+    \nocite{progbib1}%program
+    \nocite{bib1}%other
+    \nocite{confbib1}%conf
+\end{refsection}%
+
+

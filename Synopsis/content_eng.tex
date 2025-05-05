@@ -1,0 +1,621 @@
+\pdfbookmark{General Characteristics of the Work}{characteristic}             % Закладка pdf
+\section*{General Characteristics of the Work}
+
+\newcommand{\actuality}{\pdfbookmark[1]{PhD Dissertation Relevance}{actuality}\textbf{\actualityTXTEng}}
+%\newcommand{\progress}{\pdfbookmark[1]{Разработанность темы}{progress}\textbf{\progressTXT}}
+\newcommand{\aim}{\pdfbookmark[1]{PhD Dissertation Aim}{aim}{\textbf\aimTXTEng}}
+\newcommand{\tasks}{\pdfbookmark[1]{Tasks}{tasks}\textbf{\tasksTXTEng}}
+\newcommand{\aimtasks}{\pdfbookmark[1]{Цели и задачи}{aimtasks}\aimtasksTXTEng}
+\newcommand{\novelty}{\pdfbookmark[1]{Novelty}{novelty}\textbf{\noveltyTXTEng}}
+\newcommand{\influence}{\pdfbookmark[1]{Theoretical and Practical Value}{influence}\textbf{\influenceTXTEng}}
+\newcommand{\methods}{\pdfbookmark[1]{Methodology and Research Methods}{methods}\textbf{\methodsTXTEng}}
+\newcommand{\defpositions}{\pdfbookmark[1]{Key aspects that are submitted for defence}{defpositions}\textbf{\defpositionsTXTEng}}
+\newcommand{\reliability}{\pdfbookmark[1]{Reliability}{reliability}\textbf{\reliabilityTXTEng}}
+\newcommand{\probation}{\pdfbookmark[1]{Aprobation of the work}{probation}\textbf{\probationTXTEng}}
+\newcommand{\contribution}{\pdfbookmark[1]{Personal Contribution}{contribution}\textbf{\contributionTXTEng}}
+\newcommand{\publications}{\pdfbookmark[1]{Publications}{publications}\textbf{\publicationsTXTEng}}
+
+\input{common/characteristic_eng} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
+
+%Диссертационная работа была выполнена при поддержке грантов \dots
+
+%\underline{\textbf{Объем и структура работы.}} Диссертация состоит из~введения,
+%четырех глав, заключения и~приложения. Полный объем диссертации
+%\textbf{ХХХ}~страниц текста с~\textbf{ХХ}~рисунками и~5~таблицами. Список
+%литературы содержит \textbf{ХХX}~наименование.
+
+\pdfbookmark{Content of Work}{description}                          % Закладка pdf
+\section*{Content of Work}
+
+\pdfbookmark{Content of the first chapter}{chfirst}
+\paragraph{Content of the first chapter.} In the first chapter, the Mackey--Glass equation is studied under the assumption that the exponent in the denominator of the nonlinearity is a large parameter. The case is considered in which the relay equation, resulting as the large parameter approaches infinity, has a periodic solution with the smallest number of switches in the relay part over the period. For this case, the existence of a periodic solution of the Mackey--Glass equation, asymptotically close to the periodic solution of the limiting equation, is proven.
+
+The Mackey--Glass equation \eqref{eq:mg_equation_1:intro}, after normalizing the parameters and time, takes the form
+\begin{equation}
+	\label{eq:intro:mg_norm}
+	\dot{u}=-\beta u+\frac{\alpha u(t-1)}{1+(u(t-1))^\gamma}, \text{ where } \alpha > 0, \beta > 0, \gamma > 0.
+\end{equation}
+
+For positive initial functions, the solution of equation \eqref{eq:intro:mg_norm} is also positive, so the substitution $u = e^x$ is valid, after which this equation will take the form
+\begin{equation}
+	\label{eq:intro:MG_x}
+	\dot{x}=-\beta+\alpha\frac{e^{x(t-1)-x}}{1+e^{\gamma x(t-1)}}.
+\end{equation}
+
+We will consider $\gamma$ as a large parameter. As $\gamma \to +\infty$, we obtain the relay equation.
+\begin{equation}
+	\label{eq:intro:MG_rele}
+	\dot{x}=-\beta + \alpha e^{-x} F(\exp({x(t-1)})),
+\end{equation}
+where
+\begin{equation}
+	\label{eq:intro:F}
+	F(u)=\lim\limits_{\gamma\to +\infty}\frac{u}{1+u^{\gamma}}=
+	\begin{cases}
+		0, & u > 1,\\
+		\frac{1}{2}, & u = 1,\\
+		u, & 0 \leq u < 1.
+	\end{cases}
+\end{equation}
+
+Let us define the set of initial functions for which the solution of the limiting equation will then be explicitly constructed using the method of steps. We will fix the positive parameters $\sigma_0 < 1/2$, $p$, $q$ such that
+%
+\[0 < p < \beta \sigma_0 < q.\]
+%
+As the set of initial functions for the equations $\eqref{eq:intro:MG_x}$ and $ \eqref{eq:intro:MG_rele}$, we will define the set
+\begin{multline}
+	\label{eq:intro:init_set}
+	S=\{\varphi\in C[-1 - \sigma_0, -\sigma_0]: 0 < p \leqslant \varphi(t)\leqslant q \text{ for } t \in [-1 - \sigma_0, -\sigma_0],\\ \varphi(-\sigma_0) = \beta \sigma_0 \}.
+\end{multline}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{initial_func_S.eps}
+	\caption{A representative of the set \eqref{eq:intro:init_set} of initial functions for the equations \eqref{eq:intro:MG_x} and \eqref{eq:intro:MG_rele}.}
+	\label{fig:intro:initial_funcs:ch1}
+\end{figure}
+
+Introduce the notation
+\begin{equation}
+	\label{eq:intro:T}
+	T = \frac{1}{\beta} \ln\left(\frac{1}{2}\alpha^2e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1\right),
+\end{equation}
+where $t = t_1$ is a root of the equation
+\begin{equation}
+	\label{eq:intro:t1_cond_exp}
+	-\beta(t - 1) + \ln(\alpha e^{\beta}(t - 2) + 1) = 0,
+\end{equation}
+\begin{equation}
+	\label{eq:intro:t2_period}
+	t_2 = 1 + T.
+\end{equation}
+
+The following conjecture is proven.
+
+\textbf{Theorem} (On the solution of the relay equation). \textit{
+	Let the parameters $\alpha, \beta > 0$ satisfy the conditions
+	%
+	\begin{equation}
+		\label{eq:intro:cond_alpha1}
+		\begin{cases}
+			\left[
+			\begin{array}{ll}
+				\alpha > e^{\beta} - e^{-\beta},\\
+				\alpha < \beta e^{\beta},
+			\end{array}
+			\right.\\
+			\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1,
+		\end{cases}
+	\end{equation}
+	\begin{equation}
+		\label{eq:intro:cond_alpha2}
+		\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
+	\end{equation}
+	%
+	Then equation \eqref{eq:intro:MG_rele} with the initial function from set \eqref{eq:intro:init_set} has a $T$-periodic solution
+	\small
+	\begin{equation}
+		\label{eq:intro:sol_x_star}
+		x^*(t)= 
+		\begin{cases}
+			-\beta t, & t\in[-\sigma_0, 1],\\
+			-\beta t +\ln(\alpha e^{\beta}(t - 1)+1), & t\in[1, 2],\\
+			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t - 2)^2+\alpha e^{\beta}(t - 1)+1), & t\in[2, t_1],\\
+			-\beta t + \ln(\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2+\alpha e^{\beta}(t_1 - 1) + 1), & t\in[t_1, t_2].
+		\end{cases}
+	\end{equation}
+	\normalsize
+}
+
+The cycle \eqref{eq:intro:sol_x_star} is shown in Fig. \ref{fig:intro:x_star:ch1}.
+
+% 2024-01-21-mackey-glass-asymptotics.ipynb
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{x_star.eps}
+	\captionof{figure}{The periodic solution $x^{*}(t)$ of equation \eqref{eq:intro:MG_rele}.}
+	\label{fig:intro:x_star:ch1}
+\end{figure}
+
+Let us introduce auxiliary functions $w_i(\tau)$, $i = 0, 1$, to describe the solution in the neighborhoods of the points of discontinuity of the relay equation.
+\[
+w_i(\tau) = -\beta \tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{-\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{ for } \quad \dot{x}^*(t_i - 1) < 0,
+\]
+\[
+w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\dot{x}^*(t_i - 1)} \ln\left(e^{\dot{x}^*(t_i - 1)\tau} + 1\right) \quad \text{ for } \quad \dot{x}^*(t_i - 1) > 0,
+\]
+The corresponding values of the function $x^*(t)$ are obtained from the formulas \eqref{eq:intro:sol_x_star}.
+
+The given functions satisfy asymptotic properties.
+
+If $\dot{x}^*(t_i - 1) < 0$,
+\begin{equation*}
+	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ for } \tau \to -\infty,
+\end{equation*}
+\begin{equation*}
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ for } \tau \to +\infty.
+\end{equation*}
+
+If $\dot{x}^*(t_i - 1) > 0$,
+\begin{equation*}
+	w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau + O(\exp(\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to -\infty,
+\end{equation*}
+\begin{equation*}
+	w_i(\tau) = -\beta \tau + O(\exp(-\dot{x}^*(t_i - 1) \tau)) \text{ при } \tau \to +\infty.
+\end{equation*}
+
+The coefficients of $\tau$ in the provided formulas coincide with the one-sided derivatives at the points of discontinuity of the solution to the relay equation $t_i$ for $i = 0, 1$.
+
+The main result of the chapter is formulated as follows.
+
+\bigskip
+
+\textbf{Theorem.} \textit{Let the parameters $\alpha > \beta > 0$ satisfy conditions \eqref{eq:intro:cond_alpha1}, \eqref{eq:intro:cond_alpha2}. Then there exist values of the parameters $\sigma_0, p, q$ and a sufficiently large $\gamma_0$, such that for all $\gamma > \gamma_0$ equation \eqref{eq:intro:MG_x} with the initial function $\varphi$ from the set \eqref{eq:intro:init_set} has a periodic solution $x^*_\gamma(t, \varphi)$ with period $T_{\gamma, \varphi}$ and asymptotic}
+\footnotesize
+\begin{equation}
+	\label{eq:intro:sol_x*gamma}
+	x^*_\gamma(t, \varphi)= 
+	\begin{cases}
+		- \beta t + O(\gamma^{-1} e^{-\beta \delta \gamma}), & t\in[-\sigma_0, 1 - \delta],\\
+		-\beta + \frac{1}{\gamma} w_0(\tau)|_{\tau=(t - 1)\gamma} + O(\gamma^{-2\nu}), & t \in [1 - \delta,1 + \delta],\\
+		- \beta t + \ln(\alpha e^{\beta}(t - 1) + 1) + O(\gamma^{-2\nu}) & t\in[1 + \delta, 2]\\
+		- \beta t + \ln(\frac{\alpha^2}{2}e^{2 \beta}(t - 2)^2 + \alpha e^{\beta}(t - 1) + 1) + O(\gamma^{-2\nu}), & t \in [2, t_1 - \delta],\\
+		- \beta t_1 + \ln(\eta)+\frac{1}{\gamma} w_1(\tau)|_{\tau=(t - t_1)\gamma} + O(\gamma^{-2\nu}), & t\in[t_1 - \delta, t_1  +\delta],\\
+		- \beta t + \ln(\eta) + O(\gamma^{-2\nu}), & t \in [t_1 + \delta, t_2 - \delta],
+	\end{cases}
+\end{equation}
+\normalsize
+where $\nu \in (\frac{1}{2}, 1)$, $\delta = \gamma^{-\nu}$, $\eta=\frac{\alpha^2}{2}e^{2\beta}(t_1 - 2)^2 + \alpha e^{\beta}(t_1 - 1) + 1$.
+%
+\textit{The given solution satisfies the limiting equalities}
+%
+\begin{equation}
+	\label{eq:intro:lim_x*}
+	\lim_{\gamma\to+\infty}\max_{0\leqslant t\leqslant T_{\gamma, \varphi}}|x_{\gamma}^*(t, \phi)-x^*(t)|=0,\quad \lim_{\gamma\to+\infty}T_{\gamma, \varphi} = T.
+\end{equation}
+\textit{All remainders and limits are uniform with respect to $\varphi \in S$ and $t$ from the corresponding intervals.}
+
+\pdfbookmark{Content of the second chapter}{chsecond}
+\textbf{Content of the second chapter.} In the second chapter, a fully connected network of relay oscillators described by the system \eqref{eq:intro:mg_full_renormed} is considered. We will look for a solution in the form of a discrete traveling wave. After substituting $u_j(t) = u(t + j\Delta)$, we obtain the auxiliary equation \eqref{eq:intro:mg_auxiliary}.
+
+We normalize the time so that the smallest delay in the auxiliary equation becomes equal to 1. Let $1 = \tau_0 \leq \tau_1 \leq \ldots \leq \tau_N$ be the set of delays after normalization. We obtain the equation
+\begin{equation}
+	\label{eq:intro:mg_relay_w}
+	\dot{u}=-\beta u+\alpha F(w(t)), \text{ where } w(t) = \sum\limits_{s = 0}^N u(t - \tau_s).
+\end{equation}
+%
+Let us define the set of initial functions over the interval of the length of the largest delay: 
+%
+\begin{equation}
+	\label{eq:intro:mg_init_set}
+	\{\varphi\in C[-\tau_{N},0]:\  \varphi(t)>1 \text{ for } t\in[-\tau_{N},0),\ \varphi(0)=u_0 > 1\}.
+\end{equation}
+%
+Introduce the notation:
+%
+\begin{equation*}
+	A = \sum_{i=0}^{m}e^{\beta \tau_{i}}=e^\beta+e^{\beta \tau_1}+\ldots+e^{\beta \tau_{N}},
+\end{equation*}
+\begin{equation*}
+	\tau_* = \min\{2,\tau_1\}=\left\lbrace\begin{array}{cl}
+		\min\{2,1/\Delta\}, & \text{ if } \Delta < 1,
+		\\
+		\min\{2,\Delta\}, & \text{ if } \Delta > 1,
+	\end{array}\right.
+\end{equation*}
+\begin{equation*}
+	s_* = t_1-t_0.
+\end{equation*}
+%
+For the auxiliary equation \eqref{eq:intro:mg_relay_w}, the following theorem has been proven.
+
+\textbf{Theorem.} \textit{Let the parameters $\alpha, \beta, \tau_*$ satisfy the constraints}
+
+\begin{equation}
+	\label{eq:intro:cond_thm1}
+	\frac{\alpha}{\beta}e^{\beta}\left(\ln\left(\frac{\beta}{\alpha}\right)+1\right) < 1,
+	\quad
+	\alpha > \beta.
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:cond_thm2}
+	e^{\beta \tau_*}-1 \leqslant \alpha e^\beta(\tau_*-1)
+	\quad\text{ or }\quad
+	0 < \frac{1}{\beta}\ln\frac{\alpha}{\beta}\leqslant\tau_*-1,
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:cond_th_w>1_t_1+1}
+	e^{-\beta s_*}(e^{-\beta}+\alpha s_*)>1
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:cond_hair_hair_01}
+	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ if } s_*\leqslant \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:cond_hair_hair_02}
+	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta (s_*+\tau_{k-1})}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ if } s_* > \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:cond_hair_hair_1}
+	\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,N.
+\end{equation}
+\textit{Then the solution of equation \eqref{eq:intro:mg_relay_w} for any initial function from the set \eqref{eq:intro:mg_init_set} coincides with the same periodic function. We will denote this function by $u_*$ and its period by $T$. The following holds true.}
+
+\textit{1. The function $u_*(t)$ has the smallest number of switches over the period: $t_0$, $t_1$. Moreover, }
+%
+\begin{equation*}
+	t_0=\frac{1}{\beta}\ln(u_0 A),
+\end{equation*}
+\begin{equation}
+	e^{\beta s_*} - 1=\alpha e^{\beta}(s_* - 1), \quad s_* \in (1, \tau_*).
+\end{equation}
+
+\textit{2. The function $u_*(t)$ and the period $T$ have the following explicit form:}
+%
+\small
+\begin{equation}
+	\label{eq:intro:u_star}
+	u_*(t)=
+	\begin{cases}
+		u_0 e^{-\beta t}(\alpha A(t-t_0)+1) & \text{ for } t\in[t_0,t_0+1].
+		\\
+		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t-t_0-1)^2+\alpha A(t-t_0)+1\right) & \text{ for } t\in[t_0+1,t_1],
+		\\
+		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right) & \text{ for } t\in[t_1,t_0+T].
+	\end{cases}
+\end{equation}
+\normalsize
+%
+\[
+u_*(t + T) \equiv u_*(t),
+\]
+%
+\begin{equation}
+	\label{eq:intro:mg_period_T}
+	T = \dfrac{1}{\beta}\ln\left( \frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right). 
+\end{equation}
+%
+A schematic plot of the function $u_*$ is shown in the Fig. \ref{fig:intro:u_star}.
+%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{u_star_eng.eps}
+	\caption{The function $u_*(t)$, defined over period $[t_0, t_0 + T]$ by the equation~\eqref{eq:intro:u_star}.}
+	\label{fig:intro:u_star}
+\end{figure}
+
+To ensure the existence of a discrete traveling wave, it is necessary to verify that for some $\Delta$, the period of the solution to the auxiliary equation is a multiple of $\Delta (N + 1)$, where $(N + 1)$ is the number of equations in the system. That is, for some $p \in \mathbb{N}$, the following condition holds:
+\begin{equation}
+	\label{eq:intro:period_eq}
+	pT = \Delta (N + 1).
+\end{equation}
+
+In the second chapter, the following theorem is proven.
+
+\textbf{Theorem.} \textit{For arbitrary
+	%
+	\begin{equation}
+		\label{eq:intro:constraints_parameters_final}
+		\beta > 0, \alpha \geq e^{\beta\left(1 + \frac{1}{e^{\beta}}\right)} - 1
+	\end{equation}
+	%
+	there exists $\Delta > 1$, such that the set of parameters $\alpha, \beta, \Delta$ satisfies equation \eqref{eq:intro:period_eq} for $p = 1$ and the conditions \eqref{eq:intro:cond_thm1}, \eqref{eq:intro:cond_thm2}, \eqref{eq:intro:cond_th_w>1_t_1+1}, \eqref{eq:intro:cond_hair_hair_01}, \eqref{eq:intro:cond_hair_hair_02}, \eqref{eq:intro:cond_hair_hair_1}.}
+	
+From the validity of this theorem, it immediately follows the existence of a solution in the form of a discrete traveling wave for the system \eqref{eq:intro:mg_full_renormed} under the given constraints on the parameters. Numerical experiments indicate that the solution is stable; moreover, the results of the experiments suggest the global attractivity of solutions of this type.
+
+\bigskip
+
+\pdfbookmark{Content of the third chapter}{third}
+\textbf{Content of the third chapter.} In the third chapter, a fully coupled network consisting of $N = m + n$ relay oscillators of Mackey--Glass is considered; it described by the system \eqref{eq:intro:mg_full_renormed_delta}. We will look for a solution that describes the mode of two-cluster synchronization. After substituting \eqref{eq:intro:cluster}, we obtain the auxiliary system \eqref{eq:intro:system_uv}.
+
+After substituting
+\begin{equation}
+	\label{eq:intro:tilde_change}
+	\tilde{u}(t) = u(t - 1) + \delta (m - 1) u + \delta n v, \quad \tilde{v}(t) = v(t - 1) + \delta m u + \delta (n - 1) v
+\end{equation}
+%
+and the subsequent exponential substitution
+\begin{equation}
+	\label{eq:intro:exp_change}
+	\tilde{u} = e^x, \quad \tilde{v} = e^y
+\end{equation}
+%
+the system \eqref{eq:intro:system_uv} takes the form
+%
+\begin{equation}
+	\label{eq:intro:system_cluster_main}
+	\begin{cases}
+		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} G_{\gamma} (x(t - 1)) + \delta (m - 1) G_{\gamma} (x) + \delta n e^{y - x} G_{\gamma} (y)\right),\\
+		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} G_{\gamma} (y(t - 1)) + \delta m e^{x - y} G_{\gamma} (x) + \delta (n - 1) G_{\gamma} (y)\right),
+	\end{cases}
+\end{equation}
+where $G_{\gamma} (x) = e^{-x} \, F_{\gamma} (e^x)$.
+
+The substitution \eqref{eq:intro:tilde_change} is valid in the sense of the following theorem.
+
+\textbf{Theorem.} \textit{Let $(x, y)$ be a $T$-periodic solution of the system \eqref{eq:intro:system_cluster_main}. Then there exist $T$-periodic functions $u, v$, uniquely determined by the formulas \eqref{eq:intro:tilde_change}, \eqref{eq:intro:exp_change}, which are solutions of the system \eqref{eq:intro:system_uv}.}
+
+As in the previous part of the dissertation, we will investigate the limiting object as $\gamma \to +\infty$. We will substitute the function $G_{\gamma} (x)$ by its limit version $G$:
+\begin{equation}
+	\label{eq:intro:relay_G_tilde}
+	G(x) = \lim\limits_{\gamma \to +\infty} G_{\gamma}(x) = 
+	\begin{cases}
+		1, & x < 0,\\
+		1/2, & x = 0,\\
+		0, & x > 0.
+	\end{cases}
+\end{equation}
+%
+In this case, the right-hand side of the relay system \eqref{eq:intro:system_cluster_main} experiences a discontinuity at $x = 0$ and $y = 0$. An analysis of the system shows that its solution, upon reaching one of the discontinuity lines, can only continue along that line (transversal intersection with the discontinuity line is not possible).
+
+We will construct the generalized solution using the method of equivalent control \cite[\S 4, p. 54]{Filippov1988}.
+
+Consider the system
+%
+\small
+\begin{equation}
+	\label{eq:intro:system_main_relay}
+	\begin{cases}
+		\dot{x} = -\beta + \alpha \left(e^{x(t - 1) - x} g_x(x(t - 1), t - 1) + \delta (m - 1) g_x(x, t) + \delta n e^{y - x} g_y(y, t)\right),\\
+		\dot{y} = -\beta + \alpha \left(e^{y(t - 1) - y} g_y(y(t - 1), t - 1) + \delta m e^{x - y} g_x(x, t) + \delta (n - 1) g_y(y, t)\right),\\
+		g_x(x, t) = G(x) \quad\text{for } x \neq 0,\\
+		g_y(y, t) = G(y) \quad\text{for } y \neq 0,
+	\end{cases}
+\end{equation}
+\normalsize
+%
+where the functions $g_x(x, t)$ and $g_y(y, t)$ take values from the interval $(0, 1)$ when $x = 0$ (and similarly for $y = 0$), allowing the solution to continue along the line $x = 0$. As will be shown, the values of $g_x(0, t)$ and $g_y(0, t)$ at each step are uniquely determined from the equations $\dot{x} = 0$ and $\dot{y} = 0$, respectively. We will consider the functions $g_x$ and $g_y$ as part of the system.
+
+The system \eqref{eq:intro:system_main_relay} will be referred to as a \emph{relay system}.
+
+Let us define a family of pairs of initial functions on the interval $[-1, 0]$. Fix $x_0 > y_0 > 0$.
+\begin{equation}
+	\label{eq:intro:initial_set}
+	S = \left\{(\phi, \psi) \in (C[-1, 0])^2 \,|\, \phi(t) > 0, \psi(t) > 0, x_0 = \phi(0), y_0 = \psi(0)\right\}.
+\end{equation}
+
+The following theorem has been proven.
+
+\bigskip
+
+\textbf{Theorem.}
+\textit{Let}
+%
+\begin{equation}
+	\label{eq:intro:constraint_1}
+	x_0 - y_0 < \ln \dfrac{e^{2\beta}(n - \delta(n - 1)) - ne^{\beta} + \delta n(n - 1)}{\delta (n - 1)^2},
+\end{equation}
+\begin{equation}
+	\label{eq:intro:constraint_2}
+	\beta < \alpha \delta (m - 1), \quad \beta < \alpha \delta (n - 1),
+\end{equation}
+\small
+\begin{equation}
+	\label{eq:intro:constraint_3}
+	e^{\beta} \cdot \dfrac{n - \delta(n - 1)}{\delta (n - 1)^2} > \dfrac{1}{n - 1} + \dfrac{1}{\delta(m - 1)}, \quad
+	e^{\beta} \cdot \dfrac{m - \delta(m - 1)}{\delta (m - 1)^2} > \dfrac{1}{\delta(n - 1)} + \dfrac{1}{m - 1}.
+\end{equation}
+\normalsize
+
+\textit{Under the constraints \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3}, and for arbitrary initial functions from the set \eqref{eq:intro:initial_set}, the relay system \eqref{eq:intro:system_cluster_main} has a generalized solution described by the formulas}
+%
+\small
+\begin{equation}
+	\label{eq:intro:step1_solution}
+	\begin{cases}
+		x = x_0 - \beta t,\\
+		y = y_0 - \beta t
+	\end{cases}
+	\textit{for } t \in [0, t_0], \textit{ where } t_0 = \dfrac{y_0}{\beta};
+\end{equation}
+%
+\begin{equation}
+	\label{eq:intro:step2_solution}
+	\begin{cases}
+		x = x_0 - \beta t + \ln\left(1 + \frac{n}{n - 1} e^{-x_0 + \beta t_0}  (e^{\beta  (t - t_0)} - 1)\right),\\
+		y = 0,\\
+		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
+	\end{cases}
+	\textit{for } t \in [t_0, t_0 + 1];
+\end{equation}
+%
+\begin{multline}
+	\label{eq:intro:step3_solution}
+	\begin{cases}
+		x = -\beta t + \ln\left(\exp(x(t_{2i} + 1) + \beta (t_{2i} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i} + 1)))\right)
+		,\\
+		y = 0,\\
+		g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i} + 1, t_{2i + 1}];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step4_solution}
+	\begin{cases}
+		x = 0,\\
+		y = -\beta t + \ln\left(\exp(\beta t_{2i + 1}) + \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 1}))\right),\\
+		g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i + 1}, t_{2i} + 2];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step5_solution}
+	\begin{cases}
+		x = 0,\\
+		y = -\beta t + \ln\left(\exp(y(t_{2i} + 2) + \beta (t_{2i} + 2)) + \left(\frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i} + 2)))\right),\\
+		g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i} + 2, t_{2i + 1} + 1];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step6_solution}
+	\begin{cases}
+		x = 0,\\
+		y = -\beta t + \ln\left(\exp(y(t_{2i + 1} + 1) + \beta(t_{2i + 1} + 1)) + \frac{m (\delta (m - 1) - 1)}{\delta (m - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 1} + 1))) \right),\\
+		g_x(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (m - 1) - 1}{\delta^2 (m - 1)^2}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i + 1} + 1, t_{2i + 2}];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step7_solution}
+	\begin{cases}
+		x = -\beta t + \ln\left(\exp(\beta t_{2i + 2}) + \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 2}))\right),\\
+		y = 0,\\
+		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i + 2}, t_{2i + 1} + 2];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step8_solution}
+	\begin{cases}
+		x = -\beta t + \ln\left(\exp(x(t_{2i + 1} + 2) + \beta (t_{2i + 1} + 2)) + \left(\frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i + 1} + 2)))\right),\\
+		y = 0,\\
+		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i + 1} + 2, t_{2i + 2} + 1];
+\end{multline}
+%
+\begin{multline}
+	\label{eq:intro:step9_solution}
+	\begin{cases}
+		x = -\beta t + \ln\left(\exp(y(t_{2i + 2} + 1) + \beta(t_{2i + 2} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 2} + 1))) \right),\\
+		y = 0,\\
+		g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
+	\end{cases}\\
+	\textit{for } t \in [t_{2i + 2} + 1, t_{2i + 3}].
+\end{multline}
+\normalsize
+%	
+\textit{Here, $i \geqslant 0$ is an integer. Each moment of time $t_{2i + 1}$ is defined as the root of the equation $x = 0$, where the function $x(t)$ is given by equation \eqref{eq:intro:step3_solution}. Each moment of time $t_{2i + 2}$ is defined as the root of the equation $y(t) = 0$, where the function $y(t)$ is determined from the system \eqref{eq:intro:step6_solution}. For all $i \geqslant 0$, it holds that $t_{i + 1} \in (t_i + 1, t_i + 2)$.}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=\textwidth]{cluster_step_by_step.eps}
+	\caption{The generalized solution of the relay system \eqref{eq:intro:system_cluster_main}, constructed using the method of steps. The black line represents the component of the solution $x$, the red line represents the component of the solution $y$. The numbers in the circles indicate the step number of the construction.}
+	\label{fig:intro:cluster_step_by_step}
+\end{figure}
+
+The main result of the third chapter is the following theorem.
+
+\textbf{Theorem.} \textit{Under the constraints \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3} the relay system \eqref{eq:intro:system_cluster_main} has a periodic solution, described over the period $[t_1, t_3]$ by the formulas \eqref{eq:intro:step4_solution} -- \eqref{eq:intro:step9_solution}.}
+
+\FloatBarrier
+\pdfbookmark{Conclusion}{conclusion}                                  % Закладка pdf
+
+The \textbf{conclusion} contains the main results of the work:
+\input{common/concl_eng}
+
+\pdfbookmark{Bibliography}{bibliography}                               % Закладка pdf
+
+\renewcommand*{\insertbiblioauthor}{
+	\printbibliography[heading=pubgroup, section=0, filter=papersregistered, title=\bibtitleauthorEng]
+}
+
+\renewcommand*{\insertbiblioexternal}{
+	\printbibliography[heading=pubgroup,    section=0, keyword=biblioexternal, title=\bibtitlefullEng]
+}
+
+\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{} % не рекомендуется forменять пакет микротипографики к автоматически генерируемому списку литературы
+\urlstyle{rm}                               % ссылки URL обычным шрифтом
+\ifnumequal{\value{bibliosel}}{0}{% Встроенная реализация с загрузкой файла через движок bibtex8
+    \renewcommand{\bibname}{\large \bibtitleauthorEng}
+    \nocite{*}
+    \insertbiblioauthor           % Подключаем Bib-базы
+    %\insertbiblioexternal   % !!! bibtex не умеет работать с несколькими библиографиями !!!
+}{% Реализация пакетом biblatex через движок biber
+    % Цитирования.
+    %  * Порядок перечисления определяет порядок в библиографии (только внутри подраздела, если `\insertbiblioauthorgrouped`).
+    %  * Если не соблюдать порядок "как для \printbibliography", нумерация в `\insertbiblioauthor` будет кривой.
+    %  * Если цитировать каждый источник отдельной командой --- найти некоторые ошибки будет проще.
+    %
+    %% authorvak
+    \nocite{vakbib1}%
+    \nocite{vakbib2}%
+    %
+    %% authorwos
+    \nocite{wosbib1}%
+    %
+    %% authorscopus
+    \nocite{scbib1}%
+    %
+    %% authorpathent
+    \nocite{patbib1}%
+    %
+    %% authorprogram
+    \nocite{progbib1}%
+    %
+    %% authorconf
+    \nocite{confbib1}%
+    \nocite{confbib2}%
+    %
+    %% authorother
+    \nocite{bib1}%
+    \nocite{bib2}%
+
+    \ifnumgreater{\value{usefootcite}}{0}{
+        \begin{refcontext}[labelprefix={}]
+            \ifnum \value{bibgrouped}>0
+                \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+            \else
+                \insertbiblioauthor      % Вывод всех работ автора
+            \fi
+        \end{refcontext}
+    }{
+        \ifnum \totvalue{citeexternal}>0
+            \begin{refcontext}[labelprefix=A]
+                \ifnum \value{bibgrouped}>0
+                    \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+                \else
+                    \insertbiblioauthor      % Вывод всех работ автора
+                \fi
+            \end{refcontext}
+        \else
+            \ifnum \value{bibgrouped}>0
+                \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+            \else
+                \insertbiblioauthor      % Вывод всех работ автора
+            \fi
+        \fi
+        %  \insertbiblioauthorimportant  % Вывод наиболее значимых работ автора (определяется в файле characteristic во второй section)
+        \begin{refcontext}[labelprefix={}]
+            \insertbiblioexternal            % Вывод списка литературы, на которую ссылались в тексте автореферата
+        \end{refcontext}
+        % Невидимый библиографический список для подсчёта количества внешних публикаций
+        % Используется, чтобы убрать forставку "А" у работ автора, если в автореферате нет
+        % цитирований внешних источников.
+        \printbibliography[heading=nobibheading, section=0, env=countexternal, keyword=biblioexternal, resetnumbers=true]%
+    }
+}
+\ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=true}}{}
+\urlstyle{tt}                               % возвращаем установки шрифта ссылок URL
