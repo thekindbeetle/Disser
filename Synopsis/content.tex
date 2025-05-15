@@ -90,29 +90,10 @@
 	t_2 = 1 + T.
 \end{equation}
 
-Доказано следующее утверждение.
+Верна следующая теорема \cite{wosbib1}.
 
 \textbf{Теорема} (О решении релейного уравнения). \textit{
-	Пусть параметры $\alpha, \beta > 0$ удовлетворяют условиям
-	%
-	\begin{equation}
-		\label{eq:intro:cond_alpha1}
-		\begin{cases}
-			\left[
-			\begin{array}{ll}
-				\alpha > e^{\beta} - e^{-\beta},\\
-				\alpha < \beta e^{\beta},
-			\end{array}
-			\right.\\
-			\frac{\alpha}{\beta}e^{\beta}\left(1 + \ln\frac{\beta}{\alpha}\right) < 1,
-		\end{cases}
-	\end{equation}
-	\begin{equation}
-		\label{eq:intro:cond_alpha2}
-		\alpha > \dfrac{e^{\beta t_1} - 1}{e^{\beta}(t_1 - 1)}.
-	\end{equation}
-	%
-	Тогда уравнение \eqref{eq:intro:MG_rele} с начальной функцией из множества \eqref{eq:intro:init_set} имеет $T$-периодическое решение
+	Для произвольного $\beta > 0$ и достаточно большого $\alpha$ уравнение \eqref{eq:intro:MG_rele} с начальной функцией из множества \eqref{eq:intro:init_set} имеет $T$-периодическое решение
 	\small
 	\begin{equation}
 		\label{eq:intro:sol_x_star}
@@ -136,6 +117,8 @@
 	\captionof{figure}{Периодическое решение $x^{*}(t)$ уравнения \eqref{eq:intro:MG_rele}.}
 	\label{fig:intro:x_star:ch1}
 \end{figure}
+
+\medskip
 
 Введём вспомогательные функции $w_i(\tau)$, $i = 0, 1$ для описания решения в окрестностях точек излома релейного уравнения.
 \[
@@ -170,7 +153,7 @@ w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\
 
 \bigskip
 
-\textbf{Теорема.} \textit{Пусть параметры $\alpha > \beta > 0$ удовлетворяют условиям \eqref{eq:intro:cond_alpha1}, \eqref{eq:intro:cond_alpha2}. Тогда существуют такие значения параметров $\sigma_0, p, q$ и такое достаточно большое $\gamma_0$, что при всех $\gamma > \gamma_0$ уравнение \eqref{eq:intro:MG_x} с начальной функцией $\varphi$ из множества \eqref{eq:intro:init_set} обладает периодическим решением $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$ с асимптотикой}
+\textbf{Теорема.} \textit{Для произвольного $\beta > 0$ и достаточно больших $\alpha$ существуют такие значения параметров $\sigma_0, p, q$ и такое достаточно большое $\gamma_0$, что при всех $\gamma > \gamma_0$ уравнение \eqref{eq:intro:MG_x} с начальной функцией $\varphi$ из множества \eqref{eq:intro:init_set} обладает периодическим решением $x^*_\gamma(t, \varphi)$ периода $T_{\gamma, \varphi}$ с асимптотикой}
 \footnotesize
 \begin{equation}
 	\label{eq:intro:sol_x*gamma}
@@ -229,83 +212,14 @@ w_i(\tau) = (-\beta + \alpha e^{-x^*(t_i)})\tau - \dfrac{\alpha e^{-x^*(t_i)}}{\
 %
 Для вспомогательного уравнения \eqref{eq:intro:mg_relay_w} доказана следующая теорема.
 
-\textbf{Теорема.} \textit{Пусть параметры $\alpha, \beta$ и величина $\tau_*$ удовлетворяют ограничениям}
+\textbf{Теорема.} \textit{Для произвольного $\beta$ и достаточно больших $\alpha$ решение уравнения \eqref{eq:intro:mg_relay_w} при любой начальной функции из множества \eqref{eq:intro:mg_init_set} совпадает с одной и той же периодической функцией $u_*$, обладающей минимальным возможным числом точек излома на периоде.}
 
-\begin{equation}
-	\label{eq:intro:cond_thm1}
-	\frac{\alpha}{\beta}e^{\beta}\left(\ln\left(\frac{\beta}{\alpha}\right)+1\right) < 1,
-	\quad
-	\alpha > \beta.
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_thm2}
-	e^{\beta \tau_*}-1 \leqslant \alpha e^\beta(\tau_*-1)
-	\quad\text{или}\quad
-	0 < \frac{1}{\beta}\ln\frac{\alpha}{\beta}\leqslant\tau_*-1,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_th_w>1_t_1+1}
-	e^{-\beta s_*}(e^{-\beta}+\alpha s_*)>1
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_01}
-	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_*\leqslant \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_02}
-	\frac{\alpha^2}{2}e^\beta(s_*-1)^2+\alpha s_*>\frac{e^{\beta (s_*+\tau_{k-1})}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\text{ если } s_* > \tau_k-\tau_{k-1},\quad k=1,\ldots,N,
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:cond_hair_hair_1}
-	\frac{\alpha^2}{2}e^\beta( s_*-1)^2+\alpha s_*>\frac{(e^{\beta s_*}-\alpha s_*)e^{\beta \tau_k}-1}{\sum_{i=0}^{k-1}e^{\beta \tau_i}},\quad k=1,\ldots,N.
-\end{equation}
-\textit{Тогда решение уравнения \eqref{eq:intro:mg_relay_w} при любой начальной функции из множества \eqref{eq:intro:mg_init_set} совпадает с одной и той же периодической функцией. Назовём эту функцию $u_*$, а её период $T$. Справедливо следующее.}
-
-\textit{1. Функция $u_*(t)$ обладает наименьшим числом переключений на периоде: $t_0$, $t_0+1$, $t_1$. При этом }
-%
-\begin{equation*}
-	t_0=\frac{1}{\beta}\ln(u_0 A),
-\end{equation*}
-\begin{equation}
-	e^{\beta s_*} - 1=\alpha e^{\beta}(s_* - 1), \quad s_* \in (1, \tau_*).
-\end{equation}
-
-\textit{2. Функция $u_*(t)$ и период $T$ имеют следующий явный вид:}
-%
-\small
-\begin{equation}
-	\label{eq:intro:u_star}
-	u_*(t)=
-	\begin{cases}
-		u_0 e^{-\beta t}(\alpha A(t-t_0)+1) & \text{ при } t\in[t_0,t_0+1].
-		\\
-		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t-t_0-1)^2+\alpha A(t-t_0)+1\right) & \text{ при } t\in[t_0+1,t_1],
-		\\
-		u_0 e^{-\beta t}\left(\frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right) & \text{ при } t\in[t_1,t_0+T].
-	\end{cases}
-\end{equation}
-\normalsize
-%
-\[
-u_*(t + T) \equiv u_*(t),
-\]
-%
-\begin{equation}
-	\label{eq:intro:mg_period_T}
-	T = \dfrac{1}{\beta}\ln\left( \frac{\alpha^2}{2}Ae^{\beta}(t_1-t_0-1)^2+\alpha A(t_1-t_0)+1\right). 
-\end{equation}
-%
 Схематичный график функции $u_*$ изображён на рисунке \ref{fig:intro:u_star}.
-%
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{u_star.eps}
-	\caption{Функция $u_*(t)$, определённая на периоде $[t_0, t_0 + T]$ уравнением~\eqref{eq:intro:u_star}.}
+	\caption{Периодическая функция $u_*(t)$, являющаяся решением вспомогательного уравнения \eqref{eq:intro:mg_relay_w}.}
 	\label{fig:intro:u_star}
 \end{figure}
 
@@ -317,23 +231,15 @@ u_*(t + T) \equiv u_*(t),
 
 Во второй главе доказывается следующая теорема.
 
-\textbf{Теорема.} \textit{Для произвольных 
-	%
-	\begin{equation}
-		\label{eq:intro:constraints_parameters_final}
-		\beta > 0,\quad \alpha \geq e^{\beta\left(1 + \frac{1}{e^{\beta}}\right)} - 1
-	\end{equation}
-	%
-	найдётся $\Delta > 1$, при котором набор параметров $\alpha, \beta, \Delta$ удовлетворяет уравнению \eqref{eq:intro:period_eq} при $p = 1$ и условиям \eqref{eq:intro:cond_thm1}, \eqref{eq:intro:cond_thm2}, \eqref{eq:intro:cond_th_w>1_t_1+1}, \eqref{eq:intro:cond_hair_hair_01}, \eqref{eq:intro:cond_hair_hair_02}, \eqref{eq:intro:cond_hair_hair_1}.}
-
-Из справедливости данной теоремы сразу следует существование решения в виде дискретной бегущей волны у системы \eqref{eq:intro:mg_full_renormed} при данных ограничениях на параметры. Численные эксперименты показывают, что решение является устойчивым; более того, результаты экспериментов позволяют предположить глобальную притягиваемость решений данного вида.
+\textbf{Теорема.} \textit{Для произвольного $\beta > 0$ и достаточно больших $\alpha$ найдётся $\Delta > 1$, при котором у системы \eqref{eq:intro:mg_full_renormed} существовует решение в виде дискретной бегущей волны.}
+	
+Численные эксперименты показывают, что решение является устойчивым; более того, результаты экспериментов позволяют предположить глобальную притягиваемость решений данного вида.
 
 \bigskip
 
 \pdfbookmark{Содержание третьей главы}{third}
-\textbf{Содержание третьей главы.} В третьей главе рассматривается полносвязная сеть, состоящая из $N = m + n$ осцилляторов Мэки--Гласса, описываемая системой \eqref{eq:intro:mg_full_renormed_delta}. Будем искать решение, соответствующее режиму двухкластерной синхронизации. После подстановки \eqref{eq:intro:cluster} получим вспомогательную систему \eqref{eq:intro:system_uv}.
-
-После замен
+\textbf{Содержание третьей главы.} В третьей главе рассматривается полносвязная сеть, состоящая из $N = m + n$ осцилляторов Мэки--Гласса, описываемая системой \eqref{eq:intro:mg_full_renormed_delta}. Будем искать решение, соответствующее режиму двухкластерной синхронизации. После подстановки \eqref{eq:intro:cluster} получим вспомогательную систему \eqref{eq:intro:system_uv}. После замен
+%
 \begin{equation}
 	\label{eq:intro:tilde_change}
 	\tilde{u}(t) = u(t - 1) + \delta (m - 1) u + \delta n v, \quad \tilde{v}(t) = v(t - 1) + \delta m u + \delta (n - 1) v
@@ -373,7 +279,7 @@ u_*(t + T) \equiv u_*(t),
 %
 В этом случае правая часть релейной системы \eqref{eq:intro:system_cluster_main} терпит разрыв при $x = 0$ и при $y = 0$. Анализ системы показывает, что её решение при достижении одной из прямых разрыва может продолжаться только вдоль этой прямой (трансверсальное пересечение прямой разрыва оказывается невозможным).
 
-Будем строить обобщённое решение методом эквивалентного управления \cite[\S 4, с. 54]{Filippov1988}.
+Обобщённое решение строится методом эквивалентного управления \cite[\S 4, с. 54]{Filippov1988}.
 
 Рассмотрим систему
 %
@@ -404,120 +310,7 @@ u_*(t + T) \equiv u_*(t),
 \bigskip
 
 \textbf{Теорема.}
-\textit{Пусть}
-%
-\begin{equation}
-	\label{eq:intro:constraint_1}
-	x_0 - y_0 < \ln \dfrac{e^{2\beta}(n - \delta(n - 1)) - ne^{\beta} + \delta n(n - 1)}{\delta (n - 1)^2},
-\end{equation}
-\begin{equation}
-	\label{eq:intro:constraint_2}
-	\beta < \alpha \delta (m - 1), \quad \beta < \alpha \delta (n - 1),
-\end{equation}
-\small
-\begin{equation}
-	\label{eq:intro:constraint_3}
-	e^{\beta} \cdot \dfrac{n - \delta(n - 1)}{\delta (n - 1)^2} > \dfrac{1}{n - 1} + \dfrac{1}{\delta(m - 1)}, \quad
-	e^{\beta} \cdot \dfrac{m - \delta(m - 1)}{\delta (m - 1)^2} > \dfrac{1}{\delta(n - 1)} + \dfrac{1}{m - 1}.
-\end{equation}
-\normalsize
-
-\textit{При ограничениях \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3}  и произвольных начальных функциях из множества \eqref{eq:intro:initial_set} релейная система \eqref{eq:intro:system_cluster_main} имеет обобщённое решение, описываемое формулами}
-%
-\small
-\begin{equation}
-	\label{eq:intro:step1_solution}
-	\begin{cases}
-		x = x_0 - \beta t,\\
-		y = y_0 - \beta t
-	\end{cases}
-	\text{при } t \in [0, t_0], \text{ где } t_0 = \dfrac{y_0}{\beta};
-\end{equation}
-%
-\begin{equation}
-	\label{eq:intro:step2_solution}
-	\begin{cases}
-		x = x_0 - \beta t + \ln\left(1 + \frac{n}{n - 1} e^{-x_0 + \beta t_0}  (e^{\beta  (t - t_0)} - 1)\right),\\
-		y = 0,\\
-		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
-	\end{cases}
-	\text{при } t \in [t_0, t_0 + 1];
-\end{equation}
-%
-\begin{multline}
-	\label{eq:intro:step3_solution}
-	\begin{cases}
-		x = -\beta t + \ln\left(\exp(x(t_{2i} + 1) + \beta (t_{2i} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i} + 1)))\right)
-		,\\
-		y = 0,\\
-		g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
-	\end{cases}\\
-	\text{при } t \in [t_{2i} + 1, t_{2i + 1}];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step4_solution}
-	\begin{cases}
-		x = 0,\\
-		y = -\beta t + \ln\left(\exp(\beta t_{2i + 1}) + \left(\frac{1}{\delta(n - 1)} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 1}))\right),\\
-		g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
-	\end{cases}\\
-	\text{при } t \in [t_{2i + 1}, t_{2i} + 2];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step5_solution}
-	\begin{cases}
-		x = 0,\\
-		y = -\beta t + \ln\left(\exp(y(t_{2i} + 2) + \beta (t_{2i} + 2)) + \left(\frac{\delta(n - 1) - 1}{\delta^2 (n - 1)^2} + \frac{m}{m - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i} + 2)))\right),\\
-		g_x(0, t) = \frac{\beta}{\alpha \delta (m - 1)}
-	\end{cases}\\
-	\text{при } t \in [t_{2i} + 2, t_{2i + 1} + 1];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step6_solution}
-	\begin{cases}
-		x = 0,\\
-		y = -\beta t + \ln\left(\exp(y(t_{2i + 1} + 1) + \beta(t_{2i + 1} + 1)) + \frac{m (\delta (m - 1) - 1)}{\delta (m - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 1} + 1))) \right),\\
-		g_x(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (m - 1) - 1}{\delta^2 (m - 1)^2}
-	\end{cases}\\
-	\text{при } t \in [t_{2i + 1} + 1, t_{2i + 2}];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step7_solution}
-	\begin{cases}
-		x = -\beta t + \ln\left(\exp(\beta t_{2i + 2}) + \left(\frac{1}{\delta(m - 1)} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta t_{2i + 2}))\right),\\
-		y = 0,\\
-		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
-	\end{cases}\\
-	\text{при } t \in [t_{2i + 2}, t_{2i + 1} + 2];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step8_solution}
-	\begin{cases}
-		x = -\beta t + \ln\left(\exp(x(t_{2i + 1} + 2) + \beta (t_{2i + 1} + 2)) + \left(\frac{\delta(m - 1) - 1}{\delta^2 (m - 1)^2} + \frac{n}{n - 1}\right) (e^{\beta t} - \exp(\beta (t_{2i + 1} + 2)))\right),\\
-		y = 0,\\
-		g_y(0, t) = \frac{\beta}{\alpha \delta (n - 1)}
-	\end{cases}\\
-	\text{при } t \in [t_{2i + 1} + 2, t_{2i + 2} + 1];
-\end{multline}
-%
-\begin{multline}
-	\label{eq:intro:step9_solution}
-	\begin{cases}
-		x = -\beta t + \ln\left(\exp(y(t_{2i + 2} + 1) + \beta(t_{2i + 2} + 1)) + \frac{n (\delta(n - 1) - 1)}{\delta (n - 1)^2} (e^{\beta t} - \exp(\beta (t_{2i + 2} + 1))) \right),\\
-		y = 0,\\
-		g_y(0, t) = \frac{\beta}{\alpha} \cdot \frac{\delta (n - 1) - 1}{\delta^2 (n - 1)^2}
-	\end{cases}\\
-	\text{при } t \in [t_{2i + 2} + 1, t_{2i + 3}].
-\end{multline}
-\normalsize
-%	
-\textit{Здесь $i \geqslant 0$ --- целое число. Каждый момент времени $t_{2i + 1}$ определяется как корень уравнения $x = 0$, где функция $x(t)$ задаётся уравнением \eqref{eq:intro:step3_solution}. Каждый момент времени $t_{2i + 2}$ определяется как корень уравнения $y(t) = 0$, где функция $y(t)$ определяется из системы \eqref{eq:intro:step6_solution}. Для всех $i \geqslant 0$ верно, что $t_{i + 1} \in (t_i + 1, t_i + 2)$.}
-
+\textit{В пространстве параметров $x_0$, $y_0$, $\alpha$, $\beta$, $\delta$ существует открытое множество, для любого набора параметров из которого и любой пары начальных функций из множества \eqref{eq:intro:initial_set} релейная система \eqref{eq:intro:system_cluster_main} имеет обобщённое решение $(x, y)$. График решения показан на рисунке \ref{fig:intro:cluster_step_by_step}.}
 
 \begin{figure}[!ht]
 	\centering
@@ -528,7 +321,7 @@ u_*(t + T) \equiv u_*(t),
 
 Основным результатом третьей главы является следующая теорема.
 
-\textbf{Теорема.} \textit{При ограничениях \eqref{eq:intro:constraint_1}, \eqref{eq:intro:constraint_2}, \eqref{eq:intro:constraint_3} релейная система \eqref{eq:intro:system_cluster_main} имеет периодическое решение, описываемое на периоде $[t_1, t_3]$ формулами \eqref{eq:intro:step4_solution} -- \eqref{eq:intro:step9_solution}.}
+\textbf{Теорема.} \textit{В пространстве параметров $x_0$, $y_0$, $\alpha$, $\beta$, $\delta$ существует открытое множество, для любого набора параметров из которого релейная система~\eqref{eq:intro:system_cluster_main} имеет периодическое решение.}
 
 \FloatBarrier
 \pdfbookmark{Заключение}{conclusion}                                  % Закладка pdf
